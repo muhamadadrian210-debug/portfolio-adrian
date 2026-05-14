@@ -260,8 +260,3 @@
   left: 0;
   color: var(--color-accent);
 }
-
-  .about__title {
-    font-size: var(--text-4xl);
-  }
-}

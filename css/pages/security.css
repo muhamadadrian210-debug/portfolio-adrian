@@ -461,6 +461,9 @@
   font-size: var(--text-sm);
   color: var(--color-accent);
 }
+
+/* ============================================
+   LAYERS
    ============================================ */
 .sec-layers {
   padding-block: var(--space-16);

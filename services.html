@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Layanan Pembuatan Website Profesional Sivilize Corp — Presisi, Aman, dan Berintegritas." />
+  <meta name="author" content="Sivilize Corp" />
+  <meta name="theme-color" content="#F7931E" />
+  <title>Layanan & Jasa — Sivilize Corp</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/pages/services.css" />
+
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="assets/images/logo.svg" as="image" />
+</head>
+<body>
+  <!-- Skip to main content (keyboard accessibility) -->
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <div class="page-wrapper">
+
+    <!-- NAVBAR -->
+    <header class="navbar" role="banner">
+      <div class="navbar__container">
+        <a href="index.html" class="navbar__logo" aria-label="Sivilize Corp - Beranda">
+          <img src="assets/images/logo.svg" alt="Sivilize Corp Logo" class="navbar__logo-image">
+        </a>
+        <nav class="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
+          <ul class="navbar__list">
+            <li><a href="index.html" class="navbar__link" data-page="home">Beranda</a></li>
+            <li><a href="about.html" class="navbar__link" data-page="about">Tentang</a></li>
+            <li><a href="services.html" class="navbar__link" data-page="services">Jasa</a></li>
+            <li><a href="skills.html" class="navbar__link" data-page="skills">Keahlian</a></li>
+            <li><a href="projects.html" class="navbar__link" data-page="projects">Proyek</a></li>
+            <li><a href="security.html" class="navbar__link" data-page="security">Keamanan</a></li>
+            <li><a href="simulate-attack.html" class="navbar__link" data-page="simulate-attack">Simulasi</a></li>
+            <li><a href="contact.html" class="navbar__link" data-page="contact">Kontak</a></li>
+          </ul>
+        </nav>
+        <button
+          class="navbar__hamburger"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
+      <!-- SERVICES HERO -->
+      <section class="services-hero" aria-labelledby="services-title">
+        <div class="container">
+          <div class="services-hero__content animate-on-scroll">
+            <span class="services-hero__label">Professional Services</span>
+            <h1 class="services-hero__title" id="services-title">
+              Solusi Digital <span class="text-accent">Terintegrasi</span>
+            </h1>
+            <p class="services-hero__subtitle">
+              Membangun Infrastruktur Web yang Presisi, Aman, dan Berintegritas untuk Pertumbuhan Bisnis Anda.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES GRID -->
+      <section class="services-grid section">
+        <div class="container">
+          <div class="grid grid--auto-fit">
+
+            <!-- Service 1: Craftsmanship -->
+            <div class="service-card animate-on-scroll stagger-1">
+              <div class="service-card__icon">🎨</div>
+              <h3 class="service-card__title">Kualitas Pengerjaan (Craftsmanship)</h3>
+              <ul class="service-card__list">
+                <li><strong>Manual Coding:</strong> Website dikembangkan secara manual untuk efisiensi kode maksimal dan keunikan desain.</li>
+                <li><strong>Performa Tinggi:</strong> Optimasi penuh untuk meraih skor tinggi pada Google PageSpeed.</li>
+                <li><strong>Desain Adaptif:</strong> Penyesuaian visual sempurna di smartphone, tablet, maupun desktop.</li>
+              </ul>
+            </div>
+
+            <!-- Service 2: Security -->
+            <div class="service-card animate-on-scroll stagger-2">
+              <div class="service-card__icon">🛡️</div>
+              <h3 class="service-card__title">Keamanan & Keandalan</h3>
+              <ul class="service-card__list">
+                <li><strong>Proteksi Siber Berlapis:</strong> Implementasi standar keamanan modern (Security-by-Design).</li>
+                <li><strong>Sertifikasi SSL:</strong> Pemasangan protokol HTTPS untuk enkripsi data dan kredibilitas bisnis.</li>
+                <li><strong>Backup Terjadwal:</strong> Jaminan keamanan data melalui sistem pencadangan berkala.</li>
+              </ul>
+            </div>
+
+            <!-- Service 3: Support -->
+            <div class="service-card animate-on-scroll stagger-3">
+              <div class="service-card__icon">🤝</div>
+              <h3 class="service-card__title">Layanan Purna Jual & Dukungan</h3>
+              <ul class="service-card__list">
+                <li><strong>Garansi Fungsionalitas:</strong> Dukungan perbaikan tanpa biaya jika ditemukan kendala teknis setelah peluncuran.</li>
+                <li><strong>Maintenance Gratis 30 Hari:</strong> Layanan pemeliharaan teknis cuma-cuma selama satu bulan penuh.</li>
+                <li><strong>Fleksibilitas Revisi:</strong> Jatah revisi sebanyak 3 kali untuk memastikan hasil akhir sesuai visi Anda.</li>
+              </ul>
+            </div>
+
+            <!-- Service 4: Business Growth -->
+            <div class="service-card animate-on-scroll stagger-4">
+              <div class="service-card__icon">📈</div>
+              <h3 class="service-card__title">Pertumbuhan Bisnis</h3>
+              <ul class="service-card__list">
+                <li><strong>Struktur SEO-Friendly:</strong> Membantu bisnis Anda lebih mudah ditemukan oleh pelanggan di Google.</li>
+                <li><strong>Integrasi WhatsApp:</strong> Mempercepat konversi penjualan dengan fitur interaksi satu klik.</li>
+                <li><strong>Pelatihan Mandiri:</strong> Sesi pelatihan agar Anda memiliki kendali penuh atas konten website.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY CHOOSE US -->
+      <section class="services-why section">
+        <div class="container">
+          <div class="services-why__content animate-on-scroll">
+            <h2 class="section__title">Mengapa Anda Harus Memilih Kami?</h2>
+            <p class="section__subtitle">
+              Sivilize Corp hadir bukan untuk sekadar mengikuti tren, melainkan untuk menetapkan standar baru dalam kualitas digital. 
+              Yang membedakan kami adalah <strong>pendekatan multidisiplin</strong>; kami menggabungkan presisi teknis dunia konstruksi dengan inovasi teknologi web modern. 
+              Kami tidak hanya melihat website sebagai visual, tetapi sebagai struktur bangunan digital yang harus kokoh, aman, dan efisien secara fungsional.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROFIT/BENEFITS SECTION -->
+      <section class="services-benefits section" style="background: var(--color-surface-alt); border-radius: var(--radius-2xl); margin-inline: var(--space-4);">
+        <div class="container">
+          <div class="section__header animate-on-scroll">
+            <h2 class="section__title">Investasi yang Menghasilkan Nilai Nyata</h2>
+            <p class="section__subtitle">Setiap proyek yang kami kerjakan dirancang untuk memberikan keuntungan jangka panjang bagi bisnis Anda.</p>
+          </div>
+          <div class="grid grid--3">
+            <div class="benefit-item animate-on-scroll stagger-1" style="text-align: center; padding: var(--space-6);">
+              <div style="font-size: 2.5rem; margin-bottom: var(--space-4);">📈</div>
+              <h3 style="color: var(--color-primary); margin-bottom: var(--space-3);">Peningkatan ROI</h3>
+              <p style="color: var(--color-text-secondary); font-size: var(--text-sm);">Website yang cepat dan SEO-friendly meningkatkan konversi pengunjung menjadi pelanggan, memberikan pengembalian investasi yang lebih tinggi.</p>
+            </div>
+            <div class="benefit-item animate-on-scroll stagger-2" style="text-align: center; padding: var(--space-6);">
+              <div style="font-size: 2.5rem; margin-bottom: var(--space-4);">🛡️</div>
+              <h3 style="color: var(--color-primary); margin-bottom: var(--space-3);">Efisiensi Biaya Jangka Panjang</h3>
+              <p style="color: var(--color-text-secondary); font-size: var(--text-sm);">Dengan kode yang bersih dan standar keamanan tinggi, Anda menghemat biaya pemeliharaan dan terhindar dari kerugian akibat celah keamanan.</p>
+            </div>
+            <div class="benefit-item animate-on-scroll stagger-3" style="text-align: center; padding: var(--space-6);">
+              <div style="font-size: 2.5rem; margin-bottom: var(--space-4);">💎</div>
+              <h3 style="color: var(--color-primary); margin-bottom: var(--space-3);">Kredibilitas Brand Premium</h3>
+              <p style="color: var(--color-text-secondary); font-size: var(--text-sm);">Tampilan eksklusif dan performa tanpa hambatan membangun citra bisnis profesional yang meningkatkan nilai tawar Anda di mata klien.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA SECTION -->
+      <section class="services-cta section">
+        <div class="container text-center">
+          <div class="services-cta__box animate-on-scroll">
+            <h2 class="services-cta__title">Banyak Bisnis Gagal di Internet Karena Mereka Hanya Memiliki Website, Bukan Solusi.</h2>
+            <p class="services-cta__text">
+              Di Sivilize Corp, kami memberikan keduanya. Jangan biarkan investasi Anda sia-sia dengan sistem yang lambat, tidak aman, dan sulit ditemukan pelanggan. 
+              Mari bangun masa depan digital Anda dengan standar profesional sekarang juga.
+            </p>
+            <div class="services-cta__actions">
+              <a href="contact.html" class="btn btn--primary btn--lg">Konsultasi Gratis Sekarang</a>
+              <a href="projects.html" class="btn btn--secondary btn--lg">Lihat Bukti Kerja Kami</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__container">
+        <nav class="footer__links" aria-label="Tautan cepat footer">
+          <a href="index.html">Beranda</a>
+          <a href="about.html">Tentang</a>
+          <a href="services.html">Jasa</a>
+          <a href="skills.html">Keahlian</a>
+          <a href="projects.html">Proyek</a>
+          <a href="contact.html">Kontak</a>
+        </nav>
+        <p class="footer__copyright">
+          &copy; <span id="copyright-year"></span> Sivilize Corp. All rights reserved. | Seluruh hak cipta dan kode sumber dilindungi oleh Sivilize Corp.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Page Transition Overlay (Disabled) -->
+  <div class="page-transition-overlay" style="display:none;" aria-hidden="true"></div>
+
+  <!-- JavaScript -->
+  <script src="js/utils.js"></script>
+  <script src="js/transition.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/animations.js"></script>
+  <script>
+    setCopyrightYear();
+  </script>
+</body>
+</html>

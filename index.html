@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sivilize Corp — Digital Industry Solutions: Precision, Security, & Integrity." />
+  <meta name="author" content="Sivilize Corp" />
+  <meta name="theme-color" content="#F7931E" />
+  <title>Sivilize Corp — Digital Industry Solutions</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/pages/home.css" />
+  
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="assets/images/logo.svg" as="image" />
+</head>
+<body>
+  <!-- Skip to main content (keyboard accessibility) -->
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <div class="page-wrapper">
+
+    <!-- NAVBAR -->
+    <header class="navbar" role="banner">
+      <div class="navbar__container">
+        <a href="index.html" class="navbar__logo" aria-label="Sivilize Corp - Beranda">
+          <img src="assets/images/logo.svg" alt="Sivilize Corp Logo" class="navbar__logo-image">
+        </a>
+        <nav class="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
+          <ul class="navbar__list">
+            <li><a href="index.html" class="navbar__link" data-page="home">Beranda</a></li>
+            <li><a href="about.html" class="navbar__link" data-page="about">Tentang</a></li>
+            <li><a href="services.html" class="navbar__link" data-page="services">Jasa</a></li>
+            <li><a href="skills.html" class="navbar__link" data-page="skills">Keahlian</a></li>
+            <li><a href="projects.html" class="navbar__link" data-page="projects">Proyek</a></li>
+            <li><a href="security.html" class="navbar__link" data-page="security">Keamanan</a></li>
+            <li><a href="simulate-attack.html" class="navbar__link" data-page="simulate-attack">Simulasi</a></li>
+            <li><a href="contact.html" class="navbar__link" data-page="contact">Kontak</a></li>
+          </ul>
+        </nav>
+        <button
+          class="navbar__hamburger"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
+      <!-- HERO SECTION -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__container">
+          <div class="hero__layout">
+
+            <!-- Hero Content -->
+            <div class="hero__content animate-on-scroll stagger-1">
+              <span class="hero__greeting">Solusi Digital Berintegritas</span>
+              <h1 class="hero__title" id="hero-title">
+                Membangun Masa Depan
+                <span class="hero__title-accent">Digital Indonesia.</span>
+              </h1>
+              <p class="hero__role">
+                Precision &bull; Security &bull; Integrity
+              </p>
+              <p class="hero__description">
+                Kami bukan sekadar agensi, tapi partner strategis dalam membangun sistem digital yang tangguh untuk sektor industri, konstruksi, dan retail.
+              </p>
+              
+              <!-- Human Touch: Founder Quote -->
+              <div class="hero__quote animate-on-scroll stagger-2" style="margin-bottom: var(--space-8); padding-left: var(--space-4); border-left: 2px solid var(--color-accent); font-style: italic; color: var(--color-text-secondary); font-size: var(--text-sm);">
+                "Teknologi terbaik adalah teknologi yang mengerti masalah nyata di lapangan."
+                <span style="display: block; margin-top: var(--space-1); font-weight: 600; font-style: normal; color: var(--color-primary);">— Muhamad Adrian, Founder</span>
+              </div>
+              <div class="hero__cta-group">
+                <a href="projects.html" class="btn btn--primary">
+                  Solusi Produk
+                </a>
+                <a href="contact.html" class="btn btn--secondary">
+                  Hubungi Founder
+                </a>
+              </div>
+            </div>
+
+            <!-- Hero Decorative Element -->
+            <div class="hero__image-wrapper animate-on-scroll stagger-2">
+              <div class="hero__image-frame" style="display:flex; align-items:center; justify-content:center; background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-alt) 100%); border: 2px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-12); box-shadow: var(--shadow-accent);">
+                <div style="text-align:center;">
+                  <img src="assets/images/logo.svg" alt="Sivilize Corp Logo" style="width: 180px; height: auto; margin-bottom: var(--space-4);">
+                  <div style="font-family: var(--font-sans); font-size: var(--text-sm); color: var(--color-text-secondary); margin-top: var(--space-3); letter-spacing: 2px; text-transform: uppercase;">
+                    Digital Industry Solutions
+                  </div>
+                  <div style="width: 60px; height: 3px; background: var(--color-primary); border-radius: var(--radius-full); margin: var(--space-4) auto 0;"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__container">
+        <nav class="footer__links" aria-label="Tautan cepat footer">
+          <a href="index.html">Beranda</a>
+          <a href="about.html">Tentang</a>
+          <a href="services.html">Jasa</a>
+          <a href="skills.html">Keahlian</a>
+          <a href="projects.html">Proyek</a>
+          <a href="contact.html">Kontak</a>
+        </nav>
+        <p class="footer__copyright">
+          &copy; <span id="copyright-year"></span> Sivilize Corp. All rights reserved. | Seluruh hak cipta dan kode sumber dilindungi oleh Sivilize Corp.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Page Transition Overlay (Disabled) -->
+  <div class="page-transition-overlay" style="display:none;" aria-hidden="true"></div>
+
+  <!-- JavaScript -->
+  <script src="js/utils.js"></script>
+  <script src="js/transition.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/hero-glow.js"></script>
+  <script>
+    // Set copyright year
+    setCopyrightYear();
+  </script>
+</body>
+</html>

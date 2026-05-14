@@ -1,0 +1,241 @@
+/* ============================================
+   RESPONSIVE.CSS - Mobile-First Media Queries
+   ============================================ */
+
+/* ============================================
+   BASE (Mobile: 0px - 479px)
+   ============================================ */
+
+/* Navbar - Mobile */
+.navbar__nav {
+  display: none;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-4);
+  z-index: 999;
+}
+
+.navbar--open .navbar__nav {
+  display: flex;
+  animation: slideDown 0.3s ease forwards;
+}
+
+.navbar__list {
+  flex-direction: column;
+  width: 100%;
+  gap: var(--space-1);
+}
+
+.navbar__link {
+  display: block;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+}
+
+.navbar__hamburger {
+  display: flex;
+}
+
+/* Two Column - Mobile (stack) */
+.two-col {
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+/* Grid - Mobile (1 column) */
+.grid--2,
+.grid--3,
+.grid--4 {
+  grid-template-columns: 1fr;
+}
+
+/* Section - Mobile */
+.section {
+  padding-block: var(--space-12);
+}
+
+.section__title {
+  font-size: var(--text-3xl);
+}
+
+/* Hero - Mobile */
+.hero__content {
+  text-align: center;
+}
+
+.hero__title {
+  font-size: var(--text-3xl);
+}
+
+.hero__cta-group {
+  justify-content: center;
+}
+
+.hero__image-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* Footer - Mobile */
+.footer__container {
+  gap: var(--space-6);
+}
+
+/* ============================================
+   SM: 480px - 767px
+   ============================================ */
+@media (min-width: 480px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+
+  .hero__title {
+    font-size: var(--text-4xl);
+  }
+
+  .section__title {
+    font-size: var(--text-3xl);
+  }
+}
+
+/* ============================================
+   MD: 768px - 1023px (Tablet)
+   ============================================ */
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-8);
+  }
+
+  /* Navbar - Tablet (still hamburger) */
+  .navbar__nav {
+    display: none;
+  }
+
+  .navbar--open .navbar__nav {
+    display: flex;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  /* Grid - Tablet (2 columns) */
+  .grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Two Column - Tablet */
+  .two-col {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  /* Hero - Tablet */
+  .hero__title {
+    font-size: var(--text-4xl);
+  }
+
+  /* Section */
+  .section__title {
+    font-size: var(--text-4xl);
+  }
+
+  /* About - Tablet */
+  .about__layout {
+    grid-template-columns: 1fr 1.5fr;
+  }
+}
+
+/* ============================================
+   LG: 1024px - 1279px (Desktop Kecil)
+   ============================================ */
+@media (min-width: 1024px) {
+  /* Navbar - Desktop (horizontal links) */
+  .navbar__nav {
+    display: flex !important;
+    position: static;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    animation: none;
+  }
+
+  .navbar__list {
+    flex-direction: row;
+    width: auto;
+    gap: var(--space-2);
+  }
+
+  .navbar__link {
+    width: auto;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+  }
+
+  .navbar__hamburger {
+    display: none;
+  }
+
+  /* Grid - Desktop */
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Hero - Desktop */
+  .hero__title {
+    font-size: var(--text-5xl);
+  }
+
+  .hero__content {
+    text-align: left;
+  }
+
+  .hero__cta-group {
+    justify-content: flex-start;
+  }
+
+  .hero__image-wrapper {
+    justify-content: flex-end;
+  }
+
+  /* Section */
+  .section {
+    padding-block: var(--space-16);
+  }
+}
+
+/* ============================================
+   XL: 1280px+ (Desktop Besar)
+   ============================================ */
+@media (min-width: 1280px) {
+  .container {
+    padding-inline: var(--space-8);
+  }
+
+  .hero__title {
+    font-size: var(--text-5xl);
+  }
+
+  .section {
+    padding-block: var(--space-24);
+  }
+}

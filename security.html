@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sivilize Corp — Digital Industry Solutions: Precision, Security, & Integrity." />
+  <meta name="author" content="Sivilize Corp" />
+  <meta name="theme-color" content="#F7931E" />
+  <title>Keamanan — Sivilize Corp</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/pages/security.css" />
+</head>
+<body>
+  <!-- Skip to main content -->
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <div class="page-wrapper">
+
+    <!-- NAVBAR -->
+    <header class="navbar" role="banner">
+      <div class="navbar__container">
+        <a href="index.html" class="navbar__logo" aria-label="Sivilize Corp - Beranda">
+          <img src="assets/images/logo.svg" alt="Sivilize Corp Logo" class="navbar__logo-image">
+        </a>
+        <nav class="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
+          <ul class="navbar__list">
+            <li><a href="index.html" class="navbar__link" data-page="home">Beranda</a></li>
+            <li><a href="about.html" class="navbar__link" data-page="about">Tentang</a></li>
+            <li><a href="services.html" class="navbar__link" data-page="services">Jasa</a></li>
+            <li><a href="skills.html" class="navbar__link" data-page="skills">Keahlian</a></li>
+            <li><a href="projects.html" class="navbar__link" data-page="projects">Proyek</a></li>
+            <li><a href="security.html" class="navbar__link" data-page="security">Keamanan</a></li>
+            <li><a href="simulate-attack.html" class="navbar__link" data-page="simulate-attack">Simulasi</a></li>
+            <li><a href="contact.html" class="navbar__link" data-page="contact">Kontak</a></li>
+          </ul>
+        </nav>
+        <button
+          class="navbar__hamburger"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
+      <!-- HERO KEAMANAN -->
+      <section class="sec-hero" aria-labelledby="sec-hero-title">
+        <div class="sec-hero__container">
+          <div class="sec-hero__content animate-on-scroll">
+            <span class="sec-hero__label">🔐 Sistem Keamanan</span>
+            <h1 class="sec-hero__title" id="sec-hero-title">
+              Keamanan Bukan<br/>
+              <span class="sec-hero__title-accent">Sekadar Fitur</span>
+            </h1>
+            <p class="sec-hero__desc">
+              Setiap sistem yang saya bangun dirancang dengan keamanan sebagai fondasi utama,
+              bukan tambahan di akhir. Berikut adalah implementasi nyata sistem keamanan berlapis
+              yang saya terapkan pada proyek <strong>Sivilize Hub Pro</strong> dan <strong>SiKasir</strong> —
+              dua produk live yang sudah berjalan di production.
+            </p>
+            <div class="sec-hero__badges">
+              <span class="sec-hero__badge">✅ Production Ready</span>
+              <span class="sec-hero__badge">✅ Real Implementation</span>
+              <span class="sec-hero__badge">✅ Battle Tested</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREENSHOT FIREWALL -->
+      <section class="sec-proof" aria-labelledby="sec-proof-title">
+        <div class="sec-proof__container">
+          <div class="sec-proof__header animate-on-scroll">
+            <span class="sec-proof__label">Bukti Implementasi</span>
+            <h2 class="sec-proof__title" id="sec-proof-title">Kode Firewall Nyata</h2>
+            <p class="sec-proof__subtitle">
+              Bukan sekadar klaim — ini adalah kode firewall middleware yang berjalan
+              di server produksi Sivilize Hub Pro setiap harinya.
+            </p>
+          </div>
+
+          <div class="sec-proof__screenshots-grid">
+
+          <!-- Screenshot 1 -->
+          <div class="sec-proof__screenshot animate-on-scroll stagger-1">
+            <div class="sec-proof__screenshot-header">
+              <div class="sec-proof__dots"><span></span><span></span><span></span></div>
+              <span class="sec-proof__filename">firewall.js — Part 1: Storage & Config</span>
+            </div>
+            <div class="sec-proof__image-wrapper">
+              <img src="assets/images/security/firewall-code (1).png" alt="Firewall kode bagian 1: storage dan konfigurasi" class="sec-proof__image" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Screenshot 2 -->
+          <div class="sec-proof__screenshot animate-on-scroll stagger-2">
+            <div class="sec-proof__screenshot-header">
+              <div class="sec-proof__dots"><span></span><span></span><span></span></div>
+              <span class="sec-proof__filename">firewall.js — Part 2: DDoS Middleware</span>
+            </div>
+            <div class="sec-proof__image-wrapper">
+              <img src="assets/images/security/firewall-code (2).png" alt="Firewall kode bagian 2: DDoS middleware" class="sec-proof__image" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Screenshot 3 -->
+          <div class="sec-proof__screenshot animate-on-scroll stagger-3">
+            <div class="sec-proof__screenshot-header">
+              <div class="sec-proof__dots"><span></span><span></span><span></span></div>
+              <span class="sec-proof__filename">firewall.js — Part 3: Rate Limiting Logic</span>
+            </div>
+            <div class="sec-proof__image-wrapper">
+              <img src="assets/images/security/firewall-code (3).png" alt="Firewall kode bagian 3: rate limiting" class="sec-proof__image" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Screenshot 4 -->
+          <div class="sec-proof__screenshot animate-on-scroll stagger-4">
+            <div class="sec-proof__screenshot-header">
+              <div class="sec-proof__dots"><span></span><span></span><span></span></div>
+              <span class="sec-proof__filename">firewall.js — Part 4: Block & Blacklist</span>
+            </div>
+            <div class="sec-proof__image-wrapper">
+              <img src="assets/images/security/firewall-code (4).png" alt="Firewall kode bagian 4: block dan blacklist" class="sec-proof__image" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Screenshot 5 -->
+          <div class="sec-proof__screenshot animate-on-scroll stagger-5">
+            <div class="sec-proof__screenshot-header">
+              <div class="sec-proof__dots"><span></span><span></span><span></span></div>
+              <span class="sec-proof__filename">firewall.js — Part 5: Brute Force Prevention</span>
+            </div>
+            <div class="sec-proof__image-wrapper">
+              <img src="assets/images/security/firewall-code (5).png" alt="Firewall kode bagian 5: brute force prevention" class="sec-proof__image" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Screenshot 6 -->
+          <div class="sec-proof__screenshot animate-on-scroll stagger-1">
+            <div class="sec-proof__screenshot-header">
+              <div class="sec-proof__dots"><span></span><span></span><span></span></div>
+              <span class="sec-proof__filename">firewall.js — Part 6: Suspicious Pattern Detection</span>
+            </div>
+            <div class="sec-proof__image-wrapper">
+              <img src="assets/images/security/firewall-code.png" alt="Firewall kode bagian 6: suspicious pattern detection" class="sec-proof__image" loading="lazy" />
+            </div>
+          </div>
+
+          </div><!-- end screenshots-grid -->
+      </section>
+
+      <!-- LAYER KEAMANAN -->
+      <section class="sec-layers" aria-labelledby="sec-layers-title">
+        <div class="sec-layers__container">
+          <div class="sec-layers__header animate-on-scroll">
+            <span class="sec-layers__label">Arsitektur Keamanan</span>
+            <h2 class="sec-layers__title" id="sec-layers-title">11 Layer Perlindungan</h2>
+            <p class="sec-layers__subtitle">
+              Sistem keamanan berlapis yang memastikan setiap ancaman ditangani
+              sebelum mencapai data pengguna.
+            </p>
+          </div>
+
+          <div class="sec-layers__grid">
+
+            <div class="sec-layer animate-on-scroll stagger-1">
+              <div class="sec-layer__number">01</div>
+              <div class="sec-layer__icon">🔐</div>
+              <h3 class="sec-layer__title">Security Response Headers</h3>
+              <p class="sec-layer__desc">
+                Inject header keamanan ke semua response: <strong>XSS Protection</strong>,
+                <strong>no-sniff</strong>, <strong>no-frame</strong>, dan <strong>HSTS</strong>
+                untuk mencegah serangan berbasis browser.
+              </p>
+              <div class="sec-layer__tag">Header Security</div>
+            </div>
+
+            <div class="sec-layer animate-on-scroll stagger-2">
+              <div class="sec-layer__number">02</div>
+              <div class="sec-layer__icon">🌍</div>
+              <h3 class="sec-layer__title">Geo-blocking</h3>
+              <p class="sec-layer__desc">
+                Mampu memblokir akses berdasarkan <strong>negara asal</strong>.
+                Konfigurasi fleksibel — bisa diaktifkan kapan saja untuk membatasi
+                akses dari wilayah tertentu yang mencurigakan.
+              </p>
+              <div class="sec-layer__tag">Geo Filter</div>
+            </div>
+
+            <div class="sec-layer animate-on-scroll stagger-3">
+              <div class="sec-layer__number">03</div>
+              <div class="sec-layer__icon">🕵️</div>
+              <h3 class="sec-layer__title">IP Reputation Check</h3>
+              <p class="sec-layer__desc">
+                Cek IP yang sudah terbukti jahat dari sesi sebelumnya.
+                IP dengan reputasi buruk <strong>langsung ditolak</strong>
+                tanpa perlu melewati layer pemeriksaan lainnya.
+              </p>
+              <div class="sec-layer__tag">Reputation Filter</div>
+            </div>
+
+            <div class="sec-layer animate-on-scroll stagger-4">
+              <div class="sec-layer__number">04</div>
+              <div class="sec-layer__icon">🛠️</div>
+              <h3 class="sec-layer__title">User Agent Filter</h3>
+              <p class="sec-layer__desc">
+                Blokir tools hacking secara otomatis: <strong>sqlmap</strong>, <strong>Nikto</strong>,
+                <strong>Nmap</strong>, <strong>Hydra</strong>, <strong>Metasploit</strong>,
+                <strong>Burp Suite</strong>, dan tools berbahaya lainnya.
+              </p>
+              <div class="sec-layer__tag">Tool Blocker</div>
+            </div>
+
+            <div class="sec-layer animate-on-scroll stagger-5">
+              <div class="sec-layer__number">05</div>
+              <div class="sec-layer__icon">🤖</div>
+              <h3 class="sec-layer__title">Bot Detection</h3>
+              <p class="sec-layer__desc">
+                Deteksi bot dan scraper dari pola header yang mencurigakan.
+                Bot yang terdeteksi langsung dimasukkan ke <strong>blacklist otomatis</strong>
+                tanpa intervensi manual.
+              </p>
+              <div class="sec-layer__tag">Anti-Bot</div>
+            </div>
+
+            <div class="sec-layer animate-on-scroll stagger-1">
+              <div class="sec-layer__number">06</div>
+              <div class="sec-layer__icon">💣</div>
+              <h3 class="sec-layer__title">Payload Bomb Protection</h3>
+              <p class="sec-layer__desc">
+                Blokir request dengan body terlalu besar: lebih dari <strong>1MB untuk auth</strong>
+                atau lebih dari <strong>10MB untuk semua endpoint</strong>,
+                mencegah serangan payload bomb yang bisa melumpuhkan server.
+              </p>
+              <div class="sec-layer__tag">Size Limit</div>
+            </div>
+
+            <div class="sec-layer animate-on-scroll stagger-2">
+              <div class="sec-layer__number">07</div>
+              <div class="sec-layer__icon">💥</div>
+              <h3 class="sec-layer__title">DDoS Protection</h3>
+              <p class="sec-layer__desc">
+                Max <strong>200 request/menit</strong> per IP → blokir 30 menit.
+                Max <strong>100 request dalam 5 detik</strong> → blokir 2 jam.
+                Dua threshold berbeda untuk menangani serangan ringan maupun berat.
+              </p>
+              <div class="sec-layer__tag">Rate Limiting</div>
+            </div>
+
+            <div class="sec-layer animate-on-scroll stagger-3">
+              <div class="sec-layer__number">08</div>
+              <div class="sec-layer__icon">🌊</div>
+              <h3 class="sec-layer__title">Endpoint Flood Protection</h3>
+              <p class="sec-layer__desc">
+                Membatasi maksimal <strong>30 request ke endpoint yang sama</strong>
+                dalam 10 detik per IP, mencegah serangan flood yang menarget
+                endpoint spesifik seperti login atau API kritis.
+              </p>
+              <div class="sec-layer__tag">Endpoint Guard</div>
+            </div>
+
+            <div class="sec-layer animate-on-scroll stagger-4">
+              <div class="sec-layer__number">09</div>
+              <div class="sec-layer__icon">🔑</div>
+              <h3 class="sec-layer__title">Brute Force Protection</h3>
+              <p class="sec-layer__desc">
+                Khusus login/register — maksimal <strong>5 percobaan gagal</strong>
+                dalam 15 menit → blokir 1 jam + <strong>kirim email alert</strong>
+                otomatis ke admin.
+              </p>
+              <div class="sec-layer__tag">Auth Protection</div>
+            </div>
+
+            <div class="sec-layer animate-on-scroll stagger-5">
+              <div class="sec-layer__number">10</div>
+              <div class="sec-layer__icon">⚖️</div>
+              <h3 class="sec-layer__title">User Rate Limiter</h3>
+              <p class="sec-layer__desc">
+                Per user (JWT): <strong>300 request/15 menit</strong> umum,
+                <strong>20 export/jam</strong>, dan <strong>50 RAB/jam</strong>.
+                Memastikan tidak ada user yang memonopoli resource server.
+              </p>
+              <div class="sec-layer__tag">Per-User Limit</div>
+            </div>
+
+            <div class="sec-layer animate-on-scroll stagger-1">
+              <div class="sec-layer__number">11</div>
+              <div class="sec-layer__icon">🛡️</div>
+              <h3 class="sec-layer__title">CSRF Protection</h3>
+              <p class="sec-layer__desc">
+                Token <strong>one-time-use</strong> untuk semua request
+                POST/PUT/DELETE (kecuali auth), mencegah serangan
+                Cross-Site Request Forgery yang bisa memanipulasi aksi pengguna.
+              </p>
+              <div class="sec-layer__tag">CSRF Guard</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS KEAMANAN -->
+      <section class="sec-stats" aria-labelledby="sec-stats-title">
+        <div class="sec-stats__container">
+          <h2 class="sec-stats__title" id="sec-stats-title" aria-label="Statistik keamanan">Sistem Berjalan di Produksi</h2>
+          <div class="sec-stats__grid">
+            <div class="sec-stats__item animate-on-scroll stagger-1">
+              <span class="sec-stats__number">11</span>
+              <span class="sec-stats__label">Layer Keamanan</span>
+            </div>
+            <div class="sec-stats__item animate-on-scroll stagger-2">
+              <span class="sec-stats__number">200</span>
+              <span class="sec-stats__label">Max Request/Menit</span>
+            </div>
+            <div class="sec-stats__item animate-on-scroll stagger-3">
+              <span class="sec-stats__number">24/7</span>
+              <span class="sec-stats__label">Monitoring Aktif</span>
+            </div>
+            <div class="sec-stats__item animate-on-scroll stagger-4">
+              <span class="sec-stats__number">0ms</span>
+              <span class="sec-stats__label">Response Delay</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="sec-cta" aria-labelledby="sec-cta-title">
+        <div class="sec-cta__container animate-on-scroll">
+          <h2 class="sec-cta__title" id="sec-cta-title">Butuh Sistem yang Aman untuk Proyek Anda?</h2>
+          <p class="sec-cta__desc">
+            Saya siap membangun sistem dengan standar keamanan yang sama untuk proyek Anda.
+            Keamanan bukan opsi — ini adalah keharusan.
+          </p>
+          <div class="sec-cta__buttons">
+            <a href="contact.html" class="btn btn--primary btn--lg">Diskusikan Proyek</a>
+            <a href="projects.html" class="btn btn--secondary btn--lg">Lihat Proyek Lainnya</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__container">
+        <nav class="footer__links" aria-label="Tautan cepat footer">
+          <a href="index.html">Beranda</a>
+          <a href="about.html">Tentang</a>
+          <a href="services.html">Jasa</a>
+          <a href="skills.html">Keahlian</a>
+          <a href="projects.html">Proyek</a>
+          <a href="security.html">Keamanan</a>
+          <a href="contact.html">Kontak</a>
+        </nav>
+        <p class="footer__copyright">
+          &copy; <span id="copyright-year"></span> Sivilize Corp. All rights reserved. | Seluruh hak cipta dan kode sumber dilindungi oleh Sivilize Corp.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Page Transition Overlay (Disabled) -->
+  <div class="page-transition-overlay" style="display:none;" aria-hidden="true"></div>
+
+  <!-- JavaScript -->
+  <script src="js/utils.js"></script>
+  <script src="js/transition.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/animations.js"></script>
+  <script>
+    setCopyrightYear();
+  </script>
+</body>
+</html>

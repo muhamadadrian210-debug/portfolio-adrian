@@ -1,0 +1,230 @@
+/* ============================================
+   PROJECTS.CSS - Projects Section Styles
+   ============================================ */
+
+/* ============================================
+   PROJECTS SECTION
+   ============================================ */
+.projects {
+  padding-block: var(--space-16);
+  background-color: var(--color-base);
+}
+
+.projects__container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* ============================================
+   PROJECTS HEADER
+   ============================================ */
+.projects__header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.projects__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.projects__title {
+  font-family: var(--font-mono);
+  font-size: var(--text-4xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.projects__subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+/* ============================================
+   PROJECTS GRID
+   ============================================ */
+.projects__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+/* ============================================
+   PROJECT CARD
+   ============================================ */
+.project-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.project-card__number {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-5xl);
+  font-weight: 900;
+  color: var(--color-primary);
+  opacity: 0.05;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.project-card:hover .project-card__number {
+  opacity: 0.15;
+  transform: translateY(-5px);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--shadow-accent);
+  border-color: var(--color-primary);
+}
+
+/* ============================================
+   PROJECT CARD IMAGE
+   ============================================ */
+.project-card__image-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--color-surface-alt);
+  position: relative;
+}
+
+.project-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+  display: block;
+}
+
+.project-card:hover .project-card__image {
+  transform: scale(1.05);
+}
+
+/* Image Placeholder */
+.project-card__image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1A1A2E 0%, #2D1B00 100%);
+  position: relative;
+}
+
+.project-card__image-placeholder-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: -2px;
+  opacity: 0.8;
+}
+
+/* ============================================
+   PROJECT CARD BODY
+   ============================================ */
+.project-card__body {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-card__title {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+}
+
+.project-card__description {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+  flex: 1;
+}
+
+/* ============================================
+   PROJECT CARD TECH BADGES
+   ============================================ */
+.project-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.project-card__tech .badge--tech {
+  background-color: rgba(247, 147, 30, 0.15);
+  color: var(--color-primary);
+  border: 1px solid rgba(247, 147, 30, 0.3);
+  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+/* ============================================
+   PROJECT CARD ACTIONS
+   ============================================ */
+.project-card__actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.project-card__actions .btn {
+  flex: 1;
+  min-width: 120px;
+}
+
+.project-card__actions .btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================
+   RESPONSIVE - Projects
+   ============================================ */
+@media (min-width: 768px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .projects__title {
+    font-size: var(--text-4xl);
+  }
+}

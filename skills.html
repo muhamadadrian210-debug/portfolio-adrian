@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sivilize Corp — Digital Industry Solutions: Precision, Security, & Integrity." />
+  <meta name="author" content="Sivilize Corp" />
+  <meta name="theme-color" content="#F7931E" />
+  <title>Core Technologies — Sivilize Corp</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/pages/skills.css" />
+
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="assets/images/logo.svg" as="image" />
+</head>
+<body>
+  <!-- Skip to main content (keyboard accessibility) -->
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <div class="page-wrapper">
+
+    <!-- NAVBAR -->
+    <header class="navbar" role="banner">
+      <div class="navbar__container">
+        <a href="index.html" class="navbar__logo" aria-label="Sivilize Corp - Beranda">
+          <img src="assets/images/logo.svg" alt="Sivilize Corp Logo" class="navbar__logo-image">
+        </a>
+        <nav class="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
+          <ul class="navbar__list">
+            <li><a href="index.html" class="navbar__link" data-page="home">Beranda</a></li>
+            <li><a href="about.html" class="navbar__link" data-page="about">Tentang</a></li>
+            <li><a href="services.html" class="navbar__link" data-page="services">Jasa</a></li>
+            <li><a href="skills.html" class="navbar__link" data-page="skills">Keahlian</a></li>
+            <li><a href="projects.html" class="navbar__link" data-page="projects">Proyek</a></li>
+            <li><a href="security.html" class="navbar__link" data-page="security">Keamanan</a></li>
+            <li><a href="simulate-attack.html" class="navbar__link" data-page="simulate-attack">Simulasi</a></li>
+            <li><a href="contact.html" class="navbar__link" data-page="contact">Kontak</a></li>
+          </ul>
+        </nav>
+        <button
+          class="navbar__hamburger"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
+      <!-- SKILLS SECTION -->
+      <section class="skills" aria-labelledby="skills-title">
+        <div class="skills__container">
+
+          <!-- Header -->
+          <div class="skills__header animate-on-scroll">
+            <span class="skills__label">Core Technologies</span>
+            <h1 class="skills__title" id="skills-title">Stack Teknologi Perusahaan</h1>
+            <p class="skills__subtitle">
+              Teknologi yang kami gunakan untuk membangun solusi digital yang presisi dan aman.
+            </p>
+          </div>
+
+          <!-- Skills Grid (rendered by JS) -->
+          <div class="skills__grid" id="skills-grid" aria-label="Daftar keahlian teknis">
+            <!-- Rendered by skills.js -->
+          </div>
+
+          <!-- Human Touch: Commitment -->
+          <div class="skills__commitment animate-on-scroll" style="margin-top: var(--space-16); text-align: center; padding: var(--space-8); background: var(--color-surface); border-radius: var(--radius-xl); border: 1px solid var(--color-border);">
+            <div style="font-size: var(--text-3xl); margin-bottom: var(--space-2);">🎯</div>
+            <h3 style="color: var(--color-primary); margin-bottom: var(--space-3);">Komitmen pada Kualitas</h3>
+            <p style="max-width: 600px; margin-inline: auto; color: var(--color-text-secondary);">
+              Teknologi hanyalah alat. Fokus utama kami adalah bagaimana alat tersebut bisa memberikan nilai nyata, keamanan maksimal, dan efisiensi bagi bisnis Anda. Kami terus memperbarui stack kami untuk memastikan Anda mendapatkan yang terbaik.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__container">
+        <nav class="footer__links" aria-label="Tautan cepat footer">
+          <a href="index.html">Beranda</a>
+          <a href="about.html">Tentang</a>
+          <a href="services.html">Jasa</a>
+          <a href="skills.html">Keahlian</a>
+          <a href="projects.html">Proyek</a>
+          <a href="contact.html">Kontak</a>
+        </nav>
+        <p class="footer__copyright">
+          &copy; <span id="copyright-year"></span> Sivilize Corp. All rights reserved. | Seluruh hak cipta dan kode sumber dilindungi oleh Sivilize Corp.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Page Transition Overlay (Disabled) -->
+  <div class="page-transition-overlay" style="display:none;" aria-hidden="true"></div>
+
+  <!-- JavaScript -->
+  <script src="js/utils.js"></script>
+  <script src="js/data/skills.js"></script>
+  <script src="js/transition.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/animations.js"></script>
+  <script>
+    setCopyrightYear();
+
+    // Render skills grid
+    (function renderSkills() {
+      const grid = document.getElementById('skills-grid');
+      if (!grid || !Array.isArray(skills)) return;
+
+      const staggerClasses = ['stagger-1', 'stagger-2', 'stagger-3', 'stagger-4'];
+
+      const html = skills.map(function(category, index) {
+        const badgesHtml = category.items.map(function(item) {
+          return '<span class="skill-badge">' + item + '</span>';
+        }).join('');
+
+        return '<div class="skill-category animate-on-scroll ' + (staggerClasses[index] || '') + '" role="region" aria-labelledby="category-' + index + '">' +
+          '<div class="skill-category__header">' +
+            '<span class="skill-category__icon" aria-hidden="true">' + category.icon + '</span>' +
+            '<h2 class="skill-category__name" id="category-' + index + '">' + category.category + '</h2>' +
+          '</div>' +
+          '<div class="skill-category__items" aria-label="Keahlian ' + category.category + '">' +
+            badgesHtml +
+          '</div>' +
+        '</div>';
+      }).join('');
+
+      grid.innerHTML = html;
+    })();
+  </script>
+</body>
+</html>

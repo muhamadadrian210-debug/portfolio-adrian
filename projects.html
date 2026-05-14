@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sivilize Corp — Digital Industry Solutions: Precision, Security, & Integrity." />
+  <meta name="author" content="Sivilize Corp" />
+  <meta name="theme-color" content="#F7931E" />
+  <title>Product Ecosystem — Sivilize Corp</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/pages/projects.css" />
+
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="assets/images/logo.svg" as="image" />
+</head>
+<body>
+  <!-- Skip to main content (keyboard accessibility) -->
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <div class="page-wrapper">
+
+    <!-- NAVBAR -->
+    <header class="navbar" role="banner">
+      <div class="navbar__container">
+        <a href="index.html" class="navbar__logo" aria-label="Sivilize Corp - Beranda">
+          <img src="assets/images/logo.svg" alt="Sivilize Corp Logo" class="navbar__logo-image">
+        </a>
+        <nav class="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
+          <ul class="navbar__list">
+            <li><a href="index.html" class="navbar__link" data-page="home">Beranda</a></li>
+            <li><a href="about.html" class="navbar__link" data-page="about">Tentang</a></li>
+            <li><a href="services.html" class="navbar__link" data-page="services">Jasa</a></li>
+            <li><a href="skills.html" class="navbar__link" data-page="skills">Keahlian</a></li>
+            <li><a href="projects.html" class="navbar__link" data-page="projects">Proyek</a></li>
+            <li><a href="security.html" class="navbar__link" data-page="security">Keamanan</a></li>
+            <li><a href="simulate-attack.html" class="navbar__link" data-page="simulate-attack">Simulasi</a></li>
+            <li><a href="contact.html" class="navbar__link" data-page="contact">Kontak</a></li>
+          </ul>
+        </nav>
+        <button
+          class="navbar__hamburger"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
+      <!-- PROJECTS SECTION -->
+      <section class="projects" aria-labelledby="projects-title">
+        <div class="projects__container">
+
+          <!-- Header -->
+          <div class="projects__header animate-on-scroll">
+            <span class="projects__label">Product Ecosystem</span>
+            <h1 class="projects__title" id="projects-title">Produk Resmi Sivilize Corp</h1>
+            <p class="projects__subtitle">
+              Dua produk live yang sudah berjalan di production, melayani industri konstruksi dan retail Indonesia.
+            </p>
+          </div>
+
+          <!-- Projects Grid (rendered by JS) -->
+          <div class="projects__grid" id="projects-grid" aria-label="Daftar proyek">
+            <!-- Rendered by projects.js -->
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__container">
+        <nav class="footer__links" aria-label="Tautan cepat footer">
+          <a href="index.html">Beranda</a>
+          <a href="about.html">Tentang</a>
+          <a href="services.html">Jasa</a>
+          <a href="skills.html">Keahlian</a>
+          <a href="projects.html">Proyek</a>
+          <a href="contact.html">Kontak</a>
+        </nav>
+        <p class="footer__copyright">
+          &copy; <span id="copyright-year"></span> Sivilize Corp. All rights reserved. | Seluruh hak cipta dan kode sumber dilindungi oleh Sivilize Corp.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Page Transition Overlay (Disabled) -->
+  <div class="page-transition-overlay" style="display:none;" aria-hidden="true"></div>
+
+  <!-- JavaScript -->
+  <script src="js/utils.js"></script>
+  <script src="js/data/projects.js"></script>
+  <script src="js/transition.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/animations.js"></script>
+  <script>
+    setCopyrightYear();
+
+    // Render projects grid
+    (function renderProjects() {
+      const grid = document.getElementById('projects-grid');
+      if (!grid || !Array.isArray(projects)) return;
+
+      if (projects.length === 0) {
+        grid.innerHTML = '<p class="projects__empty">Belum ada proyek yang ditampilkan.</p>';
+        return;
+      }
+
+      const html = projects.map(function(project, index) {
+        return renderProjectCard(project, index);
+      }).join('');
+
+      grid.innerHTML = html;
+
+      // Re-initialize animations for dynamically rendered cards
+      if (typeof AnimationController !== 'undefined') {
+        // AnimationController already initialized, observe new elements
+        document.querySelectorAll('.animate-on-scroll:not(.is-visible)').forEach(function(el) {
+          // Trigger visibility for elements already in viewport
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight) {
+            el.classList.add('is-visible');
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

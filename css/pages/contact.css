@@ -1,0 +1,275 @@
+/* ============================================
+   CONTACT.CSS - Contact Section Styles
+   ============================================ */
+
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+.contact {
+  padding-block: var(--space-16);
+  background-color: var(--color-base);
+}
+
+.contact__container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* ============================================
+   CONTACT HEADER
+   ============================================ */
+.contact__header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.contact__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.contact__title {
+  font-family: var(--font-mono);
+  font-size: var(--text-4xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.contact__subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+/* ============================================
+   CONTACT LAYOUT
+   ============================================ */
+.contact__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+/* ============================================
+   CONTACT ITEM
+   ============================================ */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+  background-color: var(--color-surface-alt);
+}
+
+.contact-item:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ============================================
+   CONTACT ICON
+   ============================================ */
+.contact-item__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform var(--transition-base);
+}
+
+.contact-item:hover .contact-item__icon {
+  transform: scale(1.1);
+}
+
+.contact-item__icon--whatsapp {
+  background-color: rgba(37, 211, 102, 0.1);
+  border: 2px solid rgba(37, 211, 102, 0.3);
+}
+
+.contact-item__icon--linkedin {
+  background-color: rgba(0, 119, 181, 0.1);
+  border: 2px solid rgba(0, 119, 181, 0.3);
+}
+
+.contact-item__icon--tiktok {
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.contact-item__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ============================================
+   CONTACT INFO
+   ============================================ */
+.contact-item__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-item__platform {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-1);
+  display: block;
+}
+
+.contact-item__value {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-item__description {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+/* ============================================
+   CONTACT ARROW
+   ============================================ */
+.contact-item__arrow {
+  color: var(--color-text-muted);
+  font-size: var(--text-xl);
+  transition: transform var(--transition-base), color var(--transition-base);
+  flex-shrink: 0;
+}
+
+.contact-item:hover .contact-item__arrow {
+  transform: translateX(4px);
+  color: var(--color-primary);
+}
+
+/* ============================================
+   RESPONSIVE - Contact
+   ============================================ */
+@media (min-width: 768px) {
+  .contact__layout {
+    gap: var(--space-6);
+  }
+
+  .contact-item__value {
+    font-size: var(--text-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Switch to horizontal 3-column grid on desktop */
+  .contact__layout {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1100px;
+    gap: var(--space-6);
+  }
+
+  .contact__title {
+    font-size: var(--text-4xl);
+  }
+
+  /* Stack icon and info vertically inside each card on desktop grid */
+  .contact-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .contact-item__icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .contact-item__icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .contact-item__arrow {
+    align-self: flex-end;
+    margin-top: auto;
+  }
+
+  .contact-item:hover {
+    transform: translateY(-6px);
+  }
+}
+
+/* ============================================
+   CONTACT ADDRESS
+   ============================================ */
+.contact__address {
+  max-width: 800px;
+  margin-inline: auto;
+  margin-bottom: var(--space-8);
+}
+
+.contact__address-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact__address-item span:first-child {
+  font-size: var(--text-2xl);
+  flex-shrink: 0;
+}
+
+.contact__address-item div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.contact__address-item strong {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.contact__address-item span:last-child {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}

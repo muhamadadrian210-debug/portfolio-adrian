@@ -145,13 +145,14 @@
 
 .hero__image-frame {
   position: relative;
-  display: inline-block;
-  background: rgba(15, 22, 41, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-alt) 100%);
+  border: 2px solid var(--color-border);
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(247, 147, 30, 0.2);
+  padding: var(--space-12);
+  box-shadow: var(--shadow-accent);
   transition: transform var(--transition-slow);
 }
 
@@ -159,35 +160,31 @@
   transform: translateY(-10px) rotate(1deg);
 }
 
-.hero__image-frame::before {
-  content: '';
-  position: absolute;
-  inset: -12px;
-  border: 1px solid var(--color-accent);
-  border-radius: calc(var(--radius-xl) + 12px);
-  opacity: 0.2;
-  pointer-events: none;
-  transition: opacity var(--transition-base);
+.hero__image-content {
+  text-align: center;
 }
 
-.hero__image-frame:hover::before {
-  opacity: 0.5;
+.hero__image-logo {
+  width: 180px;
+  height: auto;
+  margin-bottom: var(--space-4);
 }
 
-.hero__image-frame::after {
-  content: 'SIVILIZE';
-  position: absolute;
-  top: -10px;
-  right: -20px;
-  padding: 4px 10px;
-  background-color: var(--color-accent);
-  color: var(--color-text-inverse);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 800;
-  border-radius: var(--radius-sm);
+.hero__image-tagline {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-3);
   letter-spacing: 2px;
-  z-index: 2;
+  text-transform: uppercase;
+}
+
+.hero__image-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  margin: var(--space-4) auto 0;
 }
 
 .hero__image {

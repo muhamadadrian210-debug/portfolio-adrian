@@ -1,229 +1,118 @@
 /* ============================================
-   SERVICES.CSS - Services Page Styles
+   SERVICES.CSS - BMW Corporate Style
    ============================================ */
 
-/* ============================================
-   SERVICES HERO
-   ============================================ */
 .services-hero {
-  padding-block: var(--space-24);
-  background: #000;
-  text-align: left;
-  border-bottom: none;
+  padding-block: var(--space-section);
+  background-color: var(--color-canvas);
+  border-bottom: 1px solid var(--color-hairline);
 }
 
-.services-hero__container {
-  max-width: 1400px;
-  margin-inline: auto;
-  padding-inline: var(--space-8);
+.services-hero__label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
 }
 
 .services-hero__title {
-  font-family: var(--font-sans);
-  font-size: clamp(3rem, 5vw, 4rem);
-  margin-bottom: var(--space-4);
-  line-height: 1.1;
-  text-transform: none;
-  color: #fff;
+  font-size: 48px; /* display-lg */
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--color-ink);
 }
 
 .services-hero__subtitle {
-  font-family: var(--font-sans);
-  font-size: var(--text-xl);
-  color: rgba(255,255,255,0.7);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--color-body);
   max-width: 800px;
-  margin-inline: 0;
 }
 
+/* 4-UP GRID FOR SERVICES */
 .services-grid {
+  padding-block: var(--space-section);
+  background-color: var(--color-surface-soft);
+}
+
+.grid--auto-fit {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-8);
-  padding-block: var(--space-24);
-  max-width: 1400px;
-  margin-inline: auto;
-  padding-inline: var(--space-8);
+  gap: var(--space-lg);
 }
 
 .service-card {
-  background: #fff;
-  border: none;
-  padding: 0;
-  border-radius: 0;
-  transition: opacity var(--transition-base);
+  background-color: var(--color-canvas);
+  padding: var(--space-lg);
+  border-radius: var(--radius-none);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-base);
 }
 
 .service-card:hover {
-  opacity: 0.8;
-  transform: none;
-  box-shadow: none;
+  background-color: var(--color-surface-card);
 }
 
-.service-card__image {
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  margin-bottom: var(--space-6);
+.service-card__icon {
+  font-size: 32px;
+  margin-bottom: var(--space-lg);
+  color: var(--color-primary);
 }
 
 .service-card__title {
-  font-family: var(--font-sans);
-  font-size: var(--text-2xl);
-  color: #000;
-  margin-bottom: var(--space-4);
+  font-size: 20px; /* title-lg */
   font-weight: 700;
-}
-
-.service-card__description {
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  color: #666;
-  line-height: 1.6;
+  margin-bottom: var(--space-md);
+  color: var(--color-ink);
 }
 
 .service-card__list {
-  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  margin-top: var(--space-6);
+  gap: var(--space-sm);
 }
 
 .service-card__list li {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color-body);
   position: relative;
-  padding-left: var(--space-6);
-  color: #666;
-  font-size: var(--text-sm);
-  line-height: 1.5;
+  padding-left: 20px;
 }
 
 .service-card__list li::before {
-  content: '→';
+  content: '›';
   position: absolute;
   left: 0;
-  color: #000;
+  color: var(--color-primary);
   font-weight: 700;
 }
 
-.service-card__list strong {
-  color: #000;
-  display: block;
-  margin-bottom: var(--space-1);
+/* WHY CHOOSE US - Corporate Band */
+.services-why {
+  padding-block: var(--space-section);
+  background-color: var(--color-canvas);
 }
 
-/* ============================================
-   CTA SECTION
-   ============================================ */
-.services-cta__box {
-  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-alt) 100%);
-  padding: var(--space-16) var(--space-8);
-  border-radius: var(--radius-2xl);
-  border: 1px solid var(--color-border);
+.services-why__content {
   max-width: 1000px;
   margin-inline: auto;
-  box-shadow: var(--shadow-lg);
-}
-
-.services-cta__title {
-  font-size: var(--text-4xl);
-  margin-bottom: var(--space-6);
-  color: var(--color-text-primary);
-}
-
-.services-cta__text {
-  font-size: var(--text-lg);
-  color: var(--color-text-secondary);
-  max-width: 700px;
-  margin-inline: auto;
-  margin-bottom: var(--space-12);
-}
-
-.services-cta__actions {
-  display: flex;
-  gap: var(--space-4);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-@media (max-width: 768px) {
-  .services-hero {
-    padding-block: var(--space-16) var(--space-8);
-  }
-  
-  .service-card {
-    padding: var(--space-6);
-  }
-  
-  .services-cta__box {
-    padding: var(--space-12) var(--space-4);
-  }
-}
-
-/* ============================================
-   WHY CHOOSE US
-   ============================================ */
-.services-why {
-  padding-block: var(--space-20);
-  text-align: center;
 }
 
 .section__title {
-  font-family: var(--font-mono);
-  font-size: var(--text-3xl);
-  color: var(--color-primary);
-  margin-bottom: var(--space-6);
+  font-size: 32px; /* display-md */
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+  color: var(--color-ink);
 }
 
 .section__subtitle {
-  font-size: var(--text-lg);
-  color: var(--color-text-secondary);
-  max-width: 800px;
-  margin-inline: auto;
-  line-height: 1.8;
-}
-
-.section__header {
-  text-align: center;
-  margin-bottom: var(--space-12);
-}
-
-/* ============================================
-   BENEFITS SECTION
-   ============================================ */
-.services-benefits {
-  background: var(--color-surface-alt);
-  border-radius: var(--radius-2xl);
-  margin-inline: var(--space-4);
-  padding-block: var(--space-20);
-}
-
-.benefit-item {
-  text-align: center;
-  padding: var(--space-6);
-  transition: transform var(--transition-base);
-}
-
-.benefit-item:hover {
-  transform: translateY(-5px);
-}
-
-.benefit-item__icon {
-  font-size: 2.5rem;
-  margin-bottom: var(--space-4);
-}
-
-.benefit-item__title {
-  color: var(--color-primary);
-  margin-bottom: var(--space-3);
-  font-family: var(--font-mono);
-  font-size: var(--text-xl);
-}
-
-.benefit-item__text {
-  color: var(--color-text-secondary);
-  font-size: var(--text-sm);
+  font-size: 16px;
+  font-weight: 300;
   line-height: 1.6;
+  color: var(--color-body);
 }

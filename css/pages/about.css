@@ -1,250 +1,119 @@
 /* ============================================
-   ABOUT.CSS - About Section Styles
+   ABOUT.CSS - BMW Corporate Style
    ============================================ */
 
-/* ============================================
-   ABOUT SECTION
-   ============================================ */
 .about {
-  padding-block: var(--space-24);
-  background-color: #FFFFFF;
+  padding-block: var(--space-section);
+  background-color: var(--color-canvas);
 }
 
 .about__container {
-  width: 100%;
-  max-width: 1280px;
+  max-width: 1440px;
   margin-inline: auto;
-  padding-inline: var(--space-4);
+  padding-inline: var(--space-lg);
 }
 
-/* ============================================
-   ABOUT LAYOUT
-   ============================================ */
 .about__layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-24);
+  gap: var(--space-xxl);
   align-items: start;
-}
-
-/* ============================================
-   ABOUT IMAGE
-   ============================================ */
-.about__image-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.about__image-frame {
-  position: relative;
-  display: inline-block;
-}
-
-.about__image-frame::before {
-  display: none;
 }
 
 .about__image {
   width: 100%;
-  max-width: 500px;
-  aspect-ratio: 3/4;
-  border-radius: 0;
+  aspect-ratio: 16/10;
   object-fit: cover;
-  border: none;
-  box-shadow: none;
+  border-radius: var(--radius-none);
 }
 
-.about__image-placeholder {
-  width: 340px;
-  height: 340px;
-  border-radius: var(--radius-sm);
-  background: var(--color-surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-lg);
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  font-family: var(--font-mono);
-  font-size: var(--text-5xl);
+.about__label {
+  display: block;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: -2px;
-}
-
-/* ============================================
-   ABOUT CONTENT
-   ============================================ */
-.about__content {
-  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
 }
 
 .about__title {
-  font-family: var(--font-sans);
-  font-size: var(--text-5xl);
+  font-size: 48px; /* display-lg */
   font-weight: 700;
-  margin-bottom: var(--space-8);
-  color: #000;
+  margin-bottom: var(--space-xl);
+  color: var(--color-ink);
 }
 
-.about__description {
-  font-size: var(--text-lg);
-  line-height: 1.6;
-  color: #666;
-  margin-bottom: var(--space-12);
+.about__text {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--color-body);
+  margin-bottom: var(--space-lg);
 }
 
 .about__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
-  border-top: 1px solid #EEE;
-  padding-top: var(--space-8);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-xxl);
+  border-top: 1px solid var(--color-hairline);
+  padding-top: var(--space-xl);
 }
 
 .about__item-title {
-  font-family: var(--font-sans);
+  font-size: 12px;
   font-weight: 700;
-  font-size: 14px;
-  color: #000;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-muted);
   margin-bottom: 4px;
 }
 
 .about__item-value {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  color: #666;
-}
-
-/* ============================================
-   ABOUT HIGHLIGHTS
-   ============================================ */
-.about__highlights {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
-  margin-bottom: var(--space-8);
-}
-
-.about__highlight-item {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-4);
-  text-align: center;
-}
-
-.about__highlight-number {
-  font-family: var(--font-mono);
-  font-size: var(--text-3xl);
+  font-size: 24px; /* display-sm */
   font-weight: 700;
-  color: var(--color-primary);
-  display: block;
-  line-height: 1;
-  margin-bottom: var(--space-1);
+  color: var(--color-ink);
 }
 
-.about__highlight-label {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-}
-
-/* ============================================
-   ABOUT CTA
-   ============================================ */
 .about__cta {
+  margin-top: var(--space-xl);
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  justify-content: center;
+  gap: var(--space-md);
 }
 
-/* ============================================
-   RESPONSIVE - About
-   ============================================ */
-@media (min-width: 768px) {
-  .about__layout {
-    grid-template-columns: 1fr 1.5fr;
-    gap: var(--space-12);
-  }
-
-  .about__content {
-    text-align: left;
-  }
-
-  .about__divider {
-    display: none;
-  }
-
-  .about__cta {
-    justify-content: flex-start;
-  }
-}
-
-@media (min-width: 1024px) {
-  .about__layout {
-    gap: var(--space-16);
-  }
-}
-
-/* ============================================
-   VISION & MISSION SECTION
-   ============================================ */
 .about__vision-mission {
-  margin-top: var(--space-20);
-  padding-top: var(--space-16);
-  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-section);
+  border-top: 1px solid var(--color-hairline);
+  padding-top: var(--space-section);
 }
 
-.vision-box, .mission-box {
-  padding: var(--space-8);
-  background: var(--color-surface-alt);
-  border-radius: var(--radius-xl);
-}
-
-.vision-box {
-  border-left: 4px solid var(--color-accent);
-}
-
-.mission-box {
-  border-left: 4px solid var(--color-primary);
+.about__vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxl);
 }
 
 .vision-box__title, .mission-box__title {
-  margin-bottom: var(--space-4);
-  font-family: var(--font-mono);
-  font-size: var(--text-2xl);
+  font-size: 24px;
+  margin-bottom: var(--space-md);
 }
 
-.vision-box__title {
-  color: var(--color-primary);
-}
-
-.mission-box__title {
-  color: var(--color-accent);
-}
-
-.vision-box__text {
-  color: var(--color-text-secondary);
-  line-height: 1.7;
-  font-size: var(--text-lg);
+.vision-box__text, .mission-box__item {
+  color: var(--color-body);
 }
 
 .mission-box__list {
   list-style: none;
   padding: 0;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
 }
 
 .mission-box__item {
-  margin-bottom: var(--space-3);
-  padding-left: var(--space-6);
-  position: relative;
+  margin-bottom: var(--space-sm);
 }
 
-.mission-box__icon {
-  position: absolute;
-  left: 0;
-  color: var(--color-accent);
+@media (max-width: 1024px) {
+  .about__layout, .about__vm-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -36,30 +36,20 @@
         <a href="index.html" class="navbar__logo" aria-label="Sivilize Corp - Beranda">
           <img src="assets/images/logo.svg" alt="Sivilize Corp Logo" class="navbar__logo-image">
         </a>
-        <nav class="navbar__nav" role="navigation" aria-label="Navigasi utama">
+        <nav class="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
           <ul class="navbar__list">
-            <li><a href="#" class="navbar__link" data-mega="models">Models</a></li>
-            <li><a href="#" class="navbar__link" data-mega="services">Our Services</a></li>
-            <li><a href="#" class="navbar__link" data-mega="pre-owned">Pre-Owned</a></li>
-            <li><a href="#" class="navbar__link" data-mega="offers">Special Offer</a></li>
-            <li><a href="#" class="navbar__link" data-mega="discover">Discover</a></li>
-            <li><a href="#" class="navbar__link" data-mega="loyalty">Exclusive Loyalty Program</a></li>
+            <li><a href="index.html" class="navbar__link" data-page="home">Beranda</a></li>
+            <li><a href="about.html" class="navbar__link navbar__link--active" data-page="about">Tentang</a></li>
+            <li><a href="services.html" class="navbar__link" data-page="services">Jasa</a></li>
+            <li><a href="skills.html" class="navbar__link" data-page="skills">Keahlian</a></li>
+            <li><a href="projects.html" class="navbar__link" data-page="projects">Proyek</a></li>
+            <li><a href="security.html" class="navbar__link" data-page="security">Keamanan</a></li>
+            <li><a href="simulate-attack.html" class="navbar__link" data-page="simulate-attack">Simulasi</a></li>
+            <li><a href="contact.html" class="navbar__link" data-page="contact">Kontak</a></li>
           </ul>
         </nav>
-        <div class="navbar__actions"></div>
       </div>
     </header>
-
-    <!-- MEGA MENU -->
-    <div class="mega-menu" id="mega-menu">
-      <div class="mega-menu__container">
-        <div class="mega-menu__close" id="mega-menu-close">&times;</div>
-        <div class="mega-menu__sidebar">
-          <ul class="mega-menu__list" id="mega-menu-list"></ul>
-        </div>
-        <div class="mega-menu__content" id="mega-menu-content"></div>
-      </div>
-    </div>
 
     <!-- MAIN CONTENT -->
     <main id="main-content">
@@ -157,27 +147,43 @@
 
     </main>
 
-    <!-- STICKY FOOTER -->
-    <footer class="sticky-footer">
-      <div class="sticky-footer__container">
-        <a href="simulate-attack.html" class="sticky-footer__link">
-          <span class="sticky-footer__icon">🚗</span>
-          <span>Test Drive</span>
-        </a>
-        <a href="services.html" class="sticky-footer__link">
-          <span class="sticky-footer__icon">🔧</span>
-          <span>Service Booking</span>
-        </a>
-        <a href="projects.html" class="sticky-footer__link">
-          <span class="sticky-footer__icon">📍</span>
-          <span>Project Locator</span>
-        </a>
-        <a href="contact.html" class="sticky-footer__link">
-          <span class="sticky-footer__icon">💬</span>
-          <span>Contact Us</span>
-        </a>
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__container">
+        <div class="footer__grid">
+          <div class="footer__col">
+            <h3 class="footer__col-title">Perusahaan</h3>
+            <ul class="footer__list">
+              <li><a href="about.html" class="footer__link">Tentang Kami</a></li>
+              <li><a href="services.html" class="footer__link">Layanan</a></li>
+              <li><a href="projects.html" class="footer__link">Proyek</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h3 class="footer__col-title">Keamanan</h3>
+            <ul class="footer__list">
+              <li><a href="security.html" class="footer__link">Cybersecurity</a></li>
+              <li><a href="simulate-attack.html" class="footer__link">Simulasi Serangan</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h3 class="footer__col-title">Hubungi Kami</h3>
+            <ul class="footer__list">
+              <li><a href="https://wa.me/6282210815340" class="footer__link" target="_blank">WhatsApp</a></li>
+              <li><a href="https://www.linkedin.com/in/muhamad-adrian-077b07241/" class="footer__link" target="_blank">LinkedIn</a></li>
+              <li><a href="https://www.tiktok.com/@muhamadadriannn" class="footer__link" target="_blank">TikTok</a></li>
+              <li><a href="mailto:muhamadadriannn22@gmail.com" class="footer__link">Email</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p class="footer__copyright">
+            &copy; <span id="copyright-year"></span> Sivilize Corp. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
+
 
   </div>
 

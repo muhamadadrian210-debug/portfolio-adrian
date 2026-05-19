@@ -36,14 +36,14 @@
 }
 
 .navbar__logo-image {
-  height: 32px;
+  height: 48px; /* Ukuran lebih gede biar keliatan */
   width: auto;
+  display: block;
 }
 
 .navbar__nav {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
 }
 
 .navbar__list {
@@ -54,11 +54,12 @@
 
 .navbar__link {
   font-size: 14px;
-  font-weight: 400; /* BMW Nav-link 400 */
-  color: var(--color- ink);
+  font-weight: 700;
+  color: var(--color-ink);
   letter-spacing: 0.3px;
   padding-block: var(--space-xs);
   border-bottom: 2px solid transparent;
+  text-transform: uppercase;
 }
 
 .navbar__link:hover {
@@ -68,107 +69,6 @@
 .navbar__link--active {
   color: var(--color-primary);
   border-bottom-color: var(--color-primary);
-}
-
-/* ============================================
-   MEGA MENU (Corporate Style)
-   ============================================ */
-.mega-menu {
-  position: fixed;
-  top: 64px;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background-color: var(--color-canvas);
-  z-index: 999;
-  overflow: hidden;
-  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.mega-menu.is-open {
-  height: 480px;
-  border-bottom: 1px solid var(--color-hairline);
-}
-
-.mega-menu__container {
-  max-width: 1440px;
-  margin-inline: auto;
-  height: 100%;
-  display: flex;
-  padding: var(--space-xxl) var(--space-lg);
-}
-
-.mega-menu__sidebar {
-  width: 280px;
-  border-right: 1px solid var(--color-hairline);
-  padding-right: var(--space-xl);
-}
-
-.mega-menu__item-link {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-ink);
-  padding-block: var(--space-sm);
-  display: block;
-}
-
-.mega-menu__item-link:hover,
-.mega-menu__item-link.is-active {
-  color: var(--color-primary);
-}
-
-.mega-menu__content {
-  flex: 1;
-  padding-left: var(--space-xxl);
-}
-
-.mega-menu__content-title {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: var(--space-xl);
-  color: var(--color-ink);
-}
-
-/* ============================================
-   STICKY FOOTER
-   ============================================ */
-.sticky-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: var(--color-canvas);
-  border-top: 1px solid var(--color-hairline);
-  height: 64px;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-}
-
-.sticky-footer__container {
-  display: flex;
-  gap: var(--space-xxl);
-  align-items: center;
-}
-
-.sticky-footer__link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  color: var(--color-muted);
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.sticky-footer__link:hover {
-  color: var(--color-ink);
-}
-
-.sticky-footer__icon {
-  font-size: 20px;
 }
 
 /* ============================================

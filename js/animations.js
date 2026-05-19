@@ -75,13 +75,84 @@
     }
   }
 
+  /**
+   * Text Scramble Effect
+   * Mimics "glitchy" or "scrambling" characters before revealing original text
+   */
+  class TextScramble {
+    constructor(el) {
+      this.el = el;
+      this.chars = '!<>-_\\/[]{}—=+*^?#________';
+      this.update = this.update.bind(this);
+    }
+    setText(newText) {
+      const oldText = this.el.innerText;
+      const length = Math.max(oldText.length, newText.length);
+      const promise = new Promise((resolve) => this.resolve = resolve);
+      this.queue = [];
+      for (let i = 0; i < length; i++) {
+        const from = oldText[i] || '';
+        const to = newText[i] || '';
+        const start = Math.floor(Math.random() * 40);
+        const end = start + Math.floor(Math.random() * 40);
+        this.queue.push({ from, to, start, end });
+      }
+      cancelAnimationFrame(this.frameRequest);
+      this.frame = 0;
+      this.update();
+      return promise;
+    }
+    update() {
+      let output = '';
+      let complete = 0;
+      for (let i = 0, n = this.queue.length; i < n; i++) {
+        let { from, to, start, end, char } = this.queue[i];
+        if (this.frame >= end) {
+          complete++;
+          output += to;
+        } else if (this.frame >= start) {
+          if (!char || Math.random() < 0.28) {
+            char = this.randomChar();
+            this.queue[i].char = char;
+          }
+          output += `<span class="dud">${char}</span>`;
+        } else {
+          output += from;
+        }
+      }
+      this.el.innerHTML = output;
+      if (complete === this.queue.length) {
+        this.resolve();
+      } else {
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
+      }
+    }
+    randomChar() {
+      return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+  }
+
+  /**
+   * Initializes all animations.
+   */
+  const initAnimations = () => {
+    // 1. Text Scramble for Main Titles
+    const titles = document.querySelectorAll('.hero__title, .about__title, .skills__title, .projects__title');
+    titles.forEach(title => {
+      const fx = new TextScramble(title);
+      fx.setText(title.innerText);
+    });
+
+    // 2. Intersection Observer for Scroll Animations
+    new AnimationController();
+  };
+
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      new AnimationController();
-    });
+    document.addEventListener('DOMContentLoaded', initAnimations);
   } else {
-    new AnimationController();
+    initAnimations();
   }
 
   // Export for testing

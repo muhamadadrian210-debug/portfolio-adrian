@@ -1,46 +1,8 @@
 /* ============================================
-   RESPONSIVE.CSS - Mobile-First Media Queries
+   RESPONSIVE.CSS - Cleaned up to avoid conflicts
    ============================================ */
 
-/* ============================================
-   BASE (Mobile: 0px - 479px)
-   ============================================ */
-
-/* Navbar - Mobile */
-.navbar__nav {
-  display: none;
-  position: absolute;
-  top: 80px;
-  left: 0;
-  right: 0;
-  background-color: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-md);
-  padding: var(--space-4);
-  z-index: 999;
-}
-
-.navbar--open .navbar__nav {
-  display: flex;
-  animation: slideDown 0.3s ease forwards;
-}
-
-.navbar__list {
-  flex-direction: column;
-  width: 100%;
-  gap: var(--space-1);
-}
-
-.navbar__link {
-  display: block;
-  width: 100%;
-  padding: var(--space-3) var(--space-4);
-  font-size: var(--text-base);
-}
-
-.navbar__hamburger {
-  display: flex;
-}
+/* Hapus logic navbar lama di sini karena sudah dipindah ke components.css */
 
 /* Two Column - Mobile (stack) */
 .two-col {
@@ -113,17 +75,7 @@
   }
 
   /* Navbar - Tablet (still hamburger) */
-  .navbar__nav {
-    display: none;
-  }
-
-  .navbar--open .navbar__nav {
-    display: flex;
-  }
-
-  .navbar__hamburger {
-    display: flex;
-  }
+  /* Hapus logic navbar lama di sini */
 
   /* Grid - Tablet (2 columns) */
   .grid--2 {
@@ -164,32 +116,8 @@
    LG: 1024px - 1279px (Desktop Kecil)
    ============================================ */
 @media (min-width: 1024px) {
-  /* Navbar - Desktop (horizontal links) */
-  .navbar__nav {
-    display: flex !important;
-    position: static;
-    background: none;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    animation: none;
-  }
-
-  .navbar__list {
-    flex-direction: row;
-    width: auto;
-    gap: var(--space-2);
-  }
-
-  .navbar__link {
-    width: auto;
-    padding: var(--space-2) var(--space-3);
-    font-size: var(--text-sm);
-  }
-
-  .navbar__hamburger {
-    display: none;
-  }
+  /* Navbar - Desktop */
+  /* Logic utama ada di components.css */
 
   /* Grid - Desktop */
   .grid--3 {

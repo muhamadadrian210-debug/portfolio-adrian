@@ -281,6 +281,26 @@
   margin-bottom: var(--space-xxl);
 }
 
+@media (max-width: 1023px) {
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .footer__bottom {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+}
+
 .footer__col-title {
   font-size: 14px;
   font-weight: 700;

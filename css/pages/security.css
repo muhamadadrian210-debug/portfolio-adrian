@@ -15,6 +15,9 @@
   justify-content: center;
   position: relative;
   min-height: 320px;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
 }
 
 .sec-hero__content {
@@ -90,13 +93,14 @@
 .sec-hero__terminal {
   position: absolute;
   right: 40px;
-  bottom: 40px;
-  width: 280px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
   background: #0d1117;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(77, 159, 255, 0.3);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
   animation: heroTerminalFloat 4s ease-in-out infinite;
   z-index: 2;
 }

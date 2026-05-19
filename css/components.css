@@ -517,21 +517,50 @@
    TEXT BUBBLE / BOX (Aggressive Rework)
    ============================================ */
 .text-bubble {
-  background-color: #111111; /* Hitam Solid */
-  color: #ffffff; /* WAJIB PUTIH biar keliatan */
+  background-color: #000000; /* Hitam Pekat */
+  color: #ffffff !important; /* Putih Solid Paksa */
   padding: 24px 32px;
   border-left: 8px solid var(--color-primary);
   margin-block: 24px;
   border-radius: 0px;
   font-size: 16px;
   line-height: 1.8;
-  box-shadow: 10px 10px 0px rgba(28, 105, 212, 0.2);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
   display: block;
   width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  transform: perspective(1000px) rotateX(0deg);
 }
 
-.text-bubble * {
-  color: #ffffff; /* Pastikan semua elemen di dalemnya putih */
+.text-bubble:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-1deg) translateZ(10px);
+  box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.text-bubble *, 
+.text-bubble p, 
+.text-bubble span, 
+.text-bubble h1, 
+.text-bubble h2, 
+.text-bubble h3, 
+.text-bubble li {
+  color: #ffffff !important; /* Pastikan semua teks di dalemnya putih solid */
+}
+
+/* Global 3D Effect for Interactive Elements */
+.btn, .card, .window-frame, .about__item, .sim-attack-btn, .benefit-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.btn:active, .card:active, .text-bubble:active {
+  transform: scale(0.98) translateZ(0);
+}
+
+.window-frame:hover {
+  transform: perspective(1000px) rotateY(2deg) translateZ(15px);
+  box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .text-bubble--blue {

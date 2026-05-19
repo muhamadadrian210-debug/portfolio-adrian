@@ -66,6 +66,74 @@
   color: var(--color-muted);
 }
 
+/* ============================================
+   SECURITY SECTION (Standar Keamanan Website)
+   ============================================ */
+.security {
+  padding-block: var(--space-section);
+  background-color: var(--color-canvas);
+}
+
+.security__container {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.security__header {
+  text-align: center;
+  margin-bottom: var(--space-xxl);
+  padding-bottom: var(--space-xl);
+}
+
+.security__label {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.security__title {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 16px;
+}
+
+.security__subtitle {
+  font-size: 18px;
+  color: var(--color-muted);
+  max-width: 700px;
+  margin-inline: auto;
+  line-height: 1.7;
+}
+
+.security__badge-row {
+  margin-bottom: var(--space-xxl);
+}
+
+.security__verified-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.security__verified-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.security__verified-text {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 .security__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

@@ -8,37 +8,66 @@
 .navbar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: #111111; /* Hitam pekat sesuai request */
+  background-color: #111111;
   border-bottom: 1px solid rgba(255,255,255,0.1);
-  height: 64px;
+  height: 72px; /* Ditinggiin dikit biar lega */
   display: flex;
   align-items: center;
-  transition: all var(--transition-fast);
-}
-
-.navbar--scrolled {
-  background-color: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .navbar__container {
   width: 100%;
   max-width: 1440px;
   margin-inline: auto;
-  padding-inline: var(--space-lg);
+  padding-inline: 20px; /* Padding konsisten */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Logo kiri, Hamburger kanan */
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  z-index: 1003; /* Di atas segalanya */
 }
 
 .navbar__logo-image {
-  height: 48px;
+  height: 40px; /* Ukuran pas buat mobile & desktop */
   width: auto;
+  filter: brightness(0) invert(1); /* Pastiin putih biar keliatan di bg hitam */
+}
+
+/* Hamburger Button */
+.navbar__hamburger {
+  display: none; /* Default desktop sembunyi */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1003; /* Di atas segalanya */
+}
+
+.navbar__hamburger-line {
   display: block;
+  width: 28px; /* Lebih lebar biar gampang diliat */
+  height: 2px;
+  background-color: #ffffff; /* Putih solid */
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1023px) {
+  .navbar__hamburger {
+    display: flex; /* Muncul di mobile */
+  }
 }
 
 .navbar__nav {
@@ -69,136 +98,6 @@
 .navbar__link--active {
   color: var(--color-primary);
   border-bottom-color: var(--color-primary);
-}
-
-/* ============================================
-   MODEL CARDS (BMW Style)
-   ============================================ */
-.model-card {
-  background-color: var(--color-canvas);
-  border-radius: var(--radius-none);
-  padding: var(--space-lg);
-  display: flex;
-  flex-direction: column;
-  transition: all var(--transition-base);
-}
-
-.model-card__photo-plate {
-  background-color: var(--color-surface-card);
-  border-radius: var(--radius-none);
-  aspect-ratio: 16/10;
-  overflow: hidden;
-  margin-bottom: var(--space-lg);
-}
-
-.model-card__photo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: transform 0.5s ease;
-}
-
-.model-card:hover .model-card__photo {
-  transform: scale(1.05);
-}
-
-.model-card__title {
-  font-size: 18px; /* title-md */
-  font-weight: 700;
-  color: var(--color-ink);
-  margin-bottom: 4px;
-}
-
-.model-card__tagline {
-  font-size: 14px; /* body-sm */
-  font-weight: 300;
-  color: var(--color-muted);
-  margin-bottom: var(--space-lg);
-}
-
-.btn--text-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 13px; /* label-uppercase */
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--color-ink);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.btn--text-link::after {
-  content: '›';
-  font-size: 18px;
-  line-height: 1;
-}
-
-.btn--text-link:hover {
-  color: var(--color-primary);
-}
-
-/* ============================================
-   M-STRIPE DIVIDER
-   ============================================ */
-.m-stripe-divider {
-  height: 4px;
-  width: 100%;
-  display: flex;
-}
-
-.m-stripe-divider__blue-light { background-color: var(--color-m-blue-light); flex: 1; }
-.m-stripe-divider__blue-dark { background-color: var(--color-m-blue-dark); flex: 1; }
-.m-stripe-divider__red { background-color: var(--color-m-red); flex: 1; }
-
-/* ============================================
-   INPUTS (Rectangular - 0px)
-   ============================================ */
-.form-input {
-  width: 100%;
-  height: 48px;
-  padding: 14px 16px;
-  background-color: var(--color-canvas);
-  border: 1px solid var(--color-hairline);
-  border-radius: var(--radius-none);
-  font-family: var(--font-sans);
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--color-ink);
-  transition: border-color var(--transition-fast);
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: var(--color-ink);
-}
-
-/* Hamburger Button */
-.navbar__hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  width: 44px;
-  height: 44px;
-  cursor: pointer;
-  transition: background-color var(--transition-fast);
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-.navbar__hamburger-line {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: #ffffff;
-  transition: transform var(--transition-base), opacity var(--transition-base);
-  transform-origin: center;
 }
 
 /* Hamburger Open State */

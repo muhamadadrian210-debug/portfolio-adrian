@@ -47,7 +47,19 @@
   --space-lg: 24px;
   --space-xl: 32px;
   --space-xxl: 48px;
-  --space-section: 80px;
+  --space-section: 120px; /* Diperlebar biar ga mepet */
+
+  /* Numeric aliases for compatibility */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
 
   /* RADIUS - Rectangular Logic */
   --radius-none: 0px;

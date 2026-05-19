@@ -127,41 +127,57 @@
 
 .security__project-note {
   margin-top: var(--space-xxl);
-  background: #111111; /* Hitam pekat tapi elegan */
-  color: #ffffff;
-  padding: 48px;
-  border: 1px solid var(--color-hairline);
+  background: #111111;
+  padding: 0; /* Padding diatur per item */
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-none);
+  overflow: hidden;
+}
+
+.security__project-list {
+  display: flex;
+  flex-direction: column;
 }
 
 .security__project-item {
-  background: #1a1a1a; /* Sedikit lebih terang dari parent buat depth */
-  padding: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all var(--transition-fast);
-  height: 100%;
+  padding: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+.security__project-item:last-child {
+  border-bottom: none;
 }
 
 .security__project-item:hover {
-  border-color: var(--color-primary);
-  background: #222222;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.security__project-item-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  display: block;
 }
 
 .security__project-item strong {
   display: block;
-  color: #ffffff; /* Putih solid biar kebaca! */
-  margin-bottom: 12px;
-  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .security__project-item span {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7); /* Abu-abu terang, kontras dapet */
+  color: rgba(255, 255, 255, 0.5);
   line-height: 1.6;
   font-weight: 300;
+  max-width: 800px;
 }
 
 /* ============================================

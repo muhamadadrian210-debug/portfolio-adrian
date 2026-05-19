@@ -585,8 +585,8 @@
 .hero-terminal {
   position: absolute;
   right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 40px;
+  top: auto;
   width: 260px;
   background: #0d1117;
   border: 1px solid rgba(77, 159, 255, 0.35);
@@ -598,8 +598,8 @@
 }
 
 @keyframes heroTerminalFloat {
-  0%, 100% { transform: translateY(-50%); }
-  50%       { transform: translateY(calc(-50% - 10px)); }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
 }
 
 .hero-terminal__header {

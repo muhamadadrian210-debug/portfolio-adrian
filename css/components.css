@@ -517,57 +517,41 @@
    TEXT BUBBLE / BOX (Aggressive Rework)
    ============================================ */
 .text-bubble {
-  background-color: #000000; /* Hitam Pekat */
-  color: #ffffff !important; /* Putih Solid Paksa */
-  padding: 24px 32px;
-  border-left: 8px solid var(--color-primary);
+  background-color: var(--color-surface-soft); /* Abu-abu sangat muda biar ga se-agresif hitam */
+  color: var(--color-body) !important;
+  padding: 32px;
+  border-left: 4px solid var(--color-primary); /* Border lebih tipis biar elegan */
   margin-block: 24px;
   border-radius: 0px;
   font-size: 16px;
-  line-height: 1.8;
-  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
+  font-weight: 300; /* BMW Light */
+  line-height: 1.7;
   display: block;
   width: 100%;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-fast);
   position: relative;
-  transform: perspective(1000px) rotateX(0deg);
 }
 
 .text-bubble:hover {
-  transform: perspective(1000px) rotateX(2deg) rotateY(-1deg) translateZ(10px);
-  box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.3);
+  background-color: var(--color-surface-strong); /* Sedikit gelap pas hover */
 }
 
 .text-bubble *, 
 .text-bubble p, 
-.text-bubble span, 
-.text-bubble h1, 
-.text-bubble h2, 
-.text-bubble h3, 
-.text-bubble li {
-  color: #ffffff !important; /* Pastikan semua teks di dalemnya putih solid */
-}
-
-/* Global 3D Effect for Interactive Elements */
-.btn, .card, .window-frame, .about__item, .sim-attack-btn, .benefit-item {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-
-.btn:active, .card:active, .text-bubble:active {
-  transform: scale(0.98) translateZ(0);
-}
-
-.window-frame:hover {
-  transform: perspective(1000px) rotateY(2deg) translateZ(15px);
-  box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.2);
+.text-bubble span {
+  color: var(--color-body) !important;
 }
 
 .text-bubble--blue {
   background-color: var(--color-primary);
-  color: #ffffff;
-  border-left: 8px solid #111111;
-  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1);
+  color: #ffffff !important;
+  border-left: 4px solid var(--color-ink);
+}
+
+.text-bubble--blue *, 
+.text-bubble--blue p, 
+.text-bubble--blue span {
+  color: #ffffff !important;
 }
 
 .text-box {

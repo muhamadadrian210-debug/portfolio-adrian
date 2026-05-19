@@ -13,6 +13,8 @@
 .sec-hero__container {
   display: flex;
   justify-content: center;
+  position: relative;
+  min-height: 320px;
 }
 
 .sec-hero__content {
@@ -80,6 +82,81 @@
   border: 1px solid rgba(255,255,255,0.2);
   color: rgba(255,255,255,0.7);
   background: rgba(255,255,255,0.05);
+}
+
+/* ============================================
+   FLOATING TERMINAL IN HERO
+   ============================================ */
+.sec-hero__terminal {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  width: 280px;
+  background: #0d1117;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: heroTerminalFloat 4s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes heroTerminalFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+.sec-hero__terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #161b22;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.sec-hero__terminal-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.sec-hero__terminal-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+
+.sec-hero__terminal-dots span:nth-child(2) { background: #febc2e; }
+.sec-hero__terminal-dots span:nth-child(3) { background: #28c840; }
+
+.sec-hero__terminal-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+}
+
+.sec-hero__terminal-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sec-hero__terminal-line {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.sec-hero__terminal-line--green  { color: #4ade80; }
+.sec-hero__terminal-line--blue   { color: #60a5fa; }
+.sec-hero__terminal-line--yellow { color: #fbbf24; }
+.sec-hero__terminal-line--red    { color: #f87171; }
+
+/* Hide on small screens */
+@media (max-width: 1024px) {
+  .sec-hero__terminal { display: none; }
 }
 
 /* ============================================

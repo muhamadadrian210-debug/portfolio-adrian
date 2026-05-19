@@ -218,20 +218,23 @@
 @media (max-width: 1023px) {
   .navbar__hamburger {
     display: flex;
+    z-index: 1002; /* Pastiin di atas menu */
   }
 
   .navbar__nav {
     display: none;
     position: fixed;
-    top: 64px;
+    top: 0; /* Ubah ke 0 biar full cover */
     left: 0;
     width: 100%;
-    height: calc(100vh - 64px);
+    height: 100vh;
     background-color: #111111;
     flex-direction: column;
+    justify-content: center; /* Center links biar elegan */
+    align-items: center;
     padding: 40px;
     z-index: 1001;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
   }
 
   .navbar--open .navbar__nav {

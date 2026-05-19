@@ -63,10 +63,12 @@
 @media (max-width: 768px) {
   .security__grid {
     display: grid !important;
-    grid-template-columns: 1fr; /* Tetap satu kolom biar lega baca teksnya */
-    gap: 20px; /* Jarak antar card biar ga berhimpitan */
+    grid-template-columns: 1fr;
+    gap: 20px;
     padding-inline: 0;
     margin-inline: 0;
+    width: 100%; /* Fix: Pastiin ga bocor */
+    overflow: hidden;
   }
 
   .security__item {

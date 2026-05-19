@@ -82,6 +82,20 @@
   padding: 0;
 }
 
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+.page-wrapper {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
 body {
   font-family: var(--font-sans);
   font-weight: 300; /* BMW Light 300 body */
@@ -90,7 +104,6 @@ body {
   color: var(--color-body);
   background-color: var(--color-canvas);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {

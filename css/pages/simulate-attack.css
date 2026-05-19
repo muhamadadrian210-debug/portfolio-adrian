@@ -73,6 +73,20 @@
   text-align: left;
 }
 
+/* Override text-bubble di dalam dark hero */
+.sim-hero .text-bubble {
+  background-color: rgba(255,255,255,0.07);
+  border-left-color: #4d9fff;
+  color: rgba(255,255,255,0.85) !important;
+}
+
+.sim-hero .text-bubble *,
+.sim-hero .text-bubble p,
+.sim-hero .text-bubble span,
+.sim-hero .text-bubble strong {
+  color: rgba(255,255,255,0.85) !important;
+}
+
 .sim-hero__warning {
   display: inline-flex;
   align-items: center;

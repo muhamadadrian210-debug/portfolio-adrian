@@ -50,6 +50,20 @@
   color: rgba(255,255,255,0.75) !important;
 }
 
+/* Override text-bubble di dalam dark hero */
+.sec-hero .text-bubble {
+  background-color: rgba(255,255,255,0.07);
+  border-left-color: #4d9fff;
+  color: rgba(255,255,255,0.85) !important;
+}
+
+.sec-hero .text-bubble *,
+.sec-hero .text-bubble p,
+.sec-hero .text-bubble span,
+.sec-hero .text-bubble strong {
+  color: rgba(255,255,255,0.85) !important;
+}
+
 .sec-hero__badges {
   display: flex;
   gap: 16px;

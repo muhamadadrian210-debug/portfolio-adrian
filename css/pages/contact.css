@@ -70,7 +70,7 @@
   gap: var(--space-6);
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   padding: var(--space-6);
   text-decoration: none;
   color: inherit;
@@ -79,8 +79,8 @@
 }
 
 .contact-item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0px rgba(247, 147, 30, 0.1);
   border-color: var(--color-primary);
   background-color: var(--color-surface-alt);
 }

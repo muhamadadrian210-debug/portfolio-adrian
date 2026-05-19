@@ -93,12 +93,12 @@ button {
    DESIGN TOKENS (CSS Variables)
    ============================================ */
 :root {
-  /* PREMIUM AUTOMOTIVE CANVAS (BMW STYLE) */
-  --color-base: #FFFFFF;
-  --color-surface: #F2F2F2;
-  --color-surface-alt: #E6E6E6;
-  --color-border: #E0E0E0;
-  --color-border-bright: #CCCCCC;
+  /* TECHNICAL INDUSTRIAL CANVAS */
+  --color-base: #0A0A0A;
+  --color-surface: #141414;
+  --color-surface-alt: #1A1A1A;
+  --color-border: #2A2A2A;
+  --color-border-bright: #404040;
   
   /* BMW ACCENT COLORS */
   --color-primary: #1C69D2; /* BMW Blue */
@@ -108,10 +108,10 @@ button {
   --color-accent: #1C69D2;
   
   /* TEXT */
-  --color-text-primary: #000000;
-  --color-text-secondary: #4C4C4C;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #A0A0A0;
   --color-text-muted: #666666;
-  --color-text-inverse: #FFFFFF;
+  --color-text-inverse: #0A0A0A;
   
   /* TYPOGRAPHY */
   --font-mono: 'JetBrains Mono', monospace;
@@ -157,7 +157,7 @@ body::after {
    TIPOGRAFI GLOBAL
    ============================================ */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-weight: 700;
   line-height: 1.1;
   color: var(--color-text-primary);

@@ -6,21 +6,23 @@
    NAVBAR
    ============================================ */
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  width: 100%;
   z-index: 1000;
-  background-color: var(--color-base);
-  border-bottom: 2px solid var(--color-border);
-  height: 70px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  height: 80px;
   display: flex;
   align-items: center;
+  transition: all var(--transition-base);
 }
 
 .navbar--scrolled {
-  background-color: rgba(5, 5, 5, 0.9);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom-color: var(--color-primary);
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  height: 70px;
 }
 
 .navbar__container {
@@ -76,28 +78,28 @@
 }
 
 .navbar__link {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: 0;
   font-weight: 500;
-  color: var(--color-text-secondary);
+  color: #FFFFFF;
   padding: var(--space-2) var(--space-4);
-  border: 1px solid transparent;
-  transition: all var(--transition-fast);
+  transition: opacity var(--transition-fast);
   text-decoration: none;
 }
 
 .navbar__link:hover {
-  color: var(--color-primary);
-  border-color: var(--color-border-bright);
-  background-color: var(--color-surface-alt);
+  opacity: 0.7;
+  color: #FFFFFF;
+  border-color: transparent;
+  background-color: transparent;
 }
 
 .navbar__link--active {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  background-color: rgba(255, 215, 0, 0.05);
+  color: #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+  background-color: transparent;
 }
 
 /* Hamburger Button */
@@ -154,9 +156,9 @@
    FOOTER
    ============================================ */
 .footer {
-  background-color: #060B18;
+  background-color: var(--color-surface);
   color: var(--color-text-primary);
-  border-top: 1px solid rgba(0, 229, 204, 0.15);
+  border-top: 2px solid var(--color-border);
   padding-block: var(--space-8);
   margin-top: auto;
 }
@@ -181,21 +183,25 @@
 
 .footer__links a {
   font-size: var(--text-sm);
-  color: rgba(240, 244, 255, 0.6);
+  color: var(--color-text-secondary);
   text-decoration: none;
   transition: color var(--transition-fast);
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
 }
 
 .footer__links a:hover {
   color: var(--color-primary);
+  background-color: var(--color-surface-alt);
 }
 
 .footer__copyright {
-  font-size: var(--text-sm);
-  color: rgba(240, 244, 255, 0.4);
-  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* ============================================
@@ -206,15 +212,15 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-8);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-  border-radius: var(--radius-sm);
+  padding: 12px 32px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+  border-radius: 0;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
   text-decoration: none;
   border: 1px solid transparent;
   white-space: nowrap;
@@ -227,22 +233,21 @@
 }
 
 .btn--primary:hover {
-  background-color: var(--color-base);
-  color: var(--color-primary);
-  box-shadow: 4px 4px 0px var(--color-primary-dark);
-  transform: translate(-2px, -2px);
-}
-
-.btn--secondary {
   background-color: transparent;
-  color: var(--color-text-primary);
-  border-color: var(--color-border-bright);
+  color: var(--color-primary);
+  box-shadow: none;
+  transform: none;
 }
 
-.btn--secondary:hover {
-  background-color: var(--color-surface-alt);
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+.btn--outline {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.btn--outline:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 .btn--outline-accent {

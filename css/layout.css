@@ -55,10 +55,10 @@
   bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background-color: var(--color-accent);
-  border-radius: var(--radius-full);
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: 0px;
 }
 
 .section__subtitle {

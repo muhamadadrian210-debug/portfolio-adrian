@@ -62,12 +62,13 @@
 /* MOBILE OPTIMIZATION: Horizontal Scroll biar ga cape scroll kebawah */
 @media (max-width: 768px) {
   .security__grid {
-    display: flex;
-    overflow-x: auto;
+    display: flex !important;
+    flex-wrap: nowrap !important; /* WAJIB BIAR GA TURUN KE BAWAH */
+    overflow-x: auto !important;
     scroll-snap-type: x mandatory;
     gap: 16px;
     padding-bottom: 24px;
-    margin-inline: -20px; /* Keluar container dikit biar cakep */
+    margin-inline: -20px;
     padding-inline: 20px;
     -webkit-overflow-scrolling: touch;
   }
@@ -166,9 +167,11 @@
   .security__project-list {
     display: flex !important;
     flex-direction: row !important;
-    overflow-x: auto;
+    flex-wrap: nowrap !important; /* WAJIB JUGA DISINI */
+    overflow-x: auto !important;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    padding-bottom: 16px;
   }
 
   .security__project-item {

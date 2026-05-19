@@ -6,34 +6,112 @@
    HERO SECTION
    ============================================ */
 .hero {
-  min-height: calc(100vh - 70px);
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  padding-block: var(--space-24);
-  background: var(--color-base);
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 0;
+  background-color: #000;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070');
+  background-size: cover;
+  background-position: center;
   position: relative;
   overflow: hidden;
+  color: #fff;
+}
+
+.hero::before {
+  display: none;
 }
 
 .hero__container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1400px;
   margin-inline: auto;
-  padding-inline: var(--space-4);
-  position: relative;
+  padding: var(--space-12) var(--space-8);
+  z-index: 2;
 }
 
-/* Technical Dotted Mask */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(var(--color-border-bright) 1px, transparent 1px);
-  background-size: 20px 20px;
-  mask-image: linear-gradient(to bottom, black, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
-  opacity: 0.2;
-  pointer-events: none;
+.hero__content {
+  max-width: 800px;
+  text-align: left;
+}
+
+.hero__title {
+  font-family: var(--font-sans);
+  font-size: var(--text-5xl);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: var(--space-2);
+  color: #fff;
+}
+
+.hero__title-accent {
+  display: block;
+  font-size: var(--text-xl);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: var(--space-4);
+}
+
+.hero__description {
+  display: none;
+}
+
+.hero__stats {
+  display: flex;
+  gap: var(--space-12);
+  margin-top: var(--space-12);
+  padding-top: var(--space-8);
+  border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-item__value {
+  font-size: var(--text-3xl);
+  font-weight: 300;
+}
+
+.stat-item__label {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-top: var(--space-2);
+}
+
+/* Secondary Nav BMW Style */
+.hero__secondary-nav {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-8);
+  padding-block: var(--space-4);
+  z-index: 3;
+}
+
+.secondary-nav__link {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
+.secondary-nav__link--active {
+  border-bottom-color: var(--color-primary);
+}
+
+.hero__image-wrapper {
+  display: none;
 }
 
 /* ============================================

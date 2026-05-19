@@ -7,6 +7,17 @@
   padding-bottom: 80px;
   background-color: var(--color-canvas); /* Balik ke putih biar elegan */
   color: var(--color-ink);
+  text-align: center;
+}
+
+.sec-hero__container {
+  display: flex;
+  justify-content: center;
+}
+
+.sec-hero__content {
+  max-width: 800px;
+  width: 100%;
 }
 
 .sec-hero__label {
@@ -33,13 +44,16 @@
 
 .sec-hero__desc {
   max-width: 700px;
+  margin-inline: auto;
   margin-bottom: 40px;
+  text-align: left;
 }
 
 .sec-hero__badges {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .sec-hero__badge {

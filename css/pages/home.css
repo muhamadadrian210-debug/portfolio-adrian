@@ -6,52 +6,13 @@
    HERO SECTION
    ============================================ */
 .hero {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 70px);
   display: flex;
   align-items: center;
-  padding-block: var(--space-16);
-  background: 
-    radial-gradient(at 0% 0%, rgba(247, 147, 30, 0.05) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(247, 147, 30, 0.05) 0px, transparent 50%),
-    linear-gradient(135deg, #0A0F1E 0%, #0F1629 50%, #0A0F1E 100%);
+  padding-block: var(--space-24);
+  background: var(--color-base);
   position: relative;
   overflow: hidden;
-}
-
-.hero__mouse-glow {
-  position: absolute;
-  top: -250px;
-  left: -250px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(247, 147, 30, 0.08) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 1;
-  transition: transform 0.1s ease-out;
-  will-change: transform;
-}
-
-/* Subtle background decoration */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -200px;
-  right: -200px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(30, 58, 95, 0.05) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -100px;
-  left: -100px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(249, 115, 22, 0.05) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .hero__container {
@@ -59,6 +20,20 @@
   max-width: 1280px;
   margin-inline: auto;
   padding-inline: var(--space-4);
+  position: relative;
+}
+
+/* Technical Dotted Mask */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--color-border-bright) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+  opacity: 0.2;
+  pointer-events: none;
 }
 
 /* ============================================
@@ -148,16 +123,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-alt) 100%);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  background-color: var(--color-base);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
   padding: var(--space-12);
-  box-shadow: var(--shadow-accent);
-  transition: transform var(--transition-slow);
+  transition: all var(--transition-base);
+}
+
+.hero__image-frame::after {
+  content: "INDUSTRIAL PRECISION";
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  letter-spacing: 1px;
 }
 
 .hero__image-frame:hover {
-  transform: translateY(-10px) rotate(1deg);
+  transform: translate(-5px, -5px);
+  box-shadow: 10px 10px 0px rgba(255, 215, 0, 0.1);
 }
 
 .hero__image-content {

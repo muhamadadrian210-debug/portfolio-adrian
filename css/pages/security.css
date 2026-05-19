@@ -6,8 +6,8 @@
    SECURITY PAGE SPECIFIC (Moved from About)
    ============================================ */
 .security {
-  padding-block: var(--space-16);
-  background-color: var(--color-surface-alt);
+  padding-block: var(--space-24);
+  background-color: var(--color-base);
   border-top: 1px solid var(--color-border);
 }
 
@@ -97,15 +97,16 @@
   gap: var(--space-4);
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-accent);
-  border-radius: var(--radius-md);
+  border-left: 2px solid var(--color-primary);
+  border-radius: var(--radius-sm);
   padding: var(--space-5) var(--space-6);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  transition: all var(--transition-fast);
 }
 
 .security__item:hover {
-  transform: translateX(4px);
-  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+  transform: translate(-4px, -4px);
+  box-shadow: 4px 4px 0px rgba(255, 215, 0, 0.1);
 }
 
 .security__item-icon {

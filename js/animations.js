@@ -159,7 +159,7 @@
    */
   window.initTextScramble = () => {
     const titles = document.querySelectorAll(
-      '.hero__title, .about__title, .services-hero__title, .skills__title, .projects__title, .sec-hero__title, .sim-hero__title, .contact__title'
+      '.hero__title, .about__title, .skills__title, .projects__title, .sec-hero__title, .sim-hero__title, .contact__title'
     );
     titles.forEach(title => {
       const fx = new TextScramble(title);

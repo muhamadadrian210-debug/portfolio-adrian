@@ -6,10 +6,10 @@
 .sim-hero {
   padding-top: 120px;
   padding-bottom: var(--space-section);
-  background-color: var(--color-base);
+  background-color: #0a0f1e;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--color-hairline);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   text-align: center;
 }
 
@@ -40,7 +40,7 @@
 .sim-hero__label {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: var(--color-accent);
+  color: #4d9fff;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -52,7 +52,7 @@
   font-family: var(--font-mono);
   font-size: var(--text-4xl);
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: #ffffff;
   line-height: 1;
   margin-bottom: var(--space-6);
   text-transform: uppercase;
@@ -65,7 +65,7 @@
 .sim-hero__desc {
   font-family: var(--font-sans);
   font-size: var(--text-lg);
-  color: var(--color-text-secondary);
+  color: rgba(255,255,255,0.7);
   line-height: 1.8;
   max-width: 650px;
   margin-inline: auto;

@@ -20,23 +20,29 @@
   background-color: var(--color-canvas);
 }
 
-.security-card {
-  padding: var(--space-xl);
-  background-color: var(--color-surface-soft);
-  border-radius: var(--radius-none);
-  border-left: 4px solid var(--color-primary);
+.security__item {
+  display: flex;
+  gap: var(--space-md);
   margin-bottom: var(--space-lg);
+  align-items: flex-start;
+  height: 100%; /* Pastikan tinggi sama kalo di grid */
 }
 
-.security-card__title {
-  font-size: 24px; /* display-sm */
+.security__item-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.security__item-title {
+  font-size: 18px;
   font-weight: 700;
-  margin-bottom: var(--space-md);
-  color: var(--color-ink);
+  margin-bottom: 8px;
+  color: #ffffff; /* Putih di dalem bubble hitam */
 }
 
-.security-card__text {
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--color-body);
+.security__item-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
 }

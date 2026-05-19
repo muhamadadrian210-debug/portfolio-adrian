@@ -518,7 +518,7 @@
    ============================================ */
 .text-bubble {
   background-color: #111111; /* Hitam Solid */
-  color: #ffffff; /* Teks Putih */
+  color: #ffffff; /* WAJIB PUTIH biar keliatan */
   padding: 24px 32px;
   border-left: 8px solid var(--color-primary);
   margin-block: 24px;
@@ -530,8 +530,13 @@
   width: 100%;
 }
 
+.text-bubble * {
+  color: #ffffff; /* Pastikan semua elemen di dalemnya putih */
+}
+
 .text-bubble--blue {
   background-color: var(--color-primary);
+  color: #ffffff;
   border-left: 8px solid #111111;
   box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1);
 }

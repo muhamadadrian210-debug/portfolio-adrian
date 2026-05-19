@@ -79,19 +79,26 @@
   padding-top: var(--space-xl);
 }
 
+.about__item {
+  padding: var(--space-md);
+  background: #111111;
+  border-left: 4px solid var(--color-primary);
+  box-shadow: 4px 4px 0px rgba(28, 105, 212, 0.2);
+}
+
 .about__item-title {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--color-muted);
-  margin-bottom: 4px;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  margin-bottom: 8px;
 }
 
 .about__item-value {
-  font-size: 24px; /* display-sm */
+  font-size: 20px;
   font-weight: 700;
-  color: var(--color-ink);
+  color: #ffffff;
 }
 
 .about__cta {

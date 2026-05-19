@@ -36,59 +36,65 @@
         <a href="index.html" class="navbar__logo" aria-label="Sivilize Corp - Beranda">
           <img src="assets/images/logo.svg" alt="Sivilize Corp Logo" class="navbar__logo-image">
         </a>
-        <nav class="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
+        <nav class="navbar__nav" role="navigation" aria-label="Navigasi utama">
           <ul class="navbar__list">
-            <li><a href="index.html" class="navbar__link" data-page="home">Beranda</a></li>
-            <li><a href="about.html" class="navbar__link" data-page="about">Tentang</a></li>
-            <li><a href="services.html" class="navbar__link" data-page="services">Jasa</a></li>
-            <li><a href="skills.html" class="navbar__link" data-page="skills">Keahlian</a></li>
-            <li><a href="projects.html" class="navbar__link" data-page="projects">Proyek</a></li>
-            <li><a href="security.html" class="navbar__link" data-page="security">Keamanan</a></li>
-            <li><a href="simulate-attack.html" class="navbar__link" data-page="simulate-attack">Simulasi</a></li>
-            <li><a href="contact.html" class="navbar__link" data-page="contact">Kontak</a></li>
+            <li><a href="#" class="navbar__link" data-mega="models">Models</a></li>
+            <li><a href="#" class="navbar__link" data-mega="services">Our Services</a></li>
+            <li><a href="#" class="navbar__link" data-mega="pre-owned">Pre-Owned</a></li>
+            <li><a href="#" class="navbar__link" data-mega="offers">Special Offer</a></li>
+            <li><a href="#" class="navbar__link" data-mega="discover">Discover</a></li>
+            <li><a href="#" class="navbar__link" data-mega="loyalty">Exclusive Loyalty Program</a></li>
           </ul>
         </nav>
-        <button
-          class="navbar__hamburger"
-          aria-label="Buka menu navigasi"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <span class="navbar__hamburger-line"></span>
-          <span class="navbar__hamburger-line"></span>
-          <span class="navbar__hamburger-line"></span>
-        </button>
+        <div class="navbar__actions">
+          <!-- Search or other icons could go here -->
+        </div>
       </div>
     </header>
+
+    <!-- MEGA MENU -->
+    <div class="mega-menu" id="mega-menu">
+      <div class="mega-menu__container">
+        <div class="mega-menu__close" id="mega-menu-close">&times;</div>
+        <div class="mega-menu__sidebar">
+          <ul class="mega-menu__list" id="mega-menu-list">
+            <!-- Dynamic list based on hovered link -->
+          </ul>
+        </div>
+        <div class="mega-menu__content" id="mega-menu-content">
+          <!-- Dynamic content -->
+        </div>
+      </div>
+    </div>
 
     <!-- MAIN CONTENT -->
     <main id="main-content">
 
       <section class="hero" id="hero">
         <div class="hero__container">
-          <div class="hero__content animate-on-scroll">
+          <div class="hero__content fade-in-up">
             <span class="hero__title-accent">Sivilize Corp - Digital Industry Solutions</span>
             <h1 class="hero__title">
-              Membangun Masa Depan <br> Digital Indonesia.
+              Driving Redefined <br> THE NEW DIGITAL 2026.
             </h1>
             
             <div class="hero__cta-group">
-              <a href="#projects" class="btn btn--primary">Solusi Produk</a>
-              <a href="contact.html" class="btn btn--outline">Hubungi Founder</a>
+              <a href="services.html" class="btn btn--primary">Book a Service</a>
+              <a href="contact.html" class="btn btn--outline">Contact Us</a>
             </div>
 
             <div class="hero__stats">
               <div class="stat-item">
                 <span class="stat-item__value">100%</span>
-                <span class="stat-item__label">Uptime SLA</span>
+                <span class="stat-item__label">Precision</span>
               </div>
               <div class="stat-item">
                 <span class="stat-item__value">24/7</span>
-                <span class="stat-item__label">Security Monitoring</span>
+                <span class="stat-item__label">Availability</span>
               </div>
               <div class="stat-item">
-                <span class="stat-item__value">Level 4</span>
-                <span class="stat-item__label">Infrastructure</span>
+                <span class="stat-item__value">High</span>
+                <span class="stat-item__label">Performance</span>
               </div>
             </div>
           </div>
@@ -96,28 +102,35 @@
 
         <!-- Secondary Nav BMW Style -->
         <div class="hero__secondary-nav">
-          <a href="#design" class="secondary-nav__link secondary-nav__link--active">Design</a>
-          <a href="#technology" class="secondary-nav__link">Technology</a>
-          <a href="#technical-data" class="secondary-nav__link">Technical Data</a>
+          <a href="about.html" class="secondary-nav__link">About</a>
+          <a href="services.html" class="secondary-nav__link">Category</a>
+          <a href="skills.html" class="secondary-nav__link">Technical Skills</a>
+          <a href="projects.html" class="secondary-nav__link">Partner Benefit</a>
+          <a href="contact.html" class="secondary-nav__link">FAQ</a>
         </div>
       </section>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="footer" role="contentinfo">
-      <div class="footer__container">
-        <nav class="footer__links" aria-label="Tautan cepat footer">
-          <a href="index.html">Beranda</a>
-          <a href="about.html">Tentang</a>
-          <a href="services.html">Jasa</a>
-          <a href="skills.html">Keahlian</a>
-          <a href="projects.html">Proyek</a>
-          <a href="contact.html">Kontak</a>
-        </nav>
-        <p class="footer__copyright">
-          &copy; <span id="copyright-year"></span> Sivilize Corp. All rights reserved. | Seluruh hak cipta dan kode sumber dilindungi oleh Sivilize Corp.
-        </p>
+    <!-- STICKY FOOTER -->
+    <footer class="sticky-footer">
+      <div class="sticky-footer__container">
+        <a href="simulate-attack.html" class="sticky-footer__link">
+          <span class="sticky-footer__icon">🚗</span>
+          <span>Test Drive</span>
+        </a>
+        <a href="services.html" class="sticky-footer__link">
+          <span class="sticky-footer__icon">🔧</span>
+          <span>Service Booking</span>
+        </a>
+        <a href="projects.html" class="sticky-footer__link">
+          <span class="sticky-footer__icon">📍</span>
+          <span>Project Locator</span>
+        </a>
+        <a href="contact.html" class="sticky-footer__link">
+          <span class="sticky-footer__icon">💬</span>
+          <span>Contact Us</span>
+        </a>
       </div>
     </footer>
 

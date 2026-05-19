@@ -1,102 +1,113 @@
 /**
- * navbar.js - Navbar logic: active state, hamburger menu, scroll effect
- * Muhamad Adrian Portfolio
+ * navbar.js - BMW-style Mega Menu and Navbar logic
+ * Sivilize Corp Portfolio
  */
 
 (function () {
   'use strict';
 
+  const menuData = {
+    models: {
+      title: 'Our Digital Models',
+      items: [
+        { label: 'Sivilize Hub Pro', link: 'projects.html#hub' },
+        { label: 'SiKasir Cloud', link: 'projects.html#kasir' },
+        { label: 'OSRM Custom Engine', link: 'projects.html#osrm' },
+        { label: 'Firewall Layer 7', link: 'projects.html#firewall' }
+      ]
+    },
+    services: {
+      title: 'Professional Services',
+      items: [
+        { label: 'Fullstack Development', link: 'services.html#web' },
+        { label: 'Cybersecurity Audit', link: 'services.html#security' },
+        { label: 'Infrastructure Setup', link: 'services.html#infra' },
+        { label: 'GIS & Mapping Solutions', link: 'services.html#gis' }
+      ]
+    },
+    discover: {
+      title: 'Discover Sivilize Corp',
+      items: [
+        { label: 'About the Founder', link: 'about.html' },
+        { label: 'Our Mission', link: 'about.html#mission' },
+        { label: 'Technical Stack', link: 'skills.html' },
+        { label: 'Contact Us', link: 'contact.html' }
+      ]
+    },
+    loyalty: {
+      title: 'Exclusive Loyalty Program',
+      items: [
+        { label: 'Partner Benefits', link: '#' },
+        { label: 'Early Access', link: '#' },
+        { label: 'Community Support', link: '#' }
+      ]
+    }
+  };
+
   /**
-   * Determines the active page based on the current URL pathname.
-   * @returns {string} The page identifier (home, about, skills, projects, contact)
+   * Initializes the Mega Menu.
    */
-  function getActivePage() {
-    const pathname = window.location.pathname;
-    const filename = pathname.split('/').pop() || 'index.html';
+  function initMegaMenu() {
+    const navLinks = document.querySelectorAll('.navbar__link[data-mega]');
+    const megaMenu = document.getElementById('mega-menu');
+    const megaList = document.getElementById('mega-menu-list');
+    const megaContent = document.getElementById('mega-menu-content');
+    const closeBtn = document.getElementById('mega-menu-close');
 
-    if (filename === '' || filename === 'index.html') return 'home';
-    if (filename === 'about.html') return 'about';
-    if (filename === 'skills.html') return 'skills';
-    if (filename === 'projects.html') return 'projects';
-    if (filename === 'contact.html') return 'contact';
+    if (!megaMenu || !navLinks.length) return;
 
-    return 'home';
-  }
+    function openMenu(key) {
+      const data = menuData[key];
+      if (!data) return;
 
-  /**
-   * Sets the active class on the correct navbar link.
-   */
-  function setActiveNavLink() {
-    const activePage = getActivePage();
-    const navLinks = document.querySelectorAll('.navbar__link');
+      // Clear previous
+      megaList.innerHTML = '';
+      megaContent.innerHTML = `<h2 class="mega-menu__content-title">${data.title}</h2>`;
 
-    navLinks.forEach(function (link) {
-      link.classList.remove('navbar__link--active');
-      link.removeAttribute('aria-current');
+      // Fill sidebar
+      data.items.forEach((item, index) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = item.link;
+        a.className = 'mega-menu__item-link';
+        a.textContent = item.label;
+        if (index === 0) a.classList.add('is-active');
+        li.appendChild(a);
+        megaList.appendChild(li);
+      });
 
-      if (link.getAttribute('data-page') === activePage) {
-        link.classList.add('navbar__link--active');
-        link.setAttribute('aria-current', 'page');
-      }
-    });
-  }
+      megaMenu.classList.add('is-open');
+    }
 
-  /**
-   * Initializes the hamburger menu toggle.
-   */
-  function initHamburgerMenu() {
-    const navbar = document.querySelector('.navbar');
-    const hamburger = document.querySelector('.navbar__hamburger');
-    const navMenu = document.querySelector('.navbar__nav');
+    function closeMenu() {
+      megaMenu.classList.remove('is-open');
+    }
 
-    if (!hamburger || !navbar) return;
-
-    hamburger.addEventListener('click', function () {
-      const isOpen = navbar.classList.contains('navbar--open');
-
-      if (isOpen) {
-        navbar.classList.remove('navbar--open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.setAttribute('aria-label', 'Buka menu navigasi');
-      } else {
-        navbar.classList.add('navbar--open');
-        hamburger.setAttribute('aria-expanded', 'true');
-        hamburger.setAttribute('aria-label', 'Tutup menu navigasi');
-      }
-    });
-
-    // Close menu when a nav link is clicked (mobile)
-    const navLinks = document.querySelectorAll('.navbar__link');
-    navLinks.forEach(function (link) {
-      link.addEventListener('click', function () {
-        navbar.classList.remove('navbar--open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.setAttribute('aria-label', 'Buka menu navigasi');
+    navLinks.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        const key = link.getAttribute('data-mega');
+        openMenu(key);
       });
     });
 
-    // Close menu when clicking outside
-    document.addEventListener('click', function (e) {
-      if (!navbar.contains(e.target)) {
-        navbar.classList.remove('navbar--open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.setAttribute('aria-label', 'Buka menu navigasi');
-      }
+    megaMenu.addEventListener('mouseleave', closeMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+    // Prevent closing when moving from link to menu
+    let timeout;
+    navLinks.forEach(link => {
+      link.addEventListener('mouseleave', () => {
+        timeout = setTimeout(closeMenu, 100);
+      });
     });
 
-    // Close menu on Escape key
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && navbar.classList.contains('navbar--open')) {
-        navbar.classList.remove('navbar--open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.setAttribute('aria-label', 'Buka menu navigasi');
-        hamburger.focus();
-      }
+    megaMenu.addEventListener('mouseenter', () => {
+      clearTimeout(timeout);
     });
   }
 
   /**
-   * Initializes the scroll listener for navbar shadow effect.
+   * Initializes the scroll listener for navbar background effect.
    */
   function initScrollListener() {
     const navbar = document.querySelector('.navbar');
@@ -111,7 +122,6 @@
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Run once on load
     handleScroll();
   }
 
@@ -119,20 +129,13 @@
    * Initialize all navbar functionality.
    */
   function init() {
-    setActiveNavLink();
-    initHamburgerMenu();
+    initMegaMenu();
     initScrollListener();
   }
 
-  // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
-  }
-
-  // Export for testing
-  if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { getActivePage, setActiveNavLink };
   }
 })();

@@ -36,42 +36,42 @@
         <a href="index.html" class="navbar__logo" aria-label="Sivilize Corp - Beranda">
           <img src="assets/images/logo.svg" alt="Sivilize Corp Logo" class="navbar__logo-image">
         </a>
-        <nav class="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
+        <nav class="navbar__nav" role="navigation" aria-label="Navigasi utama">
           <ul class="navbar__list">
-            <li><a href="index.html" class="navbar__link" data-page="home">Beranda</a></li>
-            <li><a href="about.html" class="navbar__link" data-page="about">Tentang</a></li>
-            <li><a href="services.html" class="navbar__link" data-page="services">Jasa</a></li>
-            <li><a href="skills.html" class="navbar__link" data-page="skills">Keahlian</a></li>
-            <li><a href="projects.html" class="navbar__link" data-page="projects">Proyek</a></li>
-            <li><a href="security.html" class="navbar__link" data-page="security">Keamanan</a></li>
-            <li><a href="simulate-attack.html" class="navbar__link" data-page="simulate-attack">Simulasi</a></li>
-            <li><a href="contact.html" class="navbar__link" data-page="contact">Kontak</a></li>
+            <li><a href="#" class="navbar__link" data-mega="models">Models</a></li>
+            <li><a href="#" class="navbar__link" data-mega="services">Our Services</a></li>
+            <li><a href="#" class="navbar__link" data-mega="pre-owned">Pre-Owned</a></li>
+            <li><a href="#" class="navbar__link" data-mega="offers">Special Offer</a></li>
+            <li><a href="#" class="navbar__link" data-mega="discover">Discover</a></li>
+            <li><a href="#" class="navbar__link" data-mega="loyalty">Exclusive Loyalty Program</a></li>
           </ul>
         </nav>
-        <button
-          class="navbar__hamburger"
-          aria-label="Buka menu navigasi"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <span class="navbar__hamburger-line"></span>
-          <span class="navbar__hamburger-line"></span>
-          <span class="navbar__hamburger-line"></span>
-        </button>
+        <div class="navbar__actions"></div>
       </div>
     </header>
+
+    <!-- MEGA MENU -->
+    <div class="mega-menu" id="mega-menu">
+      <div class="mega-menu__container">
+        <div class="mega-menu__close" id="mega-menu-close">&times;</div>
+        <div class="mega-menu__sidebar">
+          <ul class="mega-menu__list" id="mega-menu-list"></ul>
+        </div>
+        <div class="mega-menu__content" id="mega-menu-content"></div>
+      </div>
+    </div>
 
     <!-- MAIN CONTENT -->
     <main id="main-content">
 
       <!-- ABOUT SECTION -->
-      <section class="about" aria-labelledby="about-title">
+      <section class="about fade-in-up" aria-labelledby="about-title">
         <div class="about__container">
 
           <div class="about__layout">
 
             <!-- About Image -->
-            <div class="about__image-wrapper animate-on-scroll stagger-1">
+            <div class="about__image-wrapper">
               <div class="about__image-frame">
                 <img
                   src="assets/images/profile.jpg"
@@ -87,10 +87,9 @@
             </div>
 
             <!-- About Content -->
-            <div class="about__content animate-on-scroll stagger-2">
+            <div class="about__content">
               <span class="about__label">The Founder</span>
               <h1 class="about__title" id="about-title">Muhamad Adrian</h1>
-              <div class="about__divider" aria-hidden="true"></div>
 
               <p class="about__text">
                 Muhamad Adrian adalah pendiri dan arsitek utama di balik seluruh sistem yang dibangun oleh Sivilize Corp. Didirikan secara resmi pada 9 Mei 2026, perusahaan ini membawa disiplin presisi dan logika terstruktur dari pengalaman industri nyata ke dalam dunia pengembangan perangkat lunak.
@@ -101,55 +100,52 @@
               </p>
 
               <!-- Highlights -->
-              <div class="about__highlights">
-                <div class="about__highlight-item">
-                  <span class="about__highlight-number">24 Des 2004</span>
-                  <span class="about__highlight-label">Tanggal Lahir</span>
+              <div class="about__grid">
+                <div class="about__item">
+                  <span class="about__item-title">Tanggal Lahir</span>
+                  <span class="about__item-value">24 Des 2004</span>
                 </div>
-                <div class="about__highlight-item">
-                  <span class="about__highlight-number">Kupang, NTT</span>
-                  <span class="about__highlight-label">Asal</span>
+                <div class="about__item">
+                  <span class="about__item-title">Asal</span>
+                  <span class="about__item-value">Kupang, NTT</span>
                 </div>
-                <div class="about__highlight-item">
-                  <span class="about__highlight-number">Fullstack</span>
-                  <span class="about__highlight-label">Keahlian</span>
+                <div class="about__item">
+                  <span class="about__item-title">Keahlian</span>
+                  <span class="about__item-value">Fullstack</span>
                 </div>
-                <div class="about__highlight-item">
-                  <span class="about__highlight-number">Sivilize Corp</span>
-                  <span class="about__highlight-label">Perusahaan</span>
+                <div class="about__item">
+                  <span class="about__item-title">Perusahaan</span>
+                  <span class="about__item-value">Sivilize Corp</span>
                 </div>
               </div>
 
-              <div class="about__cta">
+              <div class="about__cta" style="margin-top: 40px; display: flex; gap: 16px;">
                 <a href="projects.html" class="btn btn--primary">Lihat Proyek</a>
-                <a href="contact.html" class="btn btn--secondary">Hubungi Saya</a>
+                <a href="contact.html" class="btn btn--outline" style="border-color: #000; color: #000;">Hubungi Saya</a>
               </div>
             </div>
 
           </div>
 
           <!-- VISION & MISSION SECTION -->
-          <div class="about__vision-mission animate-on-scroll">
-            <div class="grid grid--2">
+          <div class="about__vision-mission fade-in-up" style="margin-top: 80px;">
+            <div class="grid grid--2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
               <div class="vision-box">
-                <h2 class="vision-box__title">Visi Kami</h2>
-                <p class="vision-box__text">
+                <h2 class="vision-box__title" style="font-size: 24px; margin-bottom: 16px;">Visi Kami</h2>
+                <p class="vision-box__text" style="color: #666;">
                   Menjadi katalisator transformasi digital utama di Indonesia yang mengedepankan presisi teknis, keamanan mutakhir, dan integritas dalam setiap solusi perangkat lunak yang dibangun.
                 </p>
               </div>
               <div class="mission-box">
-                <h2 class="mission-box__title">Misi Kami</h2>
-                <ul class="mission-box__list">
-                  <li class="mission-box__item">
-                    <span class="mission-box__icon">→</span>
+                <h2 class="mission-box__title" style="font-size: 24px; margin-bottom: 16px;">Misi Kami</h2>
+                <ul class="mission-box__list" style="list-style: none; padding: 0;">
+                  <li class="mission-box__item" style="margin-bottom: 12px; color: #666;">
                     Membangun infrastruktur digital kustom yang ringan, cepat, dan berstandar industri.
                   </li>
-                  <li class="mission-box__item">
-                    <span class="mission-box__icon">→</span>
+                  <li class="mission-box__item" style="margin-bottom: 12px; color: #666;">
                     Menerapkan standar keamanan siber berlapis pada setiap produk perangkat lunak.
                   </li>
-                  <li class="mission-box__item">
-                    <span class="mission-box__icon">→</span>
+                  <li class="mission-box__item" style="margin-bottom: 12px; color: #666;">
                     Menyediakan solusi teknologi yang praktis dan relevan untuk sektor industri, konstruksi, dan retail.
                   </li>
                 </ul>
@@ -161,20 +157,25 @@
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="footer" role="contentinfo">
-      <div class="footer__container">
-        <nav class="footer__links" aria-label="Tautan cepat footer">
-          <a href="index.html">Beranda</a>
-          <a href="about.html">Tentang</a>
-          <a href="services.html">Jasa</a>
-          <a href="skills.html">Keahlian</a>
-          <a href="projects.html">Proyek</a>
-          <a href="contact.html">Kontak</a>
-        </nav>
-        <p class="footer__copyright">
-          &copy; <span id="copyright-year"></span> Sivilize Corp. All rights reserved. | Seluruh hak cipta dan kode sumber dilindungi oleh Sivilize Corp.
-        </p>
+    <!-- STICKY FOOTER -->
+    <footer class="sticky-footer">
+      <div class="sticky-footer__container">
+        <a href="simulate-attack.html" class="sticky-footer__link">
+          <span class="sticky-footer__icon">🚗</span>
+          <span>Test Drive</span>
+        </a>
+        <a href="services.html" class="sticky-footer__link">
+          <span class="sticky-footer__icon">🔧</span>
+          <span>Service Booking</span>
+        </a>
+        <a href="projects.html" class="sticky-footer__link">
+          <span class="sticky-footer__icon">📍</span>
+          <span>Project Locator</span>
+        </a>
+        <a href="contact.html" class="sticky-footer__link">
+          <span class="sticky-footer__icon">💬</span>
+          <span>Contact Us</span>
+        </a>
       </div>
     </footer>
 

@@ -35,8 +35,8 @@
         }
       );
 
-      // Observe all elements with animate-on-scroll class
-      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      // Observe all elements with animation classes
+      document.querySelectorAll('.animate-on-scroll, .fade-in-up, .fade-in').forEach(el => {
         this.observer.observe(el);
       });
     }
@@ -50,6 +50,13 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
+          
+          // If it's a fade-in-up or fade-in class, we might need to handle it separately
+          // but for now, we'll just let the CSS handle the animation when it becomes visible
+          if (entry.target.classList.contains('fade-in-up') || entry.target.classList.contains('fade-in')) {
+            entry.target.style.opacity = '1';
+          }
+
           // Stop observing once animation is triggered
           this.observer.unobserve(entry.target);
         }
@@ -61,8 +68,9 @@
      * Used when IntersectionObserver is not supported.
      */
     showAllElements() {
-      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      document.querySelectorAll('.animate-on-scroll, .fade-in-up, .fade-in').forEach(el => {
         el.classList.add('is-visible');
+        el.style.opacity = '1';
       });
     }
   }

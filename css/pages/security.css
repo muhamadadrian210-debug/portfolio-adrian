@@ -55,14 +55,14 @@
 .security__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--space-lg); /* Gap lebih rapat tapi konsisten */
+  gap: var(--space-lg);
   margin-top: var(--space-xxl);
 }
 
 .security__item {
-  background-color: #ffffff; /* Putih bersih */
-  padding: 32px;
-  border: 1px solid var(--color-hairline); /* Hairline tipis khas BMW */
+  background-color: #ffffff;
+  padding: 40px; /* whitespace lebih luas */
+  border: 1px solid var(--color-hairline);
   border-radius: var(--radius-none);
   display: flex;
   flex-direction: column;
@@ -72,10 +72,9 @@
 }
 
 .security__item:hover {
-  border-color: var(--color-primary); /* Cuma ganti warna border pas hover */
-  background-color: var(--color-surface-soft); /* Shift warna dikit biar elegan */
-  transform: none; /* Buang transform norak */
-  box-shadow: none; /* Buang shadow sampah */
+  border-color: var(--color-primary);
+  background-color: var(--color-surface-soft);
+  transform: translateY(-4px); /* micro-interaction halus */
 }
 
 .security__item-icon {

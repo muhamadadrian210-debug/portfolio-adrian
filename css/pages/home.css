@@ -46,9 +46,9 @@
 }
 
 .hero__title {
-  font-size: 64px; /* display-xl */
+  font-size: clamp(40px, 5vw, 64px); /* Responsif biar gak pecah di mobile */
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.1;
   margin-bottom: var(--space-xl);
   color: var(--color-on-dark);
 }

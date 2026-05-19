@@ -25,7 +25,7 @@
 .projects__subtitle {
   font-size: 16px;
   font-weight: 300;
-  color: #ffffff;
+  color: var(--color-muted); /* Fix: Teks dongo jangan putih di bg putih */
   max-width: 600px;
   margin-inline: auto;
   line-height: 1.6;

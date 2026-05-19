@@ -37,11 +37,15 @@ const projects = [
 function handleImageError(imgElement, project) {
   const placeholder = document.createElement('div');
   placeholder.className = 'project-card__image-placeholder';
-  placeholder.style.backgroundColor = project.accentColor || '#1E3A5F';
+  placeholder.style.backgroundColor = '#fafafa';
+  placeholder.style.width = '100%';
+  placeholder.style.height = '100%';
+  placeholder.style.display = 'flex';
+  placeholder.style.alignItems = 'center';
+  placeholder.style.justifyContent = 'center';
   placeholder.setAttribute('aria-label', `Placeholder untuk ${project.name}`);
   placeholder.setAttribute('role', 'img');
 
-  // Add project initials as visual indicator
   const initials = project.name
     .split(' ')
     .map(word => word[0])
@@ -50,7 +54,7 @@ function handleImageError(imgElement, project) {
     .substring(0, 3);
 
   placeholder.innerHTML = `
-    <span class="project-card__image-placeholder-text">${initials}</span>
+    <span style="font-family: var(--font-sans); font-weight: 700; color: #ccc; font-size: 48px;">${initials}</span>
   `;
 
   if (imgElement.parentNode) {
@@ -64,24 +68,17 @@ function handleImageError(imgElement, project) {
  * @returns {string} HTML string for the project card
  */
 function renderProjectCard(project, index) {
-  const techBadges = project.technologies
-    .map(tech => `<span class="badge badge--tech">${escapeHtml(tech)}</span>`)
-    .join('');
-
-  const projectNumber = (index + 1).toString().padStart(2, '0');
-
   const linkButton = project.link
-    ? `<a href="${escapeHtml(project.link)}" class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">
-        Kunjungi Situs →
+    ? `<a href="${escapeHtml(project.link)}" class="project-card__link" target="_blank" rel="noopener noreferrer">
+        LEARN MORE
        </a>`
-    : `<button class="btn btn--secondary btn--sm" disabled aria-label="Proyek ${escapeHtml(project.name)} tidak memiliki tautan publik">
-        Situs Tidak Tersedia
-       </button>`;
+    : `<span class="project-card__link" style="opacity: 0.5; cursor: not-allowed;">
+        COMING SOON
+       </span>`;
 
   return `
-    <article class="project-card card animate-on-scroll" data-project-id="${escapeHtml(project.id)}">
-      <div class="project-card__number">${projectNumber}</div>
-      <div class="project-card__image-container">
+    <article class="project-card animate-on-scroll" data-project-id="${escapeHtml(project.id)}">
+      <div class="project-card__image-plate">
         <img
           src="${escapeHtml(project.image)}"
           alt="${escapeHtml(project.imageAlt)}"
@@ -90,15 +87,10 @@ function renderProjectCard(project, index) {
           onerror="handleImageError(this, projects.find(p => p.id === '${escapeHtml(project.id)}'))"
         />
       </div>
-      <div class="project-card__body card__body">
-        <h3 class="project-card__title card__title">${escapeHtml(project.name)}</h3>
-        <p class="project-card__description card__description">${escapeHtml(project.description)}</p>
-        <div class="project-card__tech badge-group">
-          ${techBadges}
-        </div>
-        <div class="project-card__actions">
-          ${linkButton}
-        </div>
+      <div class="project-card__content">
+        <h3 class="project-card__title">${escapeHtml(project.name)}</h3>
+        <p class="project-card__text">${escapeHtml(project.description)}</p>
+        ${linkButton}
       </div>
     </article>
   `;

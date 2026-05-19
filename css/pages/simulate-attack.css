@@ -4,11 +4,12 @@
 
 /* HERO */
 .sim-hero {
+  padding-top: 120px;
+  padding-bottom: var(--space-section);
   background-color: var(--color-base);
-  padding-block: var(--space-24);
   position: relative;
   overflow: hidden;
-  border-bottom: 2px solid var(--color-border);
+  border-bottom: 1px solid var(--color-hairline);
 }
 
 .sim-hero::before {

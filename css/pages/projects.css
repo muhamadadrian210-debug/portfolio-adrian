@@ -2,69 +2,111 @@
    PROJECTS.CSS - BMW Corporate Style
    ============================================ */
 
-.projects-hero {
-  padding-block: var(--space-section);
-  background-color: var(--color-surface-dark);
-  color: var(--color-on-dark);
+.projects__header {
+  margin-bottom: var(--space-xxl);
 }
 
-.projects-hero__title {
-  font-size: 48px; /* display-lg */
-  font-weight: 700;
-  margin-bottom: var(--space-md);
-}
-
-.projects-grid {
-  padding-block: var(--space-section);
-  background-color: var(--color-canvas);
-}
-
-.project-card {
-  background-color: var(--color-canvas);
-  border: 1px solid var(--color-hairline);
-  border-radius: var(--radius-none);
-  overflow: hidden;
-  transition: all var(--transition-base);
-  display: flex;
-  flex-direction: column;
-}
-
-.project-card:hover {
-  border-color: var(--color-primary);
-  background-color: var(--color-surface-card);
-}
-
-.project-card__image {
-  width: 100%;
-  aspect-ratio: 16/10;
-  object-fit: cover;
-  background-color: var(--color-surface-soft);
-}
-
-.project-card__content {
-  padding: var(--space-lg);
-}
-
-.project-card__title {
-  font-size: 20px; /* title-lg */
-  font-weight: 700;
-  margin-bottom: var(--space-sm);
-  color: var(--color-ink);
-}
-
-.project-card__text {
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--color-body);
-  margin-bottom: var(--space-lg);
-}
-
-.project-card__link {
+.projects__label {
+  display: block;
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.projects__title {
+  font-size: 48px; /* display-lg */
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+.projects__subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--color-body);
+  max-width: 800px;
+}
+
+.projects {
+  padding-top: 120px;
+  padding-bottom: var(--space-section);
+  background-color: var(--color-canvas);
+}
+
+.m-stripe-divider {
+  margin-bottom: var(--space-lg);
+}
+
+.projects-container {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.project-card {
+  background-color: var(--color-canvas);
+  border-radius: var(--radius-none);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-base);
+}
+
+.project-card:hover {
+  background-color: var(--color-surface-card);
+  transform: none;
+}
+
+.project-card__image-plate {
+  background-color: var(--color-surface-card);
+  aspect-ratio: 16/10;
+  margin-bottom: var(--space-lg);
+  overflow: hidden;
+  border-radius: var(--radius-none);
+}
+
+.project-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-card__image {
+  transform: scale(1.05);
+}
+
+.project-card__content {
+  padding: 0;
+}
+
+.project-card__title {
+  font-size: 18px; /* title-md */
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--color-ink);
+  text-transform: none;
+}
+
+.project-card__text {
+  font-size: 14px; /* body-sm */
+  font-weight: 300;
+  color: var(--color-body);
+  margin-bottom: var(--space-lg);
+  line-height: 1.55;
+}
+
+.project-card__link {
+  font-size: 13px; /* label-uppercase */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-ink);
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -73,4 +115,8 @@
 .project-card__link::after {
   content: '›';
   font-size: 18px;
+}
+
+.project-card__link:hover {
+  color: var(--color-primary);
 }

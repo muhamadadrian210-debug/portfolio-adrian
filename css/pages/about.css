@@ -3,7 +3,8 @@
    ============================================ */
 
 .about {
-  padding-block: var(--space-section);
+  padding-top: 120px;
+  padding-bottom: var(--space-section);
   background-color: var(--color-canvas);
 }
 

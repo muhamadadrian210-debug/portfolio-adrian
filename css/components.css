@@ -171,6 +171,111 @@
   font-size: 20px;
 }
 
+/* ============================================
+   MODEL CARDS (BMW Style)
+   ============================================ */
+.model-card {
+  background-color: var(--color-canvas);
+  border-radius: var(--radius-none);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-base);
+}
+
+.model-card__photo-plate {
+  background-color: var(--color-surface-card);
+  border-radius: var(--radius-none);
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.model-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.model-card:hover .model-card__photo {
+  transform: scale(1.05);
+}
+
+.model-card__title {
+  font-size: 18px; /* title-md */
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 4px;
+}
+
+.model-card__tagline {
+  font-size: 14px; /* body-sm */
+  font-weight: 300;
+  color: var(--color-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.btn--text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px; /* label-uppercase */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-ink);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn--text-link::after {
+  content: '›';
+  font-size: 18px;
+  line-height: 1;
+}
+
+.btn--text-link:hover {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   M-STRIPE DIVIDER
+   ============================================ */
+.m-stripe-divider {
+  height: 4px;
+  width: 100%;
+  display: flex;
+}
+
+.m-stripe-divider__blue-light { background-color: var(--color-m-blue-light); flex: 1; }
+.m-stripe-divider__blue-dark { background-color: var(--color-m-blue-dark); flex: 1; }
+.m-stripe-divider__red { background-color: var(--color-m-red); flex: 1; }
+
+/* ============================================
+   INPUTS (Rectangular - 0px)
+   ============================================ */
+.form-input {
+  width: 100%;
+  height: 48px;
+  padding: 14px 16px;
+  background-color: var(--color-canvas);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-none);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--color-ink);
+  transition: border-color var(--transition-fast);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-ink);
+}
+
 /* Hamburger Button */
 .navbar__hamburger {
   display: none;
@@ -222,107 +327,64 @@
 }
 
 /* ============================================
-   FOOTER
+   FOOTER (Corporate Soft Grey)
    ============================================ */
 .footer {
-  background-color: var(--color-surface);
-  color: var(--color-text-primary);
-  border-top: 2px solid var(--color-border);
-  padding-block: var(--space-8);
-  margin-top: auto;
+  background-color: var(--color-surface-soft);
+  padding-block: 64px;
+  color: var(--color-body);
 }
 
 .footer__container {
-  max-width: 1280px;
+  max-width: 1440px;
   margin-inline: auto;
-  padding-inline: var(--space-4);
+  padding-inline: var(--space-lg);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xxl);
+  margin-bottom: var(--space-xxl);
+}
+
+.footer__col-title {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: var(--space-lg);
+  color: var(--color-ink);
+}
+
+.footer__list {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-4);
-  text-align: center;
+  gap: var(--space-sm);
 }
 
-.footer__links {
+.footer__link {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color-muted);
+}
+
+.footer__link:hover {
+  color: var(--color-ink);
+}
+
+.footer__bottom {
+  border-top: 1px solid var(--color-hairline);
+  padding-top: var(--space-xl);
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  justify-content: center;
-}
-
-.footer__links a {
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-mono);
-}
-
-.footer__links a:hover {
-  color: var(--color-primary);
-  background-color: var(--color-surface-alt);
+  justify-content: space-between;
+  align-items: center;
 }
 
 .footer__copyright {
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* ============================================
-   BUTTONS (Rectangular - 0px Radius)
-   ============================================ */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   font-size: 14px;
-  font-weight: 700; /* BMW Button 700 */
-  letter-spacing: 0.5px;
-  padding: 14px 32px;
-  height: 48px;
-  border-radius: var(--radius-none);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  border: 1px solid transparent;
-  white-space: nowrap;
-}
-
-.btn--primary {
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
-  border-color: var(--color-primary);
-}
-
-.btn--primary:hover {
-  background-color: var(--color-primary-active);
-  border-color: var(--color-primary-active);
-}
-
-.btn--outline {
-  background-color: var(--color-canvas);
-  color: var(--color-ink);
-  border-color: var(--color-hairline-strong);
-}
-
-.btn--outline:hover {
-  background-color: var(--color-surface-soft);
-  border-color: var(--color-ink);
-}
-
-.btn--outline-on-dark {
-  background-color: transparent;
-  color: var(--color-on-dark);
-  border-color: var(--color-on-dark);
-}
-
-.btn--outline-on-dark:hover {
-  background-color: var(--color-on-dark);
-  color: var(--color-surface-dark);
+  font-weight: 300;
+  color: var(--color-muted);
 }
 
 /* ============================================

@@ -31,12 +31,12 @@
   --color-on-dark: #ffffff;
   --color-on-dark-soft: #bbbbbb;
 
-  /* Semantic */
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-error: #dc2626;
+  /* M-Stripe Colors */
+  --color-m-blue-light: #0066b1;
+  --color-m-blue-dark: #1c69d4;
+  --color-m-red: #e22718;
 
-  /* TYPOGRAPHY - BMW Signature Contrast (700/300) */
+  /* SPACING SYSTEM - 8px Base */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   
   /* SPACING SYSTEM - 8px Base */

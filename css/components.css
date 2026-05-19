@@ -42,7 +42,7 @@
 
 /* Hamburger Button */
 .navbar__hamburger {
-  display: none; /* Sembunyi di Desktop */
+  display: none !important; /* Sembunyi di Desktop */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -50,18 +50,18 @@
   width: 44px;
   height: 44px;
   cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  z-index: 1003;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  z-index: 1003 !important;
 }
 
 .navbar__hamburger-line {
-  display: block;
-  width: 28px;
-  height: 2px;
-  background-color: #ffffff;
-  transition: all 0.3s ease;
+  display: block !important;
+  width: 28px !important;
+  height: 2px !important;
+  background-color: #ffffff !important;
+  transition: all 0.3s ease !important;
 }
 
 /* Nav Menu Visibility */
@@ -72,26 +72,26 @@
 
 @media (max-width: 1023px) {
   .navbar__hamburger {
-    display: flex; /* Muncul di Mobile */
+    display: flex !important; /* PAKSA MUNCUL DI MOBILE */
   }
 
   .navbar__nav {
-    display: none; /* Sembunyi Menu Teks di Mobile (Biar ga menuh-menuhin) */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #111111;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    z-index: 1001;
+    display: none !important; /* Sembunyi Menu Teks di Mobile */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background-color: #111111 !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 40px !important;
+    z-index: 1001 !important;
   }
 
   .navbar--open .navbar__nav {
-    display: flex; /* Muncul pas Hamburger diklik */
+    display: flex !important; /* Muncul pas Hamburger diklik */
   }
 }
 

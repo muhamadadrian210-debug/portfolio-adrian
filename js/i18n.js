@@ -1,3 +1,4 @@
+// copy per bahasa — kalau nambah key, isi semua locale biar nggak bolong
 const translations = {
   id: {
     nav_home: "Beranda",
@@ -9,12 +10,14 @@ const translations = {
     nav_simulate: "Simulasi",
     nav_contact: "Kontak",
     hero_title: "Membangun Masa Depan <br> Digital Indonesia.",
-    hero_desc: "Solusi infrastruktur digital kustom dengan presisi teknis tinggi, keamanan berlapis, dan performa tanpa kompromi.",
-    hero_cta_product: "Solusi Produk",
-    hero_cta_founder: "Hubungi Founder",
-    about_label: "The Founder",
+    hero_desc: "Kami kerjakan web dan integrasi dengan prioritas keamanan sama kecepatan nyata di browser — bukan sekadar biar ada di internet.",
+    hero_cta_product: "Lihat layanan",
+    hero_cta_founder: "Hubungi founder",
+    hero_stat_1: "Scope jelas",
+    hero_stat_2: "Komunikasi proyek",
+    hero_stat_3: "Prioritas kecepatan",
     about_title: "Muhamad Adrian",
-    about_text1: "Muhamad Adrian adalah pendiri dan arsitek utama di balik seluruh sistem yang dibangun oleh Sivilize Corp. Didirikan secara resmi pada 9 Mei 2026, perusahaan ini membawa disiplin presisi dan logika terstructured dari pengalaman industri nyata ke dalam dunia pengembangan perangkat lunak.",
+    about_text1: "Muhamad Adrian adalah pendiri dan arsitek utama di balik seluruh sistem yang dibangun oleh Sivilize Corp. Didirikan secara resmi pada 9 Mei 2026, perusahaan ini membawa disiplin presisi dan logika terstruktur dari pengalaman industri nyata ke dalam dunia pengembangan perangkat lunak.",
     about_text2: "Pemahaman mendalam tentang bagaimana sebuah sistem besar dikelola—dari fondasi hingga penyelesaian—menjadi landasan utama dalam setiap infrastruktur digital yang ia bangun. Hal inilah yang menjadi otak di balik logika sistem Sivilize Hub Pro — sebuah platform yang tidak hanya dibuat oleh programmer, tetapi oleh seseorang yang benar-benar mengerti masalah teknis di lapangan.",
     about_birth_label: "Tanggal Lahir",
     about_origin_label: "Asal",
@@ -93,12 +96,14 @@ const translations = {
     nav_simulate: "Simulate",
     nav_contact: "Contact",
     hero_title: "Building Indonesia's <br> Digital Future.",
-    hero_desc: "Custom digital infrastructure solutions with high technical precision, layered security, and uncompromising performance.",
-    hero_cta_product: "Product Solutions",
-    hero_cta_founder: "Contact Founder",
-    about_label: "The Founder",
+    hero_desc: "We ship websites and integrations where security and actual load time matter—not a slide deck full of adjectives.",
+    hero_cta_product: "See services",
+    hero_cta_founder: "Talk to the founder",
+    hero_stat_1: "Clear scope",
+    hero_stat_2: "Project comms",
+    hero_stat_3: "Speed first",
     about_title: "Muhamad Adrian",
-    about_text1: "Muhamad Adrian is the founder and lead architect behind every system built by Sivilize Corp. Founded officially on May 9, 2026, the company brings the discipline of precision and structured logic from real-world industrial experience into the software development domain.",
+    about_text1: "Muhamad Adrian is the founder and lead architect behind every system built by Sivilize Corp. Founded officially on May 9, 2026, the company brings field-hardened precision and structured thinking from real industry work into software—not the other way around.",
     about_text2: "Deep understanding of how large-scale systems are managed—from foundation to completion—is the cornerstone of every digital infrastructure he builds. This expertise is the brain behind the logic of Sivilize Hub Pro — a platform created not just by a programmer, but by someone who truly understands field-level technical challenges.",
     about_birth_label: "Date of Birth",
     about_origin_label: "Origin",
@@ -177,9 +182,12 @@ const translations = {
     nav_simulate: "模拟",
     nav_contact: "联系",
     hero_title: "构建印尼的 <br> 数字化未来。",
-    hero_desc: "具有高技术精度、分层安全和不妥协性能的定制数字基础设施解决方案。",
-    hero_cta_product: "产品解决方案",
+    hero_desc: "网站与集成：安全和真实加载速度优先，而不是堆形容词的幻灯片。",
+    hero_cta_product: "服务一览",
     hero_cta_founder: "联系创始人",
+    hero_stat_1: "范围清楚",
+    hero_stat_2: "项目沟通",
+    hero_stat_3: "速度优先",
     about_label: "创始人",
     about_title: "Muhamad Adrian",
     about_text1: "Muhamad Adrian 是 Sivilize Corp 构建的所有系统的创始人兼首席架构师。公司于 2026 年 5 月 9 日正式成立，将现实工业经验中的精密纪律和结构化逻辑引入软件开发领域。",
@@ -261,9 +269,12 @@ const translations = {
     nav_simulate: "シミュレーション",
     nav_contact: "連絡先",
     hero_title: "インドネシアの <br> デジタルの未来を築く。",
-    hero_desc: "高度な技術精度、階層化されたセキュリティ、および妥協のないパフォーマンスを備えたカスタムデジタルインフラストラクチャソリューション。",
-    hero_cta_product: "製品ソリューション",
+    hero_desc: "Webと連携基盤は、安全と実測の速さを先に。形容詞だらけのスライドは作りません。",
+    hero_cta_product: "サービスを見る",
     hero_cta_founder: "創設者に連絡",
+    hero_stat_1: "範囲が明確",
+    hero_stat_2: "連絡は早め",
+    hero_stat_3: "表示の速さ",
     about_label: "創設者",
     about_title: "Muhamad Adrian",
     about_text1: "Muhamad Adrianは、Sivilize Corpによって構築されたすべてのシステムの創設者兼リードアーキテクトです。2026年5月9日に正式に設立された同社は、実際の産業経験からの精密な規律と構造化されたロジックをソフトウェア開発の世界にもたらします。",
@@ -345,9 +356,12 @@ const translations = {
     nav_simulate: "시뮬레이션",
     nav_contact: "연락처",
     hero_title: "인도네시아의 <br> 디지털 미래 구축.",
-    hero_desc: "높은 기술적 정밀도, 계층화된 보안 및 타협하지 않는 성능을 갖춘 맞춤형 디지털 인프라 솔루션.",
-    hero_cta_product: "제품 솔루션",
+    hero_desc: "웹·연동은 보안과 실제 로딩 속도가 먼저입니다. 형용사만 가득한 슬라이드는 아닙니다.",
+    hero_cta_product: "서비스 보기",
     hero_cta_founder: "설립자에게 연락",
+    hero_stat_1: "범위 명확",
+    hero_stat_2: "소통",
+    hero_stat_3: "속도",
     about_label: "설립자",
     about_title: "Muhamad Adrian",
     about_text1: "Muhamad Adrian은 Sivilize Corp가 구축한 모든 시스템의 설립자이자 수석 설계자입니다. 2026년 5월 9일에 공식적으로 설립된 이 회사는 실제 산업 경험의 정밀한 규율과 구조화된 논리를 소프트웨어 개발 영역으로 가져옵니다.",
@@ -429,9 +443,12 @@ const translations = {
     nav_simulate: "Simulation",
     nav_contact: "Kontakt",
     hero_title: "Die digitale Zukunft <br> Indonesiens bauen.",
-    hero_desc: "Maßgeschneiderte digitale Infrastrukturlösungen mit hoher technischer Präzision, mehrschichtiger Sicherheit und kompromissloser Leistung.",
-    hero_cta_product: "Produktlösungen",
+    hero_desc: "Web und Integrationen mit Fokus auf echte Sicherheit und Ladezeit — keine Folie voller Adjektive.",
+    hero_cta_product: "Leistungen",
     hero_cta_founder: "Gründer kontaktieren",
+    hero_stat_1: "Klarer Scope",
+    hero_stat_2: "Projekt-Kommunikation",
+    hero_stat_3: "Tempo",
     about_label: "Der Gründer",
     about_title: "Muhamad Adrian",
     about_text1: "Muhamad Adrian ist der Gründer und Chefarchitekt hinter jedem von Sivilize Corp entwickelten System. Das am 9. Mai 2026 offiziell gegründete Unternehmen bringt die Disziplin der Präzision und der strukturierten Logik aus realer Industrieerfahrung in den Bereich der Softwareentwicklung ein.",
@@ -513,9 +530,12 @@ const translations = {
     nav_simulate: "Симуляция",
     nav_contact: "Контакты",
     hero_title: "Строим цифровое <br> будущее Индонезии.",
-    hero_desc: "Индивидуальные решения в области цифровой инфраструктуры с высокой технической точностью, многоуровневой безопасностью и бескомпромиссной производительностью.",
-    hero_cta_product: "Решения",
+    hero_desc: "Сайты и интеграции: сначала безопасность и реальная скорость загрузки, а не слайды с прилагательными.",
+    hero_cta_product: "Услуги",
     hero_cta_founder: "Связаться с основателем",
+    hero_stat_1: "Чёткий скоуп",
+    hero_stat_2: "Связь по проекту",
+    hero_stat_3: "Скорость",
     about_label: "Основатель",
     about_title: "Muhamad Adrian",
     about_text1: "Мухамад Адриан — основатель и главный архитектор всех систем, созданных Sivilize Corp. Официально основанная 9 мая 2026 года, компания привносит дисциплину точности и структурированную логику из реального промышленного опыта в область разработки программного обеспечения.",
@@ -597,9 +617,12 @@ const translations = {
     nav_simulate: "المحاكاة",
     nav_contact: "اتصل بنا",
     hero_title: "بناء المستقبل <br> الرقمي لإندونيسيا.",
-    hero_desc: "حلول البنية التحتية الرقمية المخصصة بدقة تقنية عالية، وأمن متعدد الطبقات، وأداء لا هوادة فيه.",
-    hero_cta_product: "حلول المنتجات",
+    hero_desc: "مواقع وتكامل: الأمان وسرعة التحميل الفعلية أولاً، وليس شرائح مليئة بالصفات.",
+    hero_cta_product: "الخدمات",
     hero_cta_founder: "اتصل بالمؤسس",
+    hero_stat_1: "نطاق واضح",
+    hero_stat_2: "تواصل المشروع",
+    hero_stat_3: "السرعة أولاً",
     about_label: "المؤسس",
     about_title: "Muhamad Adrian",
     about_text1: "محمد أدريان هو المؤسس والمهندس الرئيسي وراء كل نظام بنته شركة Sivilize Corp. تأسست الشركة رسميًا في 9 مايو 2026، وهي تجلب انضباط الدقة والمنطق المنظم من الخبرة الصناعية الواقعية إلى مجال تطوير البرمجيات.",
@@ -689,7 +712,6 @@ class I18n {
     localStorage.setItem('sivilize_lang', lang);
     this.applyTranslations();
     this.updateActiveButton();
-    // Dispatch event for other components if needed
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
   }
 
@@ -697,31 +719,28 @@ class I18n {
     const t = translations[this.lang];
     if (!t) return;
 
-    document.querySelectorAll('[data-i18n]').forEach(el => {
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
       const key = el.getAttribute('data-i18n');
-      if (t[key]) {
-        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-          el.placeholder = t[key];
-        } else {
-          el.innerHTML = t[key];
-        }
+      if (!t[key]) return;
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = t[key];
+      } else {
+        el.innerHTML = t[key];
       }
     });
-    
+
     document.documentElement.lang = this.lang;
 
-    // Trigger Text Scramble effect if available
     if (window.initTextScramble) {
       window.initTextScramble();
     }
   }
 
   updateActiveButton() {
-    document.querySelectorAll('.lang-btn').forEach(btn => {
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
       btn.classList.toggle('lang-btn--active', btn.getAttribute('data-lang') === this.lang);
     });
   }
 }
 
-// Initialize global i18n
 window.i18n = new I18n();

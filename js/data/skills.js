@@ -1,7 +1,4 @@
-/**
- * skills.js - Skills data for Sivilize Corp
- */
-
+// skill stack buat halaman skills (array statis)
 const skills = [
   { category: 'Frontend', icon: '⚛️', items: ['React', 'TypeScript', 'Tailwind CSS', 'HTML5', 'CSS3', 'JavaScript'] },
   { category: 'Backend', icon: '⚙️', items: ['Node.js', 'Express.js', 'REST API', 'JWT Auth', 'Middleware'] },
@@ -12,7 +9,6 @@ const skills = [
   { category: 'OSRM & Geo-Routing', icon: '🛰️', items: ['OSRM (Open Source Routing Machine)', 'Custom LUA Scripting', 'OpenStreetMap (OSM) Data', 'Distance Matrix API', 'GeoJSON & Mapbox'] }
 ];
 
-// Export for Node.js / test environments
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { skills };
 }

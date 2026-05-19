@@ -1,7 +1,4 @@
-/**
- * transition.js - Fast & Smooth Page Navigation
- */
-
+// transisi halaman: fade cepet biar nggak kerasa "nunggu loading"
 (function () {
   'use strict';
 

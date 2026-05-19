@@ -1,20 +1,13 @@
-/**
- * simulate-attack.js
- * Simulasi interaktif serangan siber dan respons firewall
- * Semua berjalan di sisi klien — tidak ada request nyata
- */
-
+// simulate attack page — fake terminal, cuma animasi klien
 (function () {
   'use strict';
 
-  // State
   let totalRequests = 0;
   let totalBlocked = 0;
   let totalAllowed = 0;
   let isRunning = false;
   let simulationInterval = null;
 
-  // DOM Elements
   const terminalBody = document.getElementById('terminalBody');
   const reqCount = document.getElementById('reqCount');
   const blockedCount = document.getElementById('blockedCount');
@@ -26,7 +19,6 @@
   const resultDesc = document.getElementById('resultDesc');
   const clearBtn = document.getElementById('clearLog');
 
-  // Attack configs
   const attacks = {
     ddos: {
       name: 'DDoS Attack',

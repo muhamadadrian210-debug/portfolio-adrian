@@ -1,7 +1,4 @@
-/**
- * projects.js - Projects data and render functions for Muhamad Adrian's portfolio
- */
-
+// data proyek + helper render kartu
 const projects = [
   {
     id: 'sivilize-hub-pro',
@@ -29,11 +26,7 @@ const projects = [
   }
 ];
 
-/**
- * Handles image load error by replacing the img element with a styled placeholder.
- * @param {HTMLImageElement} imgElement - The image element that failed to load
- * @param {Object} project - The project data object
- */
+// kalau gambar proyek gagal load, ganti placeholder inisial
 function handleImageError(imgElement, project) {
   const placeholder = document.createElement('div');
   placeholder.className = 'project-card__image-placeholder';
@@ -62,11 +55,7 @@ function handleImageError(imgElement, project) {
   }
 }
 
-/**
- * Renders a project card as an HTML string.
- * @param {Object} project - The project data object
- * @returns {string} HTML string for the project card
- */
+// return string HTML satu kartu (dipakai innerHTML di projects.html)
 function renderProjectCard(project, index) {
   const linkButton = project.link
     ? `<a href="${escapeHtml(project.link)}" class="project-card__link" target="_blank" rel="noopener noreferrer">
@@ -96,11 +85,6 @@ function renderProjectCard(project, index) {
   `;
 }
 
-/**
- * Escapes HTML special characters to prevent XSS.
- * @param {string} str - String to escape
- * @returns {string} Escaped string
- */
 function escapeHtml(str) {
   if (typeof str !== 'string') return String(str);
   return str
@@ -111,7 +95,6 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-// Export for Node.js / test environments
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { projects, renderProjectCard, handleImageError, escapeHtml };
 }

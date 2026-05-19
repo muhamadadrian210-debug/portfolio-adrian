@@ -1,50 +1,28 @@
-/**
- * navbar.js - Original Sivilize Corp Navbar logic
- */
-
+// navbar — scroll state, active link, mobile menu
 (function () {
   'use strict';
 
-  /**
-   * Initializes the scroll listener for navbar background effect.
-   */
   function initScrollListener() {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
 
     function handleScroll() {
-      if (window.scrollY > 50) {
-        navbar.classList.add('navbar--scrolled');
-      } else {
-        navbar.classList.remove('navbar--scrolled');
-      }
+      navbar.classList.toggle('navbar--scrolled', window.scrollY > 50);
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
   }
 
-  /**
-   * Sets active class on nav links based on current page.
-   */
   function initActiveLink() {
-    const navLinks = document.querySelectorAll('.navbar__link');
-    const currentPath = window.location.pathname;
-    const pageName = currentPath.split('/').pop() || 'index.html';
-
-    navLinks.forEach(link => {
-      const linkHref = link.getAttribute('href');
-      if (linkHref === pageName || (pageName === 'index.html' && linkHref === 'index.html')) {
-        link.classList.add('navbar__link--active');
-      } else {
-        link.classList.remove('navbar__link--active');
-      }
+    const current = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.navbar__link').forEach((link) => {
+      const href = link.getAttribute('href');
+      const match = href === current || (current === 'index.html' && href === 'index.html');
+      link.classList.toggle('navbar__link--active', match);
     });
   }
 
-  /**
-   * Initializes the hamburger menu for mobile devices.
-   */
   function initHamburger() {
     const hamburger = document.querySelector('.navbar__hamburger');
     const navbar = document.querySelector('.navbar');
@@ -55,25 +33,17 @@
       navbar.classList.toggle('navbar--open');
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
       if (navbar.classList.contains('navbar--open') && !navbar.contains(e.target)) {
         navbar.classList.remove('navbar--open');
       }
     });
 
-    // Close menu when clicking on a link
-    const navLinks = document.querySelectorAll('.navbar__link');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navbar.classList.remove('navbar--open');
-      });
+    document.querySelectorAll('.navbar__link').forEach((link) => {
+      link.addEventListener('click', () => navbar.classList.remove('navbar--open'));
     });
   }
 
-  /**
-   * Initialize all navbar functionality.
-   */
   function init() {
     initScrollListener();
     initActiveLink();

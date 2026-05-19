@@ -1,35 +1,26 @@
-/**
- * hero-glow.js - Mouse following glow effect for Hero section
- */
-
+// titik glow ngikutin pointer di hero (mouse + touch)
 (function () {
   'use strict';
 
   const hero = document.querySelector('.hero');
   if (!hero) return;
 
-  // Create glow element
   const glow = document.createElement('div');
   glow.className = 'hero__mouse-glow';
   hero.appendChild(glow);
 
-  // Update position on mouse move
   hero.addEventListener('mousemove', (e) => {
     const rect = hero.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    glow.style.transform = `translate(${x}px, ${y}px)`;
+    glow.style.transform = `translate(${e.clientX - rect.left}px, ${e.clientY - rect.top}px)`;
   });
 
-  // Handle touch for mobile
-  hero.addEventListener('touchmove', (e) => {
-    const rect = hero.getBoundingClientRect();
-    const touch = e.touches[0];
-    const x = touch.clientX - rect.left;
-    const y = touch.clientY - rect.top;
-
-    glow.style.transform = `translate(${x}px, ${y}px)`;
-  }, { passive: true });
-
+  hero.addEventListener(
+    'touchmove',
+    (e) => {
+      const rect = hero.getBoundingClientRect();
+      const touch = e.touches[0];
+      glow.style.transform = `translate(${touch.clientX - rect.left}px, ${touch.clientY - rect.top}px)`;
+    },
+    { passive: true }
+  );
 })();

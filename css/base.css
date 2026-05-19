@@ -1,12 +1,10 @@
-/* ============================================
-   BASE.CSS - CSS Reset, Design Tokens, Typography
-   ============================================ */
+/* base: reset, token warna, tipografi */
 
 /* Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* BMW CORPORATE COLORS */
+  /* palette + surface — disetel ke look Sivilize (bukan template random) */
   --color-primary: #1c69d4;
   --color-primary-active: #0653b6;
   --color-primary-disabled: #d6d6d6;

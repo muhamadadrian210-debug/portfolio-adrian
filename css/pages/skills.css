@@ -8,6 +8,13 @@
   background-color: var(--color-canvas);
 }
 
+@media (max-width: 768px) {
+  .skills {
+    padding-top: 100px; /* Lebih mepet dikit di mobile */
+    padding-bottom: 40px;
+  }
+}
+
 .skills__container {
   max-width: 1440px;
   margin-inline: auto;
@@ -17,6 +24,15 @@
 .skills__header {
   margin-bottom: 64px;
   text-align: left;
+  /* PAKSA MUNCUL DI MOBILE */
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (max-width: 768px) {
+  .skills__header {
+    margin-bottom: 40px;
+  }
 }
 
 .skills__label {

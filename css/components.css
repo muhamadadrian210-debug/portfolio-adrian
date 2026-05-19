@@ -340,7 +340,7 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin-bottom: var(--space-lg);
-  color: var(--color-ink);
+  color: #ffffff; /* Pastikan putih solid biar kontras di bg hitam */
 }
 
 .footer__list {
@@ -352,15 +352,15 @@
 .footer__link {
   font-size: 14px;
   font-weight: 300;
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.6); /* Abu-abu terang biar kebaca */
 }
 
 .footer__link:hover {
-  color: var(--color-ink);
+  color: var(--color-primary); /* Hover jadi biru BMW */
 }
 
 .footer__bottom {
-  border-top: 1px solid var(--color-hairline);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: var(--space-xl);
   display: flex;
   justify-content: space-between;
@@ -370,7 +370,7 @@
 .footer__copyright {
   font-size: 14px;
   font-weight: 300;
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 /* ============================================

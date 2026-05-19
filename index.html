@@ -47,15 +47,23 @@
 
         <nav class="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
           <ul class="navbar__list">
-            <li><a href="index.html" class="navbar__link navbar__link--active" data-page="home">Beranda</a></li>
-            <li><a href="about.html" class="navbar__link" data-page="about">Tentang</a></li>
-            <li><a href="services.html" class="navbar__link" data-page="services">Jasa</a></li>
-            <li><a href="skills.html" class="navbar__link" data-page="skills">Keahlian</a></li>
-            <li><a href="projects.html" class="navbar__link" data-page="projects">Proyek</a></li>
-            <li><a href="security.html" class="navbar__link" data-page="security">Keamanan</a></li>
-            <li><a href="simulate-attack.html" class="navbar__link" data-page="simulate-attack">Simulasi</a></li>
-            <li><a href="contact.html" class="navbar__link" data-page="contact">Kontak</a></li>
+            <li><a href="index.html" class="navbar__link navbar__link--active" data-page="home" data-i18n="nav_home">Beranda</a></li>
+            <li><a href="about.html" class="navbar__link" data-page="about" data-i18n="nav_about">Tentang</a></li>
+            <li><a href="services.html" class="navbar__link" data-page="services" data-i18n="nav_services">Jasa</a></li>
+            <li><a href="skills.html" class="navbar__link" data-page="skills" data-i18n="nav_skills">Keahlian</a></li>
+            <li><a href="projects.html" class="navbar__link" data-page="projects" data-i18n="nav_projects">Proyek</a></li>
+            <li><a href="security.html" class="navbar__link" data-page="security" data-i18n="nav_security">Keamanan</a></li>
+            <li><a href="simulate-attack.html" class="navbar__link" data-page="simulate-attack" data-i18n="nav_simulate">Simulasi</a></li>
+            <li><a href="contact.html" class="navbar__link" data-page="contact" data-i18n="nav_contact">Kontak</a></li>
           </ul>
+          
+          <!-- Language Switcher -->
+          <div class="navbar__lang">
+            <button class="lang-btn" data-lang="id" onclick="window.i18n.setLanguage('id')">ID</button>
+            <button class="lang-btn" data-lang="en" onclick="window.i18n.setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="zh" onclick="window.i18n.setLanguage('zh')">ZH</button>
+            <button class="lang-btn" data-lang="ja" onclick="window.i18n.setLanguage('ja')">JA</button>
+          </div>
         </nav>
       </div>
     </header>
@@ -67,16 +75,16 @@
         <div class="hero__container">
           <div class="hero__content fade-in-up">
             <span class="hero__title-accent">Sivilize Corp - Digital Industry Solutions</span>
-            <h1 class="hero__title">
+            <h1 class="hero__title" data-i18n="hero_title">
               Membangun Masa Depan <br> Digital Indonesia.
             </h1>
-            <p class="hero__description text-bubble" style="max-width: 500px; margin-bottom: var(--space-xl);">
+            <p class="hero__description text-bubble" data-i18n="hero_desc" style="max-width: 500px; margin-bottom: var(--space-xl);">
               Solusi infrastruktur digital kustom dengan presisi teknis tinggi, keamanan berlapis, dan performa tanpa kompromi.
             </p>
             
             <div class="hero__cta-group mt-8">
-              <a href="services.html" class="btn btn--primary">Solusi Produk</a>
-              <a href="contact.html" class="btn btn--outline-on-dark">Hubungi Founder</a>
+              <a href="services.html" class="btn btn--primary" data-i18n="hero_cta_product">Solusi Produk</a>
+              <a href="contact.html" class="btn btn--outline-on-dark" data-i18n="hero_cta_founder">Hubungi Founder</a>
             </div>
 
             <div class="hero__stats mt-8">
@@ -143,7 +151,7 @@
 
   <!-- JavaScript -->
   <script src="js/utils.js"></script>
-  <script src="js/transition.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/hero-glow.js"></script>

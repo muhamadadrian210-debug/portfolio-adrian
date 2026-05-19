@@ -125,29 +125,19 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-5) var(--space-4);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius-lg);
+  background: #111111; /* Hitam Solid */
+  border: 2px solid var(--color-primary);
+  border-radius: 0px;
   cursor: pointer;
   transition: all var(--transition-base);
   text-align: center;
+  box-shadow: 6px 6px 0px rgba(28, 105, 212, 0.2);
 }
 
 .sim-attack-btn:hover {
-  background: rgba(249, 115, 22, 0.1);
-  border-color: var(--color-accent);
-  transform: translateY(-2px);
-}
-
-.sim-attack-btn--active {
-  background: rgba(249, 115, 22, 0.15);
-  border-color: var(--color-accent);
-  box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
-}
-
-.sim-attack-btn__icon {
-  font-size: var(--text-3xl);
-  line-height: 1;
+  background: var(--color-primary);
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px #111111;
 }
 
 .sim-attack-btn__name {
@@ -159,7 +149,7 @@
 
 .sim-attack-btn__desc {
   font-size: var(--text-xs);
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.7);
 }
 
 /* Terminal */

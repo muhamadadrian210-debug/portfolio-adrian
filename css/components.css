@@ -10,8 +10,8 @@
   top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: var(--color-canvas);
-  border-bottom: 1px solid var(--color-hairline);
+  background-color: #111111; /* Hitam pekat sesuai request */
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   height: 64px;
   display: flex;
   align-items: center;
@@ -19,10 +19,10 @@
 }
 
 .navbar--scrolled {
-  background-color: rgba(255, 255, 255, 0.98);
+  background-color: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .navbar__container {
@@ -36,10 +36,9 @@
 }
 
 .navbar__logo-image {
-  height: 56px; /* Lebih gede lagi biar jelas */
+  height: 48px;
   width: auto;
   display: block;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); /* Kasih shadow dikit biar pop */
 }
 
 .navbar__nav {
@@ -56,8 +55,8 @@
 .navbar__link {
   font-size: 14px;
   font-weight: 700;
-  color: var(--color-ink);
-  letter-spacing: 0.3px;
+  color: #ffffff; /* Link putih di atas hitam */
+  letter-spacing: 0.5px;
   padding-block: var(--space-xs);
   border-bottom: 2px solid transparent;
   text-transform: uppercase;
@@ -429,44 +428,43 @@
 }
 
 /* ============================================
-   TEXT BUBBLE / BOX (BMW Corporate Style - Updated)
+   TEXT BUBBLE / BOX (Aggressive Rework)
    ============================================ */
 .text-bubble {
-  background-color: rgba(28, 105, 212, 0.08); /* Biru transparan BMW */
-  padding: var(--space-md) var(--space-lg);
-  border-left: 5px solid var(--color-primary);
-  margin-block: var(--space-md);
-  border-radius: var(--radius-none);
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--color-ink);
-  box-shadow: 4px 4px 0px rgba(28, 105, 212, 0.1);
-  transition: all var(--transition-fast);
+  background-color: #111111; /* Hitam Solid */
+  color: #ffffff; /* Teks Putih */
+  padding: 24px 32px;
+  border-left: 8px solid var(--color-primary);
+  margin-block: 24px;
+  border-radius: 0px;
+  font-size: 16px;
+  line-height: 1.8;
+  box-shadow: 10px 10px 0px rgba(28, 105, 212, 0.2);
+  display: block;
+  width: 100%;
 }
 
-.text-bubble:hover {
-  transform: translate(-2px, -2px);
-  background-color: rgba(28, 105, 212, 0.12);
-  box-shadow: 6px 6px 0px rgba(28, 105, 212, 0.15);
-}
-
-.text-bubble--dark {
-  background-color: #111111; /* Hitam pekat biar keren */
-  border-left-color: var(--color-primary);
-  color: #e0e0e0;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
-}
-
-.text-bubble--dark:hover {
-  background-color: #1a1a1a;
-  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4);
+.text-bubble--blue {
+  background-color: var(--color-primary);
+  border-left: 8px solid #111111;
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .text-box {
-  border: 1px solid var(--color-hairline);
-  padding: var(--space-lg);
-  background-color: var(--color-surface-soft); /* Bukan putih polos */
-  margin-block: var(--space-lg);
-  border-radius: var(--radius-none);
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+  background-color: #ffffff;
+  border: 2px solid #111111;
+  padding: 32px;
+  margin-block: 32px;
+  position: relative;
+  box-shadow: 8px 8px 0px #111111;
+}
+
+.text-box::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background: var(--color-primary);
 }

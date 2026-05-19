@@ -23,10 +23,12 @@
 }
 
 .projects__subtitle {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
-  color: var(--color-body);
-  max-width: 800px;
+  color: #ffffff;
+  max-width: 600px;
+  margin-inline: auto;
+  line-height: 1.6;
 }
 
 .projects {

@@ -42,7 +42,7 @@
 
 /* Hamburger Button */
 .navbar__hamburger {
-  display: none; /* Default desktop sembunyi */
+  display: none; /* Sembunyi di Desktop */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -53,26 +53,46 @@
   background: none;
   border: none;
   padding: 0;
-  z-index: 1003; /* Di atas segalanya */
+  z-index: 1003;
 }
 
 .navbar__hamburger-line {
   display: block;
-  width: 28px; /* Lebih lebar biar gampang diliat */
+  width: 28px;
   height: 2px;
-  background-color: #ffffff; /* Putih solid */
+  background-color: #ffffff;
   transition: all 0.3s ease;
+}
+
+/* Nav Menu Visibility */
+.navbar__nav {
+  display: flex; /* Default Desktop Muncul */
+  align-items: center;
 }
 
 @media (max-width: 1023px) {
   .navbar__hamburger {
-    display: flex; /* Muncul di mobile */
+    display: flex; /* Muncul di Mobile */
   }
-}
 
-.navbar__nav {
-  display: flex;
-  align-items: center;
+  .navbar__nav {
+    display: none; /* Sembunyi Menu Teks di Mobile (Biar ga menuh-menuhin) */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #111111;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    z-index: 1001;
+  }
+
+  .navbar--open .navbar__nav {
+    display: flex; /* Muncul pas Hamburger diklik */
+  }
 }
 
 .navbar__list {

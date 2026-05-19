@@ -30,12 +30,17 @@
           <img src="assets/images/logo.svg" alt="Sivilize Corp Logo" class="navbar__logo-image">
         </a>
 
-        <!-- Hamburger Menu Button -->
-        <button class="navbar__hamburger" aria-label="Buka menu navigasi" aria-expanded="false">
-          <span class="navbar__hamburger-line"></span>
-          <span class="navbar__hamburger-line"></span>
-          <span class="navbar__hamburger-line"></span>
-        </button>
+        <!-- Language Switcher -->
+        <div class="navbar__lang">
+          <button class="lang-btn" data-lang="id" onclick="window.i18n.setLanguage('id')">ID</button>
+          <button class="lang-btn" data-lang="en" onclick="window.i18n.setLanguage('en')">EN</button>
+          <button class="lang-btn" data-lang="zh" onclick="window.i18n.setLanguage('zh')">ZH</button>
+          <button class="lang-btn" data-lang="ja" onclick="window.i18n.setLanguage('ja')">JA</button>
+          <button class="lang-btn" data-lang="ko" onclick="window.i18n.setLanguage('ko')">KO</button>
+          <button class="lang-btn" data-lang="de" onclick="window.i18n.setLanguage('de')">DE</button>
+          <button class="lang-btn" data-lang="ru" onclick="window.i18n.setLanguage('ru')">RU</button>
+          <button class="lang-btn" data-lang="ar" onclick="window.i18n.setLanguage('ar')">AR</button>
+        </div>
 
         <nav class="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
           <ul class="navbar__list">

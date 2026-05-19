@@ -109,7 +109,12 @@
         let { from, to, start, end, char } = this.queue[i];
         if (this.frame >= end) {
           complete++;
-          output += to;
+          // Preserve newlines as <br>
+          if (to === '\n') {
+            output += '<br>';
+          } else {
+            output += to;
+          }
         } else if (this.frame >= start) {
           if (!char || Math.random() < 0.28) {
             char = this.randomChar();
@@ -117,7 +122,12 @@
           }
           output += `<span class="dud">${char}</span>`;
         } else {
-          output += from;
+          // Preserve newlines in the "from" state as well
+          if (from === '\n') {
+            output += '<br>';
+          } else {
+            output += from;
+          }
         }
       }
       this.el.innerHTML = output;
@@ -138,14 +148,23 @@
    */
   const initAnimations = () => {
     // 1. Text Scramble for Main Titles
-    const titles = document.querySelectorAll('.hero__title, .about__title, .skills__title, .projects__title');
+    initTextScramble();
+
+    // 2. Intersection Observer for Scroll Animations
+    new AnimationController();
+  };
+
+  /**
+   * Global trigger for Text Scramble
+   */
+  window.initTextScramble = () => {
+    const titles = document.querySelectorAll(
+      '.hero__title, .about__title, .services-hero__title, .skills__title, .projects__title, .sec-hero__title, .sim-hero__title, .contact__title'
+    );
     titles.forEach(title => {
       const fx = new TextScramble(title);
       fx.setText(title.innerText);
     });
-
-    // 2. Intersection Observer for Scroll Animations
-    new AnimationController();
   };
 
   // Initialize when DOM is ready

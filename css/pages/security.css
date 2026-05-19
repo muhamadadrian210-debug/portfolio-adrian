@@ -59,32 +59,27 @@
   margin-top: var(--space-xxl);
 }
 
-/* MOBILE OPTIMIZATION: Horizontal Scroll biar ga cape scroll kebawah */
+/* MOBILE OPTIMIZATION: Back to Vertical Grid but Compact */
 @media (max-width: 768px) {
   .security__grid {
-    display: flex !important;
-    flex-wrap: nowrap !important; /* WAJIB BIAR GA TURUN KE BAWAH */
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory;
-    gap: 16px;
-    padding-bottom: 24px;
-    margin-inline: -20px;
-    padding-inline: 20px;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .security__grid::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  .security__grid::-webkit-scrollbar-thumb {
-    background: var(--color-primary);
+    display: grid !important;
+    grid-template-columns: 1fr; /* Tetap satu kolom biar lega baca teksnya */
+    gap: 20px; /* Jarak antar card biar ga berhimpitan */
+    padding-inline: 0;
+    margin-inline: 0;
   }
 
   .security__item {
-    min-width: 85vw; /* Tampil 1.5 card biar ketauan bisa di scroll */
-    scroll-snap-align: start;
-    padding: 24px;
+    min-width: 0;
+    padding: 24px; /* Padding dalem card dikurangin dikit biar ga makan tempat */
+  }
+
+  .security__item-title {
+    font-size: 15px; /* Font size dikecilin dikit biar compact */
+  }
+
+  .security__item-desc {
+    font-size: 13px;
   }
 }
 
@@ -166,19 +161,15 @@
 @media (max-width: 768px) {
   .security__project-list {
     display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important; /* WAJIB JUGA DISINI */
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 16px;
+    flex-direction: column !important;
+    gap: 16px;
   }
 
   .security__project-item {
-    min-width: 85vw;
-    scroll-snap-align: start;
-    border-bottom: none !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    min-width: 0;
+    padding: 32px;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
   }
 }
 

@@ -141,16 +141,30 @@
   <!-- JavaScript -->
   <script src="js/utils.js"></script>
   <script src="js/data/skills.js"></script>
-  <script src="js/transition.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/animations.js"></script>
   <script>
-    setCopyrightYear();
+    // Inisialisasi tahun copyright
+    const copyrightYear = document.getElementById('copyright-year');
+    if (copyrightYear) {
+      copyrightYear.textContent = new Date().getFullYear();
+    }
 
-    // Render skills grid
+    // Render skills grid - PAKSA JALAN
     (function renderSkills() {
+      console.log('Rendering skills...');
       const grid = document.getElementById('skills-grid');
-      if (!grid || !Array.isArray(skills)) return;
+      
+      // Cek apakah data 'skills' ada
+      if (typeof skills === 'undefined') {
+        console.error('Data skills tidak ditemukan!');
+        return;
+      }
+
+      if (!grid) {
+        console.error('Element skills-grid tidak ditemukan!');
+        return;
+      }
 
       const staggerClasses = ['stagger-1', 'stagger-2', 'stagger-3', 'stagger-4'];
 
@@ -159,18 +173,19 @@
           return '<span class="skill-badge">' + item + '</span>';
         }).join('');
 
-        return '<div class="skill-category animate-on-scroll ' + (staggerClasses[index] || '') + '" role="region" aria-labelledby="category-' + index + '">' +
+        return '<div class="skill-category animate-on-scroll ' + (staggerClasses[index % 4] || '') + '" role="region">' +
           '<div class="skill-category__header">' +
-            '<span class="skill-category__icon" aria-hidden="true">' + category.icon + '</span>' +
-            '<h2 class="skill-category__name" id="category-' + index + '">' + category.category + '</h2>' +
+            '<span class="skill-category__icon">' + category.icon + '</span>' +
+            '<h2 class="skill-category__name">' + category.category + '</h2>' +
           '</div>' +
-          '<div class="skill-category__items" aria-label="Keahlian ' + category.category + '">' +
+          '<div class="skill-category__items">' +
             badgesHtml +
           '</div>' +
         '</div>';
       }).join('');
 
       grid.innerHTML = html;
+      console.log('Skills rendered successfully.');
     })();
   </script>
 </body>

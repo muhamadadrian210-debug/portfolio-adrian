@@ -185,24 +185,18 @@
   gap: 5px;
   width: 44px;
   height: 44px;
-  border-radius: var(--radius-md);
   cursor: pointer;
   transition: background-color var(--transition-fast);
   background: none;
   border: none;
-  padding: var(--space-2);
-}
-
-.navbar__hamburger:hover {
-  background-color: var(--color-surface-alt);
+  padding: 0;
 }
 
 .navbar__hamburger-line {
   display: block;
-  width: 22px;
+  width: 24px;
   height: 2px;
-  background-color: var(--color-primary);
-  border-radius: var(--radius-full);
+  background-color: #ffffff;
   transition: transform var(--transition-base), opacity var(--transition-base);
   transform-origin: center;
 }
@@ -214,16 +208,47 @@
 
 .navbar--open .navbar__hamburger-line:nth-child(2) {
   opacity: 0;
-  transform: scaleX(0);
 }
 
 .navbar--open .navbar__hamburger-line:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Mobile Menu */
-.navbar--open .navbar__nav {
-  display: flex;
+/* Mobile Menu Overlay */
+@media (max-width: 1023px) {
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__nav {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 64px);
+    background-color: #111111;
+    flex-direction: column;
+    padding: 40px;
+    z-index: 1001;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar--open .navbar__nav {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .navbar__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .navbar__link {
+    font-size: 24px; /* Menu mobile gede biar gampang di klik */
+    font-weight: 700;
+  }
 }
 
 /* ============================================

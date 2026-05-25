@@ -102,11 +102,11 @@ body {
   color: #ffffff !important;
   background-color: #050505;
   background-image: 
-    url('../assets/images/logo.svg'),
-    radial-gradient(circle at 50% 50%, rgba(28, 105, 212, 0.2) 0%, transparent 80%);
-  background-repeat: no-repeat, no-repeat;
-  background-position: center 40%, center center;
-  background-size: 85% auto, 100% 100%;
+    radial-gradient(circle at 50% 50%, rgba(28, 105, 212, 0.25) 0%, transparent 80%),
+    url('../assets/images/logo.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%, 80% auto;
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   position: relative;
@@ -120,9 +120,14 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 50% 50%, transparent 10%, #050505 90%);
+  background: rgba(5, 5, 5, 0.85); /* Overlay gelap agar teks terbaca jelas */
   pointer-events: none;
-  z-index: -1;
+  z-index: 0; /* Di atas logo, di bawah konten */
+}
+
+.page-wrapper {
+  position: relative;
+  z-index: 10; /* Konten harus di atas background dan overlay */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -131,7 +136,11 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.0;
   letter-spacing: -0.05em;
   text-transform: uppercase;
-  text-shadow: 0 0 20px rgba(28, 105, 212, 0.4);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 1), 0 0 20px rgba(28, 105, 212, 0.4);
+}
+
+p, span, li, a {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 1); /* Pastiin teks kecil juga ga nyampur */
 }
 
 a {

@@ -40,7 +40,26 @@
     });
 
     document.querySelectorAll('.navbar__link').forEach((link) => {
-      link.addEventListener('click', () => navbar.classList.remove('navbar--open'));
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            navbar.classList.remove('navbar--open');
+            const headerHeight = navbar.offsetHeight;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        } else {
+          navbar.classList.remove('navbar--open');
+        }
+      });
     });
   }
 

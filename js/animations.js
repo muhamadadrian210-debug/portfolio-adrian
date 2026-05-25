@@ -115,6 +115,55 @@
     });
   };
 
+// System Takeover Transition (Snake/Code Effect)
+function triggerTransition(targetId) {
+  const overlay = document.querySelector('.page-transition-overlay');
+  if (!overlay) return;
+
+  overlay.style.display = 'flex';
+  overlay.innerHTML = '<div class="code-rain"></div>';
+  
+  // Create Snake Segments
+  for (let i = 0; i < 10; i++) {
+    const segment = document.createElement('div');
+    segment.className = 'snake-segment';
+    segment.style.animation = `snakeMove 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.05}s forwards`;
+    overlay.appendChild(segment);
+  }
+
+  // Smooth scroll after animation
+  setTimeout(() => {
+    const target = document.querySelector(targetId);
+    if (target) {
+      const headerHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      window.scrollTo({ top: targetPosition, behavior: 'auto' });
+    }
+    
+    // Fade out overlay
+    overlay.style.transition = 'opacity 0.5s ease';
+    overlay.style.opacity = '0';
+    
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      overlay.style.opacity = '1';
+      overlay.innerHTML = '';
+    }, 500);
+  }, 1000);
+}
+
+// Update navbar clicks to use transition
+document.querySelectorAll('.navbar__link, .footer__link, .btn').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#') && href !== '#') {
+      e.preventDefault();
+      triggerTransition(href);
+    }
+  });
+});
+
+// Initialize other animations
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAnimations);
   } else {

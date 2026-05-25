@@ -84,58 +84,42 @@
     <main id="main-content">
 
       <!-- HERO SECTION -->
-      <section class="hero" id="hero" style="min-height: 100vh; display: flex; align-items: center; position: relative; z-index: 10;">
-        <div class="hero__container">
+      <section class="hero" id="hero" style="min-height: 100vh; display: flex; align-items: center; position: relative; z-index: 10; padding-top: 100px;">
+        <div class="hero__container container">
           <div class="hero__content animate-on-scroll">
-            <div class="split-text-container">
-              <span class="hero__title-accent split-text-left glitch-text aggressive-shake" style="font-size: 1.5rem; color: #ff003c; cursor: crosshair;">SIVILIZE</span>
-              <span class="hero__title-accent split-text-right glitch-text aggressive-shake" style="font-size: 1.5rem; color: #ffffff; cursor: crosshair;">&nbsp;CORP</span>
+            <div class="hero__overhead" style="margin-bottom: 2rem;">
+              <span class="hero__title-accent glitch-text aggressive-shake" style="font-size: 1rem; color: var(--color-primary); letter-spacing: 10px; font-weight: 700; text-transform: uppercase;">SIVILIZE CORP</span>
             </div>
-            <h1 class="hero__title aggressive-shake" style="font-size: clamp(3rem, 10vw, 8rem); margin-top: 1.5rem; line-height: 0.9; color: #fff !important; cursor: crosshair; font-weight: 950; text-shadow: 0 0 30px rgba(255, 0, 60, 0.6); max-width: 100%; overflow-wrap: break-word;">
+            <h1 class="hero__title aggressive-shake" style="line-height: 1; color: #fff !important; cursor: crosshair; text-shadow: 0 0 30px rgba(255, 0, 60, 0.2);">
               DOMINASI <br> MUTLAK.
             </h1>
-            <p class="hero__description" style="max-width: 1000px; margin-top: 4rem; font-size: 1.8rem; color: #fff !important; line-height: 1.2; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 5px 15px rgba(0,0,0,1);">
+            <p class="hero__description" style="max-width: 800px; margin-top: 3rem; font-size: 1.2rem; color: var(--color-body); line-height: 1.8; letter-spacing: 1px; font-weight: 300;">
               KOMPETITOR LO SAMPAH. AGENT LAIN CUMA BISA COPY-PASTE TEMPLATE GRATISAN. SIVILIZE CORP HADIR UNTUK MENGHANCURKAN STANDAR RENDAH ITU. KAMI TIDAK MEMBANGUN WEB—KAMI MEMBANGUN SENJATA DIGITAL UNTUK MELUMAT PASAR.
             </p>
             
-            <div class="hero__cta-group mt-16" style="display: flex; gap: 30px; flex-wrap: wrap;">
-              <a href="#services" class="btn btn--primary aggressive-shake" style="padding: 30px 80px; font-size: 1.8rem; letter-spacing: 5px; background: #ff003c; color: #fff !important; font-weight: 950; border: none; text-decoration: none; box-shadow: 0 0 60px rgba(255, 0, 60, 0.8); border-radius: 0px;">AMBIL ALIH MARKET</a>
-              <a href="#contact" class="btn btn--outline-on-dark aggressive-shake" style="padding: 30px 80px; font-size: 1.8rem; letter-spacing: 5px; border: 5px solid #ffffff; color: #fff !important; font-weight: 950; background: transparent; text-decoration: none; border-radius: 0px;">TANTANG KAMI</a>
-            </div>
-
-            <div class="hero__stats mt-12" style="display: flex; gap: 40px; flex-wrap: wrap;">
-              <div class="stat-item scale-reveal">
-                <span class="stat-item__value" style="font-size: 2.5rem; font-weight: 800; color: #ff003c;">100%</span>
-                <span class="stat-item__label" style="display: block; font-size: 0.9rem; text-transform: uppercase; color: #fff;">Integritas Kode</span>
-              </div>
-              <div class="stat-item scale-reveal stagger-1">
-                <span class="stat-item__value" style="font-size: 2.5rem; font-weight: 800; color: #ff003c;">High</span>
-                <span class="stat-item__label" style="display: block; font-size: 0.9rem; text-transform: uppercase; color: #fff;">Security Standards</span>
-              </div>
-              <div class="stat-item scale-reveal stagger-2">
-                <span class="stat-item__value" style="font-size: 2.5rem; font-weight: 800; color: #ff003c;">Pure</span>
-                <span class="stat-item__label" style="display: block; font-size: 0.9rem; text-transform: uppercase; color: #fff;">Human-Written</span>
-              </div>
+            <div class="hero__cta-group mt-16" style="display: flex; gap: 40px; flex-wrap: wrap; margin-top: 4rem;">
+              <a href="#services" class="btn btn--primary aggressive-shake" style="padding: 25px 60px; font-size: 1.1rem; letter-spacing: 4px; background: var(--color-primary); color: #fff; font-weight: 700; text-decoration: none; border-radius: 2px; transition: all 0.4s ease;">AMBIL ALIH MARKET</a>
+              <a href="#contact" class="btn btn--outline-on-dark aggressive-shake" style="padding: 25px 60px; font-size: 1.1rem; letter-spacing: 4px; border: 1px solid rgba(255,255,255,0.2); color: #fff; font-weight: 700; background: transparent; text-decoration: none; border-radius: 2px; transition: all 0.4s ease;">TANTANG KAMI</a>
             </div>
           </div>
         </div>
 
-        <!-- ULTRA-LUXE SCROLL INDICATOR -->
+        <!-- MINIMALIST SCROLL INDICATOR -->
         <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
-          <span class="scroll-text">Legacy awaits</span>
-          <div class="scroll-line-container">
+          <div class="scroll-line-container" style="height: 100px; background: rgba(255,255,255,0.05);">
             <div class="scroll-line-active"></div>
           </div>
+          <span class="scroll-text" style="font-size: 9px; opacity: 0.3; margin-top: 10px;">PROCEED TO DOMINANCE</span>
         </div>
       </section>
 
       <!-- ABOUT SECTION -->
-      <section class="about section" id="about" style="position: relative; z-index: 10;">
+      <section class="about section" id="about" style="position: relative; z-index: 10; padding-block: 200px;">
         <div class="container">
-          <div class="section__header animate-on-scroll">
-            <span class="section__label" style="color: #ff003c; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">The Overlord</span>
-            <h2 class="section__title" style="font-size: 3.5rem; color: #fff !important; margin-top: 1rem;">Muhamad Adrian</h2>
-            <p class="section__subtitle" style="font-size: 1.4rem; color: #fff !important; max-width: 850px; margin-inline: auto; font-weight: 300; line-height: 1.7; margin-top: 2rem;">
+          <div class="section__header animate-on-scroll" style="text-align: left; max-width: 900px; margin-bottom: 0;">
+            <span class="section__label" style="color: var(--color-primary); font-weight: 700; text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem;">The Overlord</span>
+            <h2 class="section__title" style="font-size: 4rem; color: #fff !important; margin-top: 2rem; letter-spacing: -2px;">Muhamad Adrian</h2>
+            <p class="section__subtitle" style="font-size: 1.8rem; color: #fff !important; font-weight: 300; line-height: 1.4; margin-top: 3rem; text-align: left; max-width: 100%;">
               Gue bukan "developer" kacangan yang nyari tutorial di YouTube tiap kali ada bug. Gue adalah arsitek kehancuran digital bagi kompetitor lo. Setiap sistem yang gue bangun adalah benteng yang mustahil ditembus dan mesin yang mustahil dihentikan.
             </p>
           </div>
@@ -143,54 +127,51 @@
       </section>
 
       <!-- SERVICES SECTION -->
-      <section class="services section" id="services" style="background: rgba(255,255,255,0.02); position: relative; z-index: 10;">
+      <section class="services section" id="services" style="background: #080808; position: relative; z-index: 10; border-top: 1px solid rgba(255,255,255,0.03);">
         <div class="container">
-          <div class="section__header animate-on-scroll">
-            <span class="section__label" style="color: #ff003c; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Tactical Advantage</span>
-            <h2 class="section__title" style="font-size: 2.5rem; color: #fff !important; margin-top: 1rem;">Cara Buat Web? Tanya Pakarnya, Bukan Badut.</h2>
-            <p class="section__subtitle" style="font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 800px; margin-inline: auto; margin-top: 1.5rem; line-height: 1.6;">
-              Banyak orang dongo di luar sana yang asal klik template. Tapi jika Anda mencari <strong>cara buat web</strong> yang punya performa tinggi dan keamanan tingkat militer, Anda harus berhenti mengikuti tutorial umum dan mulai membangun infrastruktur yang nyata.
-            </p>
+          <div class="section__header animate-on-scroll" style="text-align: center; margin-bottom: 100px;">
+            <span class="section__label" style="color: var(--color-primary); font-weight: 700; text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem;">Tactical Advantage</span>
+            <h2 class="section__title" style="font-size: 3rem; color: #fff !important; margin-top: 1.5rem;">Superior Infrastructure.</h2>
           </div>
-          <div class="grid grid--auto-fit mt-12" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            <div class="service-card animate-on-scroll stagger-1" style="background: rgba(255,255,255,0.03); padding: 50px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
-              <div class="service-card__icon" style="font-size: 3rem; margin-bottom: 20px;">⚡</div>
-              <h3 class="service-card__title" style="color: #fff !important; font-size: 1.8rem; margin-bottom: 15px;">Kecepatan Predator</h3>
-              <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.6;">Web lo bakal loading lebih cepet dari kedipan mata kompetitor lo. Kami gak pake bloatware sampah.</p>
+          <div class="grid grid--auto-fit" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px;">
+            <div class="service-card animate-on-scroll stagger-1" style="background: rgba(255,255,255,0.01); padding: 60px; border: 1px solid rgba(255,255,255,0.03); cursor: pointer; transition: all 0.5s ease;">
+              <div class="service-card__icon" style="font-size: 1.5rem; margin-bottom: 30px; color: var(--color-primary); font-family: var(--font-mono);">01</div>
+              <h3 class="service-card__title" style="color: #fff !important; font-size: 1.5rem; margin-bottom: 20px; letter-spacing: 2px;">Kecepatan Predator</h3>
+              <p style="font-size: 1rem; color: var(--color-body); line-height: 1.8; font-weight: 300;">Web lo bakal loading lebih cepet dari kedipan mata kompetitor lo. Kami gak pake bloatware sampah.</p>
             </div>
-            <div class="service-card animate-on-scroll stagger-2" style="background: rgba(255,255,255,0.03); padding: 40px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
-              <div class="service-card__icon" style="font-size: 3rem; margin-bottom: 20px;">🛡️</div>
-              <h3 class="service-card__title" style="color: #fff !important; font-size: 1.8rem; margin-bottom: 15px;">Benteng Digital</h3>
-              <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.6;">Hacker bakal nangis darah nyoba nembus sistem yang gue buat. Keamanan bukan opsi, itu standar mati.</p>
+            <div class="service-card animate-on-scroll stagger-2" style="background: rgba(255,255,255,0.01); padding: 60px; border: 1px solid rgba(255,255,255,0.03); cursor: pointer; transition: all 0.5s ease;">
+              <div class="service-card__icon" style="font-size: 1.5rem; margin-bottom: 30px; color: var(--color-primary); font-family: var(--font-mono);">02</div>
+              <h3 class="service-card__title" style="color: #fff !important; font-size: 1.5rem; margin-bottom: 20px; letter-spacing: 2px;">Benteng Digital</h3>
+              <p style="font-size: 1rem; color: var(--color-body); line-height: 1.8; font-weight: 300;">Hacker bakal nangis darah nyoba nembus sistem yang gue buat. Keamanan bukan opsi, itu standar mati.</p>
             </div>
-            <div class="service-card animate-on-scroll stagger-3" style="background: rgba(255,255,255,0.03); padding: 50px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
-              <div class="service-card__icon" style="font-size: 3rem; margin-bottom: 20px;">�</div>
-              <h3 class="service-card__title" style="color: #fff !important; font-size: 1.8rem; margin-bottom: 15px;">Dominasi Psikologis</h3>
-              <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.6;">Desain yang bikin klien lo langsung pengen transfer dan bikin kompetitor lo ngerasa gak berguna.</p>
+            <div class="service-card animate-on-scroll stagger-3" style="background: rgba(255,255,255,0.01); padding: 60px; border: 1px solid rgba(255,255,255,0.03); cursor: pointer; transition: all 0.5s ease;">
+              <div class="service-card__icon" style="font-size: 1.5rem; margin-bottom: 30px; color: var(--color-primary); font-family: var(--font-mono);">03</div>
+              <h3 class="service-card__title" style="color: #fff !important; font-size: 1.5rem; margin-bottom: 20px; letter-spacing: 2px;">Dominasi Psikologis</h3>
+              <p style="font-size: 1rem; color: var(--color-body); line-height: 1.8; font-weight: 300;">Desain yang bikin klien lo langsung pengen transfer dan bikin kompetitor lo ngerasa gak berguna.</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- THREAT ASSESSMENT SECTION -->
-      <section class="threat-assessment section" style="background: #000; border-top: 2px solid #ff003c; border-bottom: 2px solid #ff003c; position: relative; z-index: 10; overflow: hidden;">
+      <section class="threat-assessment section" style="background: #050505; border-top: 1px solid rgba(255,0,60,0.1); border-bottom: 1px solid rgba(255,0,60,0.1); position: relative; z-index: 10; overflow: hidden; padding-block: 150px;">
         <div class="container">
-          <div class="section__header animate-on-scroll">
-            <span class="section__label" style="color: #ff003c; font-weight: 700;">WARNING: REALITY CHECK</span>
-            <h2 class="section__title" style="font-size: 3rem; color: #ff003c !important;">KENAPA WEB LO SAMPAH?</h2>
+          <div class="section__header animate-on-scroll" style="text-align: left; margin-bottom: 80px;">
+            <span class="section__label" style="color: var(--color-primary); font-weight: 700; letter-spacing: 5px; font-size: 0.8rem;">Risk Analysis</span>
+            <h2 class="section__title" style="font-size: 3rem; color: #fff !important; margin-top: 1.5rem; letter-spacing: -1px;">Kenapa Web Lo Gagal?</h2>
           </div>
-          <div class="grid grid--auto-fit mt-12" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-            <div class="threat-card animate-on-scroll" style="padding: 30px; border: 1px solid #333; background: #050505;">
-              <h3 style="color: #ff003c; margin-bottom: 15px;">AGENCY ABAL-ABAL</h3>
-              <p style="color: #888;">Pake template WordPress murahan, loading 10 detik, gampang di-hack, dan visualnya norak kayak anak SD baru belajar komputer.</p>
+          <div class="grid grid--auto-fit" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <div class="threat-card animate-on-scroll" style="padding: 50px; border: 1px solid #111; background: #080808; transition: all 0.5s ease;">
+              <h3 style="color: var(--color-primary); margin-bottom: 25px; font-size: 1.2rem; letter-spacing: 2px;">Standard Agency</h3>
+              <p style="color: #666; font-size: 0.95rem; line-height: 1.8; font-weight: 300;">Bergantung pada template massal. Loading lambat, arsitektur rapuh, dan estetika murahan yang merusak reputasi brand lo.</p>
             </div>
-            <div class="threat-card animate-on-scroll stagger-1" style="padding: 30px; border: 1px solid #333; background: #050505;">
-              <h3 style="color: #ff003c; margin-bottom: 15px;">SOLUSI "MURAH"</h3>
-              <p style="color: #888;">Lo dapet apa yang lo bayar. Error dimana-mana, gak ada SEO, dan pas ada masalah developernya ilang ditelan bumi.</p>
+            <div class="threat-card animate-on-scroll stagger-1" style="padding: 50px; border: 1px solid #111; background: #080808; transition: all 0.5s ease;">
+              <h3 style="color: var(--color-primary); margin-bottom: 25px; font-size: 1.2rem; letter-spacing: 2px;">Budget Solutions</h3>
+              <p style="color: #666; font-size: 0.95rem; line-height: 1.8; font-weight: 300;">Lo dapet apa yang lo bayar. Keamanan nol, performa buruk, dan dukungan teknis yang hilang saat lo paling butuh.</p>
             </div>
-            <div class="threat-card animate-on-scroll stagger-2" style="padding: 30px; border: 1px solid #ff003c; background: rgba(255,0,60,0.05);">
-              <h3 style="color: #fff; margin-bottom: 15px;">SIVILIZE CORP</h3>
-              <p style="color: #fff;">Satu-satunya solusi buat lo yang gak mau jadi pecundang. Kode bersih, visual mematikan, dan keamanan tanpa kompromi.</p>
+            <div class="threat-card animate-on-scroll stagger-2" style="padding: 50px; border: 1px solid var(--color-primary); background: rgba(255,0,60,0.02); transition: all 0.5s ease;">
+              <h3 style="color: #fff; margin-bottom: 25px; font-size: 1.2rem; letter-spacing: 2px;">Sivilize Infrastructure</h3>
+              <p style="color: #fff; font-size: 0.95rem; line-height: 1.8; font-weight: 300;">Satu-satunya solusi untuk dominasi. Kode murni, performa tanpa kompromi, dan keamanan tingkat militer.</p>
             </div>
           </div>
         </div>
@@ -223,21 +204,26 @@
       </section>
 
       <!-- CONTACT SECTION -->
-      <section class="contact section" id="contact">
+      <section class="contact section" id="contact" style="background: #000; padding-block: 200px;">
         <div class="container">
-          <div class="section__header animate-on-scroll">
-            <span class="section__label">Final Step</span>
-            <h2 class="section__title">SERAHKAN TAHTA LO</h2>
-            <p class="section__subtitle">Udah capek jadi pecundang? Hubungi gue sebelum kompetitor lo yang ngelakuin duluan.</p>
+          <div class="section__header animate-on-scroll" style="text-align: center; margin-bottom: 80px;">
+            <span class="section__label" style="color: var(--color-primary); font-weight: 700; letter-spacing: 5px; font-size: 0.8rem;">Final Inquiry</span>
+            <h2 class="section__title" style="font-size: 3rem; color: #fff !important; margin-top: 1.5rem; letter-spacing: -1px;">Mulai Dominasi Lo.</h2>
           </div>
           
-          <div class="contact__content mt-12" style="max-width: 800px; margin-inline: auto;">
-            <form action="https://formspree.io/f/xpznvkgk" method="POST" class="contact-form animate-on-scroll">
-              <div style="display: grid; gap: 20px; background: rgba(255,255,255,0.02); padding: 50px; border: 1px solid #ff003c; box-shadow: 0 0 30px rgba(255,0,60,0.1);">
-                <input type="text" name="name" placeholder="Siapa Lo? / Nama Bisnis Lo" required style="width: 100%; padding: 20px; background: #000; border: 1px solid #333; color: #fff; font-family: 'JetBrains Mono';">
-                <input type="email" name="email" placeholder="Email (Jangan Kasih Email Sampah)" required style="width: 100%; padding: 20px; background: #000; border: 1px solid #333; color: #fff; font-family: 'JetBrains Mono';">
-                <textarea name="message" rows="5" placeholder="Jelasin Kenapa Gue Harus Bantu Bisnis Lo" required style="width: 100%; padding: 20px; background: #000; border: 1px solid #333; color: #fff; font-family: 'JetBrains Mono';"></textarea>
-                <button type="submit" class="btn btn--primary aggressive-shake" style="padding: 25px; font-weight: 950; background: #ff003c; color: #fff; border: none; letter-spacing: 5px; cursor: pointer;">EKSEKUSI SEKARANG</button>
+          <div class="contact__content animate-on-scroll" style="max-width: 700px; margin-inline: auto;">
+            <form action="https://formspree.io/f/xpznvkgk" method="POST" class="contact-form">
+              <div style="display: grid; gap: 40px; background: transparent; padding: 0;">
+                <div class="form-group" style="position: relative;">
+                  <input type="text" name="name" placeholder="NAMA LENGKAP / ENTITAS BISNIS" required style="width: 100%; padding: 20px 0; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); color: #fff; font-family: var(--font-mono); font-size: 0.9rem; letter-spacing: 2px; transition: all 0.3s ease;">
+                </div>
+                <div class="form-group" style="position: relative;">
+                  <input type="email" name="email" placeholder="ALAMAT EMAIL PROFESIONAL" required style="width: 100%; padding: 20px 0; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); color: #fff; font-family: var(--font-mono); font-size: 0.9rem; letter-spacing: 2px; transition: all 0.3s ease;">
+                </div>
+                <div class="form-group" style="position: relative;">
+                  <textarea name="message" rows="4" placeholder="DETAIL KEBUTUHAN STRATEGIS" required style="width: 100%; padding: 20px 0; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); color: #fff; font-family: var(--font-mono); font-size: 0.9rem; letter-spacing: 2px; transition: all 0.3s ease; resize: none;"></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary" style="padding: 30px; font-weight: 700; background: #fff; color: #000; border: none; letter-spacing: 5px; cursor: pointer; margin-top: 20px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">KIRIM INKUIRI</button>
               </div>
             </form>
           </div>
@@ -247,37 +233,32 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer" role="contentinfo" style="border-top: 1px solid #333; padding: 100px 0 50px;">
-      <div class="footer__container">
-        <div class="footer__grid">
+    <footer class="footer" role="contentinfo" style="border-top: 1px solid rgba(255,255,255,0.03); padding: 100px 0 50px; background: #000;">
+      <div class="footer__container container">
+        <div class="footer__grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px;">
           <div class="footer__col">
-            <h3 class="footer__col-title" style="color: #ff003c;">Navigasi</h3>
-            <ul class="footer__list">
-              <li><a href="#hero" class="footer__link">Beranda</a></li>
-              <li><a href="#about" class="footer__link">Tentang</a></li>
-              <li><a href="#services" class="footer__link">Layanan</a></li>
+            <h3 class="footer__col-title" style="color: var(--color-primary); font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 30px;">NAVIGASI</h3>
+            <ul class="footer__list" style="display: grid; gap: 15px;">
+              <li><a href="#hero" class="footer__link" style="font-size: 0.8rem; letter-spacing: 1px; color: #666; transition: color 0.3s ease;">BERANDA</a></li>
+              <li><a href="#about" class="footer__link" style="font-size: 0.8rem; letter-spacing: 1px; color: #666; transition: color 0.3s ease;">TENTANG</a></li>
+              <li><a href="#services" class="footer__link" style="font-size: 0.8rem; letter-spacing: 1px; color: #666; transition: color 0.3s ease;">LAYANAN</a></li>
             </ul>
           </div>
           <div class="footer__col">
-            <h3 class="footer__col-title" style="color: #ff003c;">Lainnya</h3>
-            <ul class="footer__list">
-              <li><a href="#projects" class="footer__link">Proyek</a></li>
-              <li><a href="#contact" class="footer__link">Kontak</a></li>
+            <h3 class="footer__col-title" style="color: var(--color-primary); font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 30px;">KONEKSI</h3>
+            <ul class="footer__list" style="display: grid; gap: 15px;">
+              <li><a href="https://wa.me/6281338219957" class="footer__link" target="_blank" style="font-size: 0.8rem; letter-spacing: 1px; color: #666; transition: color 0.3s ease;">WHATSAPP</a></li>
+              <li><a href="https://www.linkedin.com/in/muhamad-adrian-226785345/" class="footer__link" target="_blank" style="font-size: 0.8rem; letter-spacing: 1px; color: #666; transition: color 0.3s ease;">LINKEDIN</a></li>
+              <li><a href="https://www.tiktok.com/@sivilizecorp.id" class="footer__link" target="_blank" style="font-size: 0.8rem; letter-spacing: 1px; color: #666; transition: color 0.3s ease;">TIKTOK</a></li>
             </ul>
           </div>
           <div class="footer__col">
-            <h3 class="footer__col-title" style="color: #ff003c;">Sivilize Corp</h3>
-            <ul class="footer__list">
-              <li><a href="https://wa.me/6281338219957" class="footer__link" target="_blank">WhatsApp Direct</a></li>
-              <li><a href="https://www.linkedin.com/in/muhamad-adrian-226785345/" class="footer__link" target="_blank">LinkedIn</a></li>
-              <li><a href="https://www.tiktok.com/@sivilizecorp.id" class="footer__link" target="_blank">TikTok</a></li>
+            <h3 class="footer__col-title" style="color: var(--color-primary); font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 30px;">LEGAL</h3>
+            <ul class="footer__list" style="display: grid; gap: 15px;">
+              <li style="font-size: 0.8rem; letter-spacing: 1px; color: #333;">&copy; 2024 SIVILIZE CORP</li>
+              <li style="font-size: 0.8rem; letter-spacing: 1px; color: #333;">DOMINASI MUTLAK.</li>
             </ul>
           </div>
-        </div>
-        <div class="footer__bottom" style="margin-top: 50px; border-top: 1px solid #111; padding-top: 30px; text-align: center;">
-          <p class="footer__copyright" style="color: #444; font-size: 0.8rem; letter-spacing: 2px;">
-            &copy; <span id="copyright-year"></span> SIVILIZE CORP. DOMINASI MUTLAK ATAU TIDAK SAMA SEKALI.
-          </p>
         </div>
       </div>
     </footer>

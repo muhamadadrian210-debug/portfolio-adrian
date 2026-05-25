@@ -109,74 +109,58 @@
 }
 
 /* ============================================
-   HYPER-AGGRESSIVE EFFECTS (Predatory Design)
+   HYPER-PREMIUM EFFECTS (Luxury-Aggressive)
    ============================================ */
-@keyframes screenShake {
-  0% { transform: translate(0,0) rotate(0); }
-  25% { transform: translate(-1px, 1px) rotate(-0.5deg); }
-  50% { transform: translate(1px, -1px) rotate(0.5deg); }
-  75% { transform: translate(-1px, -1px) rotate(-0.5deg); }
-  100% { transform: translate(0,0) rotate(0); }
+@keyframes luxuryPulse {
+  0% { opacity: 0.8; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(1.2) drop-shadow(0 0 15px var(--color-primary-glow)); }
+  100% { opacity: 0.8; filter: brightness(1); }
 }
 
 @keyframes scanline {
-  0% { bottom: 100%; opacity: 0; }
-  50% { opacity: 0.3; }
-  100% { bottom: 0%; opacity: 0; }
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 0.1; }
+  100% { transform: translateY(100%); opacity: 0; }
 }
 
-@keyframes cyberGlitch {
-  0% { clip-path: inset(80% 0 0 0); transform: translate(-5px, -5px); }
-  10% { clip-path: inset(10% 0 80% 0); transform: translate(5px, 5px); }
-  20% { clip-path: inset(80% 0 0 0); transform: translate(-5px, -5px); }
-  30% { clip-path: inset(10% 0 80% 0); transform: translate(5px, 5px); }
-  40% { clip-path: inset(50% 0 30% 0); transform: translate(-5px, 5px); }
-  50% { clip-path: inset(30% 0 50% 0); transform: translate(5px, -5px); }
-  60% { clip-path: inset(10% 0 80% 0); transform: translate(5px, 5px); }
-  70% { clip-path: inset(80% 0 10% 0); transform: translate(-5px, 5px); }
-  80% { clip-path: inset(40% 0 40% 0); transform: translate(5px, -5px); }
-  90% { clip-path: inset(10% 0 80% 0); transform: translate(-5px, -5px); }
-  100% { clip-path: inset(80% 0 0 0); transform: translate(5px, 5px); }
+@keyframes smoothReveal {
+  from { opacity: 0; transform: translateY(20px); filter: blur(10px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 .aggressive-shake:hover {
-  animation: screenShake 0.1s infinite;
-  filter: brightness(1.3) contrast(1.1) drop-shadow(0 0 10px #ff003c);
-}
-
-.glitch-text:hover {
-  animation: cyberGlitch 0.3s infinite;
-  text-shadow: 2px 0 #ff003c, -2px 0 #00fff9;
-}
-
-.hero__title {
-  position: relative;
-  overflow: hidden;
+  /* Hapus shake, ganti dengan luxury glow */
+  animation: luxuryPulse 2s infinite ease-in-out;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero__title::after {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; height: 5px;
-  background: rgba(255, 0, 60, 0.8);
-  animation: scanline 2s linear infinite;
+  top: 0; left: 0; right: 0; height: 100%;
+  background: linear-gradient(transparent, rgba(255, 0, 60, 0.05), transparent);
+  animation: scanline 4s linear infinite;
   pointer-events: none;
-  box-shadow: 0 0 20px #ff003c;
 }
 
-/* 3D HOVER EFFECTS (Human-Centric & Aggressive) */
+/* 3D HOVER EFFECTS (Luxury Refinement) */
 .service-card, .skill-category, .project-card, .threat-card, .btn {
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   transform-style: preserve-3d;
   perspective: 1000px;
 }
 
 .service-card:hover, .skill-category:hover, .project-card:hover, .threat-card:hover {
-  transform: translateY(-15px) rotateX(10deg) rotateY(10deg) scale(1.05);
-  box-shadow: 
-    -10px 10px 40px rgba(255, 0, 60, 0.3),
-    0 0 50px rgba(0, 0, 0, 0.8);
-  border-color: #ff003c !important;
+  transform: translateY(-10px) translateZ(20px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 60, 0.1);
+  border-color: rgba(255, 0, 60, 0.4) !important;
+}
+
+/* Tombol Premium */
+.btn:hover {
+  transform: translateY(-5px) translateZ(30px);
+  box-shadow: 0 20px 40px rgba(255, 0, 60, 0.2);
+  letter-spacing: 6px;
 }
 
 /* Tombol juga harus 3D */

@@ -91,7 +91,7 @@
               <span class="hero__title-accent split-text-left glitch-text aggressive-shake" style="font-size: 1.5rem; color: #ff003c; cursor: crosshair;">SIVILIZE</span>
               <span class="hero__title-accent split-text-right glitch-text aggressive-shake" style="font-size: 1.5rem; color: #ffffff; cursor: crosshair;">&nbsp;CORP</span>
             </div>
-            <h1 class="hero__title aggressive-shake" style="font-size: clamp(3rem, 15vw, 10rem); margin-top: 1.5rem; line-height: 0.8; color: #fff !important; cursor: crosshair; font-weight: 950; text-shadow: 0 0 50px rgba(255, 0, 60, 0.8);">
+            <h1 class="hero__title aggressive-shake" style="font-size: clamp(3rem, 10vw, 8rem); margin-top: 1.5rem; line-height: 0.9; color: #fff !important; cursor: crosshair; font-weight: 950; text-shadow: 0 0 30px rgba(255, 0, 60, 0.6); max-width: 100%; overflow-wrap: break-word;">
               DOMINASI <br> MUTLAK.
             </h1>
             <p class="hero__description" style="max-width: 1000px; margin-top: 4rem; font-size: 1.8rem; color: #fff !important; line-height: 1.2; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 5px 15px rgba(0,0,0,1);">
@@ -306,10 +306,13 @@
       const grid = document.getElementById('skills-grid');
       if (!grid || typeof skills === 'undefined') return;
       grid.innerHTML = skills.map((cat, idx) => `
-        <div class="skill-category animate-on-scroll stagger-${idx % 4 + 1}" style="background: rgba(255,255,255,0.02); padding: 30px; border-left: 4px solid #ff003c;">
-          <h3 class="skill-category__name" style="color: #fff; font-size: 1.5rem; margin-bottom: 20px;">${cat.icon} ${cat.category}</h3>
-          <div class="skill-category__items" style="display: flex; flex-wrap: wrap; gap: 10px;">
-            ${cat.items.map(item => `<span class="skill-badge" style="background: rgba(255, 0, 60, 0.1); color: #ff003c; padding: 5px 15px; font-weight: 700; border: 1px solid rgba(255, 0, 60, 0.3);">${item}</span>`).join('')}
+        <div class="skill-category animate-on-scroll stagger-${idx % 4 + 1}" style="background: rgba(255,255,255,0.02); padding: 30px; border-left: 4px solid #ff003c; border-top: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <h3 class="skill-category__name" style="color: #fff; font-size: 1.5rem; margin-bottom: 25px; display: flex; align-items: center; gap: 15px;">
+            <span style="font-size: 2rem;">${cat.icon}</span> 
+            <span style="letter-spacing: 2px;">${cat.category}</span>
+          </h3>
+          <div class="skill-category__items" style="display: flex; flex-wrap: wrap; gap: 12px;">
+            ${cat.items.map(item => `<span class="skill-badge" style="background: rgba(255, 0, 60, 0.05); color: #fff; padding: 8px 18px; font-weight: 600; border: 1px solid rgba(255, 0, 60, 0.2); font-size: 0.9rem; letter-spacing: 1px;">${item}</span>`).join('')}
           </div>
         </div>
       `).join('');

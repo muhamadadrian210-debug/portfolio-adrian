@@ -57,10 +57,10 @@ body::before {
 h1, h2, h3, h4, h5, h6 {
   color: #ffffff !important;
   font-weight: 950;
-  line-height: 0.9;
-  letter-spacing: -0.08em;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
   text-transform: uppercase;
-  text-shadow: 0 0 40px rgba(255, 0, 60, 0.5);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 1), 0 0 15px rgba(255, 0, 60, 0.3);
 }
 
 /* Background Cyber Noise Effect */
@@ -72,10 +72,10 @@ body::after {
   width: 300%;
   height: 300%;
   background: url('https://grainy-gradients.vercel.app/noise.svg');
-  opacity: 0.05;
+  opacity: 0.03; /* Kurangi dikit biar ga lebay */
   pointer-events: none;
   z-index: 0;
-  animation: noiseAnimation 0.2s infinite;
+  animation: noiseAnimation 0.5s infinite; /* Perlambat dikit */
 }
 
 @keyframes noiseAnimation {

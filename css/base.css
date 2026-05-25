@@ -5,93 +5,20 @@
 
 :root {
   /* palette + surface — disetel ke look Sivilize (bukan template random) */
-  --color-primary: #1c69d4;
-  --color-primary-active: #0653b6;
-  --color-primary-disabled: #d6d6d6;
+  --color-primary: #ff003c; /* AGGRESSIVE RED */
+  --color-primary-active: #c1002e;
+  --color-primary-disabled: #444;
   
-  --color-ink: #262626;
-  --color-body: #3c3c3c;
-  --color-body-strong: #1a1a1a;
-  --color-muted: #6b6b6b;
-  --color-muted-soft: #9a9a9a;
+  --color-ink: #ffffff;
+  --color-body: #cccccc;
+  --color-body-strong: #ffffff;
+  --color-muted: #888888;
   
-  --color-hairline: #e6e6e6;
-  --color-hairline-strong: #cccccc;
-  
-  --color-canvas: #f8f9fa;
-  --color-surface-soft: #f0f2f5;
-  --color-surface-card: #f5f6f8;
-  --color-surface-strong: #e4e6ea;
-  --color-surface-dark: #1a2129;
-  --color-surface-dark-elevated: #262e38;
+  --color-canvas: #000000;
+  --color-surface-dark: #000000;
   
   --color-on-primary: #ffffff;
   --color-on-dark: #ffffff;
-  --color-on-dark-soft: #bbbbbb;
-
-  /* M-Stripe Colors */
-  --color-m-blue-light: #0066b1;
-  --color-m-blue-dark: #1c69d4;
-  --color-m-red: #e22718;
-
-  /* SPACING SYSTEM - 8px Base */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  
-  /* SPACING SYSTEM - 8px Base */
-  --space-xxs: 4px;
-  --space-xs: 8px;
-  --space-sm: 12px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
-  --space-xxl: 48px;
-  --space-section: 120px; /* Diperlebar biar ga mepet */
-
-  /* Numeric aliases for compatibility */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-12: 48px;
-  --space-16: 64px;
-  --space-24: 96px;
-
-  /* RADIUS - Rectangular Logic */
-  --radius-none: 0px;
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-full: 9999px;
-
-  --transition-fast: 0.2s ease;
-  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ============================================
-   GLOBAL RESET & BASE
-   ============================================ */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html,
-body {
-  overflow-x: hidden;
-  width: 100%;
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-}
-
-.page-wrapper {
-  overflow-x: hidden;
-  width: 100%;
-  position: relative;
 }
 
 body {
@@ -100,9 +27,9 @@ body {
   font-size: 16px;
   line-height: 1.55;
   color: #ffffff !important;
-  background-color: #020202;
+  background-color: #000000;
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(28, 105, 212, 0.3) 0%, transparent 70%),
+    radial-gradient(circle at 50% 50%, rgba(255, 0, 60, 0.15) 0%, transparent 80%),
     url('../assets/images/logo.svg');
   background-repeat: no-repeat, no-repeat;
   background-position: center center;
@@ -121,10 +48,19 @@ body::before {
   width: 100%;
   height: 100%;
   background: 
-    linear-gradient(rgba(2, 2, 2, 0.9), rgba(2, 2, 2, 0.9)),
-    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(28, 105, 212, 0.05) 1px, rgba(28, 105, 212, 0.05) 2px);
+    linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)),
+    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255, 0, 60, 0.05) 1px, rgba(255, 0, 60, 0.05) 2px);
   pointer-events: none;
   z-index: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff !important;
+  font-weight: 950;
+  line-height: 0.9;
+  letter-spacing: -0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 0 40px rgba(255, 0, 60, 0.5);
 }
 
 /* Background Cyber Noise Effect */
@@ -167,7 +103,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.0;
   letter-spacing: -0.05em;
   text-transform: uppercase;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 1), 0 0 20px rgba(28, 105, 212, 0.4);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 1), 0 0 20px rgba(255, 0, 60, 0.4);
 }
 
 p, span, li, a {

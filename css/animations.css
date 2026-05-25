@@ -112,21 +112,42 @@
    HYPER-AGGRESSIVE EFFECTS (Predatory Design)
    ============================================ */
 @keyframes screenShake {
-  0% { transform: translate(0,0); }
-  25% { transform: translate(2px, 2px); }
-  50% { transform: translate(-2px, -2px); }
-  75% { transform: translate(2px, -2px); }
-  100% { transform: translate(0,0); }
+  0% { transform: translate(0,0) rotate(0); }
+  20% { transform: translate(-3px, 3px) rotate(-1deg); }
+  40% { transform: translate(-3px, -3px) rotate(1deg); }
+  60% { transform: translate(3px, 3px) rotate(0deg); }
+  80% { transform: translate(3px, -3px) rotate(-1deg); }
+  100% { transform: translate(0,0) rotate(0); }
 }
 
 @keyframes scanline {
-  0% { bottom: 100%; }
-  100% { bottom: 0%; }
+  0% { bottom: 100%; opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { bottom: 0%; opacity: 0; }
+}
+
+@keyframes cyberGlitch {
+  0% { clip-path: inset(80% 0 0 0); transform: translate(-5px, -5px); }
+  10% { clip-path: inset(10% 0 80% 0); transform: translate(5px, 5px); }
+  20% { clip-path: inset(80% 0 0 0); transform: translate(-5px, -5px); }
+  30% { clip-path: inset(10% 0 80% 0); transform: translate(5px, 5px); }
+  40% { clip-path: inset(50% 0 30% 0); transform: translate(-5px, 5px); }
+  50% { clip-path: inset(30% 0 50% 0); transform: translate(5px, -5px); }
+  60% { clip-path: inset(10% 0 80% 0); transform: translate(5px, 5px); }
+  70% { clip-path: inset(80% 0 10% 0); transform: translate(-5px, 5px); }
+  80% { clip-path: inset(40% 0 40% 0); transform: translate(5px, -5px); }
+  90% { clip-path: inset(10% 0 80% 0); transform: translate(-5px, -5px); }
+  100% { clip-path: inset(80% 0 0 0); transform: translate(5px, 5px); }
 }
 
 .aggressive-shake:hover {
-  animation: screenShake 0.1s infinite;
-  filter: brightness(1.5) contrast(1.2);
+  animation: screenShake 0.05s infinite;
+  filter: brightness(2) contrast(1.5) drop-shadow(0 0 15px #ff003c);
+}
+
+.glitch-text:hover {
+  animation: cyberGlitch 0.3s infinite;
+  text-shadow: 2px 0 #ff003c, -2px 0 #00fff9;
 }
 
 .hero__title {
@@ -137,25 +158,26 @@
 .hero__title::after {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
-  background: rgba(28, 105, 212, 0.5);
-  animation: scanline 3s linear infinite;
+  top: 0; left: 0; right: 0; height: 5px;
+  background: rgba(255, 0, 60, 0.8);
+  animation: scanline 2s linear infinite;
   pointer-events: none;
+  box-shadow: 0 0 20px #ff003c;
 }
 
 /* 3D HOVER EFFECTS (Human-Centric & Aggressive) */
-.service-card, .skill-category, .project-card, .btn {
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+.service-card, .skill-category, .project-card, .threat-card, .btn {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
   transform-style: preserve-3d;
   perspective: 1000px;
 }
 
-.service-card:hover, .skill-category:hover, .project-card:hover {
-  transform: translateY(-10px) rotateX(5deg) rotateY(5deg) scale(1.02);
+.service-card:hover, .skill-category:hover, .project-card:hover, .threat-card:hover {
+  transform: translateY(-15px) rotateX(10deg) rotateY(10deg) scale(1.05);
   box-shadow: 
-    -5px 5px 20px rgba(28, 105, 212, 0.2),
-    0 0 30px rgba(0, 0, 0, 0.5);
-  border-color: rgba(28, 105, 212, 0.5) !important;
+    -10px 10px 40px rgba(255, 0, 60, 0.3),
+    0 0 50px rgba(0, 0, 0, 0.8);
+  border-color: #ff003c !important;
 }
 
 /* Tombol juga harus 3D */
@@ -198,7 +220,7 @@
 .scroll-line-active {
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, transparent, #1c69d4, transparent);
+  background: linear-gradient(to bottom, transparent, #ff003c, transparent);
   animation: scrollDown 2.5s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 

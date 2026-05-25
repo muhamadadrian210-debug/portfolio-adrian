@@ -235,6 +235,16 @@
 }
 
 /* 3. Glitch Effect for Titles */
+@keyframes bloodPulse {
+  0% { box-shadow: 0 0 20px rgba(255, 0, 60, 0.4); transform: scale(1); }
+  50% { box-shadow: 0 0 50px rgba(255, 0, 60, 0.8); transform: scale(1.02); }
+  100% { box-shadow: 0 0 20px rgba(255, 0, 60, 0.4); transform: scale(1); }
+}
+
+.hero__title-accent, .btn--primary, .threat-card:last-child {
+  animation: bloodPulse 2s infinite ease-in-out;
+}
+
 @keyframes textGlitch {
   0% { transform: translate(0); }
   20% { transform: translate(-2px, 2px); }

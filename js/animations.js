@@ -115,19 +115,22 @@
     });
   };
 
-// System Takeover Transition (Snake/Code Effect)
+// Surgical Snake Transition
 function triggerTransition(targetId) {
   const overlay = document.querySelector('.page-transition-overlay');
   if (!overlay) return;
 
   overlay.style.display = 'flex';
-  overlay.innerHTML = '<div class="code-rain"></div>';
+  overlay.innerHTML = '';
   
-  // Create Snake Segments
-  for (let i = 0; i < 10; i++) {
+  // Create Surgical Snake Segments
+  const segmentCount = 5;
+  for (let i = 0; i < segmentCount; i++) {
     const segment = document.createElement('div');
     segment.className = 'snake-segment';
-    segment.style.animation = `snakeMove 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.05}s forwards`;
+    // Offset each segment slightly to create a trail
+    segment.style.top = `${40 + (i * 2)}vh`;
+    segment.style.animation = `snakeMove 1s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.08}s forwards`;
     overlay.appendChild(segment);
   }
 
@@ -141,15 +144,15 @@ function triggerTransition(targetId) {
     }
     
     // Fade out overlay
-    overlay.style.transition = 'opacity 0.5s ease';
+    overlay.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
     overlay.style.opacity = '0';
     
     setTimeout(() => {
       overlay.style.display = 'none';
       overlay.style.opacity = '1';
       overlay.innerHTML = '';
-    }, 500);
-  }, 1000);
+    }, 600);
+  }, 1100);
 }
 
 // Update navbar clicks to use transition

@@ -100,13 +100,13 @@ body {
   font-size: 16px;
   line-height: 1.55;
   color: #ffffff !important;
-  background-color: #050505;
+  background-color: #020202;
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(28, 105, 212, 0.25) 0%, transparent 80%),
+    radial-gradient(circle at 50% 50%, rgba(28, 105, 212, 0.3) 0%, transparent 70%),
     url('../assets/images/logo.svg');
-  background-repeat: no-repeat;
+  background-repeat: no-repeat, no-repeat;
   background-position: center center;
-  background-size: 100% 100%, 80% auto;
+  background-size: 100% 100%, 95% auto;
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   position: relative;
@@ -120,9 +120,40 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(5, 5, 5, 0.85); /* Overlay gelap agar teks terbaca jelas */
+  background: 
+    linear-gradient(rgba(2, 2, 2, 0.9), rgba(2, 2, 2, 0.9)),
+    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(28, 105, 212, 0.05) 1px, rgba(28, 105, 212, 0.05) 2px);
   pointer-events: none;
-  z-index: 0; /* Di atas logo, di bawah konten */
+  z-index: 0;
+}
+
+/* Background Cyber Noise Effect */
+body::after {
+  content: "";
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+  animation: noiseAnimation 0.2s infinite;
+}
+
+@keyframes noiseAnimation {
+  0% { transform: translate(0,0); }
+  10% { transform: translate(-5%,-5%); }
+  20% { transform: translate(-10%,5%); }
+  30% { transform: translate(5%,-10%); }
+  40% { transform: translate(-5%,15%); }
+  50% { transform: translate(-10%,5%); }
+  60% { transform: translate(15%,0); }
+  70% { transform: translate(0,10%); }
+  80% { transform: translate(-15%,0); }
+  90% { transform: translate(10%,5%); }
+  100% { transform: translate(5%,0); }
 }
 
 .page-wrapper {

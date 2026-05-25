@@ -256,13 +256,44 @@
 
   <!-- JavaScript -->
   <script src="js/utils.js"></script>
-  <script src="js/i18n.js"></script>
+  <script src="js/data/skills.js"></script>
+  <script src="js/data/projects.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/hero-glow.js"></script>
   <script>
     // Set copyright year
     setCopyrightYear();
+
+    // Render Skills (Human Logic)
+    (function renderSkills() {
+      const grid = document.getElementById('skills-grid');
+      if (!grid || typeof skills === 'undefined') return;
+      grid.innerHTML = skills.map((cat, idx) => `
+        <div class="skill-category animate-on-scroll stagger-${idx % 4 + 1}" style="background: rgba(255,255,255,0.02); padding: 30px; border-left: 4px solid #1c69d4;">
+          <h3 class="skill-category__name" style="color: #fff; font-size: 1.5rem; margin-bottom: 20px;">${cat.icon} ${cat.category}</h3>
+          <div class="skill-category__items" style="display: flex; flex-wrap: wrap; gap: 10px;">
+            ${cat.items.map(item => `<span class="skill-badge" style="background: rgba(28, 105, 212, 0.1); color: #1c69d4; padding: 5px 15px; font-weight: 700; border: 1px solid rgba(28, 105, 212, 0.3);">${item}</span>`).join('')}
+          </div>
+        </div>
+      `).join('');
+    })();
+
+    // Render Projects (Human Logic)
+    (function renderProjects() {
+      const grid = document.getElementById('projects-grid');
+      if (!grid || typeof projects === 'undefined') return;
+      grid.innerHTML = projects.map((p, idx) => `
+        <div class="project-card animate-on-scroll stagger-${idx % 2 + 1}" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); padding: 40px; margin-bottom: 30px;">
+          <h3 class="project-card__title" style="color: #fff; font-size: 2rem; margin-bottom: 15px;">${p.name}</h3>
+          <p class="project-card__desc" style="color: rgba(255,255,255,0.7); font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px;">${p.description}</p>
+          <div class="project-card__tags" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+            ${p.technologies.map(tech => `<span class="tag" style="color: #1c69d4; font-weight: 800; font-size: 0.9rem; background: rgba(28, 105, 212, 0.05); padding: 4px 12px;"># ${tech}</span>`).join('')}
+          </div>
+          <a href="${p.link}" target="_blank" class="btn btn--link" style="color: #1c69d4; font-weight: 700; text-decoration: underline;">Lihat Proyek →</a>
+        </div>
+      `).join('');
+    })();
   </script>
 </body>
 </html>

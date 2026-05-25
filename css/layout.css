@@ -24,7 +24,7 @@
    SECTION
    ============================================ */
 .section {
-  padding-block: var(--space-16);
+  padding-block: 150px !important;
 }
 
 .section--sm {

@@ -70,27 +70,12 @@
 
         <nav class="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
           <ul class="navbar__list">
-            <li><a href="index.html" class="navbar__link navbar__link--active" data-page="home" data-i18n="nav_home">Beranda</a></li>
-            <li><a href="about.html" class="navbar__link" data-page="about" data-i18n="nav_about">Tentang</a></li>
-            <li><a href="services.html" class="navbar__link" data-page="services" data-i18n="nav_services">Jasa</a></li>
-            <li><a href="skills.html" class="navbar__link" data-page="skills" data-i18n="nav_skills">Keahlian</a></li>
-            <li><a href="projects.html" class="navbar__link" data-page="projects" data-i18n="nav_projects">Proyek</a></li>
-            <li><a href="security.html" class="navbar__link" data-page="security" data-i18n="nav_security">Keamanan</a></li>
-            <li><a href="simulate-attack.html" class="navbar__link" data-page="simulate-attack" data-i18n="nav_simulate">Simulasi</a></li>
-            <li><a href="contact.html" class="navbar__link" data-page="contact" data-i18n="nav_contact">Kontak</a></li>
+            <li><a href="#hero" class="navbar__link navbar__link--active">Beranda</a></li>
+            <li><a href="#about" class="navbar__link">Tentang</a></li>
+            <li><a href="#services" class="navbar__link">Layanan</a></li>
+            <li><a href="#projects" class="navbar__link">Proyek</a></li>
+            <li><a href="#contact" class="navbar__link">Kontak</a></li>
           </ul>
-          
-          <!-- Language Switcher -->
-          <div class="navbar__lang">
-            <button class="lang-btn" data-lang="id" onclick="window.i18n.setLanguage('id')">ID</button>
-            <button class="lang-btn" data-lang="en" onclick="window.i18n.setLanguage('en')">EN</button>
-            <button class="lang-btn" data-lang="zh" onclick="window.i18n.setLanguage('zh')">ZH</button>
-            <button class="lang-btn" data-lang="ja" onclick="window.i18n.setLanguage('ja')">JA</button>
-            <button class="lang-btn" data-lang="ko" onclick="window.i18n.setLanguage('ko')">KO</button>
-            <button class="lang-btn" data-lang="de" onclick="window.i18n.setLanguage('de')">DE</button>
-            <button class="lang-btn" data-lang="ru" onclick="window.i18n.setLanguage('ru')">RU</button>
-            <button class="lang-btn" data-lang="ar" onclick="window.i18n.setLanguage('ar')">AR</button>
-          </div>
         </nav>
       </div>
     </header>
@@ -99,37 +84,37 @@
     <main id="main-content">
 
       <!-- HERO SECTION -->
-      <section class="hero" id="hero">
+      <section class="hero" id="hero" style="min-height: 100vh; display: flex; align-items: center; position: relative; z-index: 10;">
         <div class="hero__container">
           <div class="hero__content animate-on-scroll">
             <div class="split-text-container">
-              <span class="hero__title-accent split-text-left glitch-text" style="font-size: 2rem; color: #1c69d4;">SIVILIZE</span>
-              <span class="hero__title-accent split-text-right glitch-text" style="font-size: 2rem; color: #ffffff;">&nbsp;CORP</span>
+              <span class="hero__title-accent split-text-left glitch-text" style="font-size: 1.5rem; color: #1c69d4;">SIVILIZE</span>
+              <span class="hero__title-accent split-text-right glitch-text" style="font-size: 1.5rem; color: #ffffff;">&nbsp;CORP</span>
             </div>
-            <h1 class="hero__title" data-i18n="hero_title" style="font-size: clamp(3rem, 10vw, 6rem); margin-top: 1rem;">
-              KODE KAMI BUKAN <br> OMONG KOSONG.
+            <h1 class="hero__title" style="font-size: clamp(3rem, 10vw, 6.5rem); margin-top: 1.5rem; line-height: 1.1; color: #fff !important;">
+              Kualitas Kami Tidak <br> Mengenal Kompromi.
             </h1>
-            <p class="hero__description text-bubble" data-i18n="hero_desc" style="max-width: 700px; margin-top: 2rem; font-size: 1.2rem; color: rgba(255,255,255,0.7);">
-              Website lo lambat? Gampang ditembus hacker dongo? Sivilize Corp di sini buat beresin semua sampah itu. Kami nggak jual estetika korporat basi—kami jual infrastruktur tempur yang nggak bisa mati.
+            <p class="hero__description" style="max-width: 850px; margin-top: 2.5rem; font-size: 1.4rem; color: #fff !important; line-height: 1.6; font-weight: 300;">
+              Mohon maaf, kami tidak melayani pembuatan sistem yang sekadar "jadi". Di Sivilize Corp, kami membangun infrastruktur digital dengan standar keamanan tinggi dan performa yang presisi. Jika Anda mencari kualitas yang dapat dipertanggungjawabkan, Anda berada di tempat yang tepat.
             </p>
             
-            <div class="hero__cta-group mt-12" style="display: flex; gap: 20px;">
-              <a href="#services" class="btn btn--primary" style="padding: 20px 40px; font-size: 1.1rem; letter-spacing: 2px;">SIKAT LAYANAN</a>
-              <a href="#contact" class="btn btn--outline-on-dark" style="padding: 20px 40px; font-size: 1.1rem; letter-spacing: 2px;">GAS HUBUNGI GUE</a>
+            <div class="hero__cta-group mt-12" style="display: flex; gap: 20px; flex-wrap: wrap;">
+              <a href="#services" class="btn btn--primary" style="padding: 22px 45px; font-size: 1.2rem; letter-spacing: 1.5px; background: #1c69d4; color: #fff !important; font-weight: 700; border: none; text-decoration: none;">EKSPLORASI LAYANAN</a>
+              <a href="#contact" class="btn btn--outline-on-dark" style="padding: 22px 45px; font-size: 1.2rem; letter-spacing: 1.5px; border: 3px solid #ffffff; color: #fff !important; font-weight: 700; background: transparent; text-decoration: none;">KONSULTASI STRATEGIS</a>
             </div>
 
-            <div class="hero__stats mt-8">
+            <div class="hero__stats mt-12" style="display: flex; gap: 40px; flex-wrap: wrap;">
               <div class="stat-item scale-reveal">
-                <span class="stat-item__value">100%</span>
-                <span class="stat-item__label">Scope Jelas</span>
+                <span class="stat-item__value" style="font-size: 2.5rem; font-weight: 800; color: #1c69d4;">100%</span>
+                <span class="stat-item__label" style="display: block; font-size: 0.9rem; text-transform: uppercase; color: #fff;">Integritas Kode</span>
               </div>
               <div class="stat-item scale-reveal stagger-1">
-                <span class="stat-item__value">High</span>
-                <span class="stat-item__label">Security First</span>
+                <span class="stat-item__value" style="font-size: 2.5rem; font-weight: 800; color: #1c69d4;">High</span>
+                <span class="stat-item__label" style="display: block; font-size: 0.9rem; text-transform: uppercase; color: #fff;">Security Standards</span>
               </div>
               <div class="stat-item scale-reveal stagger-2">
-                <span class="stat-item__value">Real</span>
-                <span class="stat-item__label">Human Code</span>
+                <span class="stat-item__value" style="font-size: 2.5rem; font-weight: 800; color: #1c69d4;">Pure</span>
+                <span class="stat-item__label" style="display: block; font-size: 0.9rem; text-transform: uppercase; color: #fff;">Human-Written</span>
               </div>
             </div>
           </div>
@@ -137,12 +122,12 @@
       </section>
 
       <!-- ABOUT SECTION -->
-      <section class="about section" id="about">
+      <section class="about section" id="about" style="position: relative; z-index: 10;">
         <div class="container">
           <div class="section__header animate-on-scroll">
-            <span class="section__label">The Founder</span>
-            <h2 class="section__title" style="font-size: 3.5rem;">Muhamad Adrian</h2>
-            <p class="section__subtitle" style="font-size: 1.3rem; color: #ffffff; max-width: 850px; margin-inline: auto; font-weight: 300; line-height: 1.7;">
+            <span class="section__label" style="color: #1c69d4; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">The Founder</span>
+            <h2 class="section__title" style="font-size: 3.5rem; color: #fff !important; margin-top: 1rem;">Muhamad Adrian</h2>
+            <p class="section__subtitle" style="font-size: 1.4rem; color: #fff !important; max-width: 850px; margin-inline: auto; font-weight: 300; line-height: 1.7; margin-top: 2rem;">
               Saya bukan sekadar pengembang perangkat lunak yang mengikuti tren. Saya adalah arsitek sistem yang mengutamakan integritas dan keamanan. Setiap proyek yang saya kerjakan adalah representasi dari komitmen saya untuk menolak segala bentuk pekerjaan yang asal-asalan.
             </p>
           </div>
@@ -150,27 +135,27 @@
       </section>
 
       <!-- SERVICES SECTION -->
-      <section class="services section" id="services" style="background: rgba(255,255,255,0.02);">
+      <section class="services section" id="services" style="background: rgba(255,255,255,0.02); position: relative; z-index: 10;">
         <div class="container">
           <div class="section__header animate-on-scroll">
-            <span class="section__label">Services</span>
-            <h2 class="section__title">Komitmen Kualitas Kami</h2>
+            <span class="section__label" style="color: #1c69d4; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Services</span>
+            <h2 class="section__title" style="font-size: 3rem; color: #fff !important; margin-top: 1rem;">Komitmen Kualitas Kami</h2>
           </div>
-          <div class="grid grid--auto-fit mt-12">
-            <div class="service-card animate-on-scroll stagger-1" style="background: rgba(255,255,255,0.03); padding: 40px; border: 1px solid rgba(255,255,255,0.1);">
-              <div class="service-card__icon">⚖️</div>
-              <h3 class="service-card__title">Integritas Kode</h3>
-              <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8);">Kami menolak penggunaan template massal yang mengorbankan performa. Setiap baris kode ditulis dengan penuh dedikasi untuk efisiensi maksimal.</p>
+          <div class="grid grid--auto-fit mt-12" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <div class="service-card animate-on-scroll stagger-1" style="background: rgba(255,255,255,0.03); padding: 50px; border: 1px solid rgba(255,255,255,0.1);">
+              <div class="service-card__icon" style="font-size: 3rem; margin-bottom: 20px;">⚖️</div>
+              <h3 class="service-card__title" style="color: #fff !important; font-size: 1.8rem; margin-bottom: 15px;">Integritas Kode</h3>
+              <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.6;">Kami menolak penggunaan template massal yang mengorbankan performa. Setiap baris kode ditulis dengan penuh dedikasi untuk efisiensi maksimal.</p>
             </div>
-            <div class="service-card animate-on-scroll stagger-2" style="background: rgba(255,255,255,0.03); padding: 40px; border: 1px solid rgba(255,255,255,0.1);">
-              <div class="service-card__icon">🛡️</div>
-              <h3 class="service-card__title">Keamanan Mutlak</h3>
-              <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8);">Keamanan bukan sekadar tambahan, melainkan prinsip dasar yang tidak bisa ditawar dalam setiap sistem yang kami bangun.</p>
+            <div class="service-card animate-on-scroll stagger-2" style="background: rgba(255,255,255,0.03); padding: 50px; border: 1px solid rgba(255,255,255,0.1);">
+              <div class="service-card__icon" style="font-size: 3rem; margin-bottom: 20px;">🛡️</div>
+              <h3 class="service-card__title" style="color: #fff !important; font-size: 1.8rem; margin-bottom: 15px;">Keamanan Mutlak</h3>
+              <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.6;">Keamanan bukan sekadar tambahan, melainkan prinsip dasar yang tidak bisa ditawar dalam setiap sistem yang kami bangun.</p>
             </div>
-            <div class="service-card animate-on-scroll stagger-3" style="background: rgba(255,255,255,0.03); padding: 40px; border: 1px solid rgba(255,255,255,0.1);">
-              <div class="service-card__icon">🤝</div>
-              <h3 class="service-card__title">Kemitraan Eksklusif</h3>
-              <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8);">Kami hanya bekerja sama dengan klien yang menghargai kualitas di atas kecepatan yang membabi buta. Integritas adalah segalanya.</p>
+            <div class="service-card animate-on-scroll stagger-3" style="background: rgba(255,255,255,0.03); padding: 50px; border: 1px solid rgba(255,255,255,0.1);">
+              <div class="service-card__icon" style="font-size: 3rem; margin-bottom: 20px;">🤝</div>
+              <h3 class="service-card__title" style="color: #fff !important; font-size: 1.8rem; margin-bottom: 15px;">Kemitraan Eksklusif</h3>
+              <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.6;">Kami hanya bekerja sama dengan klien yang menghargai kualitas di atas kecepatan yang membabi buta. Integritas adalah segalanya.</p>
             </div>
           </div>
         </div>

@@ -201,6 +201,8 @@
   .testimonials__grid { grid-template-columns: 1fr !important; }
   .hero__brand { letter-spacing: 6px; }
   #brand-voice > .container { padding-inline: 12px; }
+  /* Pricing grid adjusts to single column on small screens */
+  .pricing-grid { grid-template-columns: 1fr !important; }
 }
 
 @media (max-width: 480px) {

@@ -196,6 +196,18 @@
   }
 }
 
+/* Responsive tweaks for new sections */
+@media (max-width: 991px) {
+  .testimonials__grid { grid-template-columns: 1fr !important; }
+  .hero__brand { letter-spacing: 6px; }
+}
+
+@media (max-width: 480px) {
+  .hero__title { font-size: clamp(1.8rem, 9vw, 2.6rem) !important; }
+  .testimonial-card { padding: 20px; }
+  .faq__a { font-size: 0.95rem; }
+}
+
 /* ============================================
    Mobile-first refinements
    ============================================ */

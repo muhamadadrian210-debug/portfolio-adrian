@@ -4,17 +4,17 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* palette + surface — Luxury Premium Mode */
-  --color-primary: #ff003c; /* SURGICAL RED */
-  --color-primary-glow: rgba(255, 0, 60, 0.3);
+  /* palette + surface — Professional Modern Mode */
+  --color-primary: #4f46e5; /* INDIGO PROFESSIONAL */
+  --color-primary-glow: rgba(79, 70, 229, 0.2);
   
   --color-ink: #ffffff;
-  --color-body: #a0a0a0;
-  --color-body-strong: #ffffff;
-  --color-muted: #444444;
+  --color-body: #94a3b8;
+  --color-body-strong: #f1f5f9;
+  --color-muted: #334155;
   
-  --color-canvas: #050505; /* Deeper Black */
-  --color-surface-dark: #0a0a0a;
+  --color-canvas: #020617; /* Deep Slate */
+  --color-surface-dark: #0f172a;
   
   --font-sans: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -22,14 +22,14 @@
 
 body {
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
   color: var(--color-body);
   background-color: var(--color-canvas);
   background-image: 
-    radial-gradient(circle at 0% 0%, rgba(255, 0, 60, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(255, 0, 60, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(79, 70, 229, 0.05) 0%, transparent 50%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;

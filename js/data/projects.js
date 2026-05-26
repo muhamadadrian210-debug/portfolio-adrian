@@ -3,7 +3,7 @@ const projects = [
   {
     id: 'sivilize-hub-pro',
     name: 'Sivilize Hub Pro',
-    description: 'Bukan sekadar kalkulator RAB. Ini adalah asisten digital lengkap untuk kontraktor Indonesia. Dari analisis harga satuan (AHSP) hingga manajemen laporan keuangan proyek secara real-time.',
+    description: 'Dashboard digital untuk kontraktor dan tim proyek yang butuh kontrol biaya, analisis harga satuan, dan laporan real-time dengan alur kerja yang lebih terstruktur.',
     technologies: ['React', 'Node.js', 'MySQL', 'Vercel'],
     image: 'assets/images/projects/sivilize-hub-pro.png',
     imageAlt: 'Tampilan dashboard Sivilize Hub Pro dengan fitur AHSP Database',
@@ -15,7 +15,7 @@ const projects = [
   {
     id: 'sikasir',
     name: 'SiKasir',
-    description: 'Solusi kasir modern untuk UMKM. Ringan, cepat, dan bisa diakses dari perangkat apapun. Kami fokus pada kemudahan penggunaan tanpa mengorbankan keamanan data transaksi Anda.',
+    description: 'Solusi kasir digital untuk UMKM yang membutuhkan transaksi cepat, laporan sederhana, dan pengalaman pengguna praktis di berbagai perangkat.',
     technologies: ['PWA', 'Express.js', 'MySQL', 'Railway'],
     image: 'assets/images/projects/sikasir.png',
     imageAlt: 'Tampilan dashboard SiKasir aplikasi kasir supermarket berbasis PWA',

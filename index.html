@@ -102,6 +102,37 @@
   
   <!-- Preload Critical Assets -->
   <link rel="preload" href="assets/images/logo.svg" as="image" />
+  <style>
+    /* Brand-focused hero background and typography overrides */
+    .hero {
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(79,70,229,0.08), transparent 10%),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(14,165,233,0.03), transparent 8%),
+                  linear-gradient(180deg, #06060a 0%, #020204 100%);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .hero__brand {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 700;
+      color: #e6eef8;
+      letter-spacing: 12px;
+      font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+      display: inline-block;
+      text-transform: uppercase;
+      opacity: 0.95;
+    }
+
+    .hero__title { /* tighten to company tone */
+      font-weight: 700;
+      letter-spacing: -1px;
+      font-size: clamp(2.6rem, 6.5vw, 4.2rem) !important;
+    }
+
+    /* subtle glow under hero content */
+    .hero__content { position: relative; z-index: 2; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.45)); pointer-events: none; }
+  </style>
 </head>
 <body>
   <!-- Skip to main content (keyboard accessibility) -->
@@ -144,7 +175,7 @@
         <div class="hero__container container">
           <div class="hero__content animate-on-scroll">
             <div class="hero__overhead" style="margin-bottom: 1.5rem;">
-              <span class="hero__title-accent glitch-text" style="font-size: 0.9rem; color: var(--color-primary); letter-spacing: 6px; font-weight: 700; text-transform: uppercase;">SIVILIZE CORP</span>
+              <span class="hero__brand" style="margin:0;">SIVILIZE CORP</span>
             </div>
             <p style="font-size: 0.95rem; letter-spacing: 3px; color: #cbd5e1; text-transform: uppercase; margin-bottom: 1.25rem;">Ekosistem digital untuk bisnis • Sivilize Hub Pro • SiKasir • solusi website</p>
             <h1 class="hero__title" style="line-height: 1; color: #fff !important; cursor: default; text-shadow: 0 0 30px rgba(79, 70, 229, 0.2);">

@@ -168,6 +168,34 @@
   }
 }
 
+@media (max-width: 767px) {
+  .hero__title {
+    font-size: clamp(2.3rem, 9vw, 3rem) !important;
+  }
+
+  .hero__cta-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .siweb-grid,
+  .why-grid,
+  .package-grid,
+  .product-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .section__header,
+  .section__subtitle,
+  .section__title {
+    text-align: left !important;
+  }
+
+  .contact__content {
+    padding-inline: 0 !important;
+  }
+}
+
 /* ============================================
    Mobile-first refinements
    ============================================ */

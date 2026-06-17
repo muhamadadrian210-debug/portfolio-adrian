@@ -1,9 +1,9 @@
 "use client";
 
-import { use } from "react";
+import { use, useState } from "react";
 import { useRouter } from "next/navigation";
 
-// Database 12 Demo Projects sesuai spesifikasi user
+// Database data demo
 const demoData: Record<string, {
   title: string;
   themeColor: string;
@@ -12,114 +12,127 @@ const demoData: Record<string, {
   features: string[];
   layout: string;
   icon: string;
+  tagline: string;
 }> = {
   "hospital": {
     title: "Rumah Sakit & Klinik",
     themeColor: "#10b981", // Emerald Green
-    glowColor: "rgba(16, 185, 129, 0.2)",
+    glowColor: "rgba(16, 185, 129, 0.4)",
     decorations: ["Medical Cross", "Stethoscope", "Pulse Line", "Daun Hijau Kecil"],
     features: ["Pendaftaran Pasien", "Jadwal Dokter", "Dashboard Admin", "Riwayat Pasien", "Informasi Layanan"],
     layout: "hospital",
-    icon: "🏥"
+    icon: "🏥",
+    tagline: "Healthcare Modern & Integrasi Rekam Medis Cepat"
   },
   "pharmacy": {
     title: "Apotek Digital",
     themeColor: "#06b6d4", // Teal Cyan
-    glowColor: "rgba(6, 182, 212, 0.2)",
+    glowColor: "rgba(6, 182, 212, 0.4)",
     decorations: ["Katalog Obat", "Kapsul", "Botol Obat", "Medical Shelf", "Ikon Farmasi"],
     features: ["Katalog Produk", "Stok Obat", "Pemesanan Online", "Dashboard Apotek", "Manajemen Produk"],
     layout: "pharmacy",
-    icon: "💊"
+    icon: "💊",
+    tagline: "Medical Commerce & Sistem POS Apotek Cerdas"
   },
   "company": {
     title: "Landing Page Perusahaan",
     themeColor: "#4f46e5", // Indigo Blue
-    glowColor: "rgba(79, 70, 229, 0.2)",
+    glowColor: "rgba(79, 70, 229, 0.4)",
     decorations: ["Gedung Modern", "Grafik Pertumbuhan", "Company Dashboard", "Corporate Document"],
     features: ["Company Profile", "Lead Generation", "Service Showcase", "Contact Form", "Portfolio"],
     layout: "corporate",
-    icon: "🏢"
+    icon: "🏢",
+    tagline: "Corporate Business & Profil Profesional Berkinerja Tinggi"
   },
   "souvenir": {
     title: "Toko Souvenir",
     themeColor: "#f59e0b", // Amber Gold
-    glowColor: "rgba(245, 158, 11, 0.2)",
+    glowColor: "rgba(245, 158, 11, 0.4)",
     decorations: ["Gift Box", "Product Showcase", "Ribbon", "Product Card", "Shopping Experience"],
     features: ["Katalog Produk", "WhatsApp Order", "Testimoni", "Galeri Produk", "Promo"],
     layout: "creative",
-    icon: "🎁"
+    icon: "🎁",
+    tagline: "Retail Showcase & Pengalaman Belanja Souvenir Lokal"
   },
   "library": {
     title: "Sistem Perpustakaan",
     themeColor: "#8b5cf6", // Purple Violet
-    glowColor: "rgba(139, 92, 246, 0.2)",
+    glowColor: "rgba(139, 92, 246, 0.4)",
     decorations: ["Rak Buku", "Kartu Anggota", "Dashboard Perpustakaan", "Buku Digital"],
     features: ["Manajemen Buku", "Peminjaman", "Pengembalian", "Dashboard Admin", "Pencarian Buku"],
     layout: "library",
-    icon: "📚"
+    icon: "📚",
+    tagline: "Education System & Otomasi Peminjaman Buku Sekolah"
   },
   "travel": {
     title: "Travel & Tour",
     themeColor: "#0ea5e9", // Sky Blue
-    glowColor: "rgba(14, 165, 233, 0.2)",
+    glowColor: "rgba(14, 165, 233, 0.4)",
     decorations: ["Pesawat", "Peta Perjalanan", "Lokasi Wisata", "Booking Panel"],
     features: ["Paket Wisata", "Booking Online", "Galeri Destinasi", "Jadwal Tour", "Customer Management"],
     layout: "travel",
-    icon: "✈️"
+    icon: "✈️",
+    tagline: "Tourism Platform & Reservasi Paket Trip Instan"
   },
   "cafe": {
     title: "Cafe & Resto",
     themeColor: "#ea580c", // Orange Brown
-    glowColor: "rgba(234, 88, 12, 0.2)",
+    glowColor: "rgba(234, 88, 12, 0.4)",
     decorations: ["Coffee Cup", "Menu Digital", "Makanan", "Reservasi Meja", "Order Dashboard"],
     features: ["Digital Menu", "Reservasi", "Pemesanan", "Promo", "Dashboard Pesanan"],
     layout: "cafe",
-    icon: "☕"
+    icon: "☕",
+    tagline: "Food & Beverage & Manajemen Order Meja Interaktif"
   },
   "property": {
     title: "Property & Developer",
-    themeColor: "#f97316", // Slate Orange (Orange Slate)
-    glowColor: "rgba(249, 115, 22, 0.2)",
+    themeColor: "#f97316", // Slate Orange
+    glowColor: "rgba(249, 115, 22, 0.4)",
     decorations: ["Gedung Tinggi", "Blueprint", "Site Plan", "Property Showcase"],
     features: ["Katalog Properti", "Landing Page Proyek", "Lead Generation", "Form Konsultasi", "Progress Proyek"],
     layout: "property",
-    icon: "🏙️"
+    icon: "🏙️",
+    tagline: "Construction & Property Showcase Perumahan Modern"
   },
   "school": {
     title: "Sekolah & Akademi",
     themeColor: "#6366f1", // Blue Purple
-    glowColor: "rgba(99, 102, 241, 0.2)",
+    glowColor: "rgba(99, 102, 241, 0.4)",
     decorations: ["Classroom", "Dashboard Siswa", "E-learning Panel", "Academic Management"],
     features: ["Informasi Sekolah", "Pendaftaran", "Dashboard Siswa", "Jadwal Pelajaran", "E-Learning"],
     layout: "school",
-    icon: "🏫"
+    icon: "🏫",
+    tagline: "Education Platform Portal Akademik Terintegrasi"
   },
   "hotel": {
     title: "Hotel & Penginapan",
     themeColor: "#3b82f6", // Royal Blue
-    glowColor: "rgba(59, 130, 246, 0.2)",
+    glowColor: "rgba(59, 130, 246, 0.4)",
     decorations: ["Hotel Booking", "Room Showcase", "Reservation System", "Luxury Hospitality"],
     features: ["Booking Kamar", "Room Showcase", "Galeri Hotel", "Promo", "Customer Management"],
     layout: "hotel",
-    icon: "🏨"
+    icon: "🏨",
+    tagline: "Luxury Hospitality & Sistem Pemesanan Kamar Instan"
   },
   "workshop": {
     title: "Bengkel & Otomotif",
-    themeColor: "#f97316", // Red Orange
-    glowColor: "rgba(249, 115, 22, 0.2)",
+    themeColor: "#dc2626", // Red Orange
+    glowColor: "rgba(220, 38, 38, 0.4)",
     decorations: ["Mobil", "Motor", "Service Dashboard", "Sparepart Showcase"],
     features: ["Booking Service", "Sparepart Catalog", "Riwayat Servis", "Dashboard Bengkel", "WhatsApp Booking"],
     layout: "workshop",
-    icon: "🚗"
+    icon: "🚗",
+    tagline: "Automotive Service & Booking Antrean Bengkel Taktis"
   },
   "ecommerce": {
     title: "Toko Online / E-Commerce",
     themeColor: "#2563eb", // Electric Blue
-    glowColor: "rgba(37, 99, 235, 0.2)",
+    glowColor: "rgba(37, 99, 235, 0.4)",
     decorations: ["Product Grid", "Shopping Cart", "Checkout Flow", "Sales Analytics"],
     features: ["Katalog Produk", "Keranjang Belanja", "Checkout", "Dashboard Penjualan", "Manajemen Produk"],
     layout: "ecommerce",
-    icon: "🛒"
+    icon: "🛒",
+    tagline: "Digital Commerce & Platform Toko Online Siap Pakai"
   }
 };
 
@@ -128,6 +141,26 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
   const resolvedParams = use(params);
   const id = resolvedParams.id;
   const demo = demoData[id];
+
+  // Client states untuk interaktivitas simulasi web asli
+  const [patientName, setPatientName] = useState("");
+  const [patientDoctor, setPatientDoctor] = useState("Dr. Adrian (Sp. Bedah)");
+  const [patientsList, setPatientsList] = useState<Array<{ name: string; doctor: string; id: string }>>([
+    { id: "P-1", name: "Budi Santoso", doctor: "Dr. Adrian (Sp. Bedah)" },
+    { id: "P-2", name: "Siti Rahma", doctor: "Dr. Clara (Sp. Anak)" }
+  ]);
+
+  const [cartItems, setCartItems] = useState<Array<{ name: string; qty: number; price: number }>>([]);
+  const [promoCode, setPromoCode] = useState("");
+  const [discount, setDiscount] = useState(0);
+
+  const [chatMessage, setChatMessage] = useState("");
+  const [chatList, setChatList] = useState<string[]>(["Halo! Ada yang bisa kami bantu hari ini?"]);
+
+  const [bookTitle, setBookTitle] = useState("");
+  const [borrowedBooks, setBorrowedBooks] = useState<Array<{ title: string; borrower: string; date: string }>>([
+    { title: "Dasar Pemrograman Web", borrower: "Adrian", date: "2026-06-17" }
+  ]);
 
   if (!demo) {
     return (
@@ -140,45 +173,93 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
     );
   }
 
-  // Render Visual Layout Khusus Per Industri (100% Berbeda Tata Letaknya)
-  const renderVisualMockup = () => {
+  // Action Handlers
+  const handleRegisterPatient = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!patientName) return;
+    setPatientsList([...patientsList, {
+      id: `P-${patientsList.length + 1}`,
+      name: patientName,
+      doctor: patientDoctor
+    }]);
+    setPatientName("");
+    alert("Pendaftaran Berhasil! Silakan cek daftar antrean di bawah.");
+  };
+
+  const handleSendMessage = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!chatMessage) return;
+    setChatList([...chatList, `Anda: ${chatMessage}`, "Sivilize AI: Terima kasih! Pertanyaan Anda telah kami terima, tim marketing kami akan segera menghubungi nomor Anda."]);
+    setChatMessage("");
+  };
+
+  const handleBorrowBook = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!bookTitle) return;
+    setBorrowedBooks([...borrowedBooks, {
+      title: bookTitle,
+      borrower: "Pengunjung Demo",
+      date: new Date().toISOString().split('T')[0]
+    }]);
+    setBookTitle("");
+  };
+
+  // Render Visual Website Asli 100% Sesuai Tema Industri
+  const renderActualWebsite = () => {
     switch (demo.layout) {
       case "hospital":
         return (
-          <div style={{ background: "#0b151f", border: "1px solid #10b98133", borderRadius: 12, padding: 30, display: "grid", gridTemplateColumns: "250px 1fr", gap: 30 }}>
-            {/* Klinik Sidebar Panel */}
-            <div style={{ background: "#0f2130", borderRadius: 8, padding: 20, borderLeft: "4px solid #10b981" }}>
-              <div style={{ display: "flex", gap: 8, color: "#10b981", fontWeight: 700, marginBottom: 20 }}>
-                <span>🏥</span> KLINIK SEHAT CORE
+          <div style={{ background: "#f8fafc", color: "#1e293b", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            {/* Navigasi RS */}
+            <header style={{ background: "#fff", borderBottom: "2px solid #e2e8f0", padding: "16px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: "1.25rem", fontWeight: 800, color: "#10b981" }}>🟢 RS SIVILIZE CARE</span>
+              <nav style={{ display: "flex", gap: 24, fontSize: "0.9rem", fontWeight: 600 }}>
+                <a href="#about" style={{ color: "#475569" }}>Profil</a>
+                <a href="#dokter" style={{ color: "#475569" }}>Jadwal Dokter</a>
+                <a href="#pendaftaran" style={{ color: "#10b981" }}>Pendaftaran Online</a>
+              </nav>
+            </header>
+
+            {/* Banner Utama */}
+            <section style={{ background: "linear-gradient(135deg, #e6f4ea 0%, #c4ebd0 100%)", padding: "60px 40px", textAlign: "center" }}>
+              <h2 style={{ textTransform: "none", color: "#065f46", fontSize: "2rem", marginBottom: 12, textShadow: "none" }}>Layanan Medis Terpercaya & Instan</h2>
+              <p style={{ color: "#065f46", margin: "0 auto", maxWidth: 600 }}>Daftar antrean konsultasi dokter spesialis secara mandiri dari rumah tanpa ribet antre di loket.</p>
+            </section>
+
+            {/* Form Pendaftaran & Antrean Live */}
+            <div style={{ flex: 1, padding: 40, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40 }}>
+              <div style={{ background: "#fff", padding: 30, borderRadius: 12, boxShadow: "0 4px 6px -1px rgba(0,0,0,0.05)" }}>
+                <h3 style={{ textTransform: "none", color: "#1e293b", marginBottom: 20, textShadow: "none" }}>Form Registrasi Pasien Baru</h3>
+                <form onSubmit={handleRegisterPatient} style={{ display: "grid", gap: 16 }}>
+                  <div>
+                    <label style={{ display: "block", marginBottom: 6, fontWeight: 700, fontSize: "0.85rem" }}>Nama Lengkap Pasien</label>
+                    <input type="text" value={patientName} onChange={(e) => setPatientName(e.target.value)} required placeholder="Contoh: Joko Widodo" style={{ width: "100%", padding: 12, border: "1px solid #cbd5e1", borderRadius: 6, color: "#000" }} />
+                  </div>
+                  <div>
+                    <label style={{ display: "block", marginBottom: 6, fontWeight: 700, fontSize: "0.85rem" }}>Pilih Dokter Spesialis</label>
+                    <select value={patientDoctor} onChange={(e) => setPatientDoctor(e.target.value)} style={{ width: "100%", padding: 12, border: "1px solid #cbd5e1", borderRadius: 6, color: "#000" }}>
+                      <option value="Dr. Adrian (Sp. Bedah)">Dr. Adrian (Sp. Bedah)</option>
+                      <option value="Dr. Clara (Sp. Anak)">Dr. Clara (Sp. Anak)</option>
+                      <option value="Dr. Hendra (Sp. Jantung)">Dr. Hendra (Sp. Jantung)</option>
+                    </select>
+                  </div>
+                  <button type="submit" style={{ background: "#10b981", color: "#fff", padding: 14, border: "none", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Daftar Antrean</button>
+                </form>
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 12, fontSize: "0.85rem", color: "#94a3b8" }}>
-                <div style={{ padding: 10, background: "rgba(16,185,129,0.1)", color: "#fff", borderRadius: 4 }}>🩺 Antrean Pasien</div>
-                <div>📅 Jadwal Dokter Spesialis</div>
-                <div>💊 Apotek Internal</div>
-                <div>🧾 Invoice / Tagihan</div>
-              </div>
-            </div>
-            {/* Central Hospital Screen */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-              <h3 style={{ textTransform: "none", margin: 0, fontSize: "1.3rem" }}>📋 Pendaftaran Pasien Rawat Jalan</h3>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-                <div style={{ background: "#0f2130", padding: 20, borderRadius: 8 }}>
-                  <div style={{ color: "#94a3b8", fontSize: "0.8rem" }}>Pasien Terdaftar Hari Ini</div>
-                  <div style={{ fontSize: "2rem", fontWeight: 900, color: "#10b981", margin: "10px 0" }}>142 Jiwa</div>
-                  <span style={{ fontSize: "0.75rem", color: "#64748b" }}>Status: Stabil optimal</span>
+
+              <div style={{ background: "#fff", padding: 30, borderRadius: 12, boxShadow: "0 4px 6px -1px rgba(0,0,0,0.05)" }}>
+                <h3 style={{ textTransform: "none", color: "#1e293b", marginBottom: 20, textShadow: "none" }}>Daftar Antrean Live Hari Ini</h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {patientsList.map((p) => (
+                    <div key={p.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: 16, background: "#f8fafc", borderRadius: 8, borderLeft: "4px solid #10b981" }}>
+                      <div>
+                        <div style={{ fontWeight: 800 }}>{p.name}</div>
+                        <div style={{ fontSize: "0.8rem", color: "#64748b" }}>Tujuan: {p.doctor}</div>
+                      </div>
+                      <span style={{ background: "#e6f4ea", color: "#10b981", padding: "6px 12px", borderRadius: 20, fontSize: "0.75rem", fontWeight: 700 }}>{p.id}</span>
+                    </div>
+                  ))}
                 </div>
-                <div style={{ background: "#0f2130", padding: 20, borderRadius: 8 }}>
-                  <div style={{ color: "#94a3b8", fontSize: "0.8rem" }}>Kamar Rawat Inap Tersedia</div>
-                  <div style={{ fontSize: "2rem", fontWeight: 900, color: "#f59e0b", margin: "10px 0" }}>18 Bed</div>
-                  <span style={{ fontSize: "0.75rem", color: "#64748b" }}>Update: 2 menit yang lalu</span>
-                </div>
-              </div>
-              {/* Pulse line chart placeholder */}
-              <div style={{ height: 100, border: "1px dashed rgba(255,255,255,0.05)", borderRadius: 8, position: "relative", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-                <span style={{ color: "#10b981", position: "absolute", left: 20 }}>Pulse Monitor</span>
-                <svg width="100%" height="60" style={{ stroke: "#10b981", strokeWidth: 2, fill: "none" }}>
-                  <path d="M0,30 L100,30 L120,10 L140,50 L160,30 L250,30 L270,5 L290,55 L310,30 L600,30" />
-                </svg>
               </div>
             </div>
           </div>
@@ -186,55 +267,104 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "pharmacy":
         return (
-          <div style={{ background: "#0a1820", border: "1px solid #06b6d433", borderRadius: 12, padding: 30 }}>
-            {/* Pharmacy Grid layout */}
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 30 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontSize: "2rem" }}>💊</span>
-                <div>
-                  <h3 style={{ textTransform: "none", margin: 0 }}>Apotek Sejahtera Digital</h3>
-                  <p style={{ margin: 0, color: "#64748b", fontSize: "0.8rem" }}>Sistem Kontrol Inventory & POS</p>
+          <div style={{ background: "#f0fdf4", color: "#0f172a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            {/* Header Apotek */}
+            <header style={{ background: "#fff", padding: "20px 40px", borderBottom: "2px solid #bbf7d0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: "1.3rem", fontWeight: 950, color: "#06b6d4" }}>💊 SIVILIZE APOTEK SEHAT</span>
+              <span style={{ fontWeight: 700 }}>🛒 Keranjang ({cartItems.reduce((acc, c) => acc + c.qty, 0)})</span>
+            </header>
+
+            {/* Katalog Obat & Pembelian */}
+            <div style={{ flex: 1, padding: 40, display: "grid", gridTemplateColumns: "1fr 340px", gap: 30 }}>
+              <div>
+                <h3 style={{ textTransform: "none", color: "#0f172a", marginBottom: 20, textShadow: "none" }}>Etalase Obat & Vitamin Resmi</h3>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+                  {[
+                    { name: "Paracetamol 500mg", price: 12000, desc: "Pereda demam & sakit kepala" },
+                    { name: "Amoxicillin Trihydrate 500mg", price: 34000, desc: "Antibiotik resep dokter" },
+                    { name: "Multivitamin Active C", price: 25000, desc: "Daya tahan tubuh optimal" }
+                  ].map((med) => (
+                    <div key={med.name} style={{ background: "#fff", padding: 20, borderRadius: 10, border: "1px solid #cbd5e1", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                      <div>
+                        <div style={{ fontWeight: 800, fontSize: "1rem" }}>{med.name}</div>
+                        <p style={{ fontSize: "0.75rem", color: "#64748b", margin: "8px 0 16px" }}>{med.desc}</p>
+                      </div>
+                      <div>
+                        <div style={{ fontWeight: 800, color: "#06b6d4", marginBottom: 12 }}>Rp {med.price.toLocaleString("id-ID")}</div>
+                        <button
+                          onClick={() => {
+                            const exist = cartItems.find((c) => c.name === med.name);
+                            if (exist) {
+                              setCartItems(cartItems.map((c) => c.name === med.name ? { ...c, qty: c.qty + 1 } : c));
+                            } else {
+                              setCartItems([...cartItems, { name: med.name, qty: 1, price: med.price }]);
+                            }
+                          }}
+                          style={{ width: "100%", padding: 10, background: "#06b6d4", border: "none", color: "#fff", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}
+                        >
+                          + Beli Obat
+                        </button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div style={{ padding: "8px 16px", background: "rgba(6,182,212,0.1)", border: "1px solid #06b6d4", color: "#06b6d4", borderRadius: 20, fontSize: "0.8rem" }}>
-                POS Kasir Aktif
-              </div>
-            </div>
-            {/* Shelf Items */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-              {[
-                { name: "Paracetamol 500mg", stock: "142 Box", price: "Rp 12.000", alert: false },
-                { name: "Amoxicillin Trihydrate", stock: "12 Botol", price: "Rp 34.000", alert: true },
-                { name: "Vitamin C Active 1000mg", stock: "89 Strip", price: "Rp 15.000", alert: false }
-              ].map((item) => (
-                <div key={item.name} style={{ background: "#10232e", padding: 20, borderRadius: 8, border: item.alert ? "1px solid #ef444455" : "1px solid transparent" }}>
-                  <div style={{ fontWeight: 700, fontSize: "0.95rem", marginBottom: 12 }}>{item.name}</div>
-                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem", color: "#94a3b8" }}>
-                    <span>Stok: <strong style={{ color: item.alert ? "#ef4444" : "#fff" }}>{item.stock}</strong></span>
-                    <span>{item.price}</span>
+
+              {/* Checkout Form */}
+              <div style={{ background: "#fff", padding: 24, borderRadius: 12, border: "1px solid #cbd5e1" }}>
+                <h3 style={{ textTransform: "none", color: "#0f172a", marginBottom: 16, textShadow: "none" }}>Checkout / POS Kasir</h3>
+                {cartItems.length === 0 ? (
+                  <p style={{ color: "#64748b", fontSize: "0.85rem" }}>Keranjang Anda masih kosong.</p>
+                ) : (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                    {cartItems.map((item) => (
+                      <div key={item.name} style={{ display: "flex", justifyContent: "space-between", fontSize: "0.85rem" }}>
+                        <span>{item.name} (x{item.qty})</span>
+                        <span>Rp {(item.price * item.qty).toLocaleString("id-ID")}</span>
+                      </div>
+                    ))}
+                    <div style={{ borderTop: "1px solid #e2e8f0", paddingTop: 12, display: "flex", justifyContent: "space-between", fontWeight: 800 }}>
+                      <span>Total Tagihan:</span>
+                      <span>Rp {cartItems.reduce((acc, c) => acc + (c.price * c.qty), 0).toLocaleString("id-ID")}</span>
+                    </div>
+                    <button onClick={() => { setCartItems([]); alert("Transaksi Sukses! Terima kasih telah berbelanja."); }} style={{ width: "100%", padding: 12, background: "#10b981", color: "#fff", border: "none", borderRadius: 6, fontWeight: 700, marginTop: 16, cursor: "pointer" }}>Bayar & Cetak Struk</button>
                   </div>
-                </div>
-              ))}
+                )}
+              </div>
             </div>
           </div>
         );
 
       case "corporate":
         return (
-          <div style={{ background: "#0b0c16", border: "1px solid #4f46e533", borderRadius: 12, padding: 40, position: "relative" }}>
-            {/* Corporate Grid layout */}
-            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: "linear-gradient(to right, #4f46e5, #818cf8)" }} />
-            <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
-              <div style={{ fontSize: "0.8rem", color: "#818cf8", letterSpacing: 4, textTransform: "uppercase", marginBottom: 16 }}>INNOVATION FOR BUSINESS</div>
-              <h2 style={{ textTransform: "none", fontSize: "2.2rem", fontWeight: 900, lineHeight: 1.2, color: "#fff", marginBottom: 20 }}>
-                Membangun Infrastruktur Digital Masa Depan Perusahaan Anda
-              </h2>
-              <p style={{ color: "#94a3b8", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: 30 }}>
-                Kami membantu mentransformasikan alur kerja manual korporat Anda menjadi sistem terintegrasi cloud yang aman, cepat, dan scalable.
-              </p>
-              <div style={{ display: "flex", justifyContent: "center", gap: 16 }}>
-                <button style={{ padding: "14px 28px", background: "#4f46e5", border: "none", color: "#fff", fontWeight: 700, borderRadius: 6 }}>Mulai Konsultasi</button>
-                <button style={{ padding: "14px 28px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", fontWeight: 700, borderRadius: 6 }}>Lihat Profil</button>
+          <div style={{ background: "#ffffff", color: "#0f172a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            {/* Header Corporate */}
+            <header style={{ background: "#0f172a", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: "1.2rem", fontWeight: 800 }}>🏢 SIVILIZE HOLDING GROUP</span>
+              <nav style={{ display: "flex", gap: 24, fontSize: "0.85rem", fontWeight: 700 }}>
+                <a href="#about">About</a>
+                <a href="#solutions">Solutions</a>
+                <a href="#contact">Contact</a>
+              </nav>
+            </header>
+
+            {/* Corporate Banner */}
+            <div style={{ background: "linear-gradient(rgba(15,23,42,0.9), rgba(15,23,42,0.9)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab') center/cover", color: "#fff", padding: "100px 40px", textAlign: "center" }}>
+              <h1 style={{ textTransform: "none", fontSize: "2.4rem", fontWeight: 900, marginBottom: 16 }}>Leading Innovation & Construction</h1>
+              <p style={{ color: "#94a3b8", fontSize: "1.05rem", margin: "0 auto 30px", maxWidth: 640 }}>Membangun fondasi digital dan fisik yang solid untuk keberlanjutan bisnis korporat berskala global.</p>
+              <button style={{ padding: "16px 32px", background: "#4f46e5", color: "#fff", border: "none", fontWeight: 700, borderRadius: 6, cursor: "pointer" }}>Hubungi Kami</button>
+            </div>
+
+            {/* Lead generation form */}
+            <div style={{ padding: 60, maxWidth: 600, margin: "0 auto", width: "100%" }}>
+              <div style={{ background: "#f8fafc", padding: 40, borderRadius: 12, border: "1px solid #e2e8f0" }}>
+                <h3 style={{ textTransform: "none", color: "#0f172a", marginBottom: 20, textAlign: "center", textShadow: "none" }}>Dapatkan Penawaran Project Kustom</h3>
+                <form onSubmit={handleSendMessage} style={{ display: "grid", gap: 16 }}>
+                  <input type="text" placeholder="Nama Perusahaan Anda" required style={{ padding: 12, border: "1px solid #cbd5e1", borderRadius: 6, color: "#000" }} />
+                  <input type="email" placeholder="Email Kantor Resmi" required style={{ padding: 12, border: "1px solid #cbd5e1", borderRadius: 6, color: "#000" }} />
+                  <textarea placeholder="Ceritakan kebutuhan sistem / website Anda..." rows={4} required style={{ padding: 12, border: "1px solid #cbd5e1", borderRadius: 6, color: "#000" }} />
+                  <button type="submit" style={{ padding: 14, background: "#4f46e5", color: "#fff", border: "none", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Kirim Proposal Kerjasama</button>
+                </form>
               </div>
             </div>
           </div>
@@ -242,136 +372,198 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "creative":
         return (
-          <div style={{ background: "#1b140a", border: "1px solid #f59e0b33", borderRadius: 12, padding: 30 }}>
-            {/* Souvenir/Creative layout */}
-            <h3 style={{ textTransform: "none", color: "#f59e0b", marginBottom: 24, fontSize: "1.3rem" }}>✨ Galeri Mahakarya Lokal & Souvenir</h3>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
-              {[
-                { title: "Anyaman Bambu Tradisional", category: "Dekorasi Rumah", img: "🏺" },
-                { title: "Gantungan Kunci Kayu Ukir", category: "Aksesoris", img: "🪵" },
-                { title: "Batik Canting Tulis Solo", category: "Sandangan", img: "👘" },
-                { title: "Tas Etnik Kulit Sapi", category: "Fashion", img: "👜" }
-              ].map((p) => (
-                <div key={p.title} style={{ background: "#261d0f", borderRadius: 8, padding: 16, textAlign: "center", border: "1px solid rgba(245,158,11,0.05)" }}>
-                  <div style={{ fontSize: "3rem", margin: "10px 0" }}>{p.img}</div>
-                  <div style={{ fontWeight: 700, fontSize: "0.85rem", color: "#fff", marginBottom: 6 }}>{p.title}</div>
-                  <div style={{ fontSize: "0.75rem", color: "#f59e0b" }}>{p.category}</div>
-                </div>
-              ))}
+          <div style={{ background: "#fffcf5", color: "#452d0a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            {/* Header Toko Souvenir */}
+            <header style={{ background: "#f59e0b", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: "1.4rem", fontWeight: 900 }}>🎁 TOKO SOUVENIR RAYA</span>
+              <span style={{ fontWeight: 700 }}>Hubungi Pembuat Batik</span>
+            </header>
+
+            {/* Showcase Souvenir */}
+            <div style={{ flex: 1, padding: 40 }}>
+              <h2 style={{ textTransform: "none", color: "#452d0a", fontSize: "1.8rem", marginBottom: 24, textAlign: "center", textShadow: "none" }}>Katalog Karya Seni & Kerajinan Lokal</h2>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+                {[
+                  { name: "Vas Keramik Tanah Liat", price: "Rp 120.000", img: "🏺" },
+                  { name: "Piring Kayu Jati Ukir", price: "Rp 95.000", img: "🪵" },
+                  { name: "Dompet Kulit Sapi Asli", price: "Rp 245.000", img: "👜" }
+                ].map((item) => (
+                  <div key={item.name} style={{ background: "#fff", border: "2px solid #f59e0b22", borderRadius: 12, padding: 24, textAlign: "center" }}>
+                    <div style={{ fontSize: "4rem", marginBottom: 16 }}>{item.img}</div>
+                    <div style={{ fontWeight: 800, fontSize: "1.1rem", marginBottom: 8 }}>{item.name}</div>
+                    <div style={{ color: "#f59e0b", fontWeight: 800, fontSize: "1.1rem", marginBottom: 16 }}>{item.price}</div>
+                    <button
+                      onClick={() => window.open(`https://wa.me/6281338219957?text=Halo%20Toko%20Souvenir,%20saya%20tertarik%20dengan%20${item.name}`, "_blank")}
+                      style={{ padding: "10px 20px", background: "#f59e0b", border: "none", color: "#fff", fontWeight: 700, borderRadius: 6, cursor: "pointer" }}
+                    >
+                      Pesan via WhatsApp
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         );
 
       case "library":
         return (
-          <div style={{ background: "#120e1c", border: "1px solid #8b5cf633", borderRadius: 12, padding: 30 }}>
-            {/* Library list/search mockup */}
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-              <h3 style={{ textTransform: "none", margin: 0, fontSize: "1.2rem" }}>📚 Katalog Buku Perpustakaan Utama</h3>
-              <input type="text" placeholder="Cari judul buku..." style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", padding: "8px 16px", borderRadius: 6, fontSize: "0.85rem" }} readOnly />
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {[
-                { title: "Dasar Logika Pemrograman Modern", author: "Dr. Adrian", code: "PROG-0021", status: "Dipinjam" },
-                { title: "Analisis Struktur Rekayasa Sipil", author: "Prof. Sivilize", code: "CIV-0142", status: "Tersedia" }
-              ].map((b) => (
-                <div key={b.title} style={{ background: "#1a1529", padding: 16, borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ background: "#f3f0ff", color: "#1e1b4b", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            <header style={{ background: "#8b5cf6", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: "1.2rem", fontWeight: 800 }}>📚 E-LIBRARY ACADEMIA</span>
+              <span style={{ fontSize: "0.9rem" }}>Total Buku Dipinjam: {borrowedBooks.length}</span>
+            </header>
+
+            <div style={{ flex: 1, padding: 40, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40 }}>
+              {/* Form pinjam buku */}
+              <div style={{ background: "#fff", padding: 30, borderRadius: 12, border: "1px solid #ddd" }}>
+                <h3 style={{ textTransform: "none", color: "#1e1b4b", marginBottom: 20, textShadow: "none" }}>Ajukan Peminjaman Buku</h3>
+                <form onSubmit={handleBorrowBook} style={{ display: "grid", gap: 16 }}>
                   <div>
-                    <div style={{ fontWeight: 700, fontSize: "0.9rem" }}>{b.title}</div>
-                    <div style={{ fontSize: "0.75rem", color: "#94a3b8" }}>Pengarang: {b.author} | Kode: {b.code}</div>
+                    <label style={{ display: "block", marginBottom: 6, fontWeight: 700 }}>Judul Buku Utama</label>
+                    <input type="text" value={bookTitle} onChange={(e) => setBookTitle(e.target.value)} required placeholder="Contoh: Logika Algoritma" style={{ width: "100%", padding: 12, border: "1px solid #cbd5e1", borderRadius: 6, color: "#000" }} />
                   </div>
-                  <span style={{ fontSize: "0.8rem", color: b.status === "Tersedia" ? "#10b981" : "#ef4444", fontWeight: 700 }}>{b.status}</span>
+                  <button type="submit" style={{ padding: 14, background: "#8b5cf6", color: "#fff", border: "none", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Pinjam Buku Sekarang</button>
+                </form>
+              </div>
+
+              {/* Log list */}
+              <div style={{ background: "#fff", padding: 30, borderRadius: 12, border: "1px solid #ddd" }}>
+                <h3 style={{ textTransform: "none", color: "#1e1b4b", marginBottom: 20, textShadow: "none" }}>Daftar Peminjaman Aktif</h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {borrowedBooks.map((book, idx) => (
+                    <div key={idx} style={{ padding: 12, background: "#f5f3ff", borderRadius: 6, borderLeft: "4px solid #8b5cf6", display: "flex", justifyContent: "space-between" }}>
+                      <div>
+                        <div style={{ fontWeight: 800 }}>{book.title}</div>
+                        <div style={{ fontSize: "0.8rem", color: "#64748b" }}>Peminjam: {book.borrower}</div>
+                      </div>
+                      <span style={{ fontSize: "0.75rem", color: "#8b5cf6", fontWeight: 700 }}>{book.date}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         );
 
       case "travel":
         return (
-          <div style={{ background: "#0a141d", border: "1px solid #0ea5e933", borderRadius: 12, padding: 30 }}>
-            {/* Travel/Tour mockup */}
-            <h3 style={{ textTransform: "none", color: "#0ea5e9", marginBottom: 20, fontSize: "1.2rem" }}>✈️ Paket Trip Unggulan Teraktif</h3>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-              {[
-                { dest: "Explore Nusa Penida, Bali", duration: "3 Hari 2 Malam", price: "Rp 1.850.000", bg: "🌊" },
-                { dest: "Pendakian Gunung Rinjani Lombok", duration: "4 Hari 3 Malam", price: "Rp 2.400.000", bg: "🌋" }
-              ].map((t) => (
-                <div key={t.dest} style={{ background: "#111f2c", padding: 24, borderRadius: 10, display: "flex", alignItems: "center", gap: 20 }}>
-                  <div style={{ fontSize: "2.5rem" }}>{t.bg}</div>
-                  <div>
-                    <div style={{ fontWeight: 800, fontSize: "1rem" }}>{t.dest}</div>
-                    <div style={{ fontSize: "0.8rem", color: "#94a3b8", margin: "4px 0 8px" }}>{t.duration}</div>
-                    <div style={{ color: "#0ea5e9", fontWeight: 700, fontSize: "0.95rem" }}>{t.price}</div>
+          <div style={{ background: "#f0f9ff", color: "#0c4a6e", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            <header style={{ background: "#0ea5e9", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: "1.3rem", fontWeight: 900 }}>✈️ SIVILIZE EXPLORE TOUR</span>
+              <button onClick={() => window.open("https://wa.me/6281338219957", "_blank")} style={{ padding: "8px 16px", background: "#fff", color: "#0ea5e9", border: "none", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Hubungi Agen</button>
+            </header>
+
+            <div style={{ flex: 1, padding: 40 }}>
+              <h2 style={{ textTransform: "none", color: "#0c4a6e", fontSize: "1.8rem", marginBottom: 24, textAlign: "center", textShadow: "none" }}>Pilihan Paket Tour Terbaik & Hemat</h2>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+                {[
+                  { name: "Trip Nusa Penida, Bali", price: "Rp 1.850.000", desc: "3 Hari 2 Malam, Transport & Hotel Bintang 4", img: "🌴" },
+                  { name: "Explore Rinjani, Lombok", price: "Rp 2.400.000", desc: "4 Hari 3 Malam, Porter & Camping Gear Lengkap", img: "🏔️" },
+                  { name: "Eksotisme Raja Ampat, Papua", price: "Rp 8.900.000", desc: "5 Hari 4 Malam, Yacht Trip & Snorkeling", img: "⛵" }
+                ].map((trip) => (
+                  <div key={trip.name} style={{ background: "#fff", padding: 24, borderRadius: 12, border: "1px solid #e0f2fe", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                    <div>
+                      <div style={{ fontSize: "3rem", marginBottom: 12 }}>{trip.img}</div>
+                      <div style={{ fontWeight: 800, fontSize: "1.1rem", marginBottom: 6 }}>{trip.name}</div>
+                      <p style={{ fontSize: "0.8rem", color: "#64748b", margin: "0 0 16px" }}>{trip.desc}</p>
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: 800, color: "#0ea5e9", fontSize: "1.15rem", marginBottom: 16 }}>{trip.price}</div>
+                      <button onClick={() => window.open(`https://wa.me/6281338219957?text=Halo%20saya%20tertarik%20booking%20${trip.name}`, "_blank")} style={{ width: "100%", padding: 12, background: "#0ea5e9", border: "none", color: "#fff", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Booking Online</button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         );
 
       case "cafe":
         return (
-          <div style={{ background: "#1c100a", border: "1px solid #ea580c33", borderRadius: 12, padding: 30 }}>
-            {/* Cafe Menu layout */}
-            <h3 style={{ textTransform: "none", color: "#ea580c", marginBottom: 20, fontSize: "1.2rem" }}>☕ Menu Digital Kopi & Makanan Utama</h3>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-              {[
-                { name: "Signature Espresso Latte", desc: "Espresso premium dicampur susu murni & sirup gula aren khas", price: "Rp 24.000" },
-                { name: "Cinnamon Almond Croissant", desc: "Croissant mentega berlapis renyah bertabur bubuk kayu manis", price: "Rp 28.000" }
-              ].map((m) => (
-                <div key={m.name} style={{ background: "#2a1b14", padding: 20, borderRadius: 8 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 700, fontSize: "0.95rem", marginBottom: 6 }}>
-                    <span>{m.name}</span>
-                    <span style={{ color: "#ea580c" }}>{m.price}</span>
+          <div style={{ background: "#faf7f2", color: "#432a18", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            <header style={{ background: "#ea580c", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: "1.2rem", fontWeight: 800 }}>☕ SENJA CAFE & BISTRO</span>
+              <span>Jam Operasional: 10:00 - 22:00</span>
+            </header>
+
+            <div style={{ flex: 1, padding: 40, maxWidth: 800, margin: "0 auto", width: "100%" }}>
+              <h2 style={{ textTransform: "none", color: "#432a18", fontSize: "2rem", marginBottom: 30, textAlign: "center", textShadow: "none" }}>Daftar Menu Hidangan Utama</h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                {[
+                  { name: "Es Kopi Susu Aren", price: "Rp 22.000", desc: "Espresso premium dengan susu murni & sirup aren manis legit." },
+                  { name: "Almond Butter Croissant", price: "Rp 26.000", desc: "Croissant berlapis renyah bertabur kacang almond panggang gurih." },
+                  { name: "Spaghetti Aglio Olio Tuna", price: "Rp 38.000", desc: "Pasta al dente dengan tumisan bawang putih, cabai kering, dan potongan tuna." }
+                ].map((item) => (
+                  <div key={item.name} style={{ background: "#fff", padding: 20, borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center", border: "1px solid #f1eae0" }}>
+                    <div style={{ maxWidth: "70%" }}>
+                      <div style={{ fontWeight: 800, fontSize: "1.05rem" }}>{item.name}</div>
+                      <p style={{ margin: "4px 0 0", fontSize: "0.8rem", color: "#78716c" }}>{item.desc}</p>
+                    </div>
+                    <span style={{ color: "#ea580c", fontWeight: 800, fontSize: "1.1rem" }}>{item.price}</span>
                   </div>
-                  <p style={{ margin: 0, fontSize: "0.8rem", color: "#a1a1aa", lineHeight: 1.4 }}>{m.desc}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         );
 
       case "property":
         return (
-          <div style={{ background: "#1a110a", border: "1px solid #f9731633", borderRadius: 12, padding: 30 }}>
-            {/* Property list */}
-            <h3 style={{ textTransform: "none", color: "#f97316", marginBottom: 20, fontSize: "1.2rem" }}>🏠 Proyek Perumahan & Unit Tersedia</h3>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-              {[
-                { name: "Cluster Green Foresta", loc: "Bandung Utara", price: "Mulai 780 Jt", spec: "3 KT | 2 KM" },
-                { name: "Metropolitan Condominium", loc: "Jakarta Selatan", price: "Mulai 1.4 Miliar", spec: "Studio | 1 KM" },
-                { name: "Grand Vista Residenceia", loc: "Yogyakarta", price: "Mulai 620 Jt", spec: "2 KT | 1 KM" }
-              ].map((item) => (
-                <div key={item.name} style={{ background: "#261a10", padding: 18, borderRadius: 8, border: "1px solid rgba(249,115,22,0.05)" }}>
-                  <div style={{ fontWeight: 800, fontSize: "0.9rem", color: "#fff", marginBottom: 6 }}>{item.name}</div>
-                  <div style={{ fontSize: "0.75rem", color: "#94a3b8", marginBottom: 12 }}>📍 {item.loc}</div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "0.75rem" }}>
-                    <span style={{ color: "#f97316", fontWeight: 700 }}>{item.price}</span>
-                    <span style={{ color: "#64748b" }}>{item.spec}</span>
+          <div style={{ background: "#f8fafc", color: "#0f172a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            <header style={{ background: "#1e293b", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: "1.2rem", fontWeight: 800 }}>🏙️ SIVILIZE LAND & PROPERTY</span>
+              <button onClick={() => window.open("https://wa.me/6281338219957", "_blank")} style={{ padding: "8px 16px", background: "#f97316", border: "none", color: "#fff", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Hubungi Sales</button>
+            </header>
+
+            <div style={{ flex: 1, padding: 40 }}>
+              <h2 style={{ textTransform: "none", color: "#1e293b", fontSize: "1.8rem", marginBottom: 24, textAlign: "center", textShadow: "none" }}>Daftar Perumahan & Cluster Premium</h2>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+                {[
+                  { name: "Cluster Green Foresta", loc: "Bandung Utara", price: "Rp 780 Juta", img: "🏡" },
+                  { name: "Metropolitan Condominium", loc: "Jakarta Selatan", price: "Rp 1.4 Miliar", img: "🏢" },
+                  { name: "Grand Vista Residence", loc: "Yogyakarta", price: "Rp 620 Juta", img: "🏠" }
+                ].map((item) => (
+                  <div key={item.name} style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 12, overflow: "hidden" }}>
+                    <div style={{ background: "#e2e8f0", height: 160, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "4rem" }}>{item.img}</div>
+                    <div style={{ padding: 20 }}>
+                      <div style={{ fontWeight: 800, fontSize: "1.1rem", marginBottom: 6 }}>{item.name}</div>
+                      <div style={{ fontSize: "0.8rem", color: "#64748b", marginBottom: 12 }}>📍 {item.loc}</div>
+                      <div style={{ color: "#f97316", fontWeight: 800, fontSize: "1.1rem" }}>{item.price}</div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         );
 
       case "school":
         return (
-          <div style={{ background: "#0d0e1a", border: "1px solid #6366f133", borderRadius: 12, padding: 30, display: "grid", gridTemplateColumns: "200px 1fr", gap: 24 }}>
-            <div style={{ background: "#131427", borderRadius: 8, padding: 16 }}>
-              <div style={{ color: "#6366f1", fontWeight: 800, fontSize: "0.85rem", marginBottom: 12 }}>SISWA PORTAL</div>
-              <div style={{ fontSize: "0.8rem", display: "flex", flexDirection: "column", gap: 10 }}>
-                <div style={{ color: "#fff" }}>📖 E-Learning</div>
-                <div style={{ opacity: 0.5 }}>📅 Kalender Akademik</div>
-                <div style={{ opacity: 0.5 }}>📝 Nilai Ujian</div>
+          <div style={{ background: "#f1f5f9", color: "#1e293b", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            <header style={{ background: "#4f46e5", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: "1.2rem", fontWeight: 800 }}>🏫 SMA NEGERI SIVILIZE</span>
+              <nav style={{ display: "flex", gap: 24, fontSize: "0.9rem" }}>
+                <span>Dashboard E-Learning</span>
+              </nav>
+            </header>
+
+            <div style={{ flex: 1, padding: 40, display: "grid", gridTemplateColumns: "250px 1fr", gap: 30 }}>
+              <div style={{ background: "#fff", padding: 20, borderRadius: 10, border: "1px solid #cbd5e1" }}>
+                <div style={{ fontWeight: 800, color: "#4f46e5", marginBottom: 16 }}>Portal Belajar</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12, fontSize: "0.85rem" }}>
+                  <div style={{ padding: 8, background: "#e0e7ff", color: "#4f46e5", borderRadius: 4, fontWeight: 700 }}>📚 Matematika Dasar</div>
+                  <div>🔬 Fisika Kuantum</div>
+                  <div>🧬 Biologi Sel</div>
+                </div>
               </div>
-            </div>
-            <div>
-              <h3 style={{ textTransform: "none", margin: "0 0 16px 0", fontSize: "1.1rem" }}>Tugas Aktif Minggu Ini</h3>
-              <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)", padding: 16, borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span>Matematika Diskrit - Bab 4 Aljabar</span>
-                <span style={{ background: "#ef444422", color: "#ef4444", padding: "4px 8px", borderRadius: 4, fontSize: "0.75rem" }}>Belum Kumpul</span>
+              <div style={{ background: "#fff", padding: 30, borderRadius: 10, border: "1px solid #cbd5e1" }}>
+                <h3 style={{ textTransform: "none", color: "#1e293b", marginBottom: 16, textShadow: "none" }}>Daftar Tugas & Ujian Mandiri</h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  <div style={{ padding: 16, background: "#f8fafc", borderRadius: 6, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span>Tugas Trigonometri - Kumpulkan sebelum 23:59</span>
+                    <span style={{ background: "#ef444422", color: "#ef4444", padding: "4px 8px", borderRadius: 4, fontSize: "0.75rem", fontWeight: 700 }}>Belum Selesai</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -379,69 +571,130 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "hotel":
         return (
-          <div style={{ background: "#091224", border: "1px solid #3b82f633", borderRadius: 12, padding: 30 }}>
-            <h3 style={{ textTransform: "none", color: "#3b82f6", marginBottom: 16, fontSize: "1.2rem" }}>🏨 Reservasi Kamar Hotel Lux Sivilize</h3>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20 }}>
-              {[
-                { name: "Executive Ocean Room", price: "Rp 1.450.000 / Malam", desc: "King Bed, Ocean View, Breakfast Included" },
-                { name: "Deluxe Garden View", price: "Rp 980.000 / Malam", desc: "Twin Bed, Balcony View, Gym Access" }
-              ].map((r) => (
-                <div key={r.name} style={{ background: "#0e1c38", padding: 20, borderRadius: 8, border: "1px solid rgba(59,130,246,0.1)" }}>
-                  <div style={{ fontWeight: 800, fontSize: "1rem", color: "#fff", marginBottom: 6 }}>{r.name}</div>
-                  <div style={{ fontSize: "0.8rem", color: "#94a3b8", marginBottom: 12 }}>{r.desc}</div>
-                  <div style={{ color: "#3b82f6", fontWeight: 700, fontSize: "0.9rem" }}>{r.price}</div>
-                </div>
-              ))}
+          <div style={{ background: "#f8fafc", color: "#1e293b", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            <header style={{ background: "#1e293b", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: "1.3rem", fontWeight: 900, color: "#3b82f6" }}>🏨 LUXURY HOTEL & SPA</span>
+              <button onClick={() => window.open("https://wa.me/6281338219957", "_blank")} style={{ padding: "8px 16px", background: "#3b82f6", border: "none", color: "#fff", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Reservasi Kamar</button>
+            </header>
+
+            <div style={{ flex: 1, padding: 40 }}>
+              <h2 style={{ textTransform: "none", color: "#1e293b", fontSize: "1.8rem", marginBottom: 24, textAlign: "center", textShadow: "none" }}>Pilihan Kamar Mewah & Eksklusif</h2>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+                {[
+                  { name: "Executive Suite Ocean", price: "Rp 1.450.000", desc: "King Bed, Pemandangan Laut Lepas, Sarapan Pagi" },
+                  { name: "Deluxe Family Room", price: "Rp 1.100.000", desc: "Twin Bed, Gym & Kolam Renang Gratis" },
+                  { name: "Presidential Luxury Suite", price: "Rp 4.500.000", desc: "Double Suite, Private Pool, Butler Service 24 Jam" }
+                ].map((room) => (
+                  <div key={room.name} style={{ background: "#fff", border: "1px solid #cbd5e1", borderRadius: 10, padding: 24, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                    <div>
+                      <div style={{ fontWeight: 800, fontSize: "1.1rem", marginBottom: 8 }}>{room.name}</div>
+                      <p style={{ fontSize: "0.8rem", color: "#64748b", margin: "0 0 16px" }}>{room.desc}</p>
+                    </div>
+                    <div>
+                      <div style={{ color: "#3b82f6", fontWeight: 800, fontSize: "1.1rem", marginBottom: 12 }}>{room.price} / Malam</div>
+                      <button onClick={() => window.open("https://wa.me/6281338219957", "_blank")} style={{ width: "100%", padding: 10, background: "#1e293b", border: "none", color: "#fff", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Booking Kamar</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         );
 
       case "workshop":
         return (
-          <div style={{ background: "#1a0f0d", border: "1px solid #f9731633", borderRadius: 12, padding: 30 }}>
-            <h3 style={{ textTransform: "none", color: "#f97316", marginBottom: 16, fontSize: "1.2rem" }}>🚗 Antrean & Estimasi Servis Kendaraan</h3>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              {[
-                { plat: "B 1242 AD", type: "Honda Civic Type R", job: "Ganti Oli & Tune Up", progress: "70%" },
-                { plat: "DK 9921 SF", type: "Kawasaki ZX-25R", job: "Servis Rem & Kelistrikan", progress: "20%" }
-              ].map((item) => (
-                <div key={item.plat} style={{ background: "#261715", padding: 16, borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <div>
-                    <span style={{ fontWeight: 800, color: "#fff" }}>{item.plat}</span> - <span style={{ fontSize: "0.85rem", color: "#a1a1aa" }}>{item.type}</span>
-                    <div style={{ fontSize: "0.8rem", color: "#f97316", marginTop: 4 }}>Pekerjaan: {item.job}</div>
-                  </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <div style={{ width: 80, height: 6, background: "rgba(255,255,255,0.05)", borderRadius: 3, overflow: "hidden" }}>
-                      <div style={{ width: item.progress, height: "100%", background: "#f97316" }} />
+          <div style={{ background: "#1e1e1e", color: "#fff", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            <header style={{ background: "#dc2626", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: "1.2rem", fontWeight: 800 }}>🚗 BENGKEL DIGITAL AUTO</span>
+              <button onClick={() => window.open("https://wa.me/6281338219957", "_blank")} style={{ padding: "8px 16px", background: "#fff", color: "#dc2626", border: "none", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Booking Mekanik</button>
+            </header>
+
+            <div style={{ flex: 1, padding: 40, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 30 }}>
+              <div style={{ background: "#2d2d2d", padding: 24, borderRadius: 10 }}>
+                <h3 style={{ textTransform: "none", color: "#fff", marginBottom: 16, textShadow: "none" }}>Daftar Servis Mandiri</h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {["Ganti Oli Mesin Berkala", "Tune Up & Cek Sensor", "Servis Rem & Kaki-Kaki"].map((s) => (
+                    <div key={s} style={{ padding: 12, background: "#3d3d3d", borderRadius: 6, display: "flex", justifyContent: "space-between" }}>
+                      <span>{s}</span>
+                      <span style={{ color: "#dc2626", fontWeight: 700 }}>Pilih</span>
                     </div>
-                    <span style={{ fontSize: "0.8rem", fontWeight: 700 }}>{item.progress}</span>
+                  ))}
+                </div>
+              </div>
+              <div style={{ background: "#2d2d2d", padding: 24, borderRadius: 10 }}>
+                <h3 style={{ textTransform: "none", color: "#fff", marginBottom: 16, textShadow: "none" }}>Status Perbaikan Live</h3>
+                <div style={{ padding: 16, background: "#3d3d3d", borderRadius: 6 }}>
+                  <div style={{ fontWeight: 700 }}>Honda Civic (B 1242 AD)</div>
+                  <div style={{ fontSize: "0.8rem", color: "#a1a1aa", marginTop: 4 }}>Tahap: Ganti Oli Mesin</div>
+                  <div style={{ width: "100%", height: 6, background: "rgba(255,255,255,0.05)", borderRadius: 3, overflow: "hidden", marginTop: 12 }}>
+                    <div style={{ width: "70%", height: "100%", background: "#dc2626" }} />
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         );
 
       case "ecommerce":
         return (
-          <div style={{ background: "#0a101f", border: "1px solid #2563eb33", borderRadius: 12, padding: 30 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-              <h3 style={{ textTransform: "none", margin: 0, fontSize: "1.1rem" }}>🛒 Keranjang Belanja Anda (2 Items)</h3>
-              <span style={{ color: "#2563eb", fontWeight: 700, fontSize: "0.85rem" }}>Total: Rp 1.540.000</span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              {[
-                { name: "Mechanical Keyboard 75% Sivilize", qty: "1 Unit", price: "Rp 890.000", key: "kbd" },
-                { name: "Ergonomic Vertical Mouse Wireless", qty: "1 Unit", price: "Rp 650.000", key: "mouse" }
-              ].map((item) => (
-                <div key={item.key} style={{ background: "#0f1a30", padding: 16, borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <div>
-                    <div style={{ fontWeight: 700, fontSize: "0.9rem" }}>{item.name}</div>
-                    <div style={{ fontSize: "0.75rem", color: "#94a3b8" }}>Jumlah: {item.qty}</div>
-                  </div>
-                  <div style={{ fontWeight: 700, color: "#fff" }}>{item.price}</div>
+          <div style={{ background: "#f8fafc", color: "#0f172a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            <header style={{ background: "#2563eb", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: "1.3rem", fontWeight: 900 }}>🛒 SIVILIZE MEGA STORE</span>
+              <span>Checkout Kasir</span>
+            </header>
+
+            <div style={{ flex: 1, padding: 40, display: "grid", gridTemplateColumns: "1fr 320px", gap: 30 }}>
+              <div>
+                <h3 style={{ textTransform: "none", color: "#0f172a", marginBottom: 20, textShadow: "none" }}>Daftar Produk Retail Tersedia</h3>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+                  {[
+                    { name: "Wireless Mechanical Keyboard", price: 890000, img: "⌨️" },
+                    { name: "Wireless Gaming Mouse", price: 650000, img: "🖱️" },
+                    { name: "Full HD Monitor IPS 24 Inch", price: 1750000, img: "🖥️" }
+                  ].map((p) => (
+                    <div key={p.name} style={{ background: "#fff", border: "1px solid #cbd5e1", borderRadius: 10, padding: 20, textAlign: "center" }}>
+                      <div style={{ fontSize: "3rem", marginBottom: 12 }}>{p.img}</div>
+                      <div style={{ fontWeight: 800, fontSize: "0.95rem", marginBottom: 8 }}>{p.name}</div>
+                      <div style={{ color: "#2563eb", fontWeight: 800, marginBottom: 16 }}>Rp {p.price.toLocaleString("id-ID")}</div>
+                      <button
+                        onClick={() => {
+                          const exist = cartItems.find((c) => c.name === p.name);
+                          if (exist) {
+                            setCartItems(cartItems.map((c) => c.name === p.name ? { ...c, qty: c.qty + 1 } : c));
+                          } else {
+                            setCartItems([...cartItems, { name: p.name, qty: 1, price: p.price }]);
+                          }
+                        }}
+                        style={{ padding: "10px 20px", background: "#2563eb", border: "none", color: "#fff", fontWeight: 700, borderRadius: 6, cursor: "pointer" }}
+                      >
+                        + Masuk Keranjang
+                      </button>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Shopping cart summary */}
+              <div style={{ background: "#fff", padding: 24, borderRadius: 12, border: "1px solid #cbd5e1" }}>
+                <h3 style={{ textTransform: "none", color: "#0f172a", marginBottom: 16, textShadow: "none" }}>Keranjang Belanja</h3>
+                {cartItems.length === 0 ? (
+                  <p style={{ color: "#64748b", fontSize: "0.85rem" }}>Keranjang Anda masih kosong.</p>
+                ) : (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                    {cartItems.map((item) => (
+                      <div key={item.name} style={{ display: "flex", justifyContent: "space-between", fontSize: "0.85rem" }}>
+                        <span>{item.name} (x{item.qty})</span>
+                        <span>Rp {(item.price * item.qty).toLocaleString("id-ID")}</span>
+                      </div>
+                    ))}
+                    <div style={{ borderTop: "1px solid #cbd5e1", paddingTop: 12, display: "flex", justifyContent: "space-between", fontWeight: 800 }}>
+                      <span>Subtotal:</span>
+                      <span>Rp {cartItems.reduce((acc, c) => acc + (c.price * c.qty), 0).toLocaleString("id-ID")}</span>
+                    </div>
+                    <button onClick={() => { setCartItems([]); alert("Pesanan Berhasil Diproses! Tim marketing kami akan menghubungi Anda."); }} style={{ width: "100%", padding: 12, background: "#10b981", color: "#fff", border: "none", borderRadius: 6, fontWeight: 700, marginTop: 16, cursor: "pointer" }}>Checkout Order</button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         );
@@ -453,136 +706,51 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
   return (
     <div style={{
-      background: "#020617",
       minHeight: "100vh",
-      color: "#fff",
       fontFamily: "var(--font-sans)",
-      display: "flex",
-      flexDirection: "column"
+      position: "relative"
     }}>
-      {/* Header navigasi atas */}
+      {/* Tombol kembali melayang dengan efek kaca (glassmorphism) */}
       <div style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "20px 40px",
-        borderBottom: "1px solid rgba(255,255,255,0.05)",
-        background: "#090d16"
+        position: "fixed",
+        bottom: 24,
+        left: 24,
+        zIndex: 9999
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <span style={{ fontWeight: 800, fontSize: "1.4rem", letterSpacing: 1 }}>
-            SiWeb<span style={{ color: demo.themeColor }}>.</span>
-          </span>
-          <span style={{
-            background: "rgba(255,255,255,0.03)",
-            padding: "4px 12px",
-            border: `1px solid ${demo.themeColor}44`,
-            borderRadius: 20,
-            fontSize: "0.75rem",
-            color: demo.themeColor,
-            fontWeight: 700
-          }}>
-            Interactive Demo Mode
-          </span>
-        </div>
         <button
           onClick={() => router.push("/#showcase")}
           style={{
-            background: "transparent",
-            border: "1px solid rgba(255,255,255,0.1)",
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            background: "rgba(15, 23, 42, 0.75)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
             color: "#fff",
-            padding: "10px 20px",
-            borderRadius: 6,
-            cursor: "pointer",
-            fontWeight: 700,
+            padding: "12px 20px",
+            borderRadius: 9999,
             fontSize: "0.85rem",
-            transition: "all 0.2s"
+            fontWeight: 700,
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)",
+            cursor: "pointer",
+            transition: "transform 0.2s, background 0.2s"
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.05)";
+            e.currentTarget.style.background = "rgba(15, 23, 42, 0.9)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+            e.currentTarget.style.background = "rgba(15, 23, 42, 0.75)";
           }}
         >
-          Kembali ke Portofolio
+          <span>← Kembali ke Portofolio</span>
         </button>
       </div>
 
-      {/* Main body showcase */}
-      <div style={{ flex: 1, padding: "50px 40px", maxWidth: 1200, margin: "0 auto", width: "100%" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 320px", gap: 50, alignItems: "start" }}>
-          
-          {/* Main Visual Display */}
-          <div>
-            <div style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-              marginBottom: 30
-            }}>
-              <span style={{ fontSize: "2rem" }}>
-                {demo.icon}
-              </span>
-              <h1 style={{ textTransform: "none", fontSize: "2rem", margin: 0, textShadow: "none" }}>{demo.title}</h1>
-            </div>
-
-            {/* Custom Rendered UI */}
-            {renderVisualMockup()}
-
-            {/* Simulated interactive features */}
-            <div style={{ marginTop: 40 }}>
-              <h3 style={{ textTransform: "none", marginBottom: 20, fontSize: "1.1rem" }}>Fitur Utama yang Disimulasikan</h3>
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                {demo.features.map((feat) => (
-                  <div key={feat} style={{ display: "flex", alignItems: "center", gap: 12, background: "rgba(255,255,255,0.01)", padding: "16px 20px", borderRadius: 8, border: "1px solid rgba(255,255,255,0.03)" }}>
-                    <span style={{ color: demo.themeColor, fontWeight: 900 }}>✓</span>
-                    <span style={{ fontWeight: 600 }}>{feat}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Sidebar Action Panel */}
-          <div style={{
-            background: "rgba(15, 23, 42, 0.4)",
-            border: `1px solid ${demo.themeColor}33`,
-            borderRadius: 16,
-            padding: 30,
-            boxShadow: `0 20px 40px -20px ${demo.themeColor}44`
-          }}>
-            <h3 style={{ textTransform: "none", margin: "0 0 12px", fontSize: "1.2rem", textShadow: "none" }}>Tertarik dengan sistem ini?</h3>
-            <p style={{ color: "#94a3b8", fontSize: "0.9rem", lineHeight: 1.6, marginBottom: 24 }}>
-              SiWeb Sivilize siap merancang dan mengkustomisasi web demo ini secara khusus sesuai skema operasional usaha Anda sendiri.
-            </p>
-
-            <button
-              onClick={() => window.open("https://wa.me/6281338219957", "_blank")}
-              style={{
-                width: "100%",
-                padding: "16px",
-                background: demo.themeColor,
-                color: "#fff",
-                border: "none",
-                borderRadius: 8,
-                fontWeight: 700,
-                cursor: "pointer",
-                boxShadow: `0 8px 24px -6px ${demo.glowColor}`,
-                transition: "all 0.2s"
-              }}
-            >
-              Hubungi Pembuat ➜
-            </button>
-
-            <div style={{ marginTop: 30, borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: 24 }}>
-              <div style={{ fontSize: "0.8rem", color: "#64748b", fontWeight: 700, marginBottom: 12 }}>DEKORASI INDUSTRI</div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {demo.decorations.map((d) => (
-                  <span key={d} style={{ fontSize: "0.75rem", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)", padding: "4px 10px", borderRadius: 4 }}>
-                    {d}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      {/* Tampilan halaman web industri yang nyata */}
+      {renderActualWebsite()}
     </div>
   );
 }

@@ -1,7 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { SiteEffects } from "@/components/runtime/SiteEffects";
 import { UmkmApplicationForm } from "@/components/siweb/UmkmApplicationForm";
+import { ShowcaseSection } from "./siweb/page";
 
 const pricingPackages = [
   {
@@ -59,6 +63,8 @@ const pricingPackages = [
 ];
 
 export default function Home() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <div className="page-wrapper">
       <Navbar />
@@ -88,6 +94,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* WEBSITE DEMO SHOWCASE */}
+        <ShowcaseSection onOpenModal={() => setModalOpen(true)} />
 
         {/* PRICING SECTION */}
         <section className="siweb-section" id="pricing" style={{ background: "#080808" }}>
@@ -152,6 +161,41 @@ export default function Home() {
       <Footer />
       <div className="page-transition-overlay" />
       <SiteEffects />
+
+      {modalOpen && (
+        <div style={{
+          position: "fixed",
+          inset: 0,
+          background: "rgba(0,0,0,0.8)",
+          backdropFilter: "blur(8px)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 99999,
+          padding: 20
+        }}>
+          <div style={{
+            background: "#0f172a",
+            border: "1px solid rgba(255,255,255,0.1)",
+            padding: 32,
+            borderRadius: 16,
+            maxWidth: 400,
+            width: "100%",
+            textAlign: "center",
+            boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5)"
+          }}>
+            <h3 style={{ fontSize: "1.5rem", marginBottom: 12, color: "#fff" }}>Mohon Maaf</h3>
+            <p style={{ color: "#94a3b8", marginBottom: 24, fontSize: "1rem", lineHeight: 1.6 }}>Demo sedang dipersiapkan.</p>
+            <button
+              onClick={() => setModalOpen(false)}
+              className="siweb-btn siweb-btn-primary"
+              style={{ padding: "12px 24px", width: "100%" }}
+            >
+              Tutup
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

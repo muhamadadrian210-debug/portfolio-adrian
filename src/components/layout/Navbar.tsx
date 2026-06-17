@@ -38,6 +38,7 @@ export function Navbar() {
         <nav className="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
           <ul className="navbar__list">
             <li><a href="#hero" className="navbar__link navbar__link--active" onClick={() => handleLinkClick("#hero")}>Beranda</a></li>
+            <li><a href="#showcase" className="navbar__link" onClick={() => handleLinkClick("#showcase")}>Showcase Demo</a></li>
             <li><a href="#pricing" className="navbar__link" onClick={() => handleLinkClick("#pricing")}>Paket Layanan</a></li>
             <li><a href="#umkm-gratis" className="navbar__link" onClick={() => handleLinkClick("#umkm-gratis")}>Program Gratis</a></li>
             <li><a href="https://wa.me/6281338219957" target="_blank" rel="noopener noreferrer" className="navbar__link" style={{ color: "#25D366" }}>Hubungi Kami</a></li>

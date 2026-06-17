@@ -340,7 +340,7 @@ function ContactSection() {
   );
 }
 
-const demoProjects = [
+export const demoProjects = [
   {
     title: "Rumah Sakit & Klinik",
     description: "Sistem informasi manajemen kesehatan terintegrasi untuk meningkatkan layanan pasien dan efisiensi staf medis.",
@@ -467,7 +467,7 @@ const demoProjects = [
   }
 ];
 
-function ShowcaseSection({ onOpenModal }: { onOpenModal: () => void }) {
+export function ShowcaseSection({ onOpenModal }: { onOpenModal: () => void }) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const handleCardClick = (url: string) => {

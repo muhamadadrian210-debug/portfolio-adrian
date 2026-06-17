@@ -76,14 +76,12 @@ const faqs = [
 ];
 
 export default function SiwebPage() {
-  const [selectedDemo, setSelectedDemo] = useState<any | null>(null);
-
   return (
     <div className="page-wrapper">
       <SiwebNavbar />
       <main id="main-content">
         <HeroSection />
-        <ShowcaseSection onOpenModal={(project) => setSelectedDemo(project)} />
+        <ShowcaseSection onOpenModal={() => {}} />
         <PricingSection />
         <UmkmProgramSection />
         <AboutSection />
@@ -94,222 +92,6 @@ export default function SiwebPage() {
       </main>
       <SiwebFooter />
 
-      {selectedDemo && (
-        <div style={{
-          position: "fixed",
-          inset: 0,
-          background: "#090d16",
-          zIndex: 99999,
-          display: "flex",
-          flexDirection: "column",
-          color: "#fff",
-          fontFamily: "var(--font-sans)"
-        }}>
-          {/* Top Header Bar */}
-          <div style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "16px 24px",
-            borderBottom: "1px solid rgba(255,255,255,0.1)",
-            background: "#0f172a"
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <span style={{
-                color: selectedDemo.themeColor,
-                display: "inline-flex",
-                alignItems: "center"
-              }}>
-                {selectedDemo.icon}
-              </span>
-              <span style={{ fontWeight: 800, fontSize: "1.1rem", textTransform: "uppercase", letterSpacing: 1 }}>
-                Demo: {selectedDemo.title}
-              </span>
-              <span style={{
-                background: "rgba(255,255,255,0.05)",
-                padding: "4px 10px",
-                borderRadius: 4,
-                fontSize: "0.75rem",
-                color: selectedDemo.themeColor,
-                border: `1px solid ${selectedDemo.themeColor}33`
-              }}>
-                Live Simulation Mode
-              </span>
-            </div>
-            <button
-              onClick={() => setSelectedDemo(null)}
-              style={{
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                color: "#fff",
-                padding: "8px 16px",
-                borderRadius: 6,
-                cursor: "pointer",
-                fontWeight: 600,
-                fontSize: "0.85rem",
-                transition: "all 0.2s"
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.05)"; }}
-            >
-              Kembali ke Portofolio ×
-            </button>
-          </div>
-
-          {/* Main Simulated Browser Frame */}
-          <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
-            {/* Sidebar Simulation */}
-            <div style={{
-              width: 240,
-              background: "#0f172a",
-              borderRight: "1px solid rgba(255,255,255,0.05)",
-              padding: 24,
-              display: "flex",
-              flexDirection: "column",
-              gap: 20
-            }}>
-              <div>
-                <div style={{ fontSize: "0.75rem", textTransform: "uppercase", color: "#64748b", letterSpacing: 1, marginBottom: 12 }}>Menu Utama</div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  {selectedDemo.features.map((feat: string, idx: number) => (
-                    <div
-                      key={feat}
-                      style={{
-                        padding: "10px 14px",
-                        background: idx === 0 ? selectedDemo.glowColor : "transparent",
-                        borderLeft: `3px solid ${idx === 0 ? selectedDemo.themeColor : "transparent"}`,
-                        borderRadius: "0 6px 6px 0",
-                        fontSize: "0.9rem",
-                        fontWeight: 600,
-                        color: idx === 0 ? "#fff" : "#94a3b8",
-                        cursor: "pointer"
-                      }}
-                    >
-                      {feat}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div style={{ marginTop: "auto", background: "rgba(255,255,255,0.02)", padding: 16, borderRadius: 8, border: "1px solid rgba(255,255,255,0.05)" }}>
-                <div style={{ fontSize: "0.8rem", fontWeight: 700, marginBottom: 6 }}>Kustomisasi?</div>
-                <p style={{ fontSize: "0.75rem", color: "#94a3b8", margin: 0, lineHeight: 1.5 }}>
-                  Desain dan alur sistem ini bisa disesuaikan 100% dengan kebutuhan operasional bisnis Anda.
-                </p>
-              </div>
-            </div>
-
-            {/* Dashboard Content Simulation */}
-            <div style={{ flex: 1, padding: 32, overflowY: "auto", background: "#090d16" }}>
-              {/* Top Summary Banner */}
-              <div style={{
-                background: "rgba(255,255,255,0.02)",
-                border: "1px solid rgba(255,255,255,0.05)",
-                borderRadius: 12,
-                padding: 24,
-                marginBottom: 30,
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center"
-              }}>
-                <div>
-                  <h1 style={{ fontSize: "1.8rem", fontWeight: 800, margin: 0, textTransform: "none", textShadow: "none" }}>
-                    Selamat Datang di {selectedDemo.title} Dashboard
-                  </h1>
-                  <p style={{ color: "#94a3b8", margin: "6px 0 0", fontSize: "0.95rem" }}>
-                    Berikut adalah preview visual antarmuka sistem yang kami kembangkan.
-                  </p>
-                </div>
-                <button
-                  onClick={() => window.open("https://wa.me/6281338219957", "_blank")}
-                  style={{
-                    background: selectedDemo.themeColor,
-                    color: "#fff",
-                    border: "none",
-                    padding: "12px 24px",
-                    borderRadius: 8,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    boxShadow: `0 8px 20px -6px ${selectedDemo.glowColor}`
-                  }}
-                >
-                  Konsultasikan Sistem Ini
-                </button>
-              </div>
-
-              {/* Data Widgets Grid */}
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 30 }}>
-                {[
-                  { label: "Total Data Masuk", val: "1,248", change: "+12% minggu ini" },
-                  { label: "Status Operasional", val: "Aktif / Optimal", change: "Latency 24ms" },
-                  { label: "Efisiensi Proses", val: "99.4%", change: "Meningkat 3.2%" }
-                ].map((w) => (
-                  <div key={w.label} style={{
-                    background: "rgba(15, 23, 42, 0.6)",
-                    border: "1px solid rgba(255,255,255,0.05)",
-                    borderRadius: 12,
-                    padding: 20
-                  }}>
-                    <div style={{ fontSize: "0.85rem", color: "#64748b", fontWeight: 600 }}>{w.label}</div>
-                    <div style={{ fontSize: "1.6rem", fontWeight: 800, margin: "8px 0 4px" }}>{w.val}</div>
-                    <div style={{ fontSize: "0.75rem", color: selectedDemo.themeColor }}>{w.change}</div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Main Visual Container */}
-              <div style={{
-                background: "rgba(15, 23, 42, 0.6)",
-                border: `1px solid ${selectedDemo.themeColor}33`,
-                borderRadius: 12,
-                padding: 30,
-                position: "relative"
-              }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-                  <h3 style={{ fontSize: "1.1rem", margin: 0, textTransform: "none", textShadow: "none" }}>Visualisasi Alur & Elemen Industri</h3>
-                  <span style={{ color: "#64748b", fontSize: "0.8rem" }}>Sivilize UI Engine V1.0</span>
-                </div>
-
-                <div style={{
-                  height: 220,
-                  border: "1px dashed rgba(255,255,255,0.1)",
-                  borderRadius: 8,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: "rgba(0,0,0,0.2)",
-                  gap: 16
-                }}>
-                  {/* Decorative Industrial Shapes */}
-                  <div style={{ display: "flex", gap: 20 }}>
-                    {selectedDemo.decorations.map((d: string) => (
-                      <div
-                        key={d}
-                        style={{
-                          padding: "10px 20px",
-                          background: "rgba(255,255,255,0.03)",
-                          border: `1px solid ${selectedDemo.themeColor}`,
-                          borderRadius: 8,
-                          fontSize: "0.85rem",
-                          fontWeight: 700,
-                          color: "#fff",
-                          boxShadow: `0 4px 12px ${selectedDemo.glowColor}`
-                        }}
-                      >
-                        ✦ {d}
-                      </div>
-                    ))}
-                  </div>
-                  <p style={{ color: "#64748b", fontSize: "0.85rem", maxWidth: 500, textAlign: "center", lineHeight: 1.6 }}>
-                    Sistem ini mengintegrasikan seluruh ornamen industri diatas ke dalam database yang aman, cepat, dan mudah dipantau secara real-time dari gadget manapun.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
@@ -653,7 +435,7 @@ export function ShowcaseSection({ onOpenModal }: { onOpenModal: (project: any) =
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const handleCardClick = (project: any) => {
-    onOpenModal(project);
+    window.open("/demo/" + project.mockupType, "_blank");
   };
 
   return (

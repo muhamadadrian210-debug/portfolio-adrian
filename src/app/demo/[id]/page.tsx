@@ -3,7 +3,7 @@
 import { use } from "react";
 import { useRouter } from "next/navigation";
 
-// Data demo yang sama agar konsisten
+// Database 12 Demo Projects sesuai spesifikasi user
 const demoData: Record<string, {
   title: string;
   themeColor: string;
@@ -11,70 +11,115 @@ const demoData: Record<string, {
   decorations: string[];
   features: string[];
   layout: string;
+  icon: string;
 }> = {
   "hospital": {
     title: "Rumah Sakit & Klinik",
-    themeColor: "#10b981",
+    themeColor: "#10b981", // Emerald Green
     glowColor: "rgba(16, 185, 129, 0.2)",
     decorations: ["Medical Cross", "Stethoscope", "Pulse Line", "Daun Hijau Kecil"],
-    features: ["Jadwal Dokter", "Pendaftaran Pasien", "Dashboard Admin"],
-    layout: "hospital"
+    features: ["Pendaftaran Pasien", "Jadwal Dokter", "Dashboard Admin", "Riwayat Pasien", "Informasi Layanan"],
+    layout: "hospital",
+    icon: "🏥"
   },
   "pharmacy": {
     title: "Apotek Digital",
-    themeColor: "#06b6d4",
+    themeColor: "#06b6d4", // Teal Cyan
     glowColor: "rgba(6, 182, 212, 0.2)",
-    decorations: ["Katalog Obat", "Kapsul Obat", "Botol Obat", "Medical Shelf"],
-    features: ["Katalog Obat", "Stok Barang", "Pemesanan Online"],
-    layout: "pharmacy"
+    decorations: ["Katalog Obat", "Kapsul", "Botol Obat", "Medical Shelf", "Ikon Farmasi"],
+    features: ["Katalog Produk", "Stok Obat", "Pemesanan Online", "Dashboard Apotek", "Manajemen Produk"],
+    layout: "pharmacy",
+    icon: "💊"
   },
   "company": {
     title: "Landing Page Perusahaan",
-    themeColor: "#4f46e5",
+    themeColor: "#4f46e5", // Indigo Blue
     glowColor: "rgba(79, 70, 229, 0.2)",
-    decorations: ["Gedung Perusahaan", "Chart Bisnis", "Grid Korporat", "Document Card"],
-    features: ["Company Profile", "Lead Generation", "Branding Profesional"],
-    layout: "corporate"
+    decorations: ["Gedung Modern", "Grafik Pertumbuhan", "Company Dashboard", "Corporate Document"],
+    features: ["Company Profile", "Lead Generation", "Service Showcase", "Contact Form", "Portfolio"],
+    layout: "corporate",
+    icon: "🏢"
   },
   "souvenir": {
-    title: "Souvenir & Kerajinan",
-    themeColor: "#f59e0b",
+    title: "Toko Souvenir",
+    themeColor: "#f59e0b", // Amber Gold
     glowColor: "rgba(245, 158, 11, 0.2)",
-    decorations: ["Gift Box", "Ribbon", "Product Tag", "Sparkle Kecil"],
-    features: ["Katalog Produk", "Galeri Produk", "WhatsApp Order"],
-    layout: "creative"
+    decorations: ["Gift Box", "Product Showcase", "Ribbon", "Product Card", "Shopping Experience"],
+    features: ["Katalog Produk", "WhatsApp Order", "Testimoni", "Galeri Produk", "Promo"],
+    layout: "creative",
+    icon: "🎁"
   },
   "library": {
     title: "Sistem Perpustakaan",
-    themeColor: "#8b5cf6",
+    themeColor: "#8b5cf6", // Purple Violet
     glowColor: "rgba(139, 92, 246, 0.2)",
-    decorations: ["Rak Buku", "Tumpukan Buku", "Bookmark", "Library Card"],
-    features: ["Manajemen Buku", "Peminjaman", "Dashboard Admin"],
-    layout: "library"
+    decorations: ["Rak Buku", "Kartu Anggota", "Dashboard Perpustakaan", "Buku Digital"],
+    features: ["Manajemen Buku", "Peminjaman", "Pengembalian", "Dashboard Admin", "Pencarian Buku"],
+    layout: "library",
+    icon: "📚"
   },
   "travel": {
     title: "Travel & Tour",
-    themeColor: "#0ea5e9",
+    themeColor: "#0ea5e9", // Sky Blue
     glowColor: "rgba(14, 165, 233, 0.2)",
-    decorations: ["Pesawat", "Map Pin", "Route Line", "Cloud"],
-    features: ["Paket Wisata", "Booking Online", "Galeri Destinasi"],
-    layout: "travel"
+    decorations: ["Pesawat", "Peta Perjalanan", "Lokasi Wisata", "Booking Panel"],
+    features: ["Paket Wisata", "Booking Online", "Galeri Destinasi", "Jadwal Tour", "Customer Management"],
+    layout: "travel",
+    icon: "✈️"
   },
   "cafe": {
     title: "Cafe & Resto",
-    themeColor: "#ea580c",
+    themeColor: "#ea580c", // Orange Brown
     glowColor: "rgba(234, 88, 12, 0.2)",
-    decorations: ["Coffee Cup", "Steam Effect", "Plate", "Menu Card"],
-    features: ["Digital Menu", "Reservasi", "Order Management"],
-    layout: "cafe"
+    decorations: ["Coffee Cup", "Menu Digital", "Makanan", "Reservasi Meja", "Order Dashboard"],
+    features: ["Digital Menu", "Reservasi", "Pemesanan", "Promo", "Dashboard Pesanan"],
+    layout: "cafe",
+    icon: "☕"
   },
   "property": {
     title: "Property & Developer",
-    themeColor: "#f97316",
+    themeColor: "#f97316", // Slate Orange (Orange Slate)
     glowColor: "rgba(249, 115, 22, 0.2)",
-    decorations: ["Blueprint", "Building Outline", "Grid Konstruksi", "Tower Illustration"],
-    features: ["Katalog Properti", "Landing Page Proyek", "Lead Form"],
-    layout: "property"
+    decorations: ["Gedung Tinggi", "Blueprint", "Site Plan", "Property Showcase"],
+    features: ["Katalog Properti", "Landing Page Proyek", "Lead Generation", "Form Konsultasi", "Progress Proyek"],
+    layout: "property",
+    icon: "🏙️"
+  },
+  "school": {
+    title: "Sekolah & Akademi",
+    themeColor: "#6366f1", // Blue Purple
+    glowColor: "rgba(99, 102, 241, 0.2)",
+    decorations: ["Classroom", "Dashboard Siswa", "E-learning Panel", "Academic Management"],
+    features: ["Informasi Sekolah", "Pendaftaran", "Dashboard Siswa", "Jadwal Pelajaran", "E-Learning"],
+    layout: "school",
+    icon: "🏫"
+  },
+  "hotel": {
+    title: "Hotel & Penginapan",
+    themeColor: "#3b82f6", // Royal Blue
+    glowColor: "rgba(59, 130, 246, 0.2)",
+    decorations: ["Hotel Booking", "Room Showcase", "Reservation System", "Luxury Hospitality"],
+    features: ["Booking Kamar", "Room Showcase", "Galeri Hotel", "Promo", "Customer Management"],
+    layout: "hotel",
+    icon: "🏨"
+  },
+  "workshop": {
+    title: "Bengkel & Otomotif",
+    themeColor: "#f97316", // Red Orange
+    glowColor: "rgba(249, 115, 22, 0.2)",
+    decorations: ["Mobil", "Motor", "Service Dashboard", "Sparepart Showcase"],
+    features: ["Booking Service", "Sparepart Catalog", "Riwayat Servis", "Dashboard Bengkel", "WhatsApp Booking"],
+    layout: "workshop",
+    icon: "🚗"
+  },
+  "ecommerce": {
+    title: "Toko Online / E-Commerce",
+    themeColor: "#2563eb", // Electric Blue
+    glowColor: "rgba(37, 99, 235, 0.2)",
+    decorations: ["Product Grid", "Shopping Cart", "Checkout Flow", "Sales Analytics"],
+    features: ["Katalog Produk", "Keranjang Belanja", "Checkout", "Dashboard Penjualan", "Manajemen Produk"],
+    layout: "ecommerce",
+    icon: "🛒"
   }
 };
 
@@ -95,7 +140,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
     );
   }
 
-  // Render Visual Layout Khusus Per Industri
+  // Render Visual Layout Khusus Per Industri (100% Berbeda Tata Letaknya)
   const renderVisualMockup = () => {
     switch (demo.layout) {
       case "hospital":
@@ -223,7 +268,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
             {/* Library list/search mockup */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
               <h3 style={{ textTransform: "none", margin: 0, fontSize: "1.2rem" }}>📚 Katalog Buku Perpustakaan Utama</h3>
-              <input type="text" placeholder="Cari judul buku atau pengarang..." style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", padding: "8px 16px", borderRadius: 6, fontSize: "0.85rem" }} readOnly />
+              <input type="text" placeholder="Cari judul buku..." style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", padding: "8px 16px", borderRadius: 6, fontSize: "0.85rem" }} readOnly />
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {[
@@ -295,7 +340,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
               {[
                 { name: "Cluster Green Foresta", loc: "Bandung Utara", price: "Mulai 780 Jt", spec: "3 KT | 2 KM" },
-                { name: "Metropolitan Lux Condominium", loc: "Jakarta Selatan", price: "Mulai 1.4 Miliar", spec: "Studio | 1 KM" },
+                { name: "Metropolitan Condominium", loc: "Jakarta Selatan", price: "Mulai 1.4 Miliar", spec: "Studio | 1 KM" },
                 { name: "Grand Vista Residenceia", loc: "Yogyakarta", price: "Mulai 620 Jt", spec: "2 KT | 1 KM" }
               ].map((item) => (
                 <div key={item.name} style={{ background: "#261a10", padding: 18, borderRadius: 8, border: "1px solid rgba(249,115,22,0.05)" }}>
@@ -305,6 +350,96 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
                     <span style={{ color: "#f97316", fontWeight: 700 }}>{item.price}</span>
                     <span style={{ color: "#64748b" }}>{item.spec}</span>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
+      case "school":
+        return (
+          <div style={{ background: "#0d0e1a", border: "1px solid #6366f133", borderRadius: 12, padding: 30, display: "grid", gridTemplateColumns: "200px 1fr", gap: 24 }}>
+            <div style={{ background: "#131427", borderRadius: 8, padding: 16 }}>
+              <div style={{ color: "#6366f1", fontWeight: 800, fontSize: "0.85rem", marginBottom: 12 }}>SISWA PORTAL</div>
+              <div style={{ fontSize: "0.8rem", display: "flex", flexDirection: "column", gap: 10 }}>
+                <div style={{ color: "#fff" }}>📖 E-Learning</div>
+                <div style={{ opacity: 0.5 }}>📅 Kalender Akademik</div>
+                <div style={{ opacity: 0.5 }}>📝 Nilai Ujian</div>
+              </div>
+            </div>
+            <div>
+              <h3 style={{ textTransform: "none", margin: "0 0 16px 0", fontSize: "1.1rem" }}>Tugas Aktif Minggu Ini</h3>
+              <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)", padding: 16, borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span>Matematika Diskrit - Bab 4 Aljabar</span>
+                <span style={{ background: "#ef444422", color: "#ef4444", padding: "4px 8px", borderRadius: 4, fontSize: "0.75rem" }}>Belum Kumpul</span>
+              </div>
+            </div>
+          </div>
+        );
+
+      case "hotel":
+        return (
+          <div style={{ background: "#091224", border: "1px solid #3b82f633", borderRadius: 12, padding: 30 }}>
+            <h3 style={{ textTransform: "none", color: "#3b82f6", marginBottom: 16, fontSize: "1.2rem" }}>🏨 Reservasi Kamar Hotel Lux Sivilize</h3>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20 }}>
+              {[
+                { name: "Executive Ocean Room", price: "Rp 1.450.000 / Malam", desc: "King Bed, Ocean View, Breakfast Included" },
+                { name: "Deluxe Garden View", price: "Rp 980.000 / Malam", desc: "Twin Bed, Balcony View, Gym Access" }
+              ].map((r) => (
+                <div key={r.name} style={{ background: "#0e1c38", padding: 20, borderRadius: 8, border: "1px solid rgba(59,130,246,0.1)" }}>
+                  <div style={{ fontWeight: 800, fontSize: "1rem", color: "#fff", marginBottom: 6 }}>{r.name}</div>
+                  <div style={{ fontSize: "0.8rem", color: "#94a3b8", marginBottom: 12 }}>{r.desc}</div>
+                  <div style={{ color: "#3b82f6", fontWeight: 700, fontSize: "0.9rem" }}>{r.price}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
+      case "workshop":
+        return (
+          <div style={{ background: "#1a0f0d", border: "1px solid #f9731633", borderRadius: 12, padding: 30 }}>
+            <h3 style={{ textTransform: "none", color: "#f97316", marginBottom: 16, fontSize: "1.2rem" }}>🚗 Antrean & Estimasi Servis Kendaraan</h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {[
+                { plat: "B 1242 AD", type: "Honda Civic Type R", job: "Ganti Oli & Tune Up", progress: "70%" },
+                { plat: "DK 9921 SF", type: "Kawasaki ZX-25R", job: "Servis Rem & Kelistrikan", progress: "20%" }
+              ].map((item) => (
+                <div key={item.plat} style={{ background: "#261715", padding: 16, borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <div>
+                    <span style={{ fontWeight: 800, color: "#fff" }}>{item.plat}</span> - <span style={{ fontSize: "0.85rem", color: "#a1a1aa" }}>{item.type}</span>
+                    <div style={{ fontSize: "0.8rem", color: "#f97316", marginTop: 4 }}>Pekerjaan: {item.job}</div>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <div style={{ width: 80, height: 6, background: "rgba(255,255,255,0.05)", borderRadius: 3, overflow: "hidden" }}>
+                      <div style={{ width: item.progress, height: "100%", background: "#f97316" }} />
+                    </div>
+                    <span style={{ fontSize: "0.8rem", fontWeight: 700 }}>{item.progress}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
+      case "ecommerce":
+        return (
+          <div style={{ background: "#0a101f", border: "1px solid #2563eb33", borderRadius: 12, padding: 30 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+              <h3 style={{ textTransform: "none", margin: 0, fontSize: "1.1rem" }}>🛒 Keranjang Belanja Anda (2 Items)</h3>
+              <span style={{ color: "#2563eb", fontWeight: 700, fontSize: "0.85rem" }}>Total: Rp 1.540.000</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {[
+                { name: "Mechanical Keyboard 75% Sivilize", qty: "1 Unit", price: "Rp 890.000", key: "kbd" },
+                { name: "Ergonomic Vertical Mouse Wireless", qty: "1 Unit", price: "Rp 650.000", key: "mouse" }
+              ].map((item) => (
+                <div key={item.key} style={{ background: "#0f1a30", padding: 16, borderRadius: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: "0.9rem" }}>{item.name}</div>
+                    <div style={{ fontSize: "0.75rem", color: "#94a3b8" }}>Jumlah: {item.qty}</div>
+                  </div>
+                  <div style={{ fontWeight: 700, color: "#fff" }}>{item.price}</div>
                 </div>
               ))}
             </div>
@@ -380,11 +515,8 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
               gap: 16,
               marginBottom: 30
             }}>
-              <span style={{ color: demo.themeColor }}>
-                {/* Visual Icon */}
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                </svg>
+              <span style={{ fontSize: "2rem" }}>
+                {demo.icon}
               </span>
               <h1 style={{ textTransform: "none", fontSize: "2rem", margin: 0, textShadow: "none" }}>{demo.title}</h1>
             </div>

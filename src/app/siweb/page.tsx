@@ -311,7 +311,7 @@ export const demoProjects = [
     themeColor: "#10b981", // Emerald Green
     glowColor: "rgba(16, 185, 129, 0.35)",
     demoUrl: "",
-    features: ["Jadwal Dokter", "Pendaftaran Pasien", "Dashboard Admin"],
+    features: ["Pendaftaran Pasien", "Jadwal Dokter", "Dashboard Admin", "Riwayat Pasien", "Informasi Layanan"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M19 14c1.66 0 3-1.34 3-3V6c0-1.66-1.34-3-3-3H5C3.34 3 2 4.34 2 6v5c0 1.66 1.34 3 3 3h14z" />
@@ -327,45 +327,45 @@ export const demoProjects = [
     themeColor: "#06b6d4", // Teal Cyan
     glowColor: "rgba(6, 182, 212, 0.35)",
     demoUrl: "",
-    features: ["Katalog Obat", "Stok Barang", "Pemesanan Online"],
+    features: ["Katalog Produk", "Stok Obat", "Pemesanan Online", "Dashboard Apotek", "Manajemen Produk"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M4.5 16.5c-1.5 0-2.5-1-2.5-2.5v-4c0-1.5 1-2.5 2.5-2.5h15c1.5 0 2.5 1 2.5 2.5v4c0 1.5-1 2.5-2.5 2.5h-15z" />
         <path d="M12 8v8" />
       </svg>
     ),
-    decorations: ["Katalog Obat", "Kapsul Obat", "Botol Obat", "Medical Shelf"],
+    decorations: ["Katalog Obat", "Kapsul", "Botol Obat", "Medical Shelf", "Ikon Farmasi"],
     mockupType: "pharmacy"
   },
   {
     title: "Landing Page Perusahaan",
     description: "Presentasi bisnis profesional dengan fokus konversi tinggi dan pengenalan profil korporat yang elegan.",
-    themeColor: "#4f46e5", // Blue Indigo
+    themeColor: "#4f46e5", // Indigo Blue
     glowColor: "rgba(79, 70, 229, 0.35)",
     demoUrl: "",
-    features: ["Company Profile", "Lead Generation", "Branding Profesional"],
+    features: ["Company Profile", "Lead Generation", "Service Showcase", "Contact Form", "Portfolio"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <rect x="2" y="2" width="20" height="20" rx="2" />
         <path d="M6 6h12v4H6zM6 14h6v4H6z" />
       </svg>
     ),
-    decorations: ["Gedung Perusahaan", "Chart Bisnis", "Grid Korporat", "Document Card"],
+    decorations: ["Gedung Modern", "Grafik Pertumbuhan", "Company Dashboard", "Corporate Document"],
     mockupType: "company"
   },
   {
-    title: "Souvenir & Kerajinan",
+    title: "Toko Souvenir",
     description: "Etalase digital kerajinan lokal dengan detail produk estetik dan integrasi transaksi praktis langsung.",
     themeColor: "#f59e0b", // Amber Gold
     glowColor: "rgba(245, 158, 11, 0.35)",
     demoUrl: "",
-    features: ["Katalog Produk", "Galeri Produk", "WhatsApp Order"],
+    features: ["Katalog Produk", "WhatsApp Order", "Testimoni", "Galeri Produk", "Promo"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7c0-2-2-4-4-4S4 5 4 7M12 7c0-2 2-4 4-4s4 2 4 4" />
       </svg>
     ),
-    decorations: ["Gift Box", "Ribbon", "Product Tag", "Sparkle Kecil"],
+    decorations: ["Gift Box", "Product Showcase", "Ribbon", "Product Card", "Shopping Experience"],
     mockupType: "souvenir"
   },
   {
@@ -374,13 +374,13 @@ export const demoProjects = [
     themeColor: "#8b5cf6", // Purple Violet
     glowColor: "rgba(139, 92, 246, 0.35)",
     demoUrl: "",
-    features: ["Manajemen Buku", "Peminjaman", "Dashboard Admin"],
+    features: ["Manajemen Buku", "Peminjaman", "Pengembalian", "Dashboard Admin", "Pencarian Buku"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z" />
       </svg>
     ),
-    decorations: ["Rak Buku", "Tumpukan Buku", "Bookmark", "Library Card"],
+    decorations: ["Rak Buku", "Kartu Anggota", "Dashboard Perpustakaan", "Buku Digital"],
     mockupType: "library"
   },
   {
@@ -389,13 +389,13 @@ export const demoProjects = [
     themeColor: "#0ea5e9", // Sky Blue
     glowColor: "rgba(14, 165, 233, 0.35)",
     demoUrl: "",
-    features: ["Paket Wisata", "Booking Online", "Galeri Destinasi"],
+    features: ["Paket Wisata", "Booking Online", "Galeri Destinasi", "Jadwal Tour", "Customer Management"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
       </svg>
     ),
-    decorations: ["Pesawat", "Map Pin", "Route Line", "Cloud"],
+    decorations: ["Pesawat", "Peta Perjalanan", "Lokasi Wisata", "Booking Panel"],
     mockupType: "travel"
   },
   {
@@ -404,30 +404,93 @@ export const demoProjects = [
     themeColor: "#ea580c", // Orange Brown
     glowColor: "rgba(234, 88, 12, 0.35)",
     demoUrl: "",
-    features: ["Digital Menu", "Reservasi", "Order Management"],
+    features: ["Digital Menu", "Reservasi", "Pemesanan", "Promo", "Dashboard Pesanan"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3" />
       </svg>
     ),
-    decorations: ["Coffee Cup", "Steam Effect", "Plate", "Menu Card"],
+    decorations: ["Coffee Cup", "Menu Digital", "Makanan", "Reservasi Meja", "Order Dashboard"],
     mockupType: "cafe"
   },
   {
     title: "Property & Developer",
     description: "Galeri unit properti eksklusif dengan formulir minat pembeli dan simulasi cicilan sederhana.",
-    themeColor: "#f97316", // Orange Slate
+    themeColor: "#f97316", // Slate Orange
     glowColor: "rgba(249, 115, 22, 0.35)",
     demoUrl: "",
-    features: ["Katalog Properti", "Landing Page Proyek", "Lead Form"],
+    features: ["Katalog Properti", "Landing Page Proyek", "Lead Generation", "Form Konsultasi", "Progress Proyek"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" />
         <path d="M9 22V12h6v10" />
       </svg>
     ),
-    decorations: ["Blueprint", "Building Outline", "Grid Konstruksi", "Tower Illustration"],
+    decorations: ["Gedung Tinggi", "Blueprint", "Site Plan", "Property Showcase"],
     mockupType: "property"
+  },
+  {
+    title: "Sekolah & Akademi",
+    description: "Sistem informasi akademik, portal elearning siswa, dan manajemen pendaftaran siswa baru online.",
+    themeColor: "#6366f1", // Blue Purple
+    glowColor: "rgba(99, 102, 241, 0.35)",
+    demoUrl: "",
+    features: ["Informasi Sekolah", "Pendaftaran", "Dashboard Siswa", "Jadwal Pelajaran", "E-Learning"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+      </svg>
+    ),
+    decorations: ["Classroom", "Dashboard Siswa", "E-learning Panel", "Academic Management"],
+    mockupType: "school"
+  },
+  {
+    title: "Hotel & Penginapan",
+    description: "Sistem reservasi kamar hotel dengan galeri visual tipe kamar, detail fasilitas, dan promo diskon.",
+    themeColor: "#3b82f6", // Royal Blue
+    glowColor: "rgba(59, 130, 246, 0.35)",
+    demoUrl: "",
+    features: ["Booking Kamar", "Room Showcase", "Galeri Hotel", "Promo", "Customer Management"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M9 17h6" />
+      </svg>
+    ),
+    decorations: ["Hotel Booking", "Room Showcase", "Reservation System", "Luxury Hospitality"],
+    mockupType: "hotel"
+  },
+  {
+    title: "Bengkel & Otomotif",
+    description: "Sistem antrean servis online, estimasi biaya suku cadang, dan riwayat perawatan mesin berkala.",
+    themeColor: "#f97316", // Red Orange
+    glowColor: "rgba(249, 115, 22, 0.35)",
+    demoUrl: "",
+    features: ["Booking Service", "Sparepart Catalog", "Riwayat Servis", "Dashboard Bengkel", "WhatsApp Booking"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+      </svg>
+    ),
+    decorations: ["Mobil", "Motor", "Service Dashboard", "Sparepart Showcase"],
+    mockupType: "workshop"
+  },
+  {
+    title: "Toko Online / E-Commerce",
+    description: "Platform toko retail online lengkap dengan payment gateway, detail keranjang, dan laporan omzet.",
+    themeColor: "#2563eb", // Electric Blue
+    glowColor: "rgba(37, 99, 235, 0.35)",
+    demoUrl: "",
+    features: ["Katalog Produk", "Keranjang Belanja", "Checkout", "Dashboard Penjualan", "Manajemen Produk"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <circle cx="9" cy="21" r="1" />
+        <circle cx="20" cy="21" r="1" />
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+      </svg>
+    ),
+    decorations: ["Product Grid", "Shopping Cart", "Checkout Flow", "Sales Analytics"],
+    mockupType: "ecommerce"
   }
 ];
 

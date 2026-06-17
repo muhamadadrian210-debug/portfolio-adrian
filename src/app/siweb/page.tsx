@@ -346,7 +346,7 @@ export const demoProjects = [
     description: "Sistem informasi manajemen kesehatan terintegrasi untuk meningkatkan layanan pasien dan efisiensi staf medis.",
     themeColor: "#10b981", // Emerald Green
     glowColor: "rgba(16, 185, 129, 0.35)",
-    demoUrl: "https://sikasir-production.up.railway.app", // Menggunakan demo SiKasir sebagai representasi sistem
+    demoUrl: "",
     features: ["Jadwal Dokter", "Pendaftaran Pasien", "Dashboard Admin"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -362,7 +362,7 @@ export const demoProjects = [
     description: "Platform pengelolaan stok obat, resep digital, dan penjualan farmasi online yang aman dan terstruktur.",
     themeColor: "#06b6d4", // Teal Cyan
     glowColor: "rgba(6, 182, 212, 0.35)",
-    demoUrl: "https://sikasir-production.up.railway.app", // Link kasir/stok farmasi
+    demoUrl: "",
     features: ["Katalog Obat", "Stok Barang", "Pemesanan Online"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -378,7 +378,7 @@ export const demoProjects = [
     description: "Presentasi bisnis profesional dengan fokus konversi tinggi dan pengenalan profil korporat yang elegan.",
     themeColor: "#4f46e5", // Blue Indigo
     glowColor: "rgba(79, 70, 229, 0.35)",
-    demoUrl: "https://sivilize-hub-pro.vercel.app", // Link landing page/system nyata
+    demoUrl: "",
     features: ["Company Profile", "Lead Generation", "Branding Profesional"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -394,7 +394,7 @@ export const demoProjects = [
     description: "Etalase digital kerajinan lokal dengan detail produk estetik dan integrasi transaksi praktis langsung.",
     themeColor: "#f59e0b", // Amber Gold
     glowColor: "rgba(245, 158, 11, 0.35)",
-    demoUrl: "https://sikasir-production.up.railway.app", // Menggunakan mockup kasir/produk
+    demoUrl: "",
     features: ["Katalog Produk", "Galeri Produk", "WhatsApp Order"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -409,7 +409,7 @@ export const demoProjects = [
     description: "Manajemen katalog buku, pencatatan peminjaman, serta statistik perpustakaan modern berbasis web.",
     themeColor: "#8b5cf6", // Purple Violet
     glowColor: "rgba(139, 92, 246, 0.35)",
-    demoUrl: "https://sivilize-hub-pro.vercel.app", // Dashboard manajemen data
+    demoUrl: "",
     features: ["Manajemen Buku", "Peminjaman", "Dashboard Admin"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -424,7 +424,7 @@ export const demoProjects = [
     description: "Sistem reservasi paket perjalanan wisata, pencarian destinasi, dan galeri petualangan interaktif.",
     themeColor: "#0ea5e9", // Sky Blue
     glowColor: "rgba(14, 165, 233, 0.35)",
-    demoUrl: "https://sivilize-hub-pro.vercel.app",
+    demoUrl: "",
     features: ["Paket Wisata", "Booking Online", "Galeri Destinasi"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -439,7 +439,7 @@ export const demoProjects = [
     description: "Daftar menu digital interaktif dengan integrasi meja pemesanan dan pengelolaan transaksi dapur.",
     themeColor: "#ea580c", // Orange Brown
     glowColor: "rgba(234, 88, 12, 0.35)",
-    demoUrl: "https://sikasir-production.up.railway.app",
+    demoUrl: "",
     features: ["Digital Menu", "Reservasi", "Order Management"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -454,7 +454,7 @@ export const demoProjects = [
     description: "Galeri unit properti eksklusif dengan formulir minat pembeli dan simulasi cicilan sederhana.",
     themeColor: "#f97316", // Orange Slate
     glowColor: "rgba(249, 115, 22, 0.35)",
-    demoUrl: "https://sivilize-hub-pro.vercel.app",
+    demoUrl: "",
     features: ["Katalog Properti", "Landing Page Proyek", "Lead Form"],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

@@ -209,7 +209,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
     switch (demo.layout) {
       case "hospital":
         return (
-          <div style={{ background: "#f8fafc", color: "#1e293b", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ background: "linear-gradient(rgba(248, 250, 252, 0.9), rgba(248, 250, 252, 0.95)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat", color: "#1e293b", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             {/* Navigasi RS */}
             <header style={{ background: "#fff", borderBottom: "2px solid #e2e8f0", padding: "16px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: "1.25rem", fontWeight: 800, color: "#10b981" }}>🟢 RS SIVILIZE CARE</span>
@@ -267,7 +267,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "pharmacy":
         return (
-          <div style={{ background: "#f0fdf4", color: "#0f172a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ background: "linear-gradient(rgba(240, 253, 244, 0.9), rgba(240, 253, 244, 0.95)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat", color: "#0f172a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             {/* Header Apotek */}
             <header style={{ background: "#fff", padding: "20px 40px", borderBottom: "2px solid #bbf7d0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: "1.3rem", fontWeight: 950, color: "#06b6d4" }}>💊 SIVILIZE APOTEK SEHAT</span>
@@ -337,7 +337,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "corporate":
         return (
-          <div style={{ background: "#ffffff", color: "#0f172a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ background: "linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat", color: "#0f172a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             {/* Header Corporate */}
             <header style={{ background: "#0f172a", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: "1.2rem", fontWeight: 800 }}>🏢 SIVILIZE HOLDING GROUP</span>
@@ -372,7 +372,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "creative":
         return (
-          <div style={{ background: "#fffcf5", color: "#452d0a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ background: "linear-gradient(rgba(255, 252, 245, 0.9), rgba(255, 252, 245, 0.95)), url('https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat", color: "#452d0a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             {/* Header Toko Souvenir */}
             <header style={{ background: "#f59e0b", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: "1.4rem", fontWeight: 900 }}>🎁 TOKO SOUVENIR RAYA</span>
@@ -407,7 +407,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "library":
         return (
-          <div style={{ background: "#f3f0ff", color: "#1e1b4b", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ background: "linear-gradient(rgba(243, 240, 255, 0.9), rgba(243, 240, 255, 0.95)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat", color: "#1e1b4b", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             <header style={{ background: "#8b5cf6", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: "1.2rem", fontWeight: 800 }}>📚 E-LIBRARY ACADEMIA</span>
               <span style={{ fontSize: "0.9rem" }}>Total Buku Dipinjam: {borrowedBooks.length}</span>
@@ -447,7 +447,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "travel":
         return (
-          <div style={{ background: "#f0f9ff", color: "#0c4a6e", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ background: "linear-gradient(rgba(240, 249, 255, 0.85), rgba(240, 249, 255, 0.9)), url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat", color: "#0c4a6e", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             <header style={{ background: "#0ea5e9", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: "1.3rem", fontWeight: 900 }}>✈️ SIVILIZE EXPLORE TOUR</span>
               <button onClick={() => window.open("https://wa.me/6281338219957", "_blank")} style={{ padding: "8px 16px", background: "#fff", color: "#0ea5e9", border: "none", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Hubungi Agen</button>
@@ -480,7 +480,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "cafe":
         return (
-          <div style={{ background: "#faf7f2", color: "#432a18", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ background: "linear-gradient(rgba(250, 247, 242, 0.9), rgba(250, 247, 242, 0.95)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat", color: "#432a18", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             <header style={{ background: "#ea580c", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: "1.2rem", fontWeight: 800 }}>☕ SENJA CAFE & BISTRO</span>
               <span>Jam Operasional: 10:00 - 22:00</span>
@@ -509,7 +509,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "property":
         return (
-          <div style={{ background: "#f8fafc", color: "#0f172a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ background: "linear-gradient(rgba(248, 250, 252, 0.9), rgba(248, 250, 252, 0.95)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat", color: "#0f172a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             <header style={{ background: "#1e293b", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: "1.2rem", fontWeight: 800 }}>🏙️ SIVILIZE LAND & PROPERTY</span>
               <button onClick={() => window.open("https://wa.me/6281338219957", "_blank")} style={{ padding: "8px 16px", background: "#f97316", border: "none", color: "#fff", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Hubungi Sales</button>
@@ -539,7 +539,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "school":
         return (
-          <div style={{ background: "#f1f5f9", color: "#1e293b", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ background: "linear-gradient(rgba(241, 245, 249, 0.9), rgba(241, 245, 249, 0.95)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat", color: "#1e293b", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             <header style={{ background: "#4f46e5", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: "1.2rem", fontWeight: 800 }}>🏫 SMA NEGERI SIVILIZE</span>
               <nav style={{ display: "flex", gap: 24, fontSize: "0.9rem" }}>
@@ -571,7 +571,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "hotel":
         return (
-          <div style={{ background: "#f8fafc", color: "#1e293b", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ background: "linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.9)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat", color: "#1e293b", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             <header style={{ background: "#1e293b", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: "1.3rem", fontWeight: 900, color: "#3b82f6" }}>🏨 LUXURY HOTEL & SPA</span>
               <button onClick={() => window.open("https://wa.me/6281338219957", "_blank")} style={{ padding: "8px 16px", background: "#3b82f6", border: "none", color: "#fff", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Reservasi Kamar</button>
@@ -603,7 +603,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "workshop":
         return (
-          <div style={{ background: "#1e1e1e", color: "#fff", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ background: "linear-gradient(rgba(30, 30, 30, 0.9), rgba(30, 30, 30, 0.95)), url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat", color: "#fff", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             <header style={{ background: "#dc2626", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: "1.2rem", fontWeight: 800 }}>🚗 BENGKEL DIGITAL AUTO</span>
               <button onClick={() => window.open("https://wa.me/6281338219957", "_blank")} style={{ padding: "8px 16px", background: "#fff", color: "#dc2626", border: "none", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>Booking Mekanik</button>
@@ -637,7 +637,7 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
 
       case "ecommerce":
         return (
-          <div style={{ background: "#f8fafc", color: "#0f172a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <div style={{ background: "linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.95)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat", color: "#0f172a", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             <header style={{ background: "#2563eb", color: "#fff", padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: "1.3rem", fontWeight: 900 }}>🛒 SIVILIZE MEGA STORE</span>
               <span>Checkout Kasir</span>

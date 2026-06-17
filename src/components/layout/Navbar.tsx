@@ -27,8 +27,8 @@ export function Navbar() {
   return (
     <header className={`navbar${isOpen ? " navbar--open" : ""}${isScrolled ? " navbar--scrolled" : ""}`} role="banner">
       <div className="navbar__container">
-        <a href="/" className="navbar__logo" aria-label="Sivilize Corp - Beranda">
-          <img src="/assets/images/logo.svg" alt="Sivilize Corp Logo" className="navbar__logo-image" />
+        <a href="/" className="navbar__logo" aria-label="SiWeb by Sivilize - Beranda">
+          <span style={{ fontSize: "1.5rem", fontWeight: 800, color: "#fff", letterSpacing: "1px" }}>SiWeb<span style={{ color: "var(--color-primary)" }}>.</span></span>
         </a>
         <button className="navbar__hamburger" aria-label="Buka menu navigasi" aria-expanded={isOpen} onClick={() => setIsOpen((value) => !value)}>
           <span className="navbar__hamburger-line" />
@@ -38,12 +38,9 @@ export function Navbar() {
         <nav className="navbar__nav" id="mobile-menu" role="navigation" aria-label="Navigasi utama">
           <ul className="navbar__list">
             <li><a href="#hero" className="navbar__link navbar__link--active" onClick={() => handleLinkClick("#hero")}>Beranda</a></li>
-            <li><a href="#ecosystem" className="navbar__link" onClick={() => handleLinkClick("#ecosystem")}>Ekosistem</a></li>
-            <li><a href="#why-sivilize" className="navbar__link" onClick={() => handleLinkClick("#why-sivilize")}>Kenapa Sivilize</a></li>
-            <li><a href="#services" className="navbar__link" onClick={() => handleLinkClick("#services")}>Layanan</a></li>
-            <li><a href="#products" className="navbar__link" onClick={() => handleLinkClick("#products")}>Produk</a></li>
-            <li><a href="/siweb" className="navbar__link">SiWeb</a></li>
-            <li><a href="#contact" className="navbar__link" onClick={() => handleLinkClick("#contact")}>Kontak</a></li>
+            <li><a href="#pricing" className="navbar__link" onClick={() => handleLinkClick("#pricing")}>Paket Layanan</a></li>
+            <li><a href="#umkm-gratis" className="navbar__link" onClick={() => handleLinkClick("#umkm-gratis")}>Program Gratis</a></li>
+            <li><a href="https://wa.me/6281338219957" target="_blank" rel="noopener noreferrer" className="navbar__link" style={{ color: "#25D366" }}>Hubungi Kami</a></li>
           </ul>
         </nav>
       </div>

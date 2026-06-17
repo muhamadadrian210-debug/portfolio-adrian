@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Sivilize Corp | Ekosistem Digital untuk Bisnis",
+  title: "SiWeb by Sivilize | Layanan Pembuatan Website & Digitalisasi Ritel UMKM",
   description:
-    "Sivilize Corp adalah perusahaan digital Indonesia yang membangun ekosistem bisnis melalui Sivilize Hub Pro, SiKasir, dan layanan digital seperti website perusahaan, landing page, dan solusi custom.",
+    "SiWeb by Sivilize menghadirkan layanan pembuatan website profesional, landing page modern, dan sistem operasional taktis khusus untuk pelaku usaha lokal, UMKM, toko, hingga cafe.",
 };
 
 export default function RootLayout({

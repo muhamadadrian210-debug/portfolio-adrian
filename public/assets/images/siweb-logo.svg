@@ -1,0 +1,8 @@
+<svg width="320" height="140" viewBox="0 0 320 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="140" rx="16" fill="#0f1f2f"/>
+  <g opacity="0.95">
+    <text x="160" y="60" text-anchor="middle" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="1.2">SiWeb</text>
+    <text x="160" y="95" text-anchor="middle" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="12" letter-spacing="2">DIGITAL BUILDERS FOR THE BUILT ENVIRONMENT</text>
+  </g>
+  <line x1="100" y1="110" x2="220" y2="110" stroke="#64748b" stroke-width="1.5" opacity="0.7"/>
+</svg>

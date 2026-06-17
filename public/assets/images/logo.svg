@@ -1,0 +1,30 @@
+<svg width="300" height="100" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&amp;display=swap');
+      .sivilize-text { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 56px; fill: #FFFFFF; letter-spacing: -1.5px; }
+      .corp-text { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 20px; fill: #F7931E; letter-spacing: 12px; }
+    </style>
+  </defs>
+  
+  <g transform="translate(10, 15)">
+    <!-- Icon -->
+    <g transform="translate(0, 0)">
+      <!-- Orange Top/Left -->
+      <path d="M 32 0 L 8 13.8 L 8 32 L 14 35.5 L 14 17.3 L 32 6.9 L 50 17.3 L 50 25 L 56 21.5 L 56 13.8 L 32 0 Z" fill="#F7931E" />
+      <!-- Orange Bottom/Right -->
+      <path d="M 8 38 L 8 46.2 L 32 60 L 56 46.2 L 56 28 L 50 31.5 L 50 42.7 L 32 53.1 L 14 42.7 L 14 34.5 L 8 38 Z" fill="#F7931E" />
+      <!-- White Middle -->
+      <path d="M 14 26 L 14 35.5 L 32 45.9 L 50 35.5 L 50 26 L 44 22.5 L 44 32 L 32 38.9 L 20 32 L 20 22.5 L 14 26 Z" fill="#FFFFFF" />
+      
+      <!-- Decorative Dots -->
+      <rect x="62" y="10" width="5" height="5" fill="#F7931E" />
+      <rect x="70" y="16" width="5" height="5" fill="#F7931E" />
+      <rect x="62" y="22" width="5" height="5" fill="#F7931E" />
+    </g>
+    
+    <!-- Text -->
+    <text x="90" y="45" class="sivilize-text">Sivilize</text>
+    <text x="92" y="72" class="corp-text">CORP</text>
+  </g>
+</svg>

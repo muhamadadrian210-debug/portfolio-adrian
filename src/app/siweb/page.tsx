@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { SiwebFooter } from "@/components/layout/SiwebFooter";
 import { SiwebNavbar } from "@/components/layout/SiwebNavbar";
 import { UmkmApplicationForm } from "@/components/siweb/UmkmApplicationForm";
@@ -73,11 +76,14 @@ const faqs = [
 ];
 
 export default function SiwebPage() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <div className="page-wrapper">
       <SiwebNavbar />
       <main id="main-content">
         <HeroSection />
+        <ShowcaseSection onOpenModal={() => setModalOpen(true)} />
         <PricingSection />
         <UmkmProgramSection />
         <AboutSection />
@@ -87,6 +93,41 @@ export default function SiwebPage() {
         <ContactSection />
       </main>
       <SiwebFooter />
+
+      {modalOpen && (
+        <div style={{
+          position: "fixed",
+          inset: 0,
+          background: "rgba(0,0,0,0.8)",
+          backdropFilter: "blur(8px)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 99999,
+          padding: 20
+        }}>
+          <div style={{
+            background: "#0f172a",
+            border: "1px solid rgba(255,255,255,0.1)",
+            padding: 32,
+            borderRadius: 16,
+            maxWidth: 400,
+            width: "100%",
+            textAlign: "center",
+            boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5)"
+          }}>
+            <h3 style={{ fontSize: "1.5rem", marginBottom: 12, color: "#fff" }}>Mohon Maaf</h3>
+            <p style={{ color: "#94a3b8", marginBottom: 24, fontSize: "1rem", lineHeight: 1.6 }}>Demo sedang dipersiapkan.</p>
+            <button
+              onClick={() => setModalOpen(false)}
+              className="siweb-btn siweb-btn-primary"
+              style={{ padding: "12px 24px", width: "100%" }}
+            >
+              Tutup
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -294,6 +335,346 @@ function ContactSection() {
         <a href="https://wa.me/6281338219957" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", padding: "16px 32px", background: "#25D366", color: "#fff", textDecoration: "none", fontWeight: 700, borderRadius: 4 }}>
           Chat WhatsApp
         </a>
+      </div>
+    </section>
+  );
+}
+
+const demoProjects = [
+  {
+    title: "Rumah Sakit & Klinik",
+    description: "Sistem informasi manajemen kesehatan terintegrasi untuk meningkatkan layanan pasien dan efisiensi staf medis.",
+    themeColor: "#10b981", // Emerald Green
+    glowColor: "rgba(16, 185, 129, 0.35)",
+    demoUrl: "",
+    features: ["Jadwal Dokter", "Pendaftaran Pasien", "Dashboard Admin"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M19 14c1.66 0 3-1.34 3-3V6c0-1.66-1.34-3-3-3H5C3.34 3 2 4.34 2 6v5c0 1.66 1.34 3 3 3h14z" />
+        <path d="M12 3v18M3 12h18" />
+      </svg>
+    ),
+    decorations: ["Medical Cross", "Stethoscope", "Pulse Line", "Daun Hijau Kecil"],
+    mockupType: "hospital"
+  },
+  {
+    title: "Apotek Digital",
+    description: "Platform pengelolaan stok obat, resep digital, dan penjualan farmasi online yang aman dan terstruktur.",
+    themeColor: "#06b6d4", // Teal Cyan
+    glowColor: "rgba(6, 182, 212, 0.35)",
+    demoUrl: "",
+    features: ["Katalog Obat", "Stok Barang", "Pemesanan Online"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M4.5 16.5c-1.5 0-2.5-1-2.5-2.5v-4c0-1.5 1-2.5 2.5-2.5h15c1.5 0 2.5 1 2.5 2.5v4c0 1.5-1 2.5-2.5 2.5h-15z" />
+        <path d="M12 8v8" />
+      </svg>
+    ),
+    decorations: ["Katalog Obat", "Kapsul Obat", "Botol Obat", "Medical Shelf"],
+    mockupType: "pharmacy"
+  },
+  {
+    title: "Landing Page Perusahaan",
+    description: "Presentasi bisnis profesional dengan fokus konversi tinggi dan pengenalan profil korporat yang elegan.",
+    themeColor: "#4f46e5", // Blue Indigo
+    glowColor: "rgba(79, 70, 229, 0.35)",
+    demoUrl: "",
+    features: ["Company Profile", "Lead Generation", "Branding Profesional"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <rect x="2" y="2" width="20" height="20" rx="2" />
+        <path d="M6 6h12v4H6zM6 14h6v4H6z" />
+      </svg>
+    ),
+    decorations: ["Gedung Perusahaan", "Chart Bisnis", "Grid Korporat", "Document Card"],
+    mockupType: "company"
+  },
+  {
+    title: "Souvenir & Kerajinan",
+    description: "Etalase digital kerajinan lokal dengan detail produk estetik dan integrasi transaksi praktis langsung.",
+    themeColor: "#f59e0b", // Amber Gold
+    glowColor: "rgba(245, 158, 11, 0.35)",
+    demoUrl: "",
+    features: ["Katalog Produk", "Galeri Produk", "WhatsApp Order"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7c0-2-2-4-4-4S4 5 4 7M12 7c0-2 2-4 4-4s4 2 4 4" />
+      </svg>
+    ),
+    decorations: ["Gift Box", "Ribbon", "Product Tag", "Sparkle Kecil"],
+    mockupType: "souvenir"
+  },
+  {
+    title: "Sistem Perpustakaan",
+    description: "Manajemen katalog buku, pencatatan peminjaman, serta statistik perpustakaan modern berbasis web.",
+    themeColor: "#8b5cf6", // Purple Violet
+    glowColor: "rgba(139, 92, 246, 0.35)",
+    demoUrl: "",
+    features: ["Manajemen Buku", "Peminjaman", "Dashboard Admin"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z" />
+      </svg>
+    ),
+    decorations: ["Rak Buku", "Tumpukan Buku", "Bookmark", "Library Card"],
+    mockupType: "library"
+  },
+  {
+    title: "Travel & Tour",
+    description: "Sistem reservasi paket perjalanan wisata, pencarian destinasi, dan galeri petualangan interaktif.",
+    themeColor: "#0ea5e9", // Sky Blue
+    glowColor: "rgba(14, 165, 233, 0.35)",
+    demoUrl: "",
+    features: ["Paket Wisata", "Booking Online", "Galeri Destinasi"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+      </svg>
+    ),
+    decorations: ["Pesawat", "Map Pin", "Route Line", "Cloud"],
+    mockupType: "travel"
+  },
+  {
+    title: "Cafe & Resto",
+    description: "Daftar menu digital interaktif dengan integrasi meja pemesanan dan pengelolaan transaksi dapur.",
+    themeColor: "#ea580c", // Orange Brown
+    glowColor: "rgba(234, 88, 12, 0.35)",
+    demoUrl: "",
+    features: ["Digital Menu", "Reservasi", "Order Management"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3" />
+      </svg>
+    ),
+    decorations: ["Coffee Cup", "Steam Effect", "Plate", "Menu Card"],
+    mockupType: "cafe"
+  },
+  {
+    title: "Property & Developer",
+    description: "Galeri unit properti eksklusif dengan formulir minat pembeli dan simulasi cicilan sederhana.",
+    themeColor: "#f97316", // Orange Slate
+    glowColor: "rgba(249, 115, 22, 0.35)",
+    demoUrl: "",
+    features: ["Katalog Properti", "Landing Page Proyek", "Lead Form"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" />
+        <path d="M9 22V12h6v10" />
+      </svg>
+    ),
+    decorations: ["Blueprint", "Building Outline", "Grid Konstruksi", "Tower Illustration"],
+    mockupType: "property"
+  }
+];
+
+function ShowcaseSection({ onOpenModal }: { onOpenModal: () => void }) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const handleCardClick = (url: string) => {
+    if (url) {
+      window.open(url, "_blank");
+    } else {
+      onOpenModal();
+    }
+  };
+
+  return (
+    <section className="siweb-section" id="showcase" style={{ background: "#050505" }}>
+      <div className="container">
+        <span className="siweb-section-label">Website Demo Showcase</span>
+        <h2 className="siweb-section-title">Industri Khusus, Desain Khusus.</h2>
+        <p style={{ color: "var(--color-body)", marginTop: "0.8rem", maxWidth: 820 }}>
+          Jelajahi berbagai contoh website dan sistem digital yang dapat dikembangkan sesuai kebutuhan bisnis, organisasi, maupun institusi Anda.
+        </p>
+
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: 30,
+          marginTop: "3.5rem"
+        }}>
+          {demoProjects.map((project, idx) => {
+            const isHovered = hoveredIndex === idx;
+            return (
+              <article
+                key={project.title}
+                onClick={() => handleCardClick(project.demoUrl)}
+                onMouseEnter={() => setHoveredIndex(idx)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                style={{
+                  background: "rgba(15, 23, 42, 0.4)",
+                  backdropFilter: "blur(12px)",
+                  borderRadius: 16,
+                  border: `1px solid ${isHovered ? project.themeColor : "rgba(255,255,255,0.06)"}`,
+                  boxShadow: isHovered
+                    ? `0 20px 40px -15px ${project.glowColor}, 0 0 15px ${project.glowColor}`
+                    : "none",
+                  transform: isHovered ? "translateY(-8px)" : "translateY(0)",
+                  transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                  padding: 24,
+                  cursor: "pointer",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  position: "relative",
+                  overflow: "hidden"
+                }}
+              >
+                {/* Visual Laptop Mockup Custom */}
+                <div style={{
+                  width: "100%",
+                  height: 140,
+                  background: "rgba(255,255,255,0.02)",
+                  border: "1px solid rgba(255,255,255,0.05)",
+                  borderRadius: 8,
+                  marginBottom: 20,
+                  position: "relative",
+                  overflow: "hidden",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}>
+                  {/* Laptop Frame */}
+                  <div style={{
+                    width: "80%",
+                    height: "75%",
+                    background: "#1e293b",
+                    border: "4px solid #475569",
+                    borderRadius: "6px 6px 0 0",
+                    position: "relative",
+                    transform: isHovered ? "scale(1.03)" : "scale(1)",
+                    transition: "transform 0.4s ease",
+                    display: "flex",
+                    flexDirection: "column",
+                    overflow: "hidden"
+                  }}>
+                    {/* Screen Content based on Industry */}
+                    <div style={{
+                      flex: 1,
+                      background: "#0f172a",
+                      position: "relative",
+                      padding: 6,
+                      fontSize: "0.5rem"
+                    }}>
+                      {/* Simuated Dashboard / UI */}
+                      <div style={{
+                        width: "100%",
+                        height: 6,
+                        background: project.themeColor,
+                        opacity: 0.8,
+                        borderRadius: 2,
+                        marginBottom: 4
+                      }} />
+                      <div style={{ display: "flex", gap: 4, height: "100%" }}>
+                        <div style={{ width: "25%", background: "rgba(255,255,255,0.05)", borderRadius: 2 }} />
+                        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 3 }}>
+                          <div style={{ width: "80%", height: 3, background: "rgba(255,255,255,0.2)", borderRadius: 1 }} />
+                          <div style={{ width: "50%", height: 3, background: "rgba(255,255,255,0.1)", borderRadius: 1 }} />
+                          <div style={{ width: "90%", height: 12, background: "rgba(255,255,255,0.03)", borderRadius: 2, marginTop: 2 }} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Laptop Base */}
+                  <div style={{
+                    width: "90%",
+                    height: 6,
+                    background: "#64748b",
+                    borderRadius: "0 0 6px 6px",
+                    position: "absolute",
+                    bottom: 12
+                  }} />
+
+                  {/* Decorative Elements */}
+                  <div style={{
+                    position: "absolute",
+                    bottom: 4,
+                    right: 4,
+                    fontSize: "0.65rem",
+                    color: project.themeColor,
+                    opacity: isHovered ? 0.9 : 0.4,
+                    transition: "opacity 0.4s ease",
+                    fontWeight: 700
+                  }}>
+                    {project.decorations[0]}
+                  </div>
+                </div>
+
+                {/* Header Kategori */}
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+                  <div style={{
+                    color: project.themeColor,
+                    transform: isHovered ? "rotate(10deg) scale(1.1)" : "none",
+                    transition: "transform 0.3s ease"
+                  }}>
+                    {project.icon}
+                  </div>
+                  <h3 style={{
+                    fontSize: "1.2rem",
+                    fontWeight: 800,
+                    margin: 0,
+                    textTransform: "uppercase"
+                  }}>
+                    {project.title}
+                  </h3>
+                </div>
+
+                {/* Deskripsi */}
+                <p style={{
+                  color: "var(--color-body)",
+                  fontSize: "0.9rem",
+                  lineHeight: 1.6,
+                  marginBottom: 16,
+                  flex: 1
+                }}>
+                  {project.description}
+                </p>
+
+                {/* 3 Fitur Utama */}
+                <div style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 8,
+                  marginBottom: 24,
+                  borderTop: "1px solid rgba(255,255,255,0.05)",
+                  paddingTop: 16
+                }}>
+                  {project.features.map((feat) => (
+                    <div key={feat} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: "0.85rem" }}>
+                      <span style={{ color: project.themeColor, fontWeight: 900 }}>✓</span>
+                      <span style={{ color: "#cbd5e1" }}>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTA Button */}
+                <button style={{
+                  width: "100%",
+                  padding: "12px 16px",
+                  background: "transparent",
+                  border: `1px solid ${project.themeColor}`,
+                  color: project.themeColor,
+                  fontWeight: 700,
+                  fontSize: "0.9rem",
+                  borderRadius: 6,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 8,
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  backgroundColor: isHovered ? project.glowColor : "transparent"
+                }}>
+                  <span>Lihat Demo</span>
+                  <span style={{
+                    transform: isHovered ? "translateX(4px)" : "none",
+                    transition: "transform 0.3s ease"
+                  }}>→</span>
+                </button>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

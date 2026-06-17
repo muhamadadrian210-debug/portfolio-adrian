@@ -7,21 +7,21 @@ export const homeMainHtml = `
             <div class="hero__overhead" style="margin-bottom: 1.5rem;">
               <span class="hero__brand" style="margin:0;">SIVILIZE CORP</span>
             </div>
-            <p style="font-size: 0.95rem; letter-spacing: 3px; color: #cbd5e1; text-transform: uppercase; margin-bottom: 1.25rem;">Ekosistem digital untuk bisnis • Sivilize Hub Pro • SiKasir • solusi website</p>
+            <p style="font-size: 0.95rem; letter-spacing: 3px; color: #cbd5e1; text-transform: uppercase; margin-bottom: 1.25rem;">Enterprise Solution / Business Ecosystem / Retail Division</p>
             <h1 class="hero__title" style="line-height: 1; color: #fff !important; cursor: default; text-shadow: 0 0 30px rgba(79, 70, 229, 0.2);">
-              EKOSISTEM DIGITAL <br /> YANG MENDUKUNG <br /> PERTUMBUHAN BISNIS.
+              ARSITEKTUR DIGITAL <br /> UNTUK EFISIENSI <br /> INDUSTRI & BISNIS.
             </h1>
-            <p class="hero__description" style="max-width: 820px; margin-top: 2rem; font-size: 1.1rem; color: var(--color-body); line-height: 1.8; letter-spacing: 0.5px; font-weight: 300;">
-              <strong style="color: #fff;">Sivilize Corp</strong> adalah perusahaan digital Indonesia yang membangun produk dan layanan untuk membantu bisnis berkembang — dari <strong style="color: #fff;">Sivilize Hub Pro</strong>, <strong style="color: #fff;">SiKasir</strong>, hingga solusi website dan custom digital sebagai bagian dari ekosistem perusahaan.
+            <p class="hero__description" style="max-width: 900px; margin-top: 2rem; font-size: 1.1rem; color: var(--color-body); line-height: 1.8; letter-spacing: 0.5px; font-weight: 300;">
+              <strong style="color: #fff;">Sivilize Corp</strong> adalah pusat ekosistem teknologi yang membangun infrastruktur digital kustom, platform manajemen proyek, dan solusi operasional modern terintegrasi.
             </p>
             <div class="hero__cta-group mt-16" style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 2.5rem;">
-              <a href="#products" class="btn btn--primary" style="padding: 22px 40px; font-size: 1rem; letter-spacing: 3px; background: var(--color-primary); color: #fff; font-weight: 700; text-decoration: none; border-radius: 2px; transition: all 0.4s ease;">JELAJAHI PRODUK</a>
-              <a href="#contact" class="btn btn--outline-on-dark" style="padding: 22px 40px; font-size: 1rem; letter-spacing: 3px; border: 1px solid rgba(255,255,255,0.2); color: #fff; font-weight: 700; background: transparent; text-decoration: none; border-radius: 2px; transition: all 0.4s ease;">KONSULTASI GRATIS</a>
+              <a href="#ecosystem" class="btn btn--primary" style="padding: 22px 40px; font-size: 1rem; letter-spacing: 3px; background: var(--color-primary); color: #fff; font-weight: 700; text-decoration: none; border-radius: 2px; transition: all 0.4s ease;">LIHAT EKOSISTEM</a>
+              <a href="#contact" class="btn btn--outline-on-dark" style="padding: 22px 40px; font-size: 1rem; letter-spacing: 3px; border: 1px solid rgba(255,255,255,0.2); color: #fff; font-weight: 700; background: transparent; text-decoration: none; border-radius: 2px; transition: all 0.4s ease;">KONSULTASI</a>
             </div>
             <div class="siweb-highlight" style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2rem;">
               <span style="padding: 10px 16px; border: 1px solid rgba(79, 70, 229, 0.35); background: rgba(79, 70, 229, 0.1); color: #fff; font-size: 0.9rem; letter-spacing: 1px;">Sivilize Hub Pro</span>
-              <span style="padding: 10px 16px; border: 1px solid rgba(79, 70, 229, 0.35); background: rgba(79, 70, 229, 0.1); color: #fff; font-size: 0.9rem; letter-spacing: 1px;">SiKasir</span>
-              <span style="padding: 10px 16px; border: 1px solid rgba(79, 70, 229, 0.35); background: rgba(79, 70, 229, 0.1); color: #fff; font-size: 0.9rem; letter-spacing: 1px;">Website & custom digital</span>
+              <span style="padding: 10px 16px; border: 1px solid rgba(79, 70, 229, 0.35); background: rgba(79, 70, 229, 0.1); color: #fff; font-size: 0.9rem; letter-spacing: 1px;">SiKasir & Dine</span>
+              <span style="padding: 10px 16px; border: 1px solid rgba(79, 70, 229, 0.35); background: rgba(79, 70, 229, 0.1); color: #fff; font-size: 0.9rem; letter-spacing: 1px;">SiWeb Production</span>
             </div>
           </div>
         </div>
@@ -31,31 +31,40 @@ export const homeMainHtml = `
       <section class="section" id="ecosystem" style="background: #080808; border-top: 1px solid rgba(255,255,255,0.05);">
         <div class="container">
           <div class="section__header animate-on-scroll" style="text-align: left; max-width: 980px; margin-bottom: 3rem;">
-            <span class="section__label" style="color: var(--color-primary); font-weight: 700; text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem;">Ekosistem Sivilize</span>
-            <h2 class="section__title" style="font-size: clamp(2.2rem, 4vw, 3rem); color: #fff !important; margin-top: 1rem;">Sivilize Corp adalah induk dari solusi digital yang membangun bisnis.</h2>
-            <p class="section__subtitle" style="font-size: 1.15rem; color: var(--color-body); line-height: 1.8; text-align: left; max-width: 100%; margin-top: 1.5rem;">
-              Kami tidak memosisikan diri hanya sebagai penyedia layanan website. <strong style="color: #fff;">Sivilize Corp</strong> adalah perusahaan digital yang membangun ekosistem produk dan layanan untuk mendukung operasi, pemasaran, dan pertumbuhan bisnis secara menyeluruh.
-            </p>
+            <span class="section__label" style="color: var(--color-primary); font-weight: 700; text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem;">3 Pilar Ekosistem Sivilize Corp</span>
+            <h2 class="section__title" style="font-size: clamp(2.2rem, 4vw, 3rem); color: #fff !important; margin-top: 1rem;">Satu brand, tiga jalur solusi digital.</h2>
           </div>
 
-          <div class="siweb-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-            <div class="service-card animate-on-scroll stagger-1" style="background: rgba(255,255,255,0.01); padding: 32px; border: 1px solid rgba(255,255,255,0.05);">
-              <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 12px;">Sivilize Hub Pro</h3>
-              <p style="padding-left: 1rem; color: var(--color-body); line-height: 1.8;">
-                Solusi digital untuk kebutuhan operasional, proyek, dan pengelolaan informasi bisnis yang lebih terstruktur.
-              </p>
+          <div class="siweb-grid" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;">
+            <div class="service-card animate-on-scroll stagger-1" style="background: rgba(255,255,255,0.01); padding: 32px; border: 1px solid rgba(255,255,255,0.05); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <p style="color: #cbd5e1; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 12px;">Enterprise Solution</p>
+                <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 12px;">Sivilize Hub Pro</h3>
+                <p style="color: var(--color-body); line-height: 1.8;">
+                  Sistem blueprint kustom untuk estimasi proyek, manajemen kontraktor, dan efisiensi korporat skala besar.
+                </p>
+              </div>
+              <a href="#contact" style="display: inline-block; margin-top: 20px; color: var(--color-primary); font-weight: 800; text-decoration: none;">Solusi Enterprise -></a>
             </div>
-            <div class="service-card animate-on-scroll stagger-2" style="background: rgba(255,255,255,0.01); padding: 32px; border: 1px solid rgba(255,255,255,0.05);">
-              <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 12px;">SiKasir</h3>
-              <p style="padding-left: 1rem; color: var(--color-body); line-height: 1.8;">
-                Solusi pembayaran dan transaksi untuk UMKM yang membutuhkan sistem kasir yang mudah digunakan.
-              </p>
+            <div class="service-card animate-on-scroll stagger-2" style="background: rgba(255,255,255,0.01); padding: 32px; border: 1px solid rgba(255,255,255,0.05); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <p style="color: #cbd5e1; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 12px;">Business Ecosystem</p>
+                <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 12px;">SiKasir & Dine</h3>
+                <p style="color: var(--color-body); line-height: 1.8;">
+                  Modul manajemen kasir, inventaris, dan operasional internal yang siap diintegrasikan ke sistem bisnis Anda.
+                </p>
+              </div>
+              <a href="#products" style="display: inline-block; margin-top: 20px; color: var(--color-primary); font-weight: 800; text-decoration: none;">Pelajari Modul -></a>
             </div>
-            <div class="service-card animate-on-scroll stagger-3" style="background: rgba(255,255,255,0.01); padding: 32px; border: 1px solid rgba(255,255,255,0.05);">
-              <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 12px;">Layanan digital pendukung</h3>
-              <p style="padding-left: 1rem; color: var(--color-body); line-height: 1.8;">
-                Website perusahaan, landing page, dan solusi custom hadir sebagai bagian dari capaian digital Sivilize Corp untuk mendukung pertumbuhan bisnis.
-              </p>
+            <div class="service-card animate-on-scroll stagger-3" style="background: rgba(255,255,255,0.01); padding: 32px; border: 1px solid rgba(255,255,255,0.05); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <p style="color: #cbd5e1; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 12px;">Retail Division</p>
+                <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 12px;">SiWeb Production</h3>
+                <p style="color: var(--color-body); line-height: 1.8;">
+                  Layanan digitalisasi kilat dan pembuatan website instan khusus untuk pelaku usaha lokal dan UMKM.
+                </p>
+              </div>
+              <a href="/siweb" style="display: inline-block; margin-top: 20px; color: var(--color-primary); font-weight: 800; text-decoration: none;">Kunjungi SiWeb -></a>
             </div>
           </div>
         </div>

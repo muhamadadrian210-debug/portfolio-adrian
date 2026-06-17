@@ -31,7 +31,7 @@ export function UmkmApplicationForm() {
       </button>
       {submitted ? (
         <p style={{ color: "#cbd5e1", margin: 0, lineHeight: 1.6 }}>
-          Pengajuan tercatat di halaman ini. Kirimkan juga lewat WhatsApp agar tim SiWeb bisa cek slot minggu ini lebih cepat.
+          Pengajuan tercatat di halaman ini. Kirimkan juga lewat WhatsApp agar tim SiWeb bisa cek slot bulan ini lebih cepat.
         </p>
       ) : (
         <p style={{ color: "var(--color-body)", margin: 0, fontSize: "0.92rem", lineHeight: 1.6 }}>

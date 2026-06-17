@@ -166,11 +166,11 @@ function UmkmProgramSection() {
     <section className="siweb-section" id="umkm-gratis" style={{ background: "#050505" }}>
       <div className="container">
         <span className="siweb-section-label">Program UMKM</span>
-        <h2 className="siweb-section-title">Program Digitalisasi UMKM Gratis (Kuota 1 Slot Per Minggu)</h2>
+        <h2 className="siweb-section-title">Program Digitalisasi UMKM Gratis (Kuota 1 Slot Per Bulan)</h2>
         <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(280px, 480px)", gap: 32, alignItems: "start", marginTop: "2rem" }}>
           <div>
             <p style={{ color: "var(--color-body)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "1rem" }}>
-              Setiap minggunya, Sivilize membuka 1 slot gratis pembuatan website untuk pelaku usaha lokal yang siap kami bantu petakan masalah operasionalnya untuk dijadikan studi kasus portfolio kami.
+              Setiap bulannya, Sivilize membuka 1 slot gratis pembuatan website untuk pelaku usaha lokal yang siap kami bantu petakan masalah operasionalnya untuk dijadikan studi kasus portfolio kami.
             </p>
             <p style={{ color: "var(--color-body)", fontSize: "1.05rem", lineHeight: 1.8 }}>
               Program ini cocok untuk pemilik usaha yang serius ingin mulai tampil resmi di internet, tapi masih butuh arahan dari nol.

@@ -2,20 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sivilize.my.id"),
+  metadataBase: new URL("https://sivilizecorp.vercel.app"),
   title: {
-    default: "SiWeb by Sivilize | Jasa Pembuatan Website & Digitalisasi Ritel UMKM Terbaik",
-    template: "%s | SiWeb by Sivilize"
+    default: "SiWeb Production by Sivilize | Jasa Pembuatan Website & Digitalisasi Ritel UMKM Terbaik",
+    template: "%s | SiWeb Production"
   },
   description:
-    "Jasa pembuatan website profesional, landing page modern, dan sistem kasir/operasional taktis dari SiWeb by Sivilize. Solusi digitalisasi UMKM, toko ritel, cafe, dan bisnis lokal agar lebih unggul dari kompetitor.",
+    "Jasa pembuatan website profesional, landing page modern, dan sistem kasir/operasional taktis dari SiWeb Production oleh Sivilize. Solusi digitalisasi UMKM, toko ritel, cafe, dan bisnis lokal agar lebih unggul dari kompetitor.",
   keywords: [
+    "siweb production",
+    "siweb production by sivilize",
+    "siweb",
+    "sivilize",
+    "sivilize corp",
     "jasa pembuatan website",
     "jasa website profesional",
     "jasa landing page",
-    "sivilize",
-    "siweb",
-    "sivilize corp",
     "digitalisasi umkm",
     "jasa pembuatan website ritel",
     "pembuatan website toko online",
@@ -42,23 +44,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://sivilize.my.id/siweb",
-    title: "SiWeb by Sivilize | Jasa Pembuatan Website & Digitalisasi Ritel UMKM Terbaik",
-    description: "Tingkatkan penjualan bisnis Anda dengan website profesional, responsif, dan super cepat dari SiWeb by Sivilize. Khusus UMKM, toko, ritel, dan bisnis lokal.",
-    siteName: "SiWeb by Sivilize",
+    url: "https://sivilizecorp.vercel.app/siweb",
+    title: "SiWeb Production by Sivilize | Jasa Pembuatan Website & Digitalisasi Ritel UMKM Terbaik",
+    description: "Tingkatkan penjualan bisnis Anda dengan website profesional, responsif, dan super cepat dari SiWeb Production. Khusus UMKM, toko, ritel, dan bisnis lokal.",
+    siteName: "SiWeb Production by Sivilize",
     images: [
       {
         url: "/assets/images/siweb-logo.svg",
         width: 800,
         height: 600,
-        alt: "SiWeb by Sivilize Logo",
+        alt: "SiWeb Production by Sivilize Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SiWeb by Sivilize | Jasa Pembuatan Website Profesional",
-    description: "Jasa pembuatan website profesional, landing page, dan digitalisasi ritel UMKM dari Sivilize Corp.",
+    title: "SiWeb Production by Sivilize | Jasa Pembuatan Website Profesional",
+    description: "Jasa pembuatan website profesional, landing page, dan digitalisasi ritel UMKM dari SiWeb Production.",
     images: ["/assets/images/siweb-logo.svg"],
   },
   alternates: {
@@ -86,8 +88,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebDesignService",
-              "name": "SiWeb by Sivilize",
-              "description": "Jasa pembuatan website profesional, landing page modern, dan sistem kasir/operasional taktis dari SiWeb by Sivilize. Solusi digitalisasi UMKM, toko ritel, cafe, dan bisnis lokal.",
+              "name": "SiWeb Production by Sivilize",
+              "description": "Jasa pembuatan website profesional, landing page modern, dan sistem kasir/operasional taktis dari SiWeb Production oleh Sivilize. Solusi digitalisasi UMKM, toko ritel, cafe, dan bisnis lokal.",
               "url": "https://sivilizecorp.vercel.app/",
               "logo": "https://sivilizecorp.vercel.app/assets/images/siweb-logo.svg",
               "priceRange": "Rp 800.000 - Rp 4.500.000",

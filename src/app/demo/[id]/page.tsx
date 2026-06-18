@@ -21,7 +21,7 @@ const demoData: Record<string, {
     glowColor: "rgba(16, 185, 129, 0.25)",
     textColor: "#a7f3d0",
     accentColor: "#34d399",
-    gradientBg: "linear-gradient(135deg, #061a14 0%, #020806 100%)",
+    gradientBg: "linear-gradient(135deg, rgba(10, 26, 20, 0.94) 0%, rgba(3, 8, 6, 0.98) 100%), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Pendaftaran Pasien", "Jadwal Dokter", "Dashboard Admin", "Riwayat Pasien", "Informasi Layanan"],
     layout: "hospital",
     tagline: "Sistem Manajemen Antrean Medis & Rekam Medis Cloud-Ready"
@@ -32,7 +32,7 @@ const demoData: Record<string, {
     glowColor: "rgba(6, 182, 212, 0.25)",
     textColor: "#c5f2f7",
     accentColor: "#22d3ee",
-    gradientBg: "linear-gradient(135deg, #041b21 0%, #01080b 100%)",
+    gradientBg: "linear-gradient(135deg, rgba(8, 28, 35, 0.94) 0%, rgba(2, 7, 10, 0.98) 100%), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Katalog Produk", "Stok Obat", "Pemesanan Online", "Dashboard Apotek", "Manajemen Produk"],
     layout: "pharmacy",
     tagline: "Smart POS & E-Commerce Farmasi Terpadu"
@@ -43,7 +43,7 @@ const demoData: Record<string, {
     glowColor: "rgba(99, 102, 241, 0.25)",
     textColor: "#e0e7ff",
     accentColor: "#818cf8",
-    gradientBg: "linear-gradient(135deg, #090a1f 0%, #03040b 100%)",
+    gradientBg: "linear-gradient(135deg, rgba(10, 12, 30, 0.94) 0%, rgba(3, 4, 12, 0.98) 100%), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Company Profile", "Lead Generation", "Service Showcase", "Contact Form", "Portfolio"],
     layout: "corporate",
     tagline: "Transformasi Digital Usaha dengan Arsitektur Skala Enterprise"
@@ -54,7 +54,7 @@ const demoData: Record<string, {
     glowColor: "rgba(245, 158, 11, 0.25)",
     textColor: "#fde68a",
     accentColor: "#fbbf24",
-    gradientBg: "linear-gradient(135deg, #181105 0%, #080501 100%)",
+    gradientBg: "linear-gradient(135deg, rgba(28, 20, 7, 0.94) 0%, rgba(8, 5, 2, 0.98) 100%), url('https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Katalog Produk", "WhatsApp Order", "Testimoni", "Galeri Produk", "Promo"],
     layout: "creative",
     tagline: "Showcase Kerajinan Seni Lokal & Hub WhatsApp Kasir"
@@ -65,7 +65,7 @@ const demoData: Record<string, {
     glowColor: "rgba(139, 92, 246, 0.25)",
     textColor: "#ddd6fe",
     accentColor: "#a78bfa",
-    gradientBg: "linear-gradient(135deg, #0e0921 0%, #04020a 100%)",
+    gradientBg: "linear-gradient(135deg, rgba(14, 9, 33, 0.94) 0%, rgba(4, 2, 10, 0.98) 100%), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Manajemen Buku", "Peminjaman", "Pengembalian", "Dashboard Admin", "Pencarian Buku"],
     layout: "library",
     tagline: "Otomasi Katalog & Manajemen Peminjaman Buku Sekolah"
@@ -76,7 +76,7 @@ const demoData: Record<string, {
     glowColor: "rgba(14, 165, 233, 0.25)",
     textColor: "#e0f2fe",
     accentColor: "#38bdf8",
-    gradientBg: "linear-gradient(135deg, #031422 0%, #01070d 100%)",
+    gradientBg: "linear-gradient(135deg, rgba(3, 18, 30, 0.94) 0%, rgba(1, 5, 10, 0.98) 100%), url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Paket Wisata", "Booking Online", "Galeri Destinasi", "Jadwal Tour", "Customer Management"],
     layout: "travel",
     tagline: "Reservasi Paket Trip & Itinerari Dinamis Instan"
@@ -87,7 +87,7 @@ const demoData: Record<string, {
     glowColor: "rgba(249, 115, 22, 0.25)",
     textColor: "#ffedd5",
     accentColor: "#fb923c",
-    gradientBg: "linear-gradient(135deg, #1a0f08 0%, #090502 100%)",
+    gradientBg: "linear-gradient(135deg, rgba(28, 16, 8, 0.94) 0%, rgba(9, 5, 2, 0.98) 100%), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Digital Menu", "Reservasi", "Pemesanan", "Promo", "Dashboard Pesanan"],
     layout: "cafe",
     tagline: "Katalog Menu F&B Interaktif & Booking Meja Live"
@@ -98,7 +98,7 @@ const demoData: Record<string, {
     glowColor: "rgba(234, 88, 12, 0.25)",
     textColor: "#ffedd5",
     accentColor: "#f97316",
-    gradientBg: "linear-gradient(135deg, #160a04 0%, #070301 100%)",
+    gradientBg: "linear-gradient(135deg, rgba(24, 10, 4, 0.94) 0%, rgba(7, 3, 1, 0.98) 100%), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Katalog Properti", "Landing Page Proyek", "Lead Generation", "Form Konsultasi", "Progress Proyek"],
     layout: "property",
     tagline: "Galeri Hunian Premium & Kalkulator Simulasi Kredit"
@@ -109,7 +109,7 @@ const demoData: Record<string, {
     glowColor: "rgba(59, 130, 246, 0.25)",
     textColor: "#dbeafe",
     accentColor: "#60a5fa",
-    gradientBg: "linear-gradient(135deg, #040f21 0%, #01050a 100%)",
+    gradientBg: "linear-gradient(135deg, rgba(4, 16, 35, 0.94) 0%, rgba(1, 5, 10, 0.98) 100%), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Informasi Sekolah", "Pendaftaran", "Dashboard Siswa", "Jadwal Pelajaran", "E-Learning"],
     layout: "school",
     tagline: "Portal Akademik Terpadu & Dashboard Pengumpulan Tugas"
@@ -120,7 +120,7 @@ const demoData: Record<string, {
     glowColor: "rgba(217, 119, 6, 0.25)",
     textColor: "#fef3c7",
     accentColor: "#fbbf24",
-    gradientBg: "linear-gradient(135deg, #150f05 0%, #060401 100%)",
+    gradientBg: "linear-gradient(135deg, rgba(23, 16, 5, 0.94) 0%, rgba(6, 4, 1, 0.98) 100%), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Booking Kamar", "Room Showcase", "Galeri Hotel", "Promo", "Customer Management"],
     layout: "hotel",
     tagline: "Hospitality System & Kamar Premium Bintang Lima"
@@ -131,7 +131,7 @@ const demoData: Record<string, {
     glowColor: "rgba(239, 68, 68, 0.25)",
     textColor: "#fee2e2",
     accentColor: "#f87171",
-    gradientBg: "linear-gradient(135deg, #1a0606 0%, #070202 100%)",
+    gradientBg: "linear-gradient(135deg, rgba(28, 6, 6, 0.94) 0%, rgba(7, 2, 2, 0.98) 100%), url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Booking Service", "Sparepart Catalog", "Riwayat Servis", "Dashboard Bengkel", "WhatsApp Booking"],
     layout: "workshop",
     tagline: "Monitoring Antrean Servis Live & Telemetri Progres Bengkel"
@@ -142,7 +142,7 @@ const demoData: Record<string, {
     glowColor: "rgba(236, 72, 153, 0.25)",
     textColor: "#fce7f3",
     accentColor: "#f472b6",
-    gradientBg: "linear-gradient(135deg, #190510 0%, #070104 100%)",
+    gradientBg: "linear-gradient(135deg, rgba(28, 5, 18, 0.94) 0%, rgba(7, 1, 4, 0.98) 100%), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Katalog Produk", "Keranjang Belanja", "Checkout", "Dashboard Penjualan", "Manajemen Produk"],
     layout: "ecommerce",
     tagline: "Platform Toko Elektronik Modern & Keranjang Pintar"

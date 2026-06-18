@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sivilizecorp.vercel.app/sitemap.xml
+Sitemap: https://siweb-production.vercel.app/sitemap.xml

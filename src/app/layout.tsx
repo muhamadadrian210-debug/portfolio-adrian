@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sivilizecorp.vercel.app"),
+  metadataBase: new URL("https://siweb-production.vercel.app"),
   title: {
     default: "SiWeb Production by Sivilize | Jasa Pembuatan Website & Digitalisasi Ritel UMKM Terbaik",
     template: "%s | SiWeb Production"
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://sivilizecorp.vercel.app/siweb",
+    url: "https://siweb-production.vercel.app/siweb",
     title: "SiWeb Production by Sivilize | Jasa Pembuatan Website & Digitalisasi Ritel UMKM Terbaik",
     description: "Tingkatkan penjualan bisnis Anda dengan website profesional, responsif, dan super cepat dari SiWeb Production. Khusus UMKM, toko, ritel, dan bisnis lokal.",
     siteName: "SiWeb Production by Sivilize",
@@ -90,13 +90,13 @@ export default function RootLayout({
               "@type": "WebDesignService",
               "name": "SiWeb Production by Sivilize",
               "description": "Jasa pembuatan website profesional, landing page modern, dan sistem kasir/operasional taktis dari SiWeb Production oleh Sivilize. Solusi digitalisasi UMKM, toko ritel, cafe, dan bisnis lokal.",
-              "url": "https://sivilizecorp.vercel.app/",
-              "logo": "https://sivilizecorp.vercel.app/assets/images/siweb-logo.svg",
+              "url": "https://siweb-production.vercel.app/",
+              "logo": "https://siweb-production.vercel.app/assets/images/siweb-logo.svg",
               "priceRange": "Rp 800.000 - Rp 4.500.000",
               "provider": {
                 "@type": "Organization",
                 "name": "Sivilize Corp",
-                "url": "https://sivilizecorp.vercel.app"
+                "url": "https://siweb-production.vercel.app"
               },
               "areaServed": {
                 "@type": "Country",

@@ -491,6 +491,22 @@ export const demoProjects = [
     ),
     decorations: ["Product Grid", "Shopping Cart", "Checkout Flow", "Sales Analytics"],
     mockupType: "ecommerce"
+  },
+  {
+    title: "Sablon & Merchandise",
+    description: "Sistem mockup custom sablon kaos, gelas, dan merchandise promosi dengan estimator biaya otomatis.",
+    themeColor: "#d946ef", // Fuchsia
+    glowColor: "rgba(217, 70, 239, 0.35)",
+    demoUrl: "",
+    features: ["Konfigurator Live", "WhatsApp Desain", "Kalkulator Kuantitas", "Pilihan Warna Media", "Galeri Kriya"],
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+        <path d="M12 6v12M6 12h12" />
+      </svg>
+    ),
+    decorations: ["Kaos Polos", "Mug Custom", "Screen Printing Frame", "Tinta Sablon"],
+    mockupType: "printing"
   }
 ];
 

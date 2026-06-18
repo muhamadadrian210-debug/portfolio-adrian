@@ -146,6 +146,17 @@ const demoData: Record<string, {
     features: ["Katalog Produk", "Keranjang Belanja", "Checkout", "Dashboard Penjualan", "Manajemen Produk"],
     layout: "ecommerce",
     tagline: "Platform Toko Elektronik Modern & Keranjang Pintar"
+  },
+  "printing": {
+    title: "Sivilize Sablon & Konveksi",
+    themeColor: "#d946ef", // Fuchsia
+    glowColor: "rgba(217, 70, 239, 0.25)",
+    textColor: "#fae8ff",
+    accentColor: "#e879f9",
+    gradientBg: "linear-gradient(135deg, rgba(28, 5, 30, 0.55) 0%, rgba(8, 1, 10, 0.72) 100%), url('https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
+    features: ["Pilihan Bahan Sablon", "WhatsApp Order Kustom", "Estimator Biaya Sablon", "Pilihan Warna Media", "Galeri Hasil Cetak"],
+    layout: "printing",
+    tagline: "Sistem Order Sablon Kaos & Merchandise Custom Instan"
   }
 };
 
@@ -212,6 +223,12 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
     { plate: "B 1242 AD", service: "Ganti Oli Mesin", progress: 70 },
     { plate: "D 9982 YZ", service: "Tune Up & Kelistrikan", progress: 25 }
   ]);
+
+  // 11. States untuk Jasa Sablon Kustom
+  const [printProduct, setPrintProduct] = useState("Kaos Polos");
+  const [printColor, setPrintColor] = useState("Hitam");
+  const [printText, setPrintText] = useState("Sivilize.");
+  const [printQty, setPrintQty] = useState(12);
 
   if (!demo) {
     return (
@@ -1107,6 +1124,165 @@ export default function DemoPage({ params }: { params: Promise<{ id: string }> }
                     <button onClick={() => { setCartItems([]); alert("Transaksi Checkout Berhasil!"); }} style={{ width: "100%", padding: 16, background: demo.themeColor, color: "#fff", border: "none", borderRadius: 12, fontWeight: 800, marginTop: 10, cursor: "pointer", transition: "all 0.2s" }}>Bayar Belanjaan</button>
                   </div>
                 )}
+              </div>
+            </div>
+          </div>
+        );
+
+      case "printing":
+        return (
+          <div style={{ background: demo.gradientBg, color: "#e2e8f0", minHeight: "100vh", display: "flex", flexDirection: "column", paddingBottom: 60 }}>
+            <header style={{ background: "rgba(28, 5, 30, 0.95)", borderBottom: `1px solid rgba(217, 70, 239, 0.2)`, padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, zIndex: 10 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={demo.themeColor} strokeWidth="2.5">
+                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                  <path d="M12 6v12M6 12h12" />
+                </svg>
+                <span style={{ fontSize: "1.3rem", fontWeight: 900, letterSpacing: "-0.02em", color: "#fff" }}>SIVILIZE SABLON CREATIVE</span>
+              </div>
+              <button onClick={() => window.open("https://wa.me/6281338219957", "_blank")} style={{ padding: "10px 20px", background: demo.themeColor, color: "#fff", border: "none", borderRadius: 30, fontWeight: 800, fontSize: "0.85rem", cursor: "pointer", boxShadow: `0 8px 20px -5px ${demo.glowColor}` }}>Konsultasi Sablon</button>
+            </header>
+
+            <div style={{ flex: 1, padding: "50px 40px 0", maxWidth: 1200, margin: "0 auto", width: "100%" }}>
+              <h2 style={{ textTransform: "none", color: "#fff", fontSize: "2.4rem", fontWeight: 950, letterSpacing: "-0.03em", marginBottom: 8, textAlign: "center", textShadow: "none" }}>Konfigurator Mockup Sablon</h2>
+              <p style={{ color: demo.accentColor, textAlign: "center", marginBottom: 48, fontSize: "1.05rem", fontWeight: 700 }}>Pilih media, warnai sesukamu, dan lihat estimasi biaya sablon kustom Anda langsung.</p>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1.1fr", gap: 40 }}>
+                {/* Visual T-Shirt / Product Preview */}
+                <div style={{ background: "rgba(15, 23, 42, 0.4)", backdropFilter: "blur(12px)", padding: 40, borderRadius: 24, border: "1px solid rgba(255,255,255,0.06)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ fontSize: "0.85rem", color: "#94a3b8", fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, marginBottom: 20 }}>PRATINJAU DESAIN LIVE</div>
+                  
+                  {/* Styled Mockup Media Box */}
+                  <div style={{
+                    width: 260,
+                    height: 260,
+                    borderRadius: 20,
+                    background: printColor === "Hitam" ? "#18181b" : printColor === "Putih" ? "#f4f4f5" : printColor === "Merah" ? "#ef4444" : "#3b82f6",
+                    border: "4px solid rgba(255, 255, 255, 0.1)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    position: "relative",
+                    transition: "all 0.3s ease",
+                    boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5)"
+                  }}>
+                    {/* Media Type Icon */}
+                    <div style={{
+                      opacity: 0.15,
+                      position: "absolute",
+                      fontSize: "8rem",
+                      userSelect: "none"
+                    }}>
+                      {printProduct === "Kaos Polos" ? "👕" : printProduct === "Mug Keramik" ? "☕" : "🥛"}
+                    </div>
+
+                    {/* Designer Text Print Overlay */}
+                    <div style={{
+                      color: printColor === "Putih" ? "#000" : "#fff",
+                      fontSize: "1.5rem",
+                      fontWeight: 900,
+                      fontFamily: "monospace",
+                      letterSpacing: "1px",
+                      zIndex: 2,
+                      textAlign: "center",
+                      padding: 20,
+                      wordBreak: "break-all",
+                      textTransform: "uppercase",
+                      border: `2px dashed ${printColor === "Putih" ? "rgba(0,0,0,0.2)" : "rgba(255,255,255,0.3)"}`,
+                      borderRadius: 6
+                    }}>
+                      {printText || "DESAIN KAMU"}
+                    </div>
+
+                    {/* Badge product type info */}
+                    <div style={{
+                      position: "absolute",
+                      bottom: 12,
+                      background: "rgba(0,0,0,0.6)",
+                      color: "#fff",
+                      fontSize: "0.7rem",
+                      padding: "4px 10px",
+                      borderRadius: 20,
+                      fontWeight: 700
+                    }}>
+                      {printProduct} ({printColor})
+                    </div>
+                  </div>
+                </div>
+
+                {/* Print Configuration Form */}
+                <div style={{ background: "rgba(15, 23, 42, 0.4)", backdropFilter: "blur(12px)", padding: 36, borderRadius: 24, border: "1px solid rgba(255,255,255,0.06)" }}>
+                  <h3 style={{ textTransform: "none", color: "#fff", fontSize: "1.4rem", fontWeight: 900, marginBottom: 24, textShadow: "none" }}>Spesifikasi Sablon</h3>
+                  <div style={{ display: "grid", gap: 20 }}>
+                    <div>
+                      <label style={{ display: "block", marginBottom: 8, fontSize: "0.85rem", color: "#94a3b8", fontWeight: 700 }}>Pilih Media Sablon</label>
+                      <select value={printProduct} onChange={(e) => setPrintProduct(e.target.value)} style={{ width: "100%", padding: 14, background: "#0c0510", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, color: "#fff" }}>
+                        <option value="Kaos Polos">Kaos Polos Cotton Combed 30s (Rp 55.000 / pcs)</option>
+                        <option value="Mug Keramik">Mug Keramik Coating (Rp 25.000 / pcs)</option>
+                        <option value="Gelas Kaca">Gelas Kaca Doff (Rp 15.000 / pcs)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label style={{ display: "block", marginBottom: 8, fontSize: "0.85rem", color: "#94a3b8", fontWeight: 700 }}>Warna Media</label>
+                      <div style={{ display: "flex", gap: 10 }}>
+                        {["Hitam", "Putih", "Merah", "Biru"].map((color) => (
+                          <button
+                            key={color}
+                            onClick={() => setPrintColor(color)}
+                            style={{
+                              flex: 1,
+                              padding: "10px 0",
+                              background: printColor === color ? demo.themeColor : "rgba(255,255,255,0.05)",
+                              border: printColor === color ? "none" : "1px solid rgba(255,255,255,0.1)",
+                              color: "#fff",
+                              borderRadius: 8,
+                              fontWeight: 800,
+                              fontSize: "0.85rem",
+                              cursor: "pointer",
+                              transition: "all 0.2s"
+                            }}
+                          >
+                            {color}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <label style={{ display: "block", marginBottom: 8, fontSize: "0.85rem", color: "#94a3b8", fontWeight: 700 }}>Teks Desain Sablon</label>
+                      <input
+                        type="text"
+                        maxLength={20}
+                        value={printText}
+                        onChange={(e) => setPrintText(e.target.value)}
+                        placeholder="Masukkan teks sablon kustom"
+                        style={{ width: "100%", padding: 14, background: "#0c0510", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, color: "#fff", fontSize: "0.95rem" }}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ display: "block", marginBottom: 8, fontSize: "0.85rem", color: "#94a3b8", fontWeight: 700 }}>Jumlah Sablon (Pcs): {printQty} Pcs</label>
+                      <input type="range" min={6} max={200} value={printQty} onChange={(e) => setPrintQty(Number(e.target.value))} style={{ width: "100%", accentColor: demo.themeColor }} />
+                      <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.75rem", color: "#64748b", marginTop: 4 }}>
+                        <span>Min: 6 Pcs</span>
+                        <span>Max: 200 Pcs</span>
+                      </div>
+                    </div>
+
+                    <div style={{ borderTop: "2px dashed rgba(255,255,255,0.1)", paddingTop: 20, display: "flex", justifyContent: "space-between", fontSize: "1.2rem", fontWeight: 900 }}>
+                      <span>Total Estimasi Biaya:</span>
+                      <span style={{ color: demo.accentColor }}>
+                        Rp {((printProduct === "Kaos Polos" ? 55000 : printProduct === "Mug Keramik" ? 25000 : 15000) * printQty).toLocaleString("id-ID")}
+                      </span>
+                    </div>
+
+                    <button
+                      onClick={() => window.open(`https://wa.me/6281338219957?text=Halo%20Sivilize%20Sablon,%20saya%20tertarik%20pesan%20sablon%20${printProduct}%20warna%20${printColor}%20dengan%20desain%20${printText}%20jumlah%20${printQty}%20pcs.`, "_blank")}
+                      style={{ width: "100%", padding: 16, background: demo.themeColor, color: "#fff", border: "none", borderRadius: 12, fontWeight: 800, cursor: "pointer", boxShadow: `0 8px 20px -5px ${demo.glowColor}` }}
+                    >
+                      Kirim Desain & Pesan via WA
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

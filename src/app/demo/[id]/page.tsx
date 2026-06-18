@@ -109,7 +109,7 @@ const demoData: Record<string, {
     glowColor: "rgba(59, 130, 246, 0.25)",
     textColor: "#dbeafe",
     accentColor: "#60a5fa",
-    gradientBg: "linear-gradient(135deg, rgba(4, 16, 35, 0.55) 0%, rgba(1, 5, 10, 0.72) 100%), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
+    gradientBg: "linear-gradient(135deg, rgba(4, 16, 35, 0.55) 0%, rgba(1, 5, 10, 0.72) 100%), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Informasi Sekolah", "Pendaftaran", "Dashboard Siswa", "Jadwal Pelajaran", "E-Learning"],
     layout: "school",
     tagline: "Portal Akademik Terpadu & Dashboard Pengumpulan Tugas"
@@ -131,7 +131,7 @@ const demoData: Record<string, {
     glowColor: "rgba(239, 68, 68, 0.25)",
     textColor: "#fee2e2",
     accentColor: "#f87171",
-    gradientBg: "linear-gradient(135deg, rgba(28, 6, 6, 0.55) 0%, rgba(7, 2, 2, 0.72) 100%), url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
+    gradientBg: "linear-gradient(135deg, rgba(28, 6, 6, 0.55) 0%, rgba(7, 2, 2, 0.72) 100%), url('https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed",
     features: ["Booking Service", "Sparepart Catalog", "Riwayat Servis", "Dashboard Bengkel", "WhatsApp Booking"],
     layout: "workshop",
     tagline: "Monitoring Antrean Servis Live & Telemetri Progres Bengkel"

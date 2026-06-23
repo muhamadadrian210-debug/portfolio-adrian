@@ -7,6 +7,7 @@ export function SiwebNavbar() {
         </a>
         <nav style={{ display: "flex", gap: 20 }}>
           <a href="/demo" style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem", fontWeight: 600 }}>Showcase Demo</a>
+          <a href="/website-preview" style={{ color: "var(--color-primary)", textDecoration: "none", fontSize: "0.9rem", fontWeight: 800 }}>Simulasi Web</a>
           <a href="/#pricing" style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem", fontWeight: 600 }}>Harga</a>
           <a href="/#umkm-gratis" style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem", fontWeight: 600 }}>Program Gratis</a>
         </nav>

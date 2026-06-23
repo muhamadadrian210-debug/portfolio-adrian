@@ -796,6 +796,7 @@ function PreviewStyles() {
   return (
     <style jsx global>{`
       .preview-page-shell { padding: 120px 0 80px; }
+      .preview-page-shell, .preview-page-shell * { box-sizing: border-box; min-width: 0; }
       .preview-container { width: min(1560px, calc(100% - 40px)); margin: 0 auto; }
       .preview-header { text-align: center; margin-bottom: 3.5rem; }
       .preview-header span { color: var(--color-primary); text-transform: uppercase; letter-spacing: 4px; font-size: .82rem; font-weight: 800; }
@@ -811,11 +812,11 @@ function PreviewStyles() {
       .preview-form input:focus, .preview-form textarea:focus { border-bottom-color: var(--color-primary); }
       .preview-form input::placeholder, .preview-form textarea::placeholder { color: rgba(255,255,255,.34); }
       .preview-choice-grid, .preview-budget-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 10px; }
-      .preview-choice-grid button, .preview-budget-grid button { min-height: 72px; text-align: left; border: 1px solid rgba(255,255,255,.08); border-radius: 8px; background: rgba(255,255,255,.015); color: #fff; padding: 12px; cursor: pointer; transition: .25s ease; }
+      .preview-choice-grid button, .preview-budget-grid button { min-height: 72px; text-align: left; border: 1px solid rgba(255,255,255,.08); border-radius: 8px; background: rgba(255,255,255,.015); color: #fff; padding: 12px; cursor: pointer; transition: .25s ease; overflow-wrap: anywhere; }
       .preview-choice-grid button:hover, .preview-budget-grid button:hover, .preview-choice-grid .is-selected, .preview-budget-grid .is-selected { border-color: var(--color-primary); background: rgba(79,70,229,.16); }
       .preview-choice-grid b { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 999px; background: rgba(255,255,255,.08); color: var(--color-primary); font-size: .72rem; margin-bottom: 8px; }
       .preview-choice-grid span, .preview-budget-grid strong, .preview-budget-grid small { display: block; text-shadow: none; }
-      .preview-choice-grid span { font-size: .8rem; font-weight: 700; }
+      .preview-choice-grid span { font-size: .8rem; font-weight: 700; line-height: 1.25; }
       .preview-budget-grid strong { font-size: .82rem; }
       .preview-budget-grid small { color: var(--color-body); font-size: .72rem; margin-top: 3px; }
       .preview-submit { border: 0; border-radius: 6px; background: var(--color-primary); color: #fff; padding: 17px 20px; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; cursor: pointer; }
@@ -841,6 +842,7 @@ function PreviewStyles() {
       .browser-bar div { margin-left: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: rgba(255,255,255,.46); font: 11px var(--font-mono); text-align: center; background: rgba(255,255,255,.05); border-radius: 5px; padding: 4px 10px; }
       .website-canvas { --preview-primary: #164e63; --preview-secondary: #94a3b8; --preview-accent: #c8a15a; --preview-bg: #fff; --preview-surface: #f3f4f6; --preview-text: #111827; --preview-muted: #6b7280; background: var(--preview-bg); color: var(--preview-text); min-height: 760px; text-shadow: none; }
       .website-canvas * { text-shadow: none !important; box-sizing: border-box; }
+      .website-canvas p, .website-canvas span, .website-canvas li, .website-canvas b, .website-canvas strong, .website-canvas small, .website-canvas h2, .website-canvas h3 { overflow-wrap: anywhere; }
       .website-canvas h2, .website-canvas h3, .website-canvas h4 { color: var(--preview-text) !important; letter-spacing: 0; text-transform: none; line-height: 1.08; }
       .site-preview-nav { display: flex; justify-content: space-between; gap: 18px; align-items: center; padding: 18px 24px; background: color-mix(in srgb, var(--preview-bg) 82%, white); border-bottom: 1px solid color-mix(in srgb, var(--preview-text) 12%, transparent); }
       .site-preview-nav strong { color: var(--preview-primary); font-size: 1rem; }
@@ -948,7 +950,7 @@ function PreviewStyles() {
       .device-mobile .site-preview-nav { align-items: flex-start; flex-direction: column; padding: 16px; gap: 10px; }
       .device-mobile .site-preview-nav div { flex-wrap: wrap; gap: 10px; font-size: .68rem; }
       .device-mobile .industry-hero, .device-mobile .cafe-hero, .device-mobile .clinic-hero, .device-mobile .laundry-hero, .device-mobile .workshop-hero, .device-mobile .company-hero, .device-mobile .school-hero { grid-template-columns: 1fr; min-height: auto; padding: 24px; }
-      .device-mobile .hero-copy h2 { font-size: 2.05rem; }
+      .device-mobile .hero-copy h2 { font-size: clamp(1.55rem, 9vw, 2.05rem); line-height: 1.12; }
       .device-mobile .hero-copy p { font-size: .9rem; }
       .device-mobile .hero-actions { flex-direction: column; }
       .device-mobile .hero-actions button { width: 100%; }
@@ -969,13 +971,47 @@ function PreviewStyles() {
       @media (max-width: 640px) {
         .preview-container { width: min(100% - 24px, 1560px); }
         .preview-page-shell { padding-top: 96px; }
+        .preview-header { margin-bottom: 2rem; }
+        .preview-header span { letter-spacing: 2px; font-size: .72rem; }
+        .preview-header h1 { font-size: clamp(1.65rem, 9vw, 2.4rem); line-height: 1.08; }
+        .preview-header p { font-size: .92rem; line-height: 1.6; }
         .preview-form-panel, .budget-breakdown { padding: 20px; }
+        .preview-form-panel h2 { font-size: 1rem; line-height: 1.25; }
+        .preview-form input, .preview-form textarea { font-size: 16px; }
+        .preview-choice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+        .preview-budget-grid { grid-template-columns: 1fr; }
+        .preview-choice-grid button { min-height: 106px; padding: 12px; }
+        .preview-submit, .whatsapp-cta { letter-spacing: 1px; font-size: .86rem; white-space: normal; line-height: 1.35; }
+        .device-toolbar { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+        .device-toolbar button { padding: 9px 6px; font-size: .76rem; }
+        .browser-frame { border-radius: 10px; }
+        .browser-frame.device-mobile { max-width: 100%; border-radius: 18px; }
         .industry-hero { padding: 26px; }
         .site-preview-nav { align-items: flex-start; flex-direction: column; }
         .site-preview-nav div { flex-wrap: wrap; }
         .gallery-rail, .portfolio-layout, .budget-meta, .feature-columns { grid-template-columns: 1fr; }
         .booking-strip { grid-template-columns: 1fr; }
         .preview-site-cta { align-items: stretch; flex-direction: column; }
+      }
+      @media (max-width: 420px) {
+        .preview-container { width: min(100% - 16px, 1560px); }
+        .preview-form-panel, .budget-breakdown { padding: 16px; border-radius: 10px; }
+        .preview-choice-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+        .preview-choice-grid button { min-height: 96px; padding: 10px; }
+        .preview-choice-grid b { width: 28px; height: 28px; font-size: .66rem; }
+        .preview-choice-grid span { font-size: .74rem; }
+        .browser-bar { padding: 9px 10px; }
+        .browser-bar div { font-size: 9px; padding-inline: 7px; }
+        .site-preview-nav { padding: 14px; }
+        .industry-hero, .device-mobile .industry-hero, .device-mobile .cafe-hero, .device-mobile .clinic-hero, .device-mobile .laundry-hero, .device-mobile .workshop-hero, .device-mobile .company-hero, .device-mobile .school-hero { padding: 18px; }
+        .hero-copy h2, .device-mobile .hero-copy h2 { font-size: clamp(1.38rem, 8.5vw, 1.8rem); }
+        .hero-copy p, .device-mobile .hero-copy p { font-size: .86rem; line-height: 1.55; }
+        .hero-actions button, .preview-site-cta button { padding: 10px 12px; font-size: .8rem; white-space: normal; }
+        .section-flow, .device-mobile .section-flow { padding: 14px; gap: 16px; }
+        .design-reason-band, .about-band, .industry-section-card, .preview-site-cta, .device-mobile .design-reason-band, .device-mobile .about-band, .device-mobile .industry-section-card, .device-mobile .preview-site-cta { padding: 14px; }
+        .design-reason-band h3, .about-band h3, .industry-section-card h3 { font-size: 1rem; line-height: 1.2; }
+        .gallery-tile { min-height: 96px; }
+        .budget-meta { grid-template-columns: 1fr; }
       }
     `}</style>
   );

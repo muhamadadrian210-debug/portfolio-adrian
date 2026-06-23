@@ -2256,3 +2256,182 @@ main {
     }
 
   
+
+/* Mobile polish for SiWeb navbar and hero */
+@media (max-width: 1023px) {
+  .navbar,
+  .navbar *,
+  .siweb-hero,
+  .siweb-hero * {
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+  }
+
+  .navbar {
+    height: 64px !important;
+  }
+
+  .navbar__container {
+    min-height: 64px !important;
+    padding-inline: 16px !important;
+  }
+
+  .navbar__logo span {
+    font-size: 1.35rem !important;
+    letter-spacing: 0 !important;
+  }
+
+  .navbar__hamburger {
+    width: 42px !important;
+    height: 42px !important;
+    gap: 5px !important;
+  }
+
+  .navbar__hamburger-line {
+    width: 27px !important;
+  }
+
+  .navbar__nav {
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    padding: 96px 22px 32px !important;
+    justify-content: center !important;
+    overflow-y: auto !important;
+    background: #111111 !important;
+  }
+
+  .navbar__list {
+    width: 100% !important;
+    max-width: 340px !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    margin-inline: auto !important;
+  }
+
+  .navbar__list li {
+    width: 100% !important;
+  }
+
+  .navbar__link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 52px !important;
+    padding: 12px 14px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.025) !important;
+    font-size: clamp(1rem, 5vw, 1.22rem) !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.03em !important;
+    text-align: center !important;
+    text-wrap: balance !important;
+  }
+
+  .navbar__link:hover {
+    background: rgba(79, 70, 229, 0.12) !important;
+  }
+
+  .siweb-hero {
+    min-height: auto !important;
+    padding-top: 104px !important;
+    padding-bottom: 48px !important;
+    align-items: flex-start !important;
+  }
+
+  .siweb-content {
+    padding-top: 0 !important;
+  }
+
+  .hero__brand {
+    display: block !important;
+    max-width: 100% !important;
+    letter-spacing: 0.42em !important;
+    font-size: clamp(0.78rem, 4vw, 0.95rem) !important;
+    line-height: 1.5 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .siweb-subtitle {
+    font-size: 0.98rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .siweb-features {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-top: 1.25rem !important;
+  }
+
+  .siweb-feature-tag {
+    width: 100% !important;
+    padding: 11px 12px !important;
+    font-size: 0.86rem !important;
+    line-height: 1.3 !important;
+    letter-spacing: 0.02em !important;
+    text-align: center !important;
+    border-radius: 6px !important;
+  }
+
+  .siweb-cta-group {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .siweb-btn {
+    width: 100% !important;
+    min-height: 52px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 13px 16px !important;
+    font-size: 0.88rem !important;
+    line-height: 1.25 !important;
+    letter-spacing: 0.12em !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .navbar__container {
+    padding-inline: 14px !important;
+  }
+
+  .navbar__nav {
+    padding-inline: 14px !important;
+  }
+
+  .navbar__list {
+    max-width: 100% !important;
+  }
+
+  .navbar__link {
+    min-height: 50px !important;
+    font-size: 1rem !important;
+  }
+
+  .siweb-hero {
+    padding-top: 92px !important;
+  }
+
+  .siweb-subtitle {
+    font-size: 0.94rem !important;
+  }
+
+  .siweb-feature-tag {
+    font-size: 0.82rem !important;
+  }
+
+  .siweb-btn {
+    font-size: 0.82rem !important;
+    letter-spacing: 0.1em !important;
+  }
+}

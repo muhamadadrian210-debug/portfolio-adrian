@@ -24,6 +24,11 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   font-family: var(--font-sans);
   font-weight: 400;
@@ -36,7 +41,6 @@ body {
     radial-gradient(circle at 100% 100%, rgba(79, 70, 229, 0.05) 0%, transparent 50%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 body::before {
@@ -167,23 +171,25 @@ ul {
 }
 
 /* ============================================
-   SCROLLBAR CUSTOM
+   SCROLLBAR CUSTOM (Desktop Only)
    ============================================ */
-::-webkit-scrollbar {
-  width: 8px;
-}
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
 
-::-webkit-scrollbar-track {
-  background: var(--color-surface-alt);
-}
+  ::-webkit-scrollbar-track {
+    background: var(--color-surface-alt);
+  }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: var(--radius-full);
-}
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-light);
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-light);
+  }
 }
 
 
@@ -2212,9 +2218,41 @@ main {
 
     @media (max-width: 768px) {
       .siweb-title { font-size: clamp(1.8rem, 5vw, 2.4rem); }
+      .siweb-section-title { font-size: clamp(1.4rem, 5vw, 2rem); }
       .siweb-grid { grid-template-columns: 1fr; }
       .siweb-process { grid-template-columns: 1fr; }
-      .siweb-cta-group { flex-direction: column; }
-      .siweb-btn { width: 100%; text-align: center; }
+      .siweb-cta-group { flex-direction: column; gap: 12px; margin-top: 1.5rem; }
+      .siweb-btn { width: 100%; text-align: center; padding: 14px 24px; font-size: 0.9rem; letter-spacing: 2px; }
+      .siweb-features { flex-direction: column; gap: 10px; margin-top: 1rem; }
+      .siweb-feature-tag { width: 100%; text-align: center; font-size: 0.85rem; padding: 8px 12px; }
     }
+
+    .siweb-split-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: start;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 769px) {
+      .siweb-split-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 480px);
+      }
+    }
+
+    .siweb-about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-top: 2rem;
+      align-items: start;
+    }
+
+    @media (min-width: 769px) {
+      .siweb-about-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
   

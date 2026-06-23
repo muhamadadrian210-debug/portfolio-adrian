@@ -5,7 +5,6 @@ import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { SiteEffects } from "@/components/runtime/SiteEffects";
 import { UmkmApplicationForm } from "@/components/siweb/UmkmApplicationForm";
-import { ShowcaseSection } from "./siweb/page";
 
 const pricingPackages = [
   {
@@ -63,7 +62,6 @@ const pricingPackages = [
 ];
 
 export default function Home() {
-  const [selectedDemo, setSelectedDemo] = useState<any | null>(null);
 
   return (
     <div className="page-wrapper">
@@ -95,8 +93,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* WEBSITE DEMO SHOWCASE */}
-        <ShowcaseSection onOpenModal={(project) => setSelectedDemo(project)} />
 
         {/* PRICING SECTION */}
         <section className="siweb-section" id="pricing" style={{ background: "#080808" }}>
@@ -144,7 +140,7 @@ export default function Home() {
           <div className="container">
             <span className="siweb-section-label">Program UMKM</span>
             <h2 className="siweb-section-title">Program Digitalisasi UMKM Gratis (Kuota 1 Slot Per Bulan)</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(280px, 480px)", gap: 32, alignItems: "start", marginTop: "2rem" }}>
+            <div className="siweb-split-grid">
               <div>
                 <p style={{ color: "var(--color-body)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "1rem" }}>
                   Setiap bulannya, SiWeb membuka 1 slot gratis pembuatan website untuk pelaku usaha lokal yang siap kami bantu petakan masalah operasionalnya untuk dijadikan studi kasus portfolio kami.

@@ -81,7 +81,6 @@ export default function SiwebPage() {
       <SiwebNavbar />
       <main id="main-content">
         <HeroSection />
-        <ShowcaseSection onOpenModal={() => {}} />
         <PricingSection />
         <UmkmProgramSection />
         <AboutSection />
@@ -172,7 +171,7 @@ function UmkmProgramSection() {
       <div className="container">
         <span className="siweb-section-label">Program UMKM</span>
         <h2 className="siweb-section-title">Program Digitalisasi UMKM Gratis (Kuota 1 Slot Per Bulan)</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(280px, 480px)", gap: 32, alignItems: "start", marginTop: "2rem" }}>
+        <div className="siweb-split-grid">
           <div>
             <p style={{ color: "var(--color-body)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "1rem" }}>
               Setiap bulannya, Sivilize membuka 1 slot gratis pembuatan website untuk pelaku usaha lokal yang siap kami bantu petakan masalah operasionalnya untuk dijadikan studi kasus portfolio kami.
@@ -194,7 +193,7 @@ function AboutSection() {
       <div className="container">
         <span className="siweb-section-label">Tentang SiWeb</span>
         <h2 className="siweb-section-title">Website sederhana yang bantu usaha terlihat lebih dipercaya.</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, marginTop: "2rem", alignItems: "start" }}>
+        <div className="siweb-about-grid">
           <div>
             <p style={{ color: "var(--color-body)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "1rem" }}>
               SiWeb Production adalah layanan pembuatan website untuk usaha lokal yang ingin punya halaman resmi, harga jelas, dan proses yang tidak ribet.

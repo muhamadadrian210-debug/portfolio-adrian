@@ -6,9 +6,9 @@ export function SiwebNavbar() {
           SiWeb by Sivilize
         </a>
         <nav style={{ display: "flex", gap: 20 }}>
-          <a href="#showcase" style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem", fontWeight: 600 }}>Showcase Demo</a>
-          <a href="#pricing" style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem", fontWeight: 600 }}>Harga</a>
-          <a href="#umkm-gratis" style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem", fontWeight: 600 }}>Program Gratis</a>
+          <a href="/demo" style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem", fontWeight: 600 }}>Showcase Demo</a>
+          <a href="/#pricing" style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem", fontWeight: 600 }}>Harga</a>
+          <a href="/#umkm-gratis" style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem", fontWeight: 600 }}>Program Gratis</a>
         </nav>
       </div>
     </header>

@@ -801,8 +801,9 @@ function PreviewStyles() {
       .preview-header span { color: var(--color-primary); text-transform: uppercase; letter-spacing: 4px; font-size: .82rem; font-weight: 800; }
       .preview-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin: .5rem 0 1rem; }
       .preview-header p { max-width: 760px; margin: 0 auto; color: var(--color-body); font-size: 1.05rem; line-height: 1.7; }
-      .preview-builder-grid { display: grid; grid-template-columns: minmax(360px, 520px) minmax(720px, 1fr); gap: 44px; align-items: start; }
+      .preview-builder-grid { display: grid; grid-template-columns: 1fr; gap: 44px; align-items: start; }
       .preview-form-panel, .budget-breakdown { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.07); border-radius: 12px; padding: 28px; }
+      .preview-form-panel { width: min(100%, 980px); margin-inline: auto; }
       .preview-form-panel h2 { font-size: 1.15rem; margin: 0 0 24px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.06); }
       .preview-form { display: grid; gap: 22px; }
       .preview-form label { display: block; color: #f8fafc; font-size: .9rem; font-weight: 700; margin-bottom: 9px; }
@@ -819,7 +820,7 @@ function PreviewStyles() {
       .preview-budget-grid small { color: var(--color-body); font-size: .72rem; margin-top: 3px; }
       .preview-submit { border: 0; border-radius: 6px; background: var(--color-primary); color: #fff; padding: 17px 20px; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; cursor: pointer; }
       .preview-submit:disabled { opacity: .68; cursor: wait; }
-      .preview-output-panel { min-width: 0; }
+      .preview-output-panel { min-width: 0; width: 100%; }
       .preview-state, .preview-idle, .preview-error { min-height: 360px; display: grid; place-items: center; text-align: center; gap: 12px; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.07); border-radius: 12px; padding: 34px; }
       .preview-state p, .preview-idle p, .preview-error p { max-width: 440px; color: var(--color-body); margin: 0; }
       .preview-spinner { width: 48px; height: 48px; border-radius: 50%; border: 3px solid rgba(79,70,229,.2); border-top-color: var(--color-primary); animation: preview-spin 1s linear infinite; }

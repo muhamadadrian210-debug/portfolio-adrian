@@ -7,6 +7,7 @@ import { SiteEffects } from "@/components/runtime/SiteEffects";
 
 type BusinessType = "cafe" | "clinic" | "barbershop" | "laundry" | "workshop" | "company" | "hotel" | "school";
 type BudgetTier = "starter" | "growth" | "premium";
+type PreviewDevice = "desktop" | "tablet" | "mobile";
 
 type PreviewSection = {
   type: "menu" | "services" | "gallery" | "schedule" | "pricing" | "portfolio" | "facilities" | "testimonials" | "location" | "cta";
@@ -359,10 +360,19 @@ function IdleState({ industry }: { industry: IndustryConfig }) {
 
 function PreviewResult({ concept, industry }: { concept: PreviewConcept; industry: IndustryConfig }) {
   const palette = concept.colorPalette;
+  const [device, setDevice] = useState<PreviewDevice>("desktop");
 
   return (
     <div className="preview-result">
-      <div className="browser-frame">
+      <div className="device-toolbar" aria-label="Pilih tampilan preview">
+        {(["desktop", "tablet", "mobile"] as PreviewDevice[]).map((item) => (
+          <button key={item} type="button" className={device === item ? "is-active" : ""} onClick={() => setDevice(item)}>
+            {item === "desktop" ? "Desktop" : item === "tablet" ? "Tablet" : "Mobile"}
+          </button>
+        ))}
+      </div>
+
+      <div className={`browser-frame device-${device}`}>
         <div className="browser-bar">
           <span />
           <span />
@@ -384,6 +394,7 @@ function PreviewResult({ concept, industry }: { concept: PreviewConcept; industr
         >
           <SiteNav concept={concept} industry={industry} />
           <IndustryHero concept={concept} industry={industry} />
+          <DesignReasonBand concept={concept} industry={industry} />
           <IndustrySections concept={concept} industry={industry} />
         </article>
       </div>
@@ -623,6 +634,29 @@ function AboutBand({ concept }: { concept: PreviewConcept }) {
   );
 }
 
+function DesignReasonBand({ concept, industry }: { concept: PreviewConcept; industry: IndustryConfig }) {
+  const deviceNote: Record<BudgetTier, string> = {
+    starter: "Budget starter dibuat fokus ke halaman pertama, info penting, dan CTA yang cepat ditemukan.",
+    growth: "Budget menengah memberi ruang untuk galeri, bukti sosial, dan detail layanan yang lebih meyakinkan.",
+    premium: "Budget premium dibuat lebih kaya dengan komposisi visual, section berlapis, dan alur konversi yang lebih matang.",
+  };
+
+  return (
+    <section className="design-reason-band">
+      <div>
+        <span>Mengapa desain ini dipilih?</span>
+        <h3>{industry.label} butuh kesan pertama yang sesuai kebiasaan calon pelanggan.</h3>
+      </div>
+      <p>{concept.designDirection} {deviceNote[concept.budgetTier]}</p>
+      <ul>
+        <li>Visual utama memakai konteks {concept.hero.visualLabel.toLowerCase()} agar preview tidak terasa kosong.</li>
+        <li>CTA “{concept.hero.cta}” dipilih karena paling dekat dengan aksi pelanggan kategori ini.</li>
+        <li>Section disusun dari kebutuhan nyata: {concept.sections.slice(0, 3).map((section) => section.title.toLowerCase()).join(", ")}.</li>
+      </ul>
+    </section>
+  );
+}
+
 function CardGrid({ sections, compact = false }: { sections: PreviewSection[]; compact?: boolean }) {
   return (
     <div className={compact ? "industry-card-grid compact" : "industry-card-grid"}>
@@ -793,7 +827,12 @@ function PreviewStyles() {
       .preview-idle-visual { width: min(100%, 460px); height: 210px; border-radius: 10px; background-size: cover; background-position: center; display: flex; align-items: end; padding: 18px; }
       .preview-idle-visual span { background: rgba(0,0,0,.56); color: #fff; padding: 8px 10px; border-radius: 6px; font-weight: 800; }
       .preview-result { display: grid; gap: 28px; width: 100%; }
-      .browser-frame { border: 1px solid rgba(255,255,255,.1); border-radius: 12px; overflow: hidden; background: #111827; box-shadow: 0 28px 70px rgba(0,0,0,.42); }
+      .device-toolbar { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; background: rgba(255,255,255,.025); width: fit-content; margin-inline: auto; }
+      .device-toolbar button { border: 1px solid rgba(255,255,255,.08); border-radius: 7px; background: transparent; color: var(--color-body); padding: 9px 14px; font-weight: 800; cursor: pointer; }
+      .device-toolbar button.is-active { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+      .browser-frame { border: 1px solid rgba(255,255,255,.1); border-radius: 12px; overflow: hidden; background: #111827; box-shadow: 0 28px 70px rgba(0,0,0,.42); width: 100%; margin-inline: auto; transition: max-width .25s ease; }
+      .browser-frame.device-tablet { max-width: 820px; }
+      .browser-frame.device-mobile { max-width: 390px; border-radius: 26px; }
       .browser-bar { display: grid; grid-template-columns: 10px 10px 10px 1fr; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(0,0,0,.62); }
       .browser-bar span { width: 10px; height: 10px; border-radius: 50%; background: #ef4444; }
       .browser-bar span:nth-child(2) { background: #eab308; }
@@ -848,6 +887,13 @@ function PreviewStyles() {
       .tier-starter .hero-copy h2 { font-size: clamp(2rem, 3vw, 3.35rem); }
       .tier-premium .industry-hero { min-height: 610px; }
       .section-flow { padding: 26px; display: grid; gap: 24px; }
+      .design-reason-band { display: grid; grid-template-columns: .9fr 1fr; gap: 18px; align-items: start; padding: 26px; background: color-mix(in srgb, var(--preview-primary) 9%, var(--preview-bg)); border-top: 1px solid color-mix(in srgb, var(--preview-primary) 18%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--preview-primary) 18%, transparent); }
+      .design-reason-band span { display: block; color: var(--preview-primary); text-transform: uppercase; letter-spacing: 1.4px; font-size: .72rem; font-weight: 900; margin-bottom: 8px; }
+      .design-reason-band h3, .design-reason-band p { margin: 0; }
+      .design-reason-band p { color: var(--preview-muted); line-height: 1.65; }
+      .design-reason-band ul { display: grid; gap: 8px; grid-column: 1 / -1; margin: 0; padding: 0; }
+      .design-reason-band li { color: var(--preview-text); font-size: .9rem; line-height: 1.45; padding-left: 18px; position: relative; }
+      .design-reason-band li:before { content: ""; position: absolute; left: 0; top: .62em; width: 7px; height: 7px; border-radius: 50%; background: var(--preview-accent); }
       .about-band { display: grid; gap: 8px; padding: 24px; background: var(--preview-surface); border-left: 5px solid var(--preview-primary); }
       .about-band span { color: var(--preview-primary); font-weight: 900; text-transform: uppercase; font-size: .7rem; letter-spacing: 1px; }
       .about-band h3, .about-band p { margin: 0; }
@@ -889,6 +935,30 @@ function PreviewStyles() {
       .excluded li:before { background: #ef4444; }
       .whatsapp-cta { display: block; text-align: center; margin-top: 24px; background: #25d366; color: #fff; border-radius: 8px; padding: 16px; text-transform: uppercase; letter-spacing: 1.8px; font-weight: 900; }
       .budget-breakdown > small { display: block; color: var(--color-body); text-align: center; margin-top: 13px; line-height: 1.5; }
+      .device-tablet .website-canvas { min-height: 700px; }
+      .device-tablet .industry-hero { grid-template-columns: 1fr; min-height: 470px; padding: 40px; }
+      .device-tablet .clinic-visual, .device-tablet .company-panel, .device-tablet .school-photo { min-height: 260px; }
+      .device-tablet .hero-copy h2 { font-size: clamp(2.1rem, 5vw, 3.2rem); }
+      .device-tablet .gallery-rail, .device-tablet .portfolio-layout, .device-tablet .design-reason-band { grid-template-columns: 1fr; }
+      .device-mobile .browser-bar { grid-template-columns: 8px 8px 8px 1fr; padding: 10px 12px; }
+      .device-mobile .browser-bar span { width: 8px; height: 8px; }
+      .device-mobile .browser-bar div { font-size: 9px; }
+      .device-mobile .website-canvas { min-height: 720px; }
+      .device-mobile .site-preview-nav { align-items: flex-start; flex-direction: column; padding: 16px; gap: 10px; }
+      .device-mobile .site-preview-nav div { flex-wrap: wrap; gap: 10px; font-size: .68rem; }
+      .device-mobile .industry-hero, .device-mobile .cafe-hero, .device-mobile .clinic-hero, .device-mobile .laundry-hero, .device-mobile .workshop-hero, .device-mobile .company-hero, .device-mobile .school-hero { grid-template-columns: 1fr; min-height: auto; padding: 24px; }
+      .device-mobile .hero-copy h2 { font-size: 2.05rem; }
+      .device-mobile .hero-copy p { font-size: .9rem; }
+      .device-mobile .hero-actions { flex-direction: column; }
+      .device-mobile .hero-actions button { width: 100%; }
+      .device-mobile .menu-ticket, .device-mobile .service-board { width: 100%; }
+      .device-mobile .clinic-visual, .device-mobile .company-panel, .device-mobile .school-photo { min-height: 210px; }
+      .device-mobile .laundry-stack { gap: 8px; }
+      .device-mobile .laundry-stack span { transform: none !important; padding: 13px; }
+      .device-mobile .booking-strip, .device-mobile .gallery-rail, .device-mobile .portfolio-layout, .device-mobile .budget-meta, .device-mobile .feature-columns, .device-mobile .design-reason-band { grid-template-columns: 1fr; }
+      .device-mobile .section-flow { padding: 18px; }
+      .device-mobile .design-reason-band, .device-mobile .about-band, .device-mobile .industry-section-card, .device-mobile .preview-site-cta { padding: 18px; }
+      .device-mobile .preview-site-cta { align-items: stretch; flex-direction: column; }
       @keyframes preview-spin { to { transform: rotate(360deg); } }
       @media (max-width: 1180px) {
         .preview-builder-grid { grid-template-columns: 1fr; }

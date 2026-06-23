@@ -360,69 +360,16 @@ function IdleState({ industry }: { industry: IndustryConfig }) {
 
 function PreviewResult({ concept, industry }: { concept: PreviewConcept; industry: IndustryConfig }) {
   const palette = concept.colorPalette;
-  const visibleDevices = useVisiblePreviewDevices();
-  const canvasStyle = {
-    "--preview-primary": palette.primary,
-    "--preview-secondary": palette.secondary,
-    "--preview-accent": palette.accent,
-    "--preview-bg": palette.background,
-    "--preview-surface": palette.surface,
-    "--preview-text": palette.text,
-    "--preview-muted": palette.muted,
-  } as React.CSSProperties;
+  const [device, setDevice] = useState<PreviewDevice>("desktop");
 
   return (
     <div className="preview-result">
-      <div className={`device-layer-stack layer-count-${visibleDevices.length}`}>
-        {visibleDevices.map((device) => (
-          <DevicePreviewFrame key={device} concept={concept} industry={industry} device={device} canvasStyle={canvasStyle} />
+      <div className="device-toolbar" aria-label="Pilih tampilan preview">
+        {(["desktop", "tablet", "mobile"] as PreviewDevice[]).map((item) => (
+          <button key={item} type="button" className={device === item ? "is-active" : ""} onClick={() => setDevice(item)}>
+            {item === "desktop" ? "Desktop" : item === "tablet" ? "Tablet" : "Mobile"}
+          </button>
         ))}
-      </div>
-
-      <BudgetBreakdown concept={concept} />
-    </div>
-  );
-}
-
-function useVisiblePreviewDevices() {
-  const [devices, setDevices] = useState<PreviewDevice[]>([]);
-
-  useEffect(() => {
-    function updateDevices() {
-      const width = window.innerWidth;
-      if (width < 768) {
-        setDevices(["mobile"]);
-      } else if (width < 1180) {
-        setDevices(["tablet", "mobile"]);
-      } else {
-        setDevices(["desktop", "tablet", "mobile"]);
-      }
-    }
-
-    updateDevices();
-    window.addEventListener("resize", updateDevices);
-    return () => window.removeEventListener("resize", updateDevices);
-  }, []);
-
-  return devices;
-}
-
-function DevicePreviewFrame({
-  concept,
-  industry,
-  device,
-  canvasStyle,
-}: {
-  concept: PreviewConcept;
-  industry: IndustryConfig;
-  device: PreviewDevice;
-  canvasStyle: React.CSSProperties;
-}) {
-  return (
-    <section className={`device-layer device-layer-${device}`}>
-      <div className="device-layer-label">
-        <span>{device === "desktop" ? "Desktop Preview" : device === "tablet" ? "Tablet Preview" : "Mobile Preview"}</span>
-        <small>{device === "desktop" ? "1440px" : device === "tablet" ? "768px" : "390px"}</small>
       </div>
 
       <div className={`browser-frame device-${device}`}>
@@ -433,14 +380,27 @@ function DevicePreviewFrame({
           <div>https://{slugify(concept.websiteName)}.siweb.id</div>
         </div>
 
-        <article className={`website-canvas ${industry.heroClass} tier-${concept.budgetTier}`} style={canvasStyle}>
+        <article
+          className={`website-canvas ${industry.heroClass} tier-${concept.budgetTier}`}
+          style={{
+            "--preview-primary": palette.primary,
+            "--preview-secondary": palette.secondary,
+            "--preview-accent": palette.accent,
+            "--preview-bg": palette.background,
+            "--preview-surface": palette.surface,
+            "--preview-text": palette.text,
+            "--preview-muted": palette.muted,
+          } as React.CSSProperties}
+        >
           <SiteNav concept={concept} industry={industry} />
           <IndustryHero concept={concept} industry={industry} />
           <DesignReasonBand concept={concept} industry={industry} />
           <IndustrySections concept={concept} industry={industry} />
         </article>
       </div>
-    </section>
+
+      <BudgetBreakdown concept={concept} />
+    </div>
   );
 }
 
@@ -867,14 +827,9 @@ function PreviewStyles() {
       .preview-idle-visual { width: min(100%, 460px); height: 210px; border-radius: 10px; background-size: cover; background-position: center; display: flex; align-items: end; padding: 18px; }
       .preview-idle-visual span { background: rgba(0,0,0,.56); color: #fff; padding: 8px 10px; border-radius: 6px; font-weight: 800; }
       .preview-result { display: grid; gap: 28px; width: 100%; }
-      .device-layer-stack { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 390px); gap: 22px; align-items: start; }
-      .device-layer-stack.layer-count-1 { grid-template-columns: minmax(0, 1fr); }
-      .device-layer-stack.layer-count-2 { grid-template-columns: minmax(0, 820px) minmax(300px, 390px); justify-content: center; }
-      .device-layer { min-width: 0; display: grid; gap: 10px; }
-      .device-layer-desktop { grid-column: 1 / -1; }
-      .device-layer-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #fff; }
-      .device-layer-label span { font-weight: 900; text-transform: uppercase; letter-spacing: 1.4px; font-size: .78rem; }
-      .device-layer-label small { color: var(--color-body); font-family: var(--font-mono); font-size: .72rem; }
+      .device-toolbar { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; background: rgba(255,255,255,.025); width: fit-content; margin-inline: auto; }
+      .device-toolbar button { border: 1px solid rgba(255,255,255,.08); border-radius: 7px; background: transparent; color: var(--color-body); padding: 9px 14px; font-weight: 800; cursor: pointer; }
+      .device-toolbar button.is-active { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
       .browser-frame { border: 1px solid rgba(255,255,255,.1); border-radius: 12px; overflow: hidden; background: #111827; box-shadow: 0 28px 70px rgba(0,0,0,.42); width: 100%; margin-inline: auto; transition: max-width .25s ease; }
       .browser-frame.device-tablet { max-width: 820px; }
       .browser-frame.device-mobile { max-width: 390px; border-radius: 26px; }
@@ -1007,7 +962,6 @@ function PreviewStyles() {
       @keyframes preview-spin { to { transform: rotate(360deg); } }
       @media (max-width: 1180px) {
         .preview-builder-grid { grid-template-columns: 1fr; }
-        .device-layer-stack, .device-layer-stack.layer-count-2 { grid-template-columns: minmax(0, 1fr); justify-content: stretch; }
         .industry-hero, .cafe-hero, .clinic-hero, .laundry-hero, .workshop-hero, .company-hero, .school-hero { grid-template-columns: 1fr; }
         .clinic-visual, .company-panel, .school-photo { min-height: 250px; }
       }

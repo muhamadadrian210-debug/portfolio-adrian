@@ -1,527 +1,540 @@
 import { NextResponse } from "next/server";
 
+type BusinessType =
+  | "cafe"
+  | "clinic"
+  | "barbershop"
+  | "laundry"
+  | "workshop"
+  | "company"
+  | "hotel"
+  | "school";
+
+type BudgetTier = "starter" | "growth" | "premium";
+
+type PreviewSection = {
+  type: "menu" | "services" | "gallery" | "schedule" | "pricing" | "portfolio" | "facilities" | "testimonials" | "location" | "cta";
+  title: string;
+  description: string;
+  items: string[];
+};
+
+type PreviewConcept = {
+  businessType: BusinessType;
+  budgetTier: BudgetTier;
+  websiteName: string;
+  targetAudience: string;
+  designDirection: string;
+  visualKeywords: string[];
+  colorPalette: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    background: string;
+    surface: string;
+    text: string;
+    muted: string;
+  };
+  typographyStyle: string;
+  hero: {
+    eyebrow: string;
+    headline: string;
+    subheadline: string;
+    cta: string;
+    secondaryCta: string;
+    visualLabel: string;
+  };
+  about: {
+    title: string;
+    body: string;
+  };
+  sections: PreviewSection[];
+  featuresIncluded: string[];
+  featuresExcluded: string[];
+  recommendedPackage: string;
+  estimatedTimeline: string;
+  complexityLevel: "Rendah" | "Sedang" | "Tinggi";
+  budgetExplanation: string;
+  whatsappMessage: string;
+};
+
+type RequestBody = {
+  businessName?: string;
+  businessDesc?: string;
+  location?: string;
+  businessType?: string;
+  budget?: string;
+  customBudget?: string;
+};
+
+const BUSINESS_TYPES: BusinessType[] = ["cafe", "clinic", "barbershop", "laundry", "workshop", "company", "hotel", "school"];
+
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { businessName, businessDesc, location, businessType, budget, customBudget } = body;
+    const body = (await req.json()) as RequestBody;
+    const params = normalizeParams(body);
 
-    if (!businessName || !businessDesc || !businessType || !budget) {
+    if (!params.businessName || !params.businessDesc || !params.businessType || !params.budget) {
       return NextResponse.json({ error: "Kolom nama, deskripsi, jenis bisnis, dan budget wajib diisi." }, { status: 400 });
     }
 
     const apiKey = process.env.GEMINI_API_KEY;
-
-    let conceptData;
+    const fallbackConcept = generateFallbackConcept(params);
+    let conceptData: PreviewConcept | null = null;
 
     if (apiKey) {
-      conceptData = await generateWithGemini(apiKey, {
-        businessName,
-        businessDesc,
-        location: location || "Indonesia",
-        businessType,
-        budget,
-        customBudget,
-      });
+      conceptData = await generateWithGemini(apiKey, params, fallbackConcept);
     }
 
-    // Fallback if no apiKey or Gemini generation failed/returned invalid data
-    if (!conceptData) {
-      conceptData = generateFallbackConcept({
-        businessName,
-        businessDesc,
-        location: location || "Indonesia",
-        businessType,
-        budget,
-        customBudget,
-      });
-    }
-
-    return NextResponse.json(conceptData);
-  } catch (error: any) {
+    return NextResponse.json(conceptData ?? fallbackConcept);
+  } catch (error) {
     console.error("API error in website-preview:", error);
     return NextResponse.json({ error: "Gagal memproses analisis konsep website. Silakan coba lagi." }, { status: 500 });
   }
 }
 
+function normalizeParams(body: RequestBody) {
+  const businessType = BUSINESS_TYPES.includes(body.businessType as BusinessType) ? (body.businessType as BusinessType) : "company";
+
+  return {
+    businessName: cleanText(body.businessName || ""),
+    businessDesc: cleanText(body.businessDesc || ""),
+    location: cleanText(body.location || "Indonesia"),
+    businessType,
+    budget: body.budget || "1500000",
+    customBudget: body.customBudget,
+  };
+}
+
+function cleanText(value: string) {
+  return value.trim().replace(/\s+/g, " ").slice(0, 420);
+}
+
 function formatBudgetText(budget: string, customBudget?: string) {
   if (budget === "custom" && customBudget) {
-    return `Rp ${parseInt(customBudget).toLocaleString("id-ID")}`;
+    return `Rp ${parseBudget(customBudget).toLocaleString("id-ID")}`;
   }
-  const numericBudget = parseInt(budget);
-  if (isNaN(numericBudget)) return `Rp ${budget}`;
-  return `Rp ${numericBudget.toLocaleString("id-ID")}`;
+
+  return `Rp ${parseBudget(budget).toLocaleString("id-ID")}`;
 }
 
-async function generateWithGemini(apiKey: string, params: any) {
-  const { businessName, businessDesc, location, businessType, budget, customBudget } = params;
-  const formattedBudget = formatBudgetText(budget, customBudget);
+function parseBudget(value?: string) {
+  const parsed = Number.parseInt(value || "0", 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : 1500000;
+}
+
+function getBudgetTier(budget: string, customBudget?: string): BudgetTier {
+  const amount = budget === "custom" ? parseBudget(customBudget) : parseBudget(budget);
+  if (amount < 1500000) return "starter";
+  if (amount <= 4000000) return "growth";
+  return "premium";
+}
+
+async function generateWithGemini(
+  apiKey: string,
+  params: ReturnType<typeof normalizeParams>,
+  fallbackConcept: PreviewConcept,
+): Promise<PreviewConcept | null> {
+  const formattedBudget = formatBudgetText(params.budget, params.customBudget);
 
   const prompt = `
-Anda adalah konsultan copywriter dan desainer web profesional khusus UMKM di Indonesia.
-Tugas Anda adalah menyusun rencana konsep website yang realistis, natural (bukan gaya AI generik), dan meyakinkan untuk bisnis berikut:
-- Nama Bisnis: ${businessName}
-- Deskripsi: ${businessDesc}
-- Lokasi: ${location}
-- Kategori Bisnis: ${businessType}
-- Target Budget Klien: ${formattedBudget}
+Anda adalah strategist website UMKM Indonesia. Revisi konsep berikut agar copywriting terasa spesifik untuk bisnis, bukan template AI.
 
-Aturan Penting Pembuatan Konten:
-1. Copywriting harus natural, manusiawi, hangat, dan spesifik untuk industri ini. Jangan pakai jargon kosong seperti "solusi terbaik", "kualitas tinggi", "teknologi mutakhir".
-2. Sesuaikan gaya bahasa dan konten berdasarkan industri:
-   - cafe: Fokus pada menu, jam buka, suasana tempat, CTA reservasi/order.
-   - clinic: Bersih, profesional, jadwal dokter, daftar layanan kesehatan, kontak darurat.
-   - barbershop: Maskulin, bold, daftar harga potong, galeri hasil, booking.
-   - laundry: Sederhana, praktis, info harga per kilo, pickup-delivery, WhatsApp order.
-   - workshop: Tangguh, mekanis, list layanan, suku cadang, booking antrean.
-   - company: Elegan, profesional, keunggulan, tim/profil singkat, kontak resmi.
-3. Kustomisasi berdasarkan budget:
-   - Budget Rendah (< Rp 1.500.000): Sederhana 1 halaman, fitur dasar, timeline cepat (7 hari).
-   - Budget Menengah (Rp 1.500.000 - Rp 4.000.000): Landing page premium, beberapa bagian, galeri, testimoni, timeline 10-14 hari.
-   - Budget Tinggi (> Rp 4.000.000): Website lengkap multi-page/multi-section premium, CMS/katalog, sistem booking, integrasi penuh, timeline 3-5 minggu.
+Data bisnis:
+- Nama: ${params.businessName}
+- Deskripsi: ${params.businessDesc}
+- Lokasi: ${params.location}
+- Kategori: ${params.businessType}
+- Budget: ${formattedBudget}
 
-Berikan output dalam format JSON valid dengan schema berikut tanpa markdown block (\`\`\`json) atau teks pembuka/penutup lainnya:
-{
-  "businessType": "${businessType}",
-  "websiteName": "${businessName}",
-  "targetAudience": "audiens target spesifik",
-  "designDirection": "arah desain visual dan mood",
-  "colorPalette": {
-    "primary": "warna utama (hex)",
-    "secondary": "warna sekunder (hex)",
-    "accent": "warna aksen (hex)",
-    "background": "warna background bersih (hex)",
-    "text": "warna text gelap/terang kontras (hex)"
-  },
-  "typographyStyle": "gaya font (e.g. Modern Minimalist, Warm Classic, Bold Tech, Clean Corporate)",
-  "hero": {
-    "headline": "headline spesifik yang memikat",
-    "subheadline": "subheadline detail dan membumi",
-    "cta": "label tombol cta utama"
-  },
-  "about": {
-    "title": "judul bagian tentang kami",
-    "body": "narasi singkat yang ramah dan spesifik tentang bisnis ini"
-  },
-  "sections": [
-    {
-      "type": "layout section (pilih dari: split-hero, centered-hero, image-placeholder, editorial, service-grid, horizontal-feature, testimonial-strip, stats, cta-block, contact-card)",
-      "title": "judul section",
-      "description": "deskripsi singkat section",
-      "items": ["daftar poin atau fitur spesifik, minimal 3 item"]
-    }
-  ],
-  "featuresIncluded": ["fitur yang didapat untuk budget ini"],
-  "featuresExcluded": ["fitur yang belum didapat untuk budget ini, yang bisa di-upgrade jika budget ditambah"],
-  "recommendedPackage": "nama paket yang direkomendasikan",
-  "estimatedTimeline": "perkiraan waktu pengerjaan",
-  "complexityLevel": "Rendah | Sedang | Tinggi",
-  "budgetExplanation": "penjelasan logis mengapa budget ini cocok dan apa yang membedakannya dengan budget lain",
-  "whatsappMessage": "pesan otomatis whatsapp untuk konsultasi"
-}
+Aturan:
+1. Jangan memakai frasa generik seperti "solusi terbaik", "layanan berkualitas", "profesional terpercaya", atau "terdepan".
+2. Pertahankan kategori dan budgetTier dari JSON awal.
+3. Tulis CTA sesuai industri: cafe reservasi/order, klinik konsultasi, barbershop booking, laundry order laundry, bengkel booking servis, company konsultasi, hotel pesan kamar, sekolah daftar.
+4. Section harus relevan dengan industri dan budget. Budget starter sederhana, growth lebih lengkap, premium terasa lebih kaya.
+5. Output hanya JSON valid. Jangan markdown.
+
+JSON awal yang harus diperkaya tanpa mengubah struktur:
+${JSON.stringify(fallbackConcept)}
 `;
 
   try {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-    const response = await fetch(url, {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              {
-                text: prompt,
-              },
-            ],
-          },
-        ],
+        contents: [{ parts: [{ text: prompt }] }],
         generationConfig: {
           responseMimeType: "application/json",
-          temperature: 0.7,
+          temperature: 0.55,
         },
       }),
     });
 
     if (!response.ok) {
-      console.warn("Gemini API call failed:", response.statusText);
+      console.warn("Gemini API call failed:", response.status, response.statusText);
       return null;
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as { candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }> };
     const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
     if (!text) return null;
 
-    return JSON.parse(text.trim());
-  } catch (err) {
-    console.warn("Failed to parse or generate with Gemini:", err);
+    return coerceConcept(JSON.parse(text), fallbackConcept);
+  } catch (error) {
+    console.warn("Failed to parse or generate with Gemini:", error);
     return null;
   }
 }
 
-function generateFallbackConcept(params: any) {
-  const { businessName, businessDesc, location, businessType, budget, customBudget } = params;
-  const formattedBudget = formatBudgetText(budget, customBudget);
+function coerceConcept(value: unknown, fallback: PreviewConcept): PreviewConcept | null {
+  if (!value || typeof value !== "object") return null;
 
-  const numericBudget = budget === "custom" ? parseInt(customBudget || "0") : parseInt(budget);
-
-  // Default color palettes based on business type
-  let colorPalette = {
-    primary: "#4f46e5",
-    secondary: "#0ea5e9",
-    accent: "#f59e0b",
-    background: "#0b0f19",
-    text: "#f8fafc",
-  };
-
-  let typographyStyle = "Modern Minimalist";
-  let designDirection = "Desain modern, clean, dan responsif.";
-
-  if (businessType === "cafe") {
-    colorPalette = {
-      primary: "#854d0e", // Warm brown/coffee
-      secondary: "#ca8a04",
-      accent: "#b45309",
-      background: "#0f0d0a",
-      text: "#fdf8f2",
-    };
-    typographyStyle = "Warm Serif & Clean Sans";
-    designDirection = "Estetika cafe hangat, mengedepankan foto menu makanan dan minuman.";
-  } else if (businessType === "clinic") {
-    colorPalette = {
-      primary: "#0d9488", // Clean teal
-      secondary: "#0284c7",
-      accent: "#0f766e",
-      background: "#f8fafc",
-      text: "#0f172a",
-    };
-    typographyStyle = "Clean Sans-Serif";
-    designDirection = "Tampilan bersih, steril, terpercaya, dan profesional medis.";
-  } else if (businessType === "barbershop") {
-    colorPalette = {
-      primary: "#1e293b", // Slate / Gold accent
-      secondary: "#b45309",
-      accent: "#ca8a04",
-      background: "#080b11",
-      text: "#f1f5f9",
-    };
-    typographyStyle = "Bold Editorial Mono";
-    designDirection = "Gaya maskulin, retro-modern, kontras tinggi dan bold.";
-  } else if (businessType === "laundry") {
-    colorPalette = {
-      primary: "#0284c7", // Sky blue
-      secondary: "#38bdf8",
-      accent: "#0ea5e9",
-      background: "#f0fdfa",
-      text: "#0f172a",
-    };
-    typographyStyle = "Rounded Friendly Sans";
-    designDirection = "Nuansa segar, bersih, praktis dan ramah pelanggan.";
-  } else if (businessType === "workshop") {
-    colorPalette = {
-      primary: "#ea580c", // Industrial orange
-      secondary: "#475569",
-      accent: "#f97316",
-      background: "#0f172a",
-      text: "#f8fafc",
-    };
-    typographyStyle = "Industrial Sans-Serif";
-    designDirection = "Kesan kokoh, profesional, teknis dan dapat diandalkan.";
-  } else if (businessType === "company") {
-    colorPalette = {
-      primary: "#1e3a8a", // Navy corporate
-      secondary: "#0284c7",
-      accent: "#3b82f6",
-      background: "#020617",
-      text: "#f8fafc",
-    };
-    typographyStyle = "Clean Corporate & Sans";
-    designDirection = "Desain korporat premium, berorientasi bisnis dan reputasi tinggi.";
-  }
-
-  // Budget category logic
-  let featuresIncluded: string[] = [];
-  let featuresExcluded: string[] = [];
-  let estimatedTimeline = "7-10 Hari Kerja";
-  let recommendedPackage = "Paket Landing Page";
-  let complexityLevel = "Rendah";
-  let budgetExplanation = "";
-
-  if (numericBudget < 1500000) {
-    featuresIncluded = [
-      "1 Halaman Utama (Landing Page) Responsif",
-      "Integrasi Tombol WhatsApp untuk Pesanan",
-      "Peta Lokasi Google Maps Terintegrasi",
-      "Copywriting Dasar dari Informasi Usaha",
-      "Hosting & Domain Standar (.com atau Subdomain)",
-    ];
-    featuresExcluded = [
-      "Sistem Booking/Reservasi Online Otomatis",
-      "Halaman Admin (CMS) untuk Edit Mandiri",
-      "Halaman Produk Terpisah (Katalog Detail)",
-      "Advanced SEO Optimization & Statistik Pengunjung",
-    ];
-    recommendedPackage = "Paket Landing Page Kilat";
-    estimatedTimeline = "5-7 Hari Kerja";
-    complexityLevel = "Rendah";
-    budgetExplanation = "Budget ini sangat pas untuk usaha lokal yang baru memulai kehadiran digital. Kami merancang 1 halaman landing page taktis yang memuat informasi kontak penting, jam buka, dan peta lokasi yang ramah diakses dari HP.";
-  } else if (numericBudget <= 4000000) {
-    featuresIncluded = [
-      "Multi-Section Landing Page Premium",
-      "Galeri Produk/Galeri Foto Usaha (Grid Estetik)",
-      "Testimoni & Review Pelanggan",
-      "Formulir Kontak Kustom atau Formulir Order",
-      "Struktur SEO Dasar & Sertifikat Keamanan SSL",
-      "Revisi Tampilan hingga 3x",
-    ];
-    featuresExcluded = [
-      "Sistem Autentikasi / Akun Pelanggan",
-      "Integrasi Gateway Pembayaran Otomatis",
-      "Dashboard Admin Kompleks untuk Inventaris",
-    ];
-    recommendedPackage = "Paket Profil Usaha Premium";
-    estimatedTimeline = "10-14 Hari Kerja";
-    complexityLevel = "Sedang";
-    budgetExplanation = "Dengan budget ini, Anda mendapatkan layout multi-section yang dinamis. Ideal untuk menampilkan detail layanan, portofolio hasil kerja, review pelanggan, dan formulir pengisian data yang langsung terhubung ke WhatsApp.";
-  } else {
-    featuresIncluded = [
-      "Website Multi-Page Profesional (3-5 Halaman)",
-      "Katalog Produk atau Layanan Interaktif",
-      "Sistem Reservasi / Booking Tanggal Online",
-      "Halaman Admin Mandiri (CMS Sederhana) untuk Update Produk/Artikel",
-      "Advanced SEO Optimization (Riset Kata Kunci Lokal)",
-      "Integrasi Google Analytics & Pixel Pelacakan",
-    ];
-    featuresExcluded = [
-      "Sistem E-Commerce Skala Besar dengan Multi-Gudang",
-      "Integrasi Pengiriman Logistik Pihak Ketiga Real-time (membutuhkan API custom tambahan)",
-    ];
-    recommendedPackage = "Paket Sistem Bisnis & Ritel";
-    estimatedTimeline = "3-4 Minggu";
-    complexityLevel = "Tinggi";
-    budgetExplanation = "Budget premium ini memungkinkan kami membangun website bisnis seutuhnya. Dilengkapi katalog interaktif, sistem penjadwalan antrean/booking otomatis, dan halaman admin bagi Anda untuk mengupdate foto serta detail bisnis kapan saja secara mandiri.";
-  }
-
-  // Copywriting generator based on type and input
-  let headline = `Digitalisasi ${businessName} di ${location}`;
-  let subheadline = `Kami membantu menghadirkan layanan profesional ${businessName} langsung ke calon pelanggan Anda.`;
-  let cta = "HUBUNGI LEWAT WHATSAPP";
-  let aboutTitle = `Tentang ${businessName}`;
-  let aboutBody = `${businessName} berkomitmen memberikan pelayanan terbaik di ${location}. Didukung tim berpengalaman, kami memastikan kebutuhan bisnis Anda terpenuhi dengan standar kualitas tinggi.`;
-  let sections = [];
-
-  if (businessType === "cafe") {
-    headline = `Cita Rasa Autentik dari ${businessName}`;
-    subheadline = `Nikmati racikan kopi khas, makanan lezat, dan suasana santai yang cocok untuk berkumpul bersama teman di ${location}.`;
-    cta = "LIHAT MENU & RESERVASI";
-    aboutTitle = `Kisah Seduhan Kami`;
-    aboutBody = `Berawal dari kecintaan kami terhadap kopi lokal berkualitas, ${businessName} hadir di ${location} untuk menjadi ruang berkumpul hangat yang menyajikan kopi pilihan, teh premium, dan camilan rumahan yang dibuat segar setiap hari.`;
-    sections = [
-      {
-        type: "service-grid",
-        title: "Menu Terfavorit Kami",
-        description: "Hidangan kopi dan makanan yang paling sering dipesan oleh pelanggan setia kami.",
-        items: [
-          "Signature Es Kopi Susu Aren - Kopi espresso ganda dengan gula aren murni fatululi.",
-          "Classic Cappuccino - Espresso dengan foam susu tebal dan taburan bubuk cokelat premium.",
-          "Roti Bakar Cokelat Keju - Roti bakar empuk dengan isian cokelat lumer dan keju melimpah.",
-          "Kentang Goreng Bumbu - Kentang renyah berbalur bumbu gurih khusus cafe."
-        ]
-      },
-      {
-        type: "editorial",
-        title: "Suasana Hangat & Nyaman",
-        description: "Tempat ideal untuk bekerja remote (WFC), berkumpul keluarga, atau sekadar melepas penat.",
-        items: [
-          "Fasilitas Wi-Fi berkecepatan tinggi di seluruh area.",
-          "Tersedia area indoor ber-AC dan outdoor ramah asap rokok.",
-          "Live music akustik setiap akhir pekan mulai jam 19.00."
-        ]
-      }
-    ];
-  } else if (businessType === "clinic") {
-    headline = `Layanan Kesehatan Terpercaya di ${businessName}`;
-    subheadline = `Mengedepankan kenyamanan pasien dengan dokter ahli dan fasilitas medis modern di wilayah ${location}.`;
-    cta = "JADWALKAN KONSULTASI";
-    aboutTitle = `Dedikasi Kesehatan Anda`;
-    aboutBody = `${businessName} adalah klinik kesehatan keluarga yang berdiri di ${location}. Kami hadir untuk memberikan layanan medis primer terpadu dengan pendekatan yang ramah, profesional, dan mengutamakan pencegahan dini penyakit.`;
-    sections = [
-      {
-        type: "service-grid",
-        title: "Layanan Medis Utama",
-        description: "Pelayanan kesehatan lengkap yang ditangani langsung oleh dokter berlisensi.",
-        items: [
-          "Konsultasi Dokter Umum - Pemeriksaan fisik, diagnosis, dan peresepan obat terarah.",
-          "Klinik KIA (Kesehatan Ibu & Anak) - Konsultasi kehamilan, tumbuh kembang, dan imunisasi dasar.",
-          "Laboratorium Dasar - Cek darah rutin, kadar kolesterol, asam urat, dan gula darah cepat.",
-          "Nebulizer & Terapi Uap - Penanganan cepat sesak napas atau asma pada anak dan dewasa."
-        ]
-      },
-      {
-        type: "horizontal-feature",
-        title: "Jadwal Praktik Dokter",
-        description: "Informasi jam operasional layanan dokter keluarga kami.",
-        items: [
-          "Senin s/d Jumat: Pagi (08:00 - 12:00) & Sore (16:00 - 20:00)",
-          "Sabtu: Pagi (08:00 - 13:00), Minggu & Hari Libur Nasional Tutup",
-          "Layanan Pendaftaran Online dibuka H-1 melalui WhatsApp Resmi"
-        ]
-      }
-    ];
-  } else if (businessType === "barbershop") {
-    headline = `Tampil Maksimal Bersama ${businessName}`;
-    subheadline = `Potongan rambut pria premium, pijat rileks, dan perawatan janggut berkelas dari barber berpengalaman di ${location}.`;
-    cta = "BOOKING JADWAL SEKARANG";
-    aboutTitle = `Gentlemen's Corner`;
-    aboutBody = `Di ${businessName}, kami percaya bahwa potongan rambut adalah cerminan karakter pria. Kami menyediakan layanan cukur rambut kelas utama dengan peralatan steril, handuk hangat, dan pomade berkualitas untuk menunjang penampilan harian Anda.`;
-    sections = [
-      {
-        type: "service-grid",
-        title: "Daftar Harga & Layanan",
-        description: "Pilihan paket cukur rambut dan perawatan rambut pria terbaik.",
-        items: [
-          "Signature Haircut - Keramas, potong rambut kustom, pijat kepala, dan handuk hangat.",
-          "Kids Haircut - Cukur rambut anak dengan pendekatan sabar dan menyenangkan.",
-          "Beard Trim & Shave - Perapian janggut/kumis dengan krim cukur premium dan pijatan.",
-          "Hair Color & Bleaching - Pewarnaan rambut trendi menggunakan produk aman kulit kepala."
-        ]
-      },
-      {
-        type: "testimonial-strip",
-        title: "Apa Kata Klien Kami",
-        description: "Testimoni jujur dari pelanggan setia barbershop kami.",
-        items: [
-          "\"Barbernya ramah, potongan presisi, dan pijatannya juara banget!\" - Doni, Pekerja Swasta",
-          "\"Tempatnya bersih, wangi, AC dingin, dan tidak antre panjang kalau booking dulu.\" - Rian, Mahasiswa",
-          "\"Cukur rambut anak di sini sangat sabar, anak saya tidak menangis sama sekali.\" - Pak Budi, Orangtua"
-        ]
-      }
-    ];
-  } else if (businessType === "laundry") {
-    headline = `Cuci Rapi Bersih Harum Tanpa Ribet`;
-    subheadline = `Jasa laundry kiloan, satuan, dan antar-jemput express untuk area ${location} dan sekitarnya.`;
-    cta = "PESAN ANTAR-JEMPUT LAUNDRY";
-    aboutTitle = `Solusi Pakaian Bersih Anda`;
-    aboutBody = `${businessName} hadir meringankan beban cucian harian Anda. Kami menggunakan detergen ramah lingkungan, pewangi premium tahan lama, serta mesin cuci modern berteknologi tinggi untuk memastikan serat pakaian Anda tetap terjaga.`;
-    sections = [
-      {
-        type: "service-grid",
-        title: "Daftar Harga Kiloan & Satuan",
-        description: "Layanan laundry ekonomis dengan jaminan bersih dan rapi.",
-        items: [
-          "Cuci Setrika Kiloan (Reguler 3 Hari) - Rp 7.000 / Kg. Bersih, wangi, setrika uap rapi.",
-          "Cuci Setrika Express (1 Hari) - Rp 12.000 / Kg. Solusi darurat untuk baju besok.",
-          "Laundry Satuan Sprei & Bedcover - Mulai Rp 15.000 / Pcs. Bersih maksimal bebas tungau.",
-          "Layanan Cuci Sepatu & Tas - Pembersihan khusus noda membandel tanpa merusak bahan."
-        ]
-      },
-      {
-        type: "horizontal-feature",
-        title: "Ketentuan Antar-Jemput Gratis",
-        description: "Kemudahan laundry tanpa perlu keluar rumah di area operasional kami.",
-        items: [
-          "Gratis antar-jemput dengan minimal cucian 5 Kg untuk jarak di bawah 3 Km.",
-          "Pemesanan kurir pick-up bisa melalui chat WhatsApp sebelum jam 17:00 WITA.",
-          "Pakaian ditimbang langsung di lokasi penjemputan dengan timbangan digital akurat."
-        ]
-      }
-    ];
-  } else if (businessType === "workshop") {
-    headline = `Servis Kendaraan Terpercaya & Bergaransi`;
-    subheadline = `Perbaikan mesin mobil/motor, ganti oli, tune-up, dan suku cadang asli di ${location}.`;
-    cta = "HUBUNGI BENGKEL KAMI";
-    aboutTitle = `Mekanik Ahli Anda`;
-    aboutBody = `${businessName} adalah bengkel otomotif terpercaya di ${location}. Kami memiliki tim mekanik bersertifikat dan peralatan diagnosis komputer modern untuk menjamin mobil atau motor Anda kembali prima di jalan raya.`;
-    sections = [
-      {
-        type: "service-grid",
-        title: "Layanan Perbaikan Utama",
-        description: "Servis berkala dan perbaikan mekanik otomotif menyeluruh.",
-        items: [
-          "Tune-Up & Bersih Karburator/Injeksi - Mengembalikan tenaga mesin yang loyo agar hemat bahan bakar.",
-          "Ganti Oli & Filter - Pilihan oli mesin motor/mobil bergaransi asli dari produsen resmi.",
-          "Servis Rem & Kaki-kaki - Penggantian kampas rem, shockbreaker, dan penyelarasan roda.",
-          "Diagnosis Komputer & Sensor - Pelacakan kerusakan sistem kelistrikan injeksi mobil."
-        ]
-      },
-      {
-        type: "horizontal-feature",
-        title: "Garansi Pekerjaan & Lokasi",
-        description: "Jaminan kualitas layanan mekanik bengkel kami.",
-        items: [
-          "Garansi servis mesin ringan selama 7 hari kalender setelah kendaraan keluar bengkel.",
-          "Menyediakan suku cadang asli (OEM) dan opsi suku cadang aftermarket tepercaya.",
-          "Tersedia ruang tunggu ber-AC, kopi gratis, dan steker listrik saat menunggu servis."
-        ]
-      }
-    ];
-  } else {
-    headline = `Digitalisasi Bisnis Anda Bersama ${businessName}`;
-    subheadline = `Kami membantu profil korporat Anda tampil kredibel, modern, dan profesional di internet di wilayah ${location}.`;
-    cta = "PELAJARI PROFIL PERUSAHAAN";
-    aboutTitle = `Misi Dan Visi Kami`;
-    aboutBody = `${businessName} berkomitmen menjadi mitra strategis pertumbuhan bisnis klien di ${location}. Kami menghadirkan solusi operasional dan pemasaran digital terintegrasi yang disesuaikan dengan tantangan pasar modern.`;
-    sections = [
-      {
-        type: "service-grid",
-        title: "Keunggulan Layanan Kami",
-        description: "Mengapa puluhan klien mempercayakan operasional bisnisnya kepada kami.",
-        items: [
-          "Analisis Proses Bisnis Taktis - Memetakan alur kerja agar lebih efisien dan hemat biaya.",
-          "Implementasi Sistem Digital - Mengubah pencatatan manual menjadi dashboard berbasis web.",
-          "Pendampingan Usaha Berkelanjutan - Evaluasi sistem secara berkala pasca go-live.",
-          "Pelatihan Staf Operasional - Edukasi pemakaian sistem agar berjalan mandiri di perusahaan."
-        ]
-      },
-      {
-        type: "stats",
-        title: "Pencapaian Klien Kami",
-        description: "Angka riil dari dampak digitalisasi yang telah dikerjakan.",
-        items: [
-          "100+ - Pelaku UMKM Lokal yang Telah Go-Digital",
-          "30% - Rata-rata Peningkatan Efisiensi Alur Kerja Operasional",
-          "24/7 - Keaktifan Sistem Monitoring Bisnis Tanpa Downtime"
-        ]
-      }
-    ];
-  }
-
-  // Generate WhatsApp Message
-  const whatsappMessage = `Halo tim SiWeb Sivilize, saya tertarik berkonsultasi mengenai:
-- Nama Bisnis: ${businessName}
-- Jenis Bisnis: ${businessType}
-- Lokasi: ${location}
-- Deskripsi: ${businessDesc}
-- Budget Pilihan: ${formattedBudget}
-- Rekomendasi Paket: ${recommendedPackage}
-- Perkiraan Timeline: ${estimatedTimeline}
-
-Tolong infokan ketersediaan kuota slot bulan ini untuk survei/konsultasi awal. Terima kasih!`;
+  const candidate = value as Partial<PreviewConcept>;
+  if (!candidate.hero || !candidate.about || !Array.isArray(candidate.sections)) return null;
 
   return {
-    businessType,
-    websiteName: businessName,
-    targetAudience: `Calon pelanggan lokal ${businessName} di wilayah ${location}`,
-    designDirection,
-    colorPalette,
-    typographyStyle,
-    hero: {
-      headline,
-      subheadline,
-      cta,
-    },
-    about: {
-      title: aboutTitle,
-      body: aboutBody,
-    },
-    sections,
-    featuresIncluded,
-    featuresExcluded,
-    recommendedPackage,
-    estimatedTimeline,
-    complexityLevel,
-    budgetExplanation,
+    ...fallback,
+    ...candidate,
+    businessType: fallback.businessType,
+    budgetTier: fallback.budgetTier,
+    websiteName: fallback.websiteName,
+    colorPalette: { ...fallback.colorPalette, ...(candidate.colorPalette || {}) },
+    hero: { ...fallback.hero, ...candidate.hero },
+    about: { ...fallback.about, ...candidate.about },
+    sections: candidate.sections.length ? candidate.sections.slice(0, 6).map((section, index) => ({
+      ...fallback.sections[index % fallback.sections.length],
+      ...section,
+      items: Array.isArray(section.items) && section.items.length ? section.items.slice(0, 6) : fallback.sections[index % fallback.sections.length].items,
+    })) : fallback.sections,
+    featuresIncluded: Array.isArray(candidate.featuresIncluded) ? candidate.featuresIncluded : fallback.featuresIncluded,
+    featuresExcluded: Array.isArray(candidate.featuresExcluded) ? candidate.featuresExcluded : fallback.featuresExcluded,
+  };
+}
+
+function generateFallbackConcept(params: ReturnType<typeof normalizeParams>): PreviewConcept {
+  const tier = getBudgetTier(params.budget, params.customBudget);
+  const formattedBudget = formatBudgetText(params.budget, params.customBudget);
+  const base = industryBase(params.businessType, params.businessName, params.location, params.businessDesc);
+  const budget = budgetBase(tier, params.businessType);
+
+  const whatsappMessage = `Halo tim SiWeb Sivilize, saya ingin konsultasi website untuk:
+- Nama Bisnis: ${params.businessName}
+- Kategori: ${labelBusiness(params.businessType)}
+- Lokasi: ${params.location}
+- Deskripsi: ${params.businessDesc}
+- Budget: ${formattedBudget}
+- Paket Preview: ${budget.recommendedPackage}
+
+Bisa bantu cek konsep, kebutuhan konten, dan estimasi pengerjaan?`;
+
+  return {
+    businessType: params.businessType,
+    budgetTier: tier,
+    websiteName: params.businessName,
+    targetAudience: base.targetAudience,
+    designDirection: `${base.designDirection} ${budget.designDepth}`,
+    visualKeywords: base.visualKeywords,
+    colorPalette: base.colorPalette,
+    typographyStyle: base.typographyStyle,
+    hero: base.hero,
+    about: base.about,
+    sections: base.sectionsByTier[tier],
+    featuresIncluded: budget.featuresIncluded,
+    featuresExcluded: budget.featuresExcluded,
+    recommendedPackage: budget.recommendedPackage,
+    estimatedTimeline: budget.estimatedTimeline,
+    complexityLevel: budget.complexityLevel,
+    budgetExplanation: budget.budgetExplanation,
     whatsappMessage,
   };
+}
+
+function labelBusiness(type: BusinessType) {
+  const labels: Record<BusinessType, string> = {
+    cafe: "Cafe & Resto",
+    clinic: "Klinik / Rumah Sakit",
+    barbershop: "Barbershop",
+    laundry: "Laundry",
+    workshop: "Bengkel & Otomotif",
+    company: "Company Profile",
+    hotel: "Hotel",
+    school: "Sekolah",
+  };
+
+  return labels[type];
+}
+
+function budgetBase(tier: BudgetTier, businessType: BusinessType) {
+  const bookingWord: Record<BusinessType, string> = {
+    cafe: "reservasi dan tombol WhatsApp order",
+    clinic: "pendaftaran konsultasi via WhatsApp",
+    barbershop: "booking slot barber",
+    laundry: "order pickup-delivery",
+    workshop: "booking servis kendaraan",
+    company: "form konsultasi prospek",
+    hotel: "pesan kamar via WhatsApp",
+    school: "pendaftaran siswa baru",
+  };
+
+  if (tier === "starter") {
+    return {
+      designDepth: "Versi budget starter dibuat ringkas: satu halaman kuat, visual jelas, dan alur kontak cepat.",
+      recommendedPackage: "Paket Landing Page Kilat",
+      estimatedTimeline: "5-7 hari kerja",
+      complexityLevel: "Rendah" as const,
+      budgetExplanation: "Budget ini cocok untuk validasi awal. Preview dibuat sederhana, fokus pada kesan pertama, info penting, lokasi, dan ajakan kontak yang langsung bisa dipakai.",
+      featuresIncluded: ["Landing page responsif", `CTA ${bookingWord[businessType]}`, "Copywriting inti bisnis", "Section lokasi dan jam operasional", "Optimasi tampilan mobile"],
+      featuresExcluded: ["CMS edit mandiri", "Katalog atau booking otomatis", "Multi halaman lengkap", "SEO lokal lanjutan"],
+    };
+  }
+
+  if (tier === "growth") {
+    return {
+      designDepth: "Versi budget menengah menambah galeri, bukti sosial, dan section layanan yang lebih lengkap.",
+      recommendedPackage: "Paket Profil Usaha Premium",
+      estimatedTimeline: "10-14 hari kerja",
+      complexityLevel: "Sedang" as const,
+      budgetExplanation: "Budget ini memberi ruang untuk layout lebih hidup: galeri, detail layanan, testimoni, dan CTA yang diarahkan ke WhatsApp agar calon pelanggan lebih yakin sebelum menghubungi.",
+      featuresIncluded: ["Multi-section landing page", "Galeri visual bisnis", "Testimoni atau trust block", `Alur ${bookingWord[businessType]}`, "SEO dasar dan struktur halaman rapi"],
+      featuresExcluded: ["Dashboard admin kompleks", "Pembayaran otomatis", "Integrasi inventori atau sistem internal"],
+    };
+  }
+
+  return {
+    designDepth: "Versi premium dibuat seperti website bisnis matang dengan komposisi visual lebih kaya dan beberapa alur konversi.",
+    recommendedPackage: "Paket Sistem Bisnis & Katalog",
+    estimatedTimeline: "3-5 minggu",
+    complexityLevel: "Tinggi" as const,
+    budgetExplanation: "Budget premium memungkinkan pengalaman lebih lengkap: konten berlapis, katalog atau jadwal, halaman pendukung, dan struktur yang siap dikembangkan menjadi sistem bisnis.",
+    featuresIncluded: ["Website multi-page atau landing premium panjang", "Katalog layanan interaktif", "Alur booking/order lebih detail", "CMS sederhana untuk update konten", "SEO lokal dan analytics"],
+    featuresExcluded: ["E-commerce skala besar multi-gudang", "Aplikasi mobile native", "Integrasi ERP khusus"],
+  };
+}
+
+function industryBase(type: BusinessType, name: string, location: string, desc: string) {
+  const shortDesc = desc || `layanan ${labelBusiness(type).toLowerCase()} di ${location}`;
+
+  const data: Record<BusinessType, Omit<PreviewConcept, "businessType" | "budgetTier" | "websiteName" | "featuresIncluded" | "featuresExcluded" | "recommendedPackage" | "estimatedTimeline" | "complexityLevel" | "budgetExplanation" | "whatsappMessage"> & { sectionsByTier: Record<BudgetTier, PreviewSection[]> }> = {
+    cafe: {
+      targetAudience: `Pelanggan yang mencari tempat makan, kopi, dan ruang santai di ${location}`,
+      designDirection: "Visual hangat dengan foto menu, tekstur meja, dan galeri suasana cafe.",
+      visualKeywords: ["Foto Cafe", "Menu Kopi", "Interior Hangat", "Galeri Suasana"],
+      colorPalette: { primary: "#7c3f18", secondary: "#d8a15d", accent: "#2f6f4e", background: "#fff7ed", surface: "#f6e7d1", text: "#2a160b", muted: "#7a5a43" },
+      typographyStyle: "Warm serif headline dengan sans yang mudah dibaca",
+      hero: {
+        eyebrow: "Cafe & resto lokal",
+        headline: `${name}, tempat singgah untuk makan enak dan ngobrol lama`,
+        subheadline: `${shortDesc}. Tampilkan menu unggulan, jam ramai, suasana tempat, dan reservasi WhatsApp dalam satu halaman yang terasa seperti cafe sungguhan.`,
+        cta: "Reservasi Sekarang",
+        secondaryCta: "Lihat Menu",
+        visualLabel: "Foto Cafe",
+      },
+      about: {
+        title: "Rasa, suasana, dan cerita dari dapur",
+        body: `${name} perlu tampil dengan foto menu yang menggugah, cerita singkat tentang suasana, dan info praktis supaya orang di ${location} tahu kapan harus datang atau pesan.`,
+      },
+      sections: [],
+      sectionsByTier: {
+        starter: [
+          section("menu", "Menu Unggulan", "Beberapa menu utama yang paling mudah dijual dari halaman pertama.", ["Kopi susu aren dengan espresso pekat", "Nasi atau snack favorit pelanggan", "Paket berdua untuk sore hari"]),
+          section("location", "Jam Buka & Lokasi", "Info kunjungan dibuat jelas untuk pelanggan sekitar.", [`Area ${location}`, "Jam buka harian", "Tombol arahkan ke Maps"]),
+          section("cta", "Reservasi Cepat", "Ajakan sederhana untuk booking meja atau pesan lewat WhatsApp.", ["Reservasi meja", "Pesan untuk dibawa pulang", "Tanya menu hari ini"]),
+        ],
+        growth: [
+          section("menu", "Menu Favorit", "Kartu menu dengan harga ringkas dan foto yang terasa nyata.", ["Signature coffee", "Makanan berat", "Dessert dan camilan", "Paket gathering kecil"]),
+          section("gallery", "Galeri Suasana", "Preview interior, meja, bar kopi, dan area kumpul.", ["Indoor nyaman", "Outdoor sore hari", "Bar kopi", "Spot foto pelanggan"]),
+          section("testimonials", "Kata Pelanggan", "Review singkat yang menonjolkan rasa dan suasana.", ["Cocok untuk kerja sore", "Kopinya konsisten", "Tempatnya tidak berisik"]),
+          section("location", "Lokasi & Reservasi", "Maps, jam buka, dan reservasi langsung.", [`Dekat area ${location}`, "Reservasi meja", "Order WhatsApp"]),
+        ],
+        premium: [
+          section("menu", "Menu Signature", "Menu dikemas seperti katalog mini dengan kategori dan cerita rasa.", ["Coffee bar", "Main course", "Pastry", "Seasonal menu", "Catering meeting"]),
+          section("gallery", "Cerita Visual Cafe", "Urutan visual dari bar, dapur, meja, sampai event kecil.", ["Foto interior", "Foto plating", "Foto pelanggan", "Live music", "Private event"]),
+          section("testimonials", "Review & Rating", "Bukti sosial untuk pengunjung baru.", ["Rating Google", "Review pelanggan tetap", "Highlight menu paling laku"]),
+          section("cta", "Reservasi & Event", "Alur reservasi untuk meja, ulang tahun, atau meeting kecil.", ["Booking meja", "Paket event", "Pre-order menu"]),
+        ],
+      },
+    },
+    clinic: {
+      targetAudience: `Pasien keluarga dan calon pasien di ${location}`,
+      designDirection: "Tampilan klinis bersih dengan ruang putih, foto tenaga medis, dan informasi layanan yang mudah dipindai.",
+      visualKeywords: ["Fasilitas Klinik", "Tenaga Medis", "Ruang Konsultasi", "Jadwal Dokter"],
+      colorPalette: { primary: "#087f8c", secondary: "#b8e6e1", accent: "#f59e0b", background: "#f7fbfc", surface: "#eaf6f6", text: "#0f2830", muted: "#5d7480" },
+      typographyStyle: "Clean medical sans",
+      hero: {
+        eyebrow: "Klinik dan layanan kesehatan",
+        headline: `Daftar konsultasi di ${name} tanpa menunggu informasi yang simpang siur`,
+        subheadline: `${shortDesc}. Website menampilkan layanan medis, jadwal dokter, fasilitas, kontak darurat, dan pendaftaran WhatsApp dengan nuansa tenang.`,
+        cta: "Daftar Konsultasi",
+        secondaryCta: "Lihat Jadwal Dokter",
+        visualLabel: "Fasilitas Klinik",
+      },
+      about: {
+        title: "Informasi kesehatan yang rapi sebelum pasien datang",
+        body: `${name} membutuhkan tampilan yang bersih dan meyakinkan, dengan daftar layanan yang jelas agar pasien di ${location} bisa memilih jadwal sebelum datang.`,
+      },
+      sections: [],
+      sectionsByTier: {
+        starter: [section("services", "Layanan Medis", "Daftar layanan utama untuk pasien baru.", ["Konsultasi umum", "Pemeriksaan dasar", "Surat keterangan sehat"]), section("schedule", "Jam Praktik", "Jadwal dasar dibuat mudah dibaca.", ["Senin-Jumat", "Sabtu terbatas", "Daftar via WhatsApp"]), section("location", "Kontak Darurat", "Nomor penting dan lokasi klinik.", ["WhatsApp admin", "Maps klinik", "Info rujukan"])],
+        growth: [section("services", "Layanan Klinik", "Kartu layanan dengan penjelasan singkat.", ["Dokter umum", "Ibu dan anak", "Lab sederhana", "Tindakan ringan"]), section("schedule", "Jadwal Dokter", "Jadwal praktik harian dan pendaftaran.", ["Dokter pagi", "Dokter sore", "Kuota konsultasi", "Pengingat WhatsApp"]), section("facilities", "Fasilitas Klinik", "Visual ruang tunggu dan ruang tindakan.", ["Ruang tunggu", "Ruang konsultasi", "Area farmasi"]), section("location", "Lokasi & Kontak", "Akses pasien dibuat cepat.", [`Wilayah ${location}`, "Kontak darurat", "Peta lokasi"])],
+        premium: [section("services", "Layanan Terpadu", "Struktur layanan lengkap untuk website klinik.", ["Poli umum", "KIA", "Laboratorium", "Vaksinasi", "Medical check-up"]), section("schedule", "Jadwal Dokter Spesialis", "Jadwal dibuat seperti modul informasi pasien.", ["Filter dokter", "Jam praktik", "Kuota harian", "Daftar online"]), section("facilities", "Fasilitas & Standar Layanan", "Visual fasilitas dengan narasi keselamatan pasien.", ["Sterilisasi alat", "Ruang tindakan", "Farmasi", "Alur pasien"]), section("cta", "Pendaftaran Konsultasi", "CTA untuk pasien baru dan pasien kontrol.", ["Daftar pasien baru", "Kontrol lanjutan", "Tanya admin"])],
+      },
+    },
+    barbershop: {
+      targetAudience: `Pria yang ingin potongan rapi dan booking cepat di ${location}`,
+      designDirection: "Visual bold dengan foto hasil potong, kursi barber, dan daftar harga yang tegas.",
+      visualKeywords: ["Hasil Potong Rambut", "Interior Barbershop", "Kursi Barber", "Galeri Fade"],
+      colorPalette: { primary: "#111827", secondary: "#c8a15a", accent: "#9f1239", background: "#f4f1ea", surface: "#ded7c8", text: "#151515", muted: "#6b6258" },
+      typographyStyle: "Bold editorial sans",
+      hero: {
+        eyebrow: "Barbershop booking",
+        headline: `Potongan rapi di ${name}, tinggal pilih barber dan jam datang`,
+        subheadline: `${shortDesc}. Preview dibuat dengan harga layanan, galeri hasil potong, dan tombol booking yang langsung terasa seperti website barbershop aktif.`,
+        cta: "Booking Sekarang",
+        secondaryCta: "Lihat Harga",
+        visualLabel: "Hasil Potong Rambut",
+      },
+      about: {
+        title: "Lebih dari sekadar potong rambut",
+        body: `${name} bisa tampil lebih kuat lewat galeri before-after, daftar layanan, dan slot booking supaya pelanggan di ${location} tidak perlu antre tanpa kepastian.`,
+      },
+      sections: [],
+      sectionsByTier: {
+        starter: [section("pricing", "Layanan & Harga", "Harga inti tampil langsung.", ["Haircut", "Hair wash", "Beard trim"]), section("gallery", "Galeri Hasil", "Preview beberapa gaya rambut.", ["Fade", "Classic cut", "Crop cut"]), section("cta", "Booking Barber", "Chat WhatsApp untuk pilih jam.", ["Pilih jam", "Pilih layanan", "Konfirmasi datang"])],
+        growth: [section("pricing", "Paket Grooming", "Layanan dikemas dengan harga jelas.", ["Signature haircut", "Haircut + wash", "Shave", "Kids cut"]), section("gallery", "Hasil Potong", "Galeri visual hasil kerja barber.", ["Low fade", "Mid fade", "Pompadour", "Textured crop"]), section("testimonials", "Review Pelanggan", "Komentar pelanggan tentang hasil dan antrean.", ["Potongan presisi", "Booking tepat waktu", "Tempat bersih"]), section("cta", "Booking Sekarang", "Slot booking WhatsApp.", ["Pilih barber", "Pilih jam", "Datang sesuai jadwal"])],
+        premium: [section("pricing", "Menu Grooming Lengkap", "Daftar harga lebih premium dan mudah dipilih.", ["Haircut", "Beard care", "Hair color", "Scalp treatment", "Membership"]), section("gallery", "Portfolio Barber", "Hasil potong dikelompokkan per style.", ["Fade gallery", "Long trim", "Color work", "Before-after"]), section("testimonials", "Client Wall", "Bukti sosial dari pelanggan tetap.", ["Review member", "Style favorit", "Barber recommendation"]), section("cta", "Booking Slot", "Alur booking untuk cabang atau barber tertentu.", ["Pilih cabang", "Pilih barber", "Reminder WhatsApp"])],
+      },
+    },
+    laundry: {
+      targetAudience: `Rumah tangga, kos, dan pekerja sibuk di ${location}`,
+      designDirection: "Tampilan segar dengan visual pakaian bersih, alur pickup, dan harga kiloan yang mudah dipahami.",
+      visualKeywords: ["Pakaian Bersih", "Proses Laundry", "Pickup Delivery", "Rak Setrika"],
+      colorPalette: { primary: "#0f8fb3", secondary: "#b7edf5", accent: "#14b8a6", background: "#f2fbfd", surface: "#dff5f8", text: "#10313a", muted: "#55757c" },
+      typographyStyle: "Rounded friendly sans",
+      hero: {
+        eyebrow: "Laundry kiloan dan satuan",
+        headline: `${name} bantu cucian selesai tanpa mengganggu hari Anda`,
+        subheadline: `${shortDesc}. Website menonjolkan harga kiloan, area layanan, pickup-delivery, dan tombol order WhatsApp yang praktis.`,
+        cta: "Order Laundry",
+        secondaryCta: "Cek Harga",
+        visualLabel: "Pakaian Bersih",
+      },
+      about: {
+        title: "Cucian rapi, alur order jelas",
+        body: `${name} perlu menjawab tiga hal dengan cepat: harga berapa, area mana yang dijemput, dan kapan cucian selesai untuk pelanggan di ${location}.`,
+      },
+      sections: [],
+      sectionsByTier: {
+        starter: [section("pricing", "Harga Kiloan", "Harga utama tampil sederhana.", ["Cuci setrika reguler", "Setrika saja", "Express terbatas"]), section("services", "Layanan", "Jenis cucian paling sering dipesan.", ["Kiloan", "Satuan", "Bedcover"]), section("cta", "Pickup Delivery", "Order jemput lewat WhatsApp.", ["Kirim alamat", "Timbang di tempat", "Antar kembali"])],
+        growth: [section("pricing", "Daftar Harga", "Harga reguler, express, dan satuan.", ["Reguler 3 hari", "Express 1 hari", "Bedcover", "Sepatu dan tas"]), section("services", "Alur Laundry", "Proses dibuat transparan.", ["Pickup", "Sortir", "Cuci", "Setrika", "Antar"]), section("location", "Area Layanan", "Coverage area untuk pickup.", [`Area ${location}`, "Minimal kiloan", "Jam pickup"]), section("testimonials", "Pelanggan Rutin", "Bukti layanan rapi dan tepat waktu.", ["Wangi tahan lama", "Tidak tertukar", "Kurir responsif"])],
+        premium: [section("pricing", "Paket Laundry", "Paket keluarga, kos, dan langganan.", ["Paket mingguan", "Paket kos", "Express", "Satuan premium"]), section("services", "Tracking Cucian", "Konsep alur status untuk premium.", ["Diterima", "Dicuci", "Disetrika", "Siap antar"]), section("location", "Pickup Delivery Area", "Coverage dibuat seperti area operasional.", ["Zona gratis", "Zona berbayar", "Jadwal kurir"]), section("cta", "Order dan Langganan", "CTA untuk order satuan atau paket bulanan.", ["Order hari ini", "Langganan bulanan", "Tanya admin"])],
+      },
+    },
+    workshop: {
+      targetAudience: `Pemilik motor dan mobil yang butuh servis jelas di ${location}`,
+      designDirection: "Visual industrial dengan teknisi bekerja, area servis, sparepart, dan CTA booking antrean.",
+      visualKeywords: ["Area Servis", "Teknisi Bekerja", "Sparepart", "Kendaraan"],
+      colorPalette: { primary: "#c2410c", secondary: "#334155", accent: "#facc15", background: "#111827", surface: "#1f2937", text: "#f8fafc", muted: "#cbd5e1" },
+      typographyStyle: "Industrial condensed sans",
+      hero: {
+        eyebrow: "Bengkel dan otomotif",
+        headline: `Servis di ${name} dibuat jelas dari keluhan sampai booking antrean`,
+        subheadline: `${shortDesc}. Preview menampilkan layanan servis, sparepart, galeri pengerjaan, dan booking servis via WhatsApp.`,
+        cta: "Booking Servis",
+        secondaryCta: "Lihat Layanan",
+        visualLabel: "Area Servis",
+      },
+      about: {
+        title: "Bengkel perlu terlihat rapi sebelum pelanggan datang",
+        body: `${name} bisa menampilkan jenis servis, estimasi pengerjaan, sparepart, dan bukti pekerjaan agar pemilik kendaraan di ${location} merasa lebih siap.`,
+      },
+      sections: [],
+      sectionsByTier: {
+        starter: [section("services", "Layanan Servis", "Servis utama langsung terlihat.", ["Ganti oli", "Tune up", "Cek rem"]), section("portfolio", "Galeri Pengerjaan", "Foto area servis dan kendaraan.", ["Motor masuk", "Teknisi bekerja", "Sparepart"]), section("cta", "Booking Servis", "WhatsApp untuk jadwal antrean.", ["Kirim keluhan", "Pilih jam", "Datang ke bengkel"])],
+        growth: [section("services", "Layanan Bengkel", "Layanan dibuat per kategori kendaraan.", ["Servis berkala", "Kaki-kaki", "Kelistrikan", "Ganti oli"]), section("facilities", "Sparepart & Peralatan", "Bukti alat dan sparepart tersedia.", ["Oli resmi", "Scanner", "Toolkit", "Ruang tunggu"]), section("portfolio", "Galeri Pengerjaan", "Foto hasil servis dan proses.", ["Before-after", "Area servis", "Teknisi", "Komponen"]), section("cta", "Booking Antrean", "Booking servis via WhatsApp.", ["Jenis kendaraan", "Keluhan", "Jam datang"])],
+        premium: [section("services", "Layanan Servis Lengkap", "Layanan lengkap untuk website bengkel premium.", ["Servis berkala", "Diagnosis injeksi", "Kaki-kaki", "AC mobil", "Detailing"]), section("facilities", "Area Servis & Sparepart", "Visual fasilitas dan stok komponen.", ["Lift hidrolik", "Scanner", "Sparepart OEM", "Ruang tunggu"]), section("portfolio", "Pengerjaan Terbaru", "Portfolio pekerjaan untuk membangun trust.", ["Overhaul", "Tune up", "Rem", "Kelistrikan"]), section("cta", "Booking Servis Online", "Alur booking lebih lengkap.", ["Pilih layanan", "Upload foto keluhan", "Reminder WhatsApp"])],
+      },
+    },
+    company: {
+      targetAudience: `Calon klien, mitra, dan stakeholder ${name} di ${location}`,
+      designDirection: "Korporat editorial dengan visual kantor, tim, proyek, dan portofolio klien.",
+      visualKeywords: ["Tim Profesional", "Kantor", "Portofolio Proyek", "Klien"],
+      colorPalette: { primary: "#164e63", secondary: "#94a3b8", accent: "#c8a15a", background: "#f8fafc", surface: "#e2e8f0", text: "#0f172a", muted: "#64748b" },
+      typographyStyle: "Clean corporate sans",
+      hero: {
+        eyebrow: "Company profile",
+        headline: `${name} tampil kredibel sejak halaman pertama`,
+        subheadline: `${shortDesc}. Website company profile harus memperlihatkan siapa timnya, apa layanannya, proyek yang pernah ditangani, dan cara menghubungi tim sales.`,
+        cta: "Konsultasi Sekarang",
+        secondaryCta: "Lihat Portofolio",
+        visualLabel: "Portofolio Proyek",
+      },
+      about: {
+        title: "Profil perusahaan yang tidak berhenti di paragraf panjang",
+        body: `${name} butuh struktur yang rapi: cerita singkat, layanan, portofolio, klien, dan CTA agar calon mitra di ${location} cepat paham posisi perusahaan.`,
+      },
+      sections: [],
+      sectionsByTier: {
+        starter: [section("services", "Layanan Utama", "Tiga layanan inti tampil ringkas.", ["Konsultasi", "Implementasi", "Pendampingan"]), section("portfolio", "Contoh Proyek", "Beberapa highlight pekerjaan.", ["Proyek lokal", "Hasil kerja", "Klien terkait"]), section("cta", "Kontak Resmi", "CTA konsultasi via WhatsApp.", ["Tanya kebutuhan", "Jadwalkan call", "Minta proposal"])],
+        growth: [section("services", "Lini Layanan", "Layanan ditata seperti profil bisnis matang.", ["Konsultasi", "Operasional", "Digitalisasi", "Maintenance"]), section("portfolio", "Portofolio", "Proyek atau studi kasus singkat.", ["Proyek A", "Proyek B", "Proyek C"]), section("testimonials", "Klien & Partner", "Logo atau kutipan klien.", ["Klien lokal", "Mitra vendor", "Repeat order"]), section("cta", "Diskusi Proyek", "CTA untuk prospek baru.", ["Konsultasi", "Minta company deck", "WhatsApp sales"])],
+        premium: [section("services", "Solusi Perusahaan", "Struktur layanan lebih lengkap.", ["Strategy", "Implementation", "Managed service", "Training", "Support"]), section("portfolio", "Studi Kasus", "Portfolio-first layout untuk membangun kredibilitas.", ["Masalah klien", "Solusi", "Dampak", "Durasi proyek"]), section("testimonials", "Klien dan Dampak", "Bukti sosial dan angka hasil.", ["Logo klien", "Kutipan direktur", "Metrik dampak"]), section("cta", "Konsultasi Korporat", "CTA untuk lead bernilai tinggi.", ["Jadwalkan meeting", "Kirim brief", "Minta proposal"])],
+      },
+    },
+    hotel: {
+      targetAudience: `Tamu bisnis dan wisatawan yang mencari kamar di ${location}`,
+      designDirection: "Hospitality visual dengan foto kamar, fasilitas, ambience lobby, dan modul pesan kamar.",
+      visualKeywords: ["Kamar Hotel", "Fasilitas", "Lobby", "Lokasi Hotel"],
+      colorPalette: { primary: "#0f3d3e", secondary: "#d6b16a", accent: "#8a5a2b", background: "#fbf7ef", surface: "#eee2cc", text: "#1f2a24", muted: "#746958" },
+      typographyStyle: "Elegant hospitality serif",
+      hero: {
+        eyebrow: "Hotel dan penginapan",
+        headline: `${name}, tempat menginap yang mudah dipilih sebelum tamu datang`,
+        subheadline: `${shortDesc}. Preview menonjolkan tipe kamar, fasilitas, galeri hotel, lokasi, dan tombol pesan kamar via WhatsApp.`,
+        cta: "Pesan Kamar",
+        secondaryCta: "Lihat Tipe Kamar",
+        visualLabel: "Kamar Hotel",
+      },
+      about: {
+        title: "Tamu ingin melihat kamar sebelum bertanya harga",
+        body: `${name} perlu memperlihatkan foto kamar, fasilitas, dan akses lokasi agar calon tamu di ${location} cepat yakin untuk menghubungi resepsionis.`,
+      },
+      sections: [],
+      sectionsByTier: {
+        starter: [section("facilities", "Tipe Kamar", "Kamar utama dan fasilitas dasar.", ["Standard room", "Deluxe room", "Sarapan"]), section("gallery", "Foto Hotel", "Visual kamar dan lobby.", ["Kamar", "Lobby", "Area parkir"]), section("cta", "Pesan Kamar", "WhatsApp resepsionis.", ["Cek tanggal", "Tanya harga", "Konfirmasi booking"])],
+        growth: [section("facilities", "Tipe Kamar", "Kartu kamar dengan fasilitas.", ["Standard", "Deluxe", "Family room", "Extra bed"]), section("gallery", "Galeri Hotel", "Foto kamar, lobby, dan fasilitas.", ["Kamar", "Lobby", "Restoran", "Parkir"]), section("location", "Lokasi Strategis", "Akses ke titik penting sekitar.", [`Area ${location}`, "Dekat pusat kota", "Arah Maps"]), section("cta", "Reservasi", "CTA pesan kamar.", ["Cek ketersediaan", "Pilih kamar", "WhatsApp resepsionis"])],
+        premium: [section("facilities", "Room Collection", "Tipe kamar lebih premium.", ["Superior", "Deluxe", "Suite", "Family", "Meeting package"]), section("gallery", "Hospitality Gallery", "Galeri kaya untuk membangun rasa percaya.", ["Bedroom", "Bathroom", "Restaurant", "Meeting room", "View"]), section("location", "Fasilitas & Lokasi", "Fasilitas dan akses dipresentasikan lengkap.", ["Breakfast", "Wi-Fi", "Parkir", "Nearby attraction"]), section("cta", "Pesan Kamar", "Alur booking lebih detail.", ["Tanggal menginap", "Jumlah tamu", "Preferensi kamar"])],
+      },
+    },
+    school: {
+      targetAudience: `Orang tua dan calon siswa di ${location}`,
+      designDirection: "Visual edukasi yang cerah dengan siswa, ruang belajar, kegiatan, dan pendaftaran.",
+      visualKeywords: ["Siswa", "Lingkungan Belajar", "Fasilitas Sekolah", "Kegiatan"],
+      colorPalette: { primary: "#1d4ed8", secondary: "#facc15", accent: "#16a34a", background: "#f8fbff", surface: "#e8f0ff", text: "#10203f", muted: "#5d6f91" },
+      typographyStyle: "Clear education sans",
+      hero: {
+        eyebrow: "Sekolah dan pendidikan",
+        headline: `${name} memperlihatkan lingkungan belajar sebelum orang tua bertanya biaya`,
+        subheadline: `${shortDesc}. Preview berisi program, fasilitas, kegiatan siswa, lokasi, dan CTA daftar via WhatsApp.`,
+        cta: "Daftar Sekarang",
+        secondaryCta: "Lihat Program",
+        visualLabel: "Lingkungan Belajar",
+      },
+      about: {
+        title: "Website sekolah harus menjawab rasa ingin tahu orang tua",
+        body: `${name} bisa menampilkan program belajar, kegiatan, fasilitas, dan alur pendaftaran agar keluarga di ${location} punya gambaran jelas sebelum datang.`,
+      },
+      sections: [],
+      sectionsByTier: {
+        starter: [section("services", "Program Belajar", "Program utama sekolah.", ["Kelas reguler", "Ekstrakurikuler", "Pembinaan karakter"]), section("facilities", "Fasilitas", "Fasilitas dasar ditampilkan jelas.", ["Ruang kelas", "Lapangan", "Perpustakaan"]), section("cta", "Pendaftaran", "WhatsApp admin penerimaan siswa.", ["Tanya biaya", "Jadwal kunjungan", "Daftar awal"])],
+        growth: [section("services", "Program Pendidikan", "Program dan jenjang belajar.", ["Kurikulum", "Ekstrakurikuler", "Kegiatan siswa", "Bimbingan"]), section("facilities", "Fasilitas Sekolah", "Visual fasilitas untuk orang tua.", ["Ruang kelas", "Lab", "Perpustakaan", "Lapangan"]), section("gallery", "Kegiatan Siswa", "Galeri kegiatan sekolah.", ["Upacara", "Praktik kelas", "Lomba", "Kunjungan"]), section("cta", "Daftar Sekarang", "CTA pendaftaran siswa baru.", ["Tanya biaya", "Ambil formulir", "Jadwal survey"])],
+        premium: [section("services", "Program Unggulan", "Program sekolah ditampilkan seperti portal penerimaan.", ["Akademik", "Karakter", "Bahasa", "Teknologi", "Ekstrakurikuler"]), section("facilities", "Fasilitas Belajar", "Fasilitas lengkap dan kegiatan pendukung.", ["Lab", "Perpustakaan", "Sport area", "Creative room"]), section("gallery", "Kegiatan & Prestasi", "Galeri untuk prestasi dan kegiatan.", ["Prestasi", "Kegiatan kelas", "Lomba", "Field trip"]), section("cta", "Penerimaan Siswa Baru", "Alur pendaftaran lebih lengkap.", ["Download info", "Jadwal open house", "Daftar WhatsApp"])],
+      },
+    },
+  };
+
+  return data[type];
+}
+
+function section(type: PreviewSection["type"], title: string, description: string, items: string[]): PreviewSection {
+  return { type, title, description, items };
 }

@@ -2439,3 +2439,290 @@ main {
     letter-spacing: 0.1em !important;
   }
 }
+
+/* Responsive audit pass - calmer type, stronger mobile/tablet layouts */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 76px;
+}
+
+body {
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0 !important;
+  line-height: 1.12 !important;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2rem, 5.2vw, 4rem) !important;
+}
+
+.container {
+  width: min(100% - 32px, 1180px);
+  padding-inline: 0 !important;
+}
+
+.navbar {
+  height: 68px !important;
+}
+
+.navbar__container {
+  min-height: 68px;
+  gap: 18px;
+}
+
+.navbar__list {
+  gap: clamp(14px, 1.8vw, 26px) !important;
+}
+
+.navbar__link {
+  font-size: 0.82rem !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.02em !important;
+  white-space: nowrap;
+}
+
+.siweb-hero {
+  min-height: min(760px, 100svh) !important;
+  padding-block: 118px 72px !important;
+}
+
+.hero__brand {
+  letter-spacing: 0.28em !important;
+  font-size: clamp(0.78rem, 1.4vw, 0.94rem) !important;
+  line-height: 1.45 !important;
+}
+
+.siweb-title {
+  max-width: 780px !important;
+  font-size: clamp(2rem, 5vw, 3.35rem) !important;
+  line-height: 1.08 !important;
+  margin-bottom: 1rem !important;
+}
+
+.siweb-subtitle {
+  max-width: 720px !important;
+  font-size: clamp(0.96rem, 1.45vw, 1.06rem) !important;
+  line-height: 1.7 !important;
+}
+
+.siweb-section {
+  padding-block: clamp(56px, 7vw, 76px) !important;
+}
+
+.siweb-section-title {
+  max-width: 800px;
+  font-size: clamp(1.55rem, 3.2vw, 2.35rem) !important;
+  line-height: 1.14 !important;
+}
+
+.siweb-section-label {
+  letter-spacing: 0.22em !important;
+}
+
+.siweb-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+}
+
+.siweb-card {
+  min-width: 0;
+  padding: clamp(18px, 2vw, 24px) !important;
+}
+
+.siweb-card-title {
+  font-size: 1rem !important;
+  line-height: 1.35 !important;
+}
+
+.siweb-card-price {
+  font-size: 1.18rem !important;
+}
+
+.siweb-card-desc,
+.siweb-card-item {
+  line-height: 1.58 !important;
+}
+
+.siweb-btn {
+  min-height: 50px;
+  padding: 15px 24px !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.12em !important;
+  line-height: 1.25 !important;
+  text-align: center;
+}
+
+.siweb-form-input {
+  min-width: 0;
+  font-size: 16px !important;
+  letter-spacing: 0.04em !important;
+}
+
+.footer [style*="font-size: 1.8rem"] {
+  font-size: 1.45rem !important;
+}
+
+@media (max-width: 1180px) {
+  .siweb-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  html {
+    scroll-padding-top: 64px;
+  }
+
+  .container {
+    width: min(100% - 28px, 900px);
+  }
+
+  .navbar {
+    height: 64px !important;
+  }
+
+  .navbar__container {
+    min-height: 64px;
+  }
+
+  .navbar__logo span {
+    font-size: 1.22rem !important;
+  }
+
+  .navbar__nav {
+    padding-top: 84px !important;
+  }
+
+  .navbar__link {
+    min-height: 48px !important;
+    font-size: clamp(0.92rem, 2.2vw, 1.05rem) !important;
+    white-space: normal;
+  }
+
+  .siweb-hero {
+    min-height: auto !important;
+    padding-block: 96px 52px !important;
+  }
+
+  .siweb-title {
+    font-size: clamp(1.8rem, 6vw, 2.75rem) !important;
+  }
+
+  .siweb-split-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 15px;
+  }
+
+  .container {
+    width: min(100% - 24px, 560px);
+  }
+
+  .siweb-hero {
+    padding-block: 88px 44px !important;
+  }
+
+  .hero__brand {
+    letter-spacing: 0.14em !important;
+    font-size: 0.72rem !important;
+  }
+
+  .siweb-title {
+    font-size: clamp(1.58rem, 8vw, 2.12rem) !important;
+    line-height: 1.12 !important;
+  }
+
+  .siweb-subtitle {
+    font-size: 0.92rem !important;
+    line-height: 1.62 !important;
+  }
+
+  .siweb-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    margin-top: 2rem !important;
+  }
+
+  .siweb-section-title {
+    font-size: clamp(1.32rem, 6.5vw, 1.82rem) !important;
+  }
+
+  .siweb-section-label {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  .siweb-card {
+    padding: 18px !important;
+  }
+
+  .siweb-btn {
+    padding: 13px 14px !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  .siweb-form-input {
+    padding: 16px 0 !important;
+  }
+}
+
+.bndl-h1,
+.preview-header h1 {
+  font-size: clamp(2rem, 4vw, 3.25rem) !important;
+  line-height: 1.1 !important;
+}
+
+.bndl-tabs,
+.bndl-table-wrap {
+  max-width: 100% !important;
+}
+
+.bndl-table-wrap {
+  overflow-x: auto !important;
+}
+
+.bndl-table-wrap table {
+  max-width: none !important;
+}
+
+@media (max-width: 640px) {
+  .bndl-h1,
+  .preview-header h1 {
+    font-size: clamp(1.5rem, 7.4vw, 2rem) !important;
+  }
+
+  .bndl-tabs {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    overflow-x: visible !important;
+    padding: 8px !important;
+  }
+
+  .bndl-tab-btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 10px 8px !important;
+    white-space: normal !important;
+    font-size: 0.76rem !important;
+    line-height: 1.22 !important;
+  }
+}

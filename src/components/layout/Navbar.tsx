@@ -50,6 +50,7 @@ export function Navbar() {
           <ul className="navbar__list">
             <li><a href="/" className="navbar__link" onClick={(e) => handleLinkClick(e, "/")}>Beranda</a></li>
             <li><a href="/demo" className="navbar__link">Showcase Demo</a></li>
+            <li><a href="/bundling" className="navbar__link">Bundling</a></li>
             <li><a href="/website-preview" className="navbar__link" style={{ color: "var(--color-primary)", fontWeight: 800 }}>Simulasi Web</a></li>
             <li><a href="/#pricing" className="navbar__link" onClick={(e) => handleLinkClick(e, "/#pricing")}>Paket Layanan</a></li>
             <li><a href="/#umkm-gratis" className="navbar__link" onClick={(e) => handleLinkClick(e, "/#umkm-gratis")}>Program Gratis</a></li>
